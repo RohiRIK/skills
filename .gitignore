@@ -11,3 +11,7 @@ tmp/
 .env
 .env.*
 !.env.schema
+
+# Node / bun deps and generated report output
+node_modules/
+*.xlsx

@@ -19,6 +19,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Build/`](Build) | Implement plan tasks one at a time with compile and commit gates. |
 | [`CodingStandards/`](CodingStandards) | Language coding standards — TS, Python, Bash, PowerShell, Swift, Rust. |
 | [`CreateSkill/`](CreateSkill) | Build and maintain skills in canonical structure. |
+| [`DataReportBuilder/`](DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
 | [`DockerPatterns/`](DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
 | [`FrontendDesign/`](FrontendDesign) | Reference for React and Next.js component design patterns. |
 | [`Hygiene/`](Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
