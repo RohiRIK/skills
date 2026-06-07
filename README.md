@@ -5,6 +5,8 @@
 [![Skills](https://img.shields.io/badge/skills-18-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
+> _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
+
 My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) — a personal library for Claude Code, opencode, and other AI coding tools. Each top-level folder is a self-contained skill package with its own `SKILL.md` and any supporting workflows, references, or scripts.
 
 ## Skills in this repo
@@ -31,6 +33,19 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Test/`](Test) | Run TDD for features and bug fixes. |
 
 ## Install
+
+### 🪄 Let your AI do it (recommended)
+
+Paste this to any coding AI (Claude Code, Cursor, Copilot, opencode…) and let it drive the wizard:
+
+```text
+☕️ Be my Skills install wizard. Pour a coffee, then:
+1. Fetch the install guide —
+   curl -fsSL https://raw.githubusercontent.com/RohiRIK/skills/main/INSTALL-AI.md
+   (or: gh api --header "Accept: application/vnd.github.raw+json" repos/RohiRIK/skills/contents/INSTALL-AI.md)
+2. Ask me which tool I'm on and which skills I want — don't install all by default.
+3. Run ONLY the commands for my picks, then verify. Go. 🚀
+```
 
 ### Quick (Mac / Linux)
 
