@@ -1,7 +1,6 @@
 ---
 name: opencode
-description: "Delegate a coding, refactor, or PR-review task to the OpenCode CLI as an autonomous worker, then monitor and report results."
-disable-model-invocation: true
+description: "Delegate a coding, refactor, or PR-review task to the OpenCode CLI as an autonomous worker, then monitor and report results. USE WHEN delegating a coding, refactor, or PR-review task to OpenCode, or running a task via the opencode CLI."
 argument-hint: [task description]
 ---
 
@@ -10,9 +9,10 @@ argument-hint: [task description]
 Delegate work to the [OpenCode](https://opencode.ai) CLI — a provider-agnostic
 autonomous coding agent — and orchestrate it from this session via `Bash`.
 
-This skill is **manual-only** (`disable-model-invocation: true`): it runs when you
-type `/opencode <task>`, never on its own. To let Claude auto-delegate later,
-remove that frontmatter line and rewrite the description as `"... USE WHEN ..."`.
+This skill runs when you type `/opencode <task>`, and Claude may also auto-invoke it
+when a task should be delegated to OpenCode. To make it manual-only again, add
+`disable-model-invocation: true` to the frontmatter and drop the `USE WHEN` clause
+from the description.
 
 Task to delegate: **$ARGUMENTS**
 
