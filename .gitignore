@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Local working dirs — not committed
+specs/
+plans/
+tmp/
+
+# Editor / runtime cruft
+*.log
+.env
+.env.*
+!.env.schema
