@@ -1,7 +1,6 @@
 ---
 name: agy
-description: "Delegate a coding, refactor, PR-review, or image-generation task to the Antigravity CLI (agy) as an autonomous worker, then monitor and report results."
-disable-model-invocation: true
+description: "Delegate a coding, refactor, PR-review, or image-generation task to the Antigravity CLI (agy) as an autonomous worker, then monitor and report results. USE WHEN delegating a coding, refactor, PR-review, or image-generation task to Antigravity/agy, or running a task via the agy CLI."
 argument-hint: [task description]
 ---
 
@@ -12,9 +11,10 @@ Google's Gemini-powered terminal agent) and orchestrate it from this session via
 `Bash`. Its standout feature is **image generation** via Nano Banana — see
 `Workflows/GenerateImage.md`.
 
-This skill is **manual-only** (`disable-model-invocation: true`): it runs when you
-type `/agy <task>`, never on its own. To let Claude auto-delegate later, remove that
-frontmatter line and rewrite the description as `"... USE WHEN ..."`.
+This skill runs when you type `/agy <task>`, and Claude may also auto-invoke it when
+a task should be delegated to Antigravity/agy. To make it manual-only again, add
+`disable-model-invocation: true` to the frontmatter and drop the `USE WHEN` clause
+from the description.
 
 Task to delegate: **$ARGUMENTS**
 
