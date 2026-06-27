@@ -15,3 +15,12 @@ tmp/
 # Node / bun deps and generated report output
 node_modules/
 *.xlsx
+
+# build staging (donor downloads, zips)
+doc/_donor/
+doc/skills-update/
+doc/skills-update.zip
+doc/files.zip
+docs/files.zip
+skills-update.zip
+.agent-state.md

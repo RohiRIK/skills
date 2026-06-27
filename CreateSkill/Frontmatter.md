@@ -27,6 +27,18 @@ All frontmatter fields and the tier system for classifying skills.
 - ≤30 words — long enough for WHAT + WHEN, short enough to stay high-signal
 - This is what Claude uses for routing — make it unambiguous
 
+### `category` (required)
+- Purpose class for grouping the library and feeding `SkillForge/AuditAgentic`
+- Allowed values: `workflow · reference · delegation · meta · visual · prompting · quality`
+- Placed directly under `description`
+
+### `effort` (required)
+- Cost/latency hint that pairs with the tier for model routing
+- Allowed values: `low · medium · high`
+- Placed directly under `category`
+
+> `category` and `effort` are tooling annotations — the Claude Code loader ignores unknown keys, so they are safe to add. Both are required on every skill.
+
 ### `disable-model-invocation`
 - `true` for Tier B — skill only fires when user types `/skill-name`
 - Claude will never auto-invoke it
@@ -94,12 +106,22 @@ When user types `/recall docker patterns`, `$ARGUMENTS` becomes `docker patterns
 
 ---
 
+## Frontmatter Checklist
+
+- [ ] `name` (TitleCase)
+- [ ] `description` (WHAT + WHEN, ≤30 words, correct format for tier)
+- [ ] `category` present, in {workflow, reference, delegation, meta, visual, prompting, quality}
+- [ ] `effort` present, in {low, medium, high}
+- [ ] Tier flags as needed (A: `user-invocable: false` · B: `disable-model-invocation: true` · D: `context: fork` + `agent`)
+
 ## Example: Tier B Skill
 
 ```yaml
 ---
 name: commit
 description: "Stage, commit, and push changes with a conventional message."
+category: workflow
+effort: low
 disable-model-invocation: true
 argument-hint: [optional message]
 ---
@@ -111,6 +133,8 @@ argument-hint: [optional message]
 ---
 name: security-audit
 description: "USE WHEN auditing code for vulnerabilities."
+category: quality
+effort: high
 context: fork
 agent: general-purpose
 allowed-tools: Read, Grep, Glob

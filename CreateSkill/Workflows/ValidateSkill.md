@@ -50,6 +50,11 @@ ls ~/.claude/skills/[SkillName]/Workflows/
 - ✗ Multi-line using `|` — wrong
 - ✗ Separate `triggers:` or `workflows:` arrays — old format, wrong
 
+### category + effort (required)
+- ✓ `category` present and ∈ {`workflow`, `reference`, `delegation`, `meta`, `visual`, `prompting`, `quality`}
+- ✓ `effort` present and ∈ {`low`, `medium`, `high`}
+- ✗ Either key missing, or a value outside the allowed set — wrong
+
 ### Tier Classification
 - Tier A: has `user-invocable: false`
 - Tier B: has `disable-model-invocation: true`
@@ -79,6 +84,14 @@ Check: does the tier match the skill's actual use case?
 
 ### Examples Section
 - ✓ `## Examples` section with 2-3 concrete patterns required
+
+### Gotchas Section
+- ✓ `## Gotchas` section present (every skill needs one — accumulates failure knowledge)
+- ✗ Missing `## Gotchas` — non-compliant (Tier A reference skills may carry a short one or be exempt)
+
+### Telemetry (action workflows)
+- ✓ Each action workflow ends with the `~/.claude/state/execution.jsonl` line
+- ✗ Action workflow with no telemetry line — non-compliant (Tier A reference skills exempt)
 
 ---
 
@@ -119,17 +132,28 @@ grep -l "Intent-to-Flag" ~/.claude/skills/[SkillName]/Workflows/*.md
 ### YAML Frontmatter
 - [ ] `name:` uses TitleCase
 - [ ] `description:` states WHAT + WHEN, ≤30 words, correct format for tier
+- [ ] `category` present and in the allowed set
+- [ ] `effort` present and ∈ {low, medium, high}
 - [ ] Tier correctly classified (user-invocable / disable-model-invocation / fork)
 - [ ] `argument-hint` present if skill takes arguments
 - [ ] No separate `triggers:` or `workflows:` arrays
 
 ### Markdown Body
 - [ ] `## Workflow Routing` section present with table format
+- [ ] `## Gotchas` section present
 - [ ] `## Examples` section with 2-3 patterns
 
 ### Structure
 - [ ] Context files in skill root (not subdirectories)
 - [ ] SKILL.md ≤ 50 lines
 - [ ] No `backups/` inside skill
+- [ ] Action workflows emit the telemetry line (Tier A reference skills exempt)
 
 **NON-COMPLIANT** if any check fails. Recommend using CanonicalizeSkill workflow.
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"CreateSkill","workflow":"ValidateSkill","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

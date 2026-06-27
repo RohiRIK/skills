@@ -158,20 +158,30 @@ If SKILL.md is over 100 lines after canonicalization:
 ### YAML Frontmatter
 - [ ] `name:` uses TitleCase
 - [ ] `description:` states WHAT + WHEN, ≤30 words, correct format for tier
+- [ ] `category` + `effort` present and valid (add them if the skill predates the convention)
 - [ ] Tier correctly classified
 - [ ] No separate `triggers:` or `workflows:` arrays
 
 ### Markdown Body
 - [ ] `## Workflow Routing` section with table format
+- [ ] `## Gotchas` section present (add one if missing)
 - [ ] `## Examples` section with 2-3 patterns
 
 ### Structure
 - [ ] Context files at skill root (no `Context/` subdirectory)
 - [ ] SKILL.md ≤ 50 lines (dynamic loading applied if needed)
 - [ ] No `backups/` inside skill
+- [ ] Action workflows emit the telemetry line
 
 ---
 
 ## Done
 
 Skill now matches canonical structure with proper TitleCase naming throughout.
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"CreateSkill","workflow":"CanonicalizeSkill","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

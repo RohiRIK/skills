@@ -90,12 +90,22 @@ touch ~/.claude/skills/[SkillName]/Tools/ToolName.help.md
 
 ### Structure
 - [ ] YAML still has single-line description (WHAT + WHEN, ≤30 words)
+- [ ] `category` + `effort` still present and valid
 - [ ] Correct tier fields set
 - [ ] No separate `triggers:` or `workflows:` arrays in YAML
 - [ ] All routes point to existing files
+- [ ] Any new action workflow ends with the telemetry line
+- [ ] `## Gotchas` section present (add one if missing)
 
 ---
 
 ## Done
 
 Skill updated while maintaining canonical structure and TitleCase naming.
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"CreateSkill","workflow":"UpdateSkill","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```
