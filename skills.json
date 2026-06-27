@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-06-27T16:06:46Z",
+  "generated": "2026-06-27T19:20:35Z",
   "skills": [
     {
       "name": "agy",
@@ -131,13 +131,22 @@
       "description": "Reference for building React/Next.js components, hooks, state, and performance. NOT FOR visual styling, typography, color, or making UI look less generic (use FrontendAesthetics)."
     },
     {
+      "name": "GitHubOps",
+      "path": "GitHubOps/",
+      "category": "workflow",
+      "effort": "medium",
+      "tier": "C-auto",
+      "workflows": "Changelog,CommitPush,PullRequest,Release,RepoHygiene",
+      "description": "Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. USE WHEN clean up the repo, update the changelog, commit/push, open a PR, or cut a release. NOT FOR git branching/merge theory (use GitWorkflow)."
+    },
+    {
       "name": "GitWorkflow",
       "path": "GitWorkflow/",
       "category": "reference",
       "effort": "low",
       "tier": "C-auto",
       "workflows": "",
-      "description": "Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions."
+      "description": "Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions. NOT FOR running gh repo operations like push/PR/release (use GitHubOps)."
     },
     {
       "name": "hygiene",

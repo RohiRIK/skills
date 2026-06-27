@@ -1,6 +1,6 @@
 ---
 name: GitWorkflow
-description: "Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions."
+description: "Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions. NOT FOR running gh repo operations like push/PR/release (use GitHubOps)."
 category: reference
 effort: low
 ---

@@ -14,6 +14,7 @@
 - [Build](Build/SKILL.md) — Implements plan tasks one at a time with compile and commit gates. USE WHEN building from a plan.
 - [CodebaseOnboarding](CodebaseOnboarding/SKILL.md) — Analyze an unfamiliar codebase and produce an onboarding guide — architecture map, entry points, conventions, starter CLAUDE.md. USE WHEN joining a new project or onboarding a repo.
 - [data-report-builder](DataReportBuilder/SKILL.md) — Turn a raw Excel/CSV dataset into a two-layer report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet wanting a report, analysis, summary, or breakdown.
+- [GitHubOps](GitHubOps/SKILL.md) — Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. USE WHEN clean up the repo, update the changelog, commit/push, open a PR, or cut a release. NOT FOR git branching/merge theory (use GitWorkflow).
 - [Iterate](Iterate/SKILL.md) — Refine a target across bounded passes toward a goal, with a state file and a hard exit condition. USE WHEN iterate, refine, loop, keep improving, or run until done.
 - [IterativeDepth](IterativeDepth/SKILL.md) — Run 2-8 lens passes over the same problem to surface requirements and edge cases a single angle misses. USE WHEN exploring deeper, multi-angle analysis, or surfacing hidden requirements before building.
 - [Orchestrate](Orchestrate/SKILL.md) — Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a large spec.
@@ -36,7 +37,7 @@
 - [docker-patterns](DockerPatterns/SKILL.md) — Reference for Docker and Docker Compose local dev patterns.
 - [FrontendAesthetics](FrontendAesthetics/SKILL.md) — Visual direction — typography, color, hierarchy, motion — so UI isn't generic AI-slop. USE WHEN make it less generic, polish the UI, looks templated/AI-made, or design direction. NOT FOR component logic, hooks, or performance (use FrontendDesign).
 - [FrontendDesign](FrontendDesign/SKILL.md) — Reference for building React/Next.js components, hooks, state, and performance. NOT FOR visual styling, typography, color, or making UI look less generic (use FrontendAesthetics).
-- [GitWorkflow](GitWorkflow/SKILL.md) — Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions.
+- [GitWorkflow](GitWorkflow/SKILL.md) — Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions. NOT FOR running gh repo operations like push/PR/release (use GitHubOps).
 - [StrategicCompact](StrategicCompact/SKILL.md) — Reference for context compaction strategy and timing guidance.
 
 ### delegation
