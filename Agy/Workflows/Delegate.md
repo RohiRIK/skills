@@ -77,3 +77,7 @@ After Agy exits:
 echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Agy","workflow":"Delegate","status":"ok","duration_s":'$SECONDS'}' \
   >> ~/.claude/state/execution.jsonl
 ```
+
+## Wiring: capture failure to state
+
+On a non-zero worker exit, append the failure context — command, exit code, last output, and the relevant diff — to `.agent-state.md` under the current iteration (schema: `_state/StateFileSchema.md`). A `/loop` or `Orchestrate` pass then replans around the failure instead of blind-retrying.

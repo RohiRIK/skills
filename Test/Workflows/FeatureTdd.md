@@ -30,3 +30,7 @@ Verify coverage meets the threshold for this code type:
 echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Test","workflow":"FeatureTdd","status":"ok","duration_s":'$SECONDS'}' \
   >> ~/.claude/state/execution.jsonl
 ```
+
+## Wiring: Reflect on the test additions
+
+After the test run, call the **Reflect** skill (`Reflect/Workflows/RunReflect.md`) on the tests you added and surface the overall score. Reflect rates the additions on accuracy/completeness/clarity/actionability/conciseness — a low Completeness score usually means an untested edge case worth adding before you stop.

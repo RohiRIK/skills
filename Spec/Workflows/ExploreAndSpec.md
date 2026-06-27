@@ -51,3 +51,7 @@ Anything explicitly NOT being built in this iteration.
 echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Spec","workflow":"ExploreAndSpec","status":"ok","duration_s":'$SECONDS'}' \
   >> ~/.claude/state/execution.jsonl
 ```
+
+## Wiring: --deep mode
+
+With `--deep`, run **IterativeDepth/Explore** first (multi-lens passes over the problem), then write the acceptance criteria from the deduplicated lens findings. Without `--deep`, the single-pass exploration below is the default — keep it as the fast path.

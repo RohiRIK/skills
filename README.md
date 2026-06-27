@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-18-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-25-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -18,20 +18,28 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`BackendDesign/`](BackendDesign) | Reference for API design, database schema, and server architecture. |
 | [`Build/`](Build) | Implement plan tasks one at a time with compile and commit gates. |
 | [`CodingStandards/`](CodingStandards) | Language coding standards — TS, Python, Bash, PowerShell, Swift, Rust. |
+| [`CreateMcp/`](CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
 | [`CreateSkill/`](CreateSkill) | Build and maintain skills in canonical structure. |
 | [`DataReportBuilder/`](DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
 | [`DockerPatterns/`](DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
 | [`FrontendDesign/`](FrontendDesign) | Reference for React and Next.js component design patterns. |
 | [`Hygiene/`](Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
+| [`IterativeDepth/`](IterativeDepth) | Run 2-8 multi-lens passes over a problem to surface hidden requirements; feeds `Spec`/`Orchestrate`. |
+| [`Loop/`](Loop) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/loop`). |
 | [`OpenCode/`](OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
+| [`Orchestrate/`](Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
 | [`Pi/`](Pi) | Delegate a coding/refactor/PR-review task to the Pi (pi.dev) CLI as an autonomous worker. |
 | [`Prompting/`](Prompting) | Vendor-agnostic prompt-engineering standard library for authoring prompts, skills, agents, rules. |
+| [`Reflect/`](Reflect) | Self-rate the just-finished output on five axes with evidence, then fix small gaps in place. |
+| [`Research/`](Research) | Research a question at three depths (quick / standard / deep) by delegating to Agy/OpenCode/Pi + web search, then synthesize cited findings. |
 | [`SecurityReview/`](SecurityReview) | Audit code for vulnerabilities and secrets. |
+| [`SkillForge/`](SkillForge) | Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. |
 | [`Simplify/`](Simplify) | Post-implementation dead-code cleanup (`/simplify`). |
 | [`Spec/`](Spec) | Explore code + memory, then write acceptance criteria before planning. |
 | [`StrategicCompact/`](StrategicCompact) | Reference for context-compaction strategy and timing. |
 | [`TddWorkflow/`](TddWorkflow) | Test-first development workflow. |
 | [`Test/`](Test) | Run TDD for features and bug fixes. |
+| [`Verify/`](Verify) | Six-phase quality gate (build→type→lint→test→secret→diff) ending in a READY / NOT READY verdict (`/verify`). |
 
 ## Install
 

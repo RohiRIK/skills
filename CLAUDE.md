@@ -6,23 +6,45 @@ A personal library of reusable Agent Skills. Each subfolder at the repo root is 
 
 ```
 <SkillName>/         ← one folder per skill (TitleCase, matches ~/.claude/skills)
-  SKILL.md           ← required: frontmatter (name, description) + instructions
-  *.md               ← optional: workflow / reference files
-  scripts, assets    ← optional supporting files
-README.md            ← skill index — the canonical skill list
+  SKILL.md           ← required: frontmatter (name, description, category, effort) + instructions
+  Workflows/*.md     ← optional: execution procedures
+  Tools/*            ← optional: executable scripts
+  *.md               ← optional: context files (in skill root)
+rules/system.md      ← canonical spec for how the skill system works (READ THIS)
+_state/              ← state-file + execution-log conventions
+README.md            ← skill index
 CLAUDE.md            ← this file — auto-loaded by Claude Code
 AGENTS.md            ← brief for non-Claude-Code tools
-INSTALL-AI.md        ← install guide (all tools, Mac + Windows)
-install.sh           ← onboarding script — symlinks all skills into ~/.claude/skills
-assets/              ← repo images (cover, diagrams)
+INSTALL-AI.md        ← install guide
+install.sh           ← symlinks all skills into ~/.claude/skills
 ```
 
-## Conventions
+## How the system works → rules/system.md
 
-- **Folder naming:** TitleCase to mirror the live `~/.claude/skills` layout. The `name:` field inside each `SKILL.md` drives activation (it may be kebab-case).
-- **README:** every skill needs a row in the "Skills in this repo" table. Adding a skill without a README row is incomplete.
-- **Source of truth:** this repo is the canonical copy. Skills are symlinked into `~/.claude/skills` by `install.sh` — edits flow through the symlink back to here.
+**[rules/system.md](rules/system.md) is the source of truth** for skill structure, the tier model (A/B/C/D), frontmatter, composition, state, and telemetry. Read it before creating or wiring skills. This file only carries the always-on essentials below.
 
-## Onboarding to a new machine
+## Conventions (essentials)
 
-Run `install.sh` after cloning — it symlinks each skill folder into `~/.claude/skills/` (and opencode's path if present), skipping any that already exist.
+- **Folder + file naming:** TitleCase. The `name:` field drives activation.
+- **Frontmatter:** every skill has `name`, `description` (WHAT + WHEN, ≤30 words), `category` (`workflow·reference·delegation·meta·visual·prompting·quality`), and `effort` (`low·medium·high`). Tier flags as needed.
+- **Structure:** flat, 2 levels max; only `Workflows/` and `Tools/` subdirs; context files in the skill root; `SKILL.md` ≤ 50 lines.
+- **Authoring:** word every skill via the `Prompting` skill. Reserve `CRITICAL`/`MUST`/`NEVER` for real gates.
+- **README:** every skill needs a row in the index. Adding a skill without one is incomplete.
+
+## Skill composition (always-on map)
+
+```
+Primitives:  Verify (quality gate) · Reflect (self-eval)
+Drivers:     Loop → calls Verify + Reflect each pass
+             Orchestrate → Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates with Verify
+             IterativeDepth → feeds criteria to Spec / Orchestrate
+             Research → fans out to Agy/OpenCode/Pi
+Meta:        SkillForge → audits + instruments the whole library;  CreateSkill → builds one skill
+Wired in:    Build→Verify · Test→Reflect · Spec --deep→IterativeDepth · Agy/OpenCode/Pi→.agent-state.md on failure
+State:       loop/multi-pass skills share .agent-state.md
+Telemetry:   action workflows append to ~/.claude/state/execution.jsonl
+```
+
+## Source of truth
+
+This repo is canonical. Skills are symlinked into `~/.claude/skills` by `install.sh`; edits flow through the symlink back here. Run `install.sh` after cloning to onboard a new machine.

@@ -35,9 +35,11 @@ This catches type errors before they land in a commit. If compile fails, invoke 
 
 Run `bun test` across all files. If any existing test breaks, stop and report which test failed and why — do not commit until regressions are resolved.
 
-### Step 6: Commit
+### Step 6: Verify gate → Commit
 
-Commit with a conventional message that references the task title:
+Call the **Verify** skill (`Verify/Workflows/RunVerify.md`) on the change. **Gate the commit on `READY`** — if Verify returns NOT READY, do not commit; fix the blocking issues (or, under `/loop`, capture them to `.agent-state.md` and let the next pass replan) and re-verify.
+
+On READY, commit with a conventional message that references the task title:
 
 ```
 feat: <task title>
@@ -47,9 +49,13 @@ feat: <task title>
 
 Mark the task complete. Move to the next pending task. Repeat from Step 1.
 
+## Idempotency (loop-drivable)
+
+Re-running this workflow on a clean tree with all tasks complete is a no-op — it picks no task, verifies nothing to commit, and exits. This lets `/loop` drive `Build` safely: a pass that finds nothing to do contributes a `LOOP_COMPLETE` signal rather than re-committing.
+
 ## Exit
 
-All tasks marked complete. Report: tasks completed, commits made, final test status.
+All tasks marked complete. Report: tasks completed, commits made, final Verify verdict + test status.
 
 ## Execution Log
 
