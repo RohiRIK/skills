@@ -53,6 +53,8 @@ Route to the appropriate workflow based on the request.
   - Comic or sequential panels → `Workflows/Comics.md`
   - YouTube thumbnail (with existing assets) → `Workflows/YouTubeThumbnail.md`
   - Ad-hoc YouTube thumbnail (generate from content) → `Workflows/AdHocYouTubeThumbnail.md`
+  - YouTube thumbnail pre/post-generation validation → `Workflows/YouTubeThumbnailChecklist.md`
+  - Remove an image background (local rembg) → `Workflows/RemoveBackground.md`
 
 ---
 
