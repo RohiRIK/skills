@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-26-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-27-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -19,6 +19,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Build/`](Build) | Implement plan tasks one at a time with compile and commit gates. |
 | [`CodingStandards/`](CodingStandards) | Language coding standards — TS, Python, Bash, PowerShell, Swift, Rust. |
 | [`CreateMcp/`](CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
+| [`CreateCLI/`](CreateCLI) | Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif), Bun-only, gated by Verify. |
 | [`CreateSkill/`](CreateSkill) | Build and maintain skills in canonical structure. |
 | [`DataReportBuilder/`](DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
 | [`DockerPatterns/`](DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
