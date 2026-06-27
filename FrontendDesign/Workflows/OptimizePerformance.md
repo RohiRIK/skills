@@ -31,3 +31,10 @@ Analyse a component or code snippet and suggest concrete performance improvement
 
 **Measure:** [how to verify improvement — React DevTools Profiler / Lighthouse]
 ```
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"FrontendDesign","workflow":"OptimizePerformance","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

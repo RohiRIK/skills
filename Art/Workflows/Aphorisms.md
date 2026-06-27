@@ -333,3 +333,10 @@ open /path/to/aphorism.png
 ---
 
 **The workflow: Select → Design → Construct → Generate → Validate → Complete**
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"Aphorisms","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

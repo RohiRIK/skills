@@ -74,3 +74,10 @@ After OpenCode exits:
   incomplete or flagged.
 - Do **not** commit OpenCode's work automatically — surface the diff and let the
   user decide (follow this repo's normal commit workflow).
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"OpenCode","workflow":"Delegate","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

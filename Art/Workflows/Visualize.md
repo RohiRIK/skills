@@ -795,3 +795,10 @@ FAIL? → Diagnose, fix, regenerate
 **The workflow: Analyze → Strategy → Design → Prompt → Generate → Validate → Complete**
 
 **The meta-principle: Let content dictate form. Use the full power of Nano Banana Pro to create the most effective visualization, whether that's one approach or a sophisticated orchestration of multiple techniques.**
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"Visualize","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

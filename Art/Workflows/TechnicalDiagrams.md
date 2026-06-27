@@ -221,3 +221,10 @@ After rendering, ensure that you have executed properly by checking this list of
 - [ ] Cartoony or overly casual shapes or styling
 - [ ] Over-coloring (everything purple/teal)
 
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"TechnicalDiagrams","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

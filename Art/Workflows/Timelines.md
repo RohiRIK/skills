@@ -347,3 +347,10 @@ open /path/to/timeline.png
 ---
 
 **The workflow: Define → Design → Construct → Generate → Validate → Complete**
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"Timelines","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

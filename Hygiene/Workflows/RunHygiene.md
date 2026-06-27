@@ -42,3 +42,10 @@ bun ~/.claude/skills/Hygiene/Tools/Report.ts
 
 - Auto-fix details → `Workflows/AutoFix.md`
 - Issue taxonomy → `Reference/Rules.md`
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Hygiene","workflow":"RunHygiene","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

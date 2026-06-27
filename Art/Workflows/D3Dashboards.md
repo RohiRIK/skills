@@ -380,3 +380,10 @@ createForceDirectedGraph(nodes, links);
 - [ ] Static-only presentation when interactivity makes sense
 - [ ] Missing axis labels or legends
 - [ ] Overflow or cropped elements
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"D3Dashboards","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

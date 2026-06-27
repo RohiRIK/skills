@@ -147,3 +147,10 @@ the workbook is the deliverable, not the message.
   red meaning throughout.
 - **Frame findings as decisions, not failures.** "75% are ready, 25% need a one-time
   switch" lands better than "25% are non-compliant".
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"DataReportBuilder","workflow":"BuildReport","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

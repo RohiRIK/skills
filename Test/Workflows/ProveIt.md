@@ -21,3 +21,10 @@ Run the test from Step 1. It must now pass.
 ## Step 5: Regression sweep
 
 Run `bun test` across all files. Confirm no other tests broke as a result of the fix.
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Test","workflow":"ProveIt","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

@@ -352,3 +352,10 @@ open /path/to/taxonomy.png
 ---
 
 **The workflow: Define → Design → Construct → Generate → Validate → Complete**
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"Taxonomies","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

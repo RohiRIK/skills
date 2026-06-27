@@ -42,3 +42,10 @@ files.' --add-dir /path/to/repo
 - Relay Agy's findings grouped by severity (critical / high / medium / low).
 - Add your own read of anything Agy missed; do not auto-apply fixes — that is a
   separate `Delegate` task the user approves.
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Agy","workflow":"ReviewPR","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

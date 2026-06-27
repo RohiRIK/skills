@@ -55,3 +55,10 @@ Preview what would change without writing:
 ```bash
 bun ~/.claude/skills/Hygiene/Tools/Report.ts --fix --dry-run
 ```
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Hygiene","workflow":"AutoFix","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

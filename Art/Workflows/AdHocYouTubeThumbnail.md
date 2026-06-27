@@ -343,3 +343,10 @@ Dark base:        #1a1b26
 
 ### Output Location
 All outputs: `~/Downloads/yt-thumbnail-{timestamp}.png`
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"AdHocYouTubeThumbnail","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

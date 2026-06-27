@@ -50,3 +50,10 @@ Mark the task complete. Move to the next pending task. Repeat from Step 1.
 ## Exit
 
 All tasks marked complete. Report: tasks completed, commits made, final test status.
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Build","workflow":"IncrementalBuild","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

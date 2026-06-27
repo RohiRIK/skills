@@ -23,3 +23,10 @@ Run `bun test` across all files. Confirm no existing tests broke.
 Verify coverage meets the threshold for this code type:
 - General code: 80% minimum
 - Auth, financial, security logic: 100%
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Test","workflow":"FeatureTdd","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

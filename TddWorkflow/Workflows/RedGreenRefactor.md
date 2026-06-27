@@ -13,3 +13,9 @@ Write just enough code to pass the test.
 ## Step 3: Refactor
 
 Clean up the code while keeping tests passing.
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"TddWorkflow","workflow":"RedGreenRefactor","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

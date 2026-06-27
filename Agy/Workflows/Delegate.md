@@ -70,3 +70,10 @@ After Agy exits:
   incomplete or flagged.
 - Do **not** commit Agy's work automatically — surface the diff and let the user
   decide (follow this repo's normal commit workflow).
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Agy","workflow":"Delegate","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

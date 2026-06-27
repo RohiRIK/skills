@@ -58,3 +58,10 @@ export function [Name]Header({ children }: { children: React.ReactNode }) {
 
 ### 5. Final Output
 Present the complete code block to the user.
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"FrontendDesign","workflow":"GenerateComponent","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

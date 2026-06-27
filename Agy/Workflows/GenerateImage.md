@@ -54,3 +54,10 @@ deep navy and export at 2x resolution. Save as fox-logo-navy.png.' \
 - Report the path(s) and dimensions. Offer to open it or generate variations.
 - Image files are binary assets — do not commit them automatically; let the user
   decide what to keep (and mind any repo `.gitignore` rules for binaries).
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Agy","workflow":"GenerateImage","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

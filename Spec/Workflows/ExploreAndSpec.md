@@ -44,3 +44,10 @@ Anything explicitly NOT being built in this iteration.
 
 - Feature work → run `/plan` against the spec
 - Bug fix → run `/test` (ProveIt) using the acceptance criteria as the failing test target
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Spec","workflow":"ExploreAndSpec","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

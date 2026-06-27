@@ -896,3 +896,10 @@ open /path/to/mermaid-diagram.png
 **The workflow: /cse → Diagram Type → Structure → Excalidraw Design → Prompt → Generate → Validate → Complete**
 
 **The synthesis: Mermaid structure + Excalidraw aesthetic + UL editorial style = Technical diagrams that feel like smart sketches on a whiteboard.**
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"Mermaid","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```

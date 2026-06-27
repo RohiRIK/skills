@@ -351,3 +351,10 @@ open /path/to/annotated.png
 ---
 
 **The workflow: Prepare → Plan → Annotate → Generate → Validate → Complete**
+
+## Execution Log
+
+```bash
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Art","workflow":"AnnotatedScreenshots","status":"ok","duration_s":'$SECONDS'}' \
+  >> ~/.claude/state/execution.jsonl
+```
