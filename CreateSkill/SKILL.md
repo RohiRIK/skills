@@ -55,6 +55,6 @@ User: "The Research skill doesn't trigger on pentesting questions"
 
 **Example 3: Validate before publishing**
 ```
-User: "check the Loop skill is canon-compliant"
+User: "check the Iterate skill is canon-compliant"
 → ValidateSkill → naming, frontmatter (incl. category/effort), Gotchas, structure → COMPLIANT / NON-COMPLIANT
 ```

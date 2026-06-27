@@ -22,7 +22,7 @@ Help add and maintain skills correctly. Apply the rules below on every skill-cre
 
 ```
 Primitives:  Verify (quality gate) · Reflect (self-eval)
-Drivers:     Loop → Verify + Reflect each pass
+Drivers:     Iterate → Verify + Reflect each pass
              Orchestrate → Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates with Verify
              IterativeDepth → feeds Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi

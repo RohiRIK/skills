@@ -14,7 +14,7 @@ A bounded PLAN → ACT → VERIFY → REFLECT loop. Each pass builds on the last
 
 Read `.agent-state.md` at the repo root (schema: `_state/StateFileSchema.md`). If absent, create it with the `## Goal` set from `--goal`, an empty `## Progress`, `## Dead Ends`, `## Iterations`, and a placeholder `## Result`. If present (a prior run), treat this as a resume and route to `ResumeLoop`.
 
-## Step 3: The Pass Loop
+## Step 3: The Pass Iterate
 
 Repeat until an exit condition fires (Step 4). For pass `N`:
 
@@ -49,6 +49,6 @@ Then give the user a 2-3 sentence report: what changed across the run, the final
 ## Execution Log
 
 ```bash
-echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Loop","workflow":"RunLoop","status":"ok","duration_s":'$SECONDS'}' \
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Iterate","workflow":"RunLoop","status":"ok","duration_s":'$SECONDS'}' \
   >> ~/.claude/state/execution.jsonl
 ```

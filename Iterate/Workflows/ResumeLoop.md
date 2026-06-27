@@ -16,7 +16,7 @@ If there is no `.agent-state.md`, there is nothing to resume — tell the user a
 
 Determine the original `--max`. If the loop already hit it (the last run exited on "max reached") or `## Result` is filled in, **confirm with the user before extending** — ask for a new `--max` rather than silently looping past the original bound.
 
-## Step 3: Continue the Pass Loop
+## Step 3: Continue the Pass Iterate
 
 Resume `RunLoop` Step 3 starting at iteration `N+1`:
 - Feed the most recent failure context into the first PLAN so the resumed pass replans rather than repeating.
@@ -36,6 +36,6 @@ Update the `## Result` block and give the 2-3 sentence report, noting that this 
 ## Execution Log
 
 ```bash
-echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Loop","workflow":"ResumeLoop","status":"ok","duration_s":'$SECONDS'}' \
+echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Iterate","workflow":"ResumeLoop","status":"ok","duration_s":'$SECONDS'}' \
   >> ~/.claude/state/execution.jsonl
 ```

@@ -1,6 +1,6 @@
 # RunVerify Workflow
 
-The reusable quality gate. Detect the stack, run six phases in order, and end with a single `READY` / `NOT READY` verdict plus a concrete blocking-issue list. `Loop`, `Build`, and `Test` call this instead of reimplementing their own checks.
+The reusable quality gate. Detect the stack, run six phases in order, and end with a single `READY` / `NOT READY` verdict plus a concrete blocking-issue list. `Iterate`, `Build`, and `Test` call this instead of reimplementing their own checks.
 
 ## Step 1: Detect the Stack
 
@@ -55,7 +55,7 @@ NOT READY    # one or more phases FAIL — list above is the fix list
 - **READY** — every phase that ran is `PASS`. `SKIP` (missing tooling) does not block.
 - **NOT READY** — any phase is `FAIL`. The blocking-issues list is the concrete fix list, with file + line wherever the tool gave one.
 
-When called from `Loop` or `Orchestrate`, a NOT READY verdict means the caller appends this report's blocking issues to `.agent-state.md` under the current iteration (no blind retry — see `_state/StateFileSchema.md`).
+When called from `Iterate` or `Orchestrate`, a NOT READY verdict means the caller appends this report's blocking issues to `.agent-state.md` under the current iteration (no blind retry — see `_state/StateFileSchema.md`).
 
 ## Gotchas
 

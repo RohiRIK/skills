@@ -1,5 +1,5 @@
 ---
-name: Loop
+name: Iterate
 description: "Iteratively refine a target across multiple passes toward a goal, with a state file and a hard exit condition. USE WHEN iterate, refine, loop, keep improving, multiple passes, or run until done."
 category: workflow
 effort: medium
@@ -7,11 +7,11 @@ disable-model-invocation: true
 argument-hint: [--target PATH --goal TEXT --max N]
 ---
 
-# Loop
+# Iterate
 
 Run repeated PLAN → ACT → VERIFY → REFLECT passes on a target until the goal is met, max iterations is reached, or a completion signal fires. State persists between passes in `.agent-state.md`, so each pass builds on the last instead of starting blind.
 
-This is the autonomous-iteration primitive. Unlike a single workflow run, `/loop` carries failure context forward, refuses to retry rejected approaches (dead-ends ledger), and self-rates each pass before deciding whether to continue.
+This is the autonomous-iteration primitive. Unlike a single workflow run, `/iterate` carries failure context forward, refuses to retry rejected approaches (dead-ends ledger), and self-rates each pass before deciding whether to continue.
 
 ## Workflow Routing
 
@@ -37,7 +37,7 @@ This is the autonomous-iteration primitive. Unlike a single workflow run, `/loop
 
 **Example 1: Iterate on a skill until it routes cleanly**
 ```
-User: "/loop --target ~/.claude/skills/Research --goal 'output is more concise' --max 5"
+User: "/iterate --target ~/.claude/skills/Research --goal 'output is more concise' --max 5"
 → Invokes RunLoop workflow
 → Reads/creates .agent-state.md, runs up to 5 PLAN→ACT→VERIFY→REFLECT passes
 → Stops early when Verify passes AND Reflect score ≥ 4.5
@@ -50,9 +50,9 @@ User: "resume the loop"
 → Reads .agent-state.md, skips anything in Dead Ends, continues from last iteration
 ```
 
-**Example 3: Loop on a prompt file overnight**
+**Example 3: Iterate on a prompt file overnight**
 ```
-User: "/loop --target prompts/summarize.md --goal 'less filler' --max 20"
+User: "/iterate --target prompts/summarize.md --goal 'less filler' --max 20"
 → Runs unattended, each pass's Reflect feeds the next pass's PLAN
 → Halts on three consecutive LOOP_COMPLETE signals or at 20 iterations
 ```

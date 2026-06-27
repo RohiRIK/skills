@@ -35,7 +35,7 @@ install.sh           ← symlinks all skills into ~/.claude/skills
 
 ```
 Primitives:  Verify (quality gate) · Reflect (self-eval)
-Drivers:     Loop → calls Verify + Reflect each pass
+Drivers:     Iterate → calls Verify + Reflect each pass
              Orchestrate → Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates with Verify
              IterativeDepth → feeds criteria to Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi

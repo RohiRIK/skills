@@ -6,7 +6,7 @@ Implement each plan task with TDD, compile gate, and a commit before moving on.
 
 A plan must exist with at least one pending task. Each task should have acceptance criteria.
 
-## Per-Task Loop
+## Per-Task Iterate
 
 Repeat these steps for each pending task until all are complete:
 
@@ -37,7 +37,7 @@ Run `bun test` across all files. If any existing test breaks, stop and report wh
 
 ### Step 6: Verify gate → Commit
 
-Call the **Verify** skill (`Verify/Workflows/RunVerify.md`) on the change. **Gate the commit on `READY`** — if Verify returns NOT READY, do not commit; fix the blocking issues (or, under `/loop`, capture them to `.agent-state.md` and let the next pass replan) and re-verify.
+Call the **Verify** skill (`Verify/Workflows/RunVerify.md`) on the change. **Gate the commit on `READY`** — if Verify returns NOT READY, do not commit; fix the blocking issues (or, under `/iterate`, capture them to `.agent-state.md` and let the next pass replan) and re-verify.
 
 On READY, commit with a conventional message that references the task title:
 
@@ -51,7 +51,7 @@ Mark the task complete. Move to the next pending task. Repeat from Step 1.
 
 ## Idempotency (loop-drivable)
 
-Re-running this workflow on a clean tree with all tasks complete is a no-op — it picks no task, verifies nothing to commit, and exits. This lets `/loop` drive `Build` safely: a pass that finds nothing to do contributes a `LOOP_COMPLETE` signal rather than re-committing.
+Re-running this workflow on a clean tree with all tasks complete is a no-op — it picks no task, verifies nothing to commit, and exits. This lets `/iterate` drive `Build` safely: a pass that finds nothing to do contributes a `LOOP_COMPLETE` signal rather than re-committing.
 
 ## Exit
 

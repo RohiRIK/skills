@@ -10,7 +10,7 @@ Read these context files before building:
 - `WritingGuidance.md` — principles, BPE, public/private boundary.
 - `Taxonomy.md` — the 9 skill types.
 
-Then study one canonical example already in the repo (e.g. `Verify/SKILL.md` or `Loop/SKILL.md`).
+Then study one canonical example already in the repo (e.g. `Verify/SKILL.md` or `Iterate/SKILL.md`).
 
 ## Step 2: Understand the Request
 

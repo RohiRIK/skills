@@ -38,7 +38,7 @@ Overall: 4.6   (1-decimal average)
 Top gap: <the single highest-leverage fix>
 ```
 
-**Inside a Loop:** don't print the full card — write the overall score to `.agent-state.md` for the current iteration (the score steers the next pass and feeds the exit check at ≥ 4.5). See `_state/StateFileSchema.md`.
+**Inside a Iterate:** don't print the full card — write the overall score to `.agent-state.md` for the current iteration (the score steers the next pass and feeds the exit check at ≥ 4.5). See `_state/StateFileSchema.md`.
 
 ## Gotchas
 

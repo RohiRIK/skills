@@ -9,6 +9,7 @@
     "example": "bun Example.ts"
   },
   "dependencies": {
+    "csv-parse": "^7.0.0",
     "exceljs": "^4.4.0"
   },
   "devDependencies": {

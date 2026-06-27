@@ -96,7 +96,7 @@ function fill(argb: string): ExcelJS.Fill {
   return { type: "pattern", pattern: "solid", fgColor: { argb } };
 }
 
-const COLS = "ABCDEF";
+const COLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 export interface Card {
   label: string;

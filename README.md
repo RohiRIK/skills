@@ -25,7 +25,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`FrontendDesign/`](FrontendDesign) | Reference for React and Next.js component design patterns. |
 | [`Hygiene/`](Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
 | [`IterativeDepth/`](IterativeDepth) | Run 2-8 multi-lens passes over a problem to surface hidden requirements; feeds `Spec`/`Orchestrate`. |
-| [`Loop/`](Loop) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/loop`). |
+| [`Iterate/`](Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
 | [`OpenCode/`](OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
 | [`Orchestrate/`](Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
 | [`Pi/`](Pi) | Delegate a coding/refactor/PR-review task to the Pi (pi.dev) CLI as an autonomous worker. |

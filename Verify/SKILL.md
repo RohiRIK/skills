@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 # Verify
 
-The reusable quality gate. Runs six phases — build → type-check → lint → test → secret-scan → diff-review — and ends with a single READY / NOT READY verdict plus an issue list. Other skills (`Loop`, `Build`, `Test`) call this instead of reimplementing their own checks.
+The reusable quality gate. Runs six phases — build → type-check → lint → test → secret-scan → diff-review — and ends with a single READY / NOT READY verdict plus an issue list. Other skills (`Iterate`, `Build`, `Test`) call this instead of reimplementing their own checks.
 
 A FAIL in an early phase stops the gate: fix it before continuing, because later phases are unreliable on a broken build.
 
@@ -23,7 +23,7 @@ A FAIL in an early phase stops the gate: fix it before continuing, because later
 - Six phases, ordered: build → type → lint → test → secret → diff
 - Early-phase failure halts the gate (don't test on a broken build)
 - Output is a fixed report ending in `READY` or `NOT READY` for commit/PR
-- Designed to be called by `Loop` (as the per-pass gate) and by `Build`/`Test`
+- Designed to be called by `Iterate` (as the per-pass gate) and by `Build`/`Test`
 
 ## Gotchas
 
@@ -43,7 +43,7 @@ User: "/verify"
 
 **Example 2: Called inside a loop**
 ```
-Loop pass reaches its quality gate
+Iterate pass reaches its quality gate
 → Invokes Verify → RunVerify
 → NOT READY: failure context captured into .agent-state.md for the next pass
 ```
