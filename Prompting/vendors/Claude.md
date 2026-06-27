@@ -81,6 +81,13 @@ Claude handles images and multi-image context well. For dense images, provide a 
 | "Think about this carefully" (thinking off) | "Consider this carefully" |
 | Forceful rule on a non-safety instruction | Plain declarative phrasing |
 
+## Claude 4.x Behavioral Notes
+
+Two behaviours beyond the calibration above (folded from LifeOS `Standards.md`):
+
+- **More direct reporting.** Claude 4.x gives fact-based progress updates and may skip detailed summaries. If you want a wrap-up, ask for it explicitly: "After completing a task that involves tool use, give a quick summary of the work you've done."
+- **Example sensitivity.** Claude 4.x pays close attention to details in examples — a misaligned example silently encourages the wrong behaviour. Make every example match the desired output exactly; an example is a behaviour spec, not decoration.
+
 ## References
 
 - Anthropic: "Claude 4 Best Practices" — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices
