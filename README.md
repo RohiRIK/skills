@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-30-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-32-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -79,6 +79,7 @@ See [INSTALL-AI.md](INSTALL-AI.md) — covers Claude Code, opencode, Cursor, VS 
 - **[CLAUDE.md](CLAUDE.md)** — auto-loaded by Claude Code; repo layout + conventions.
 - **[AGENTS.md](AGENTS.md)** — brief for non-Claude-Code AI tools.
 - **[INSTALL-AI.md](INSTALL-AI.md)** — full install guide for all supported tools.
+- **[CHANGELOG.md](CHANGELOG.md)** — notable changes to the library.
 
 ## For AI agents fetching this repo
 
