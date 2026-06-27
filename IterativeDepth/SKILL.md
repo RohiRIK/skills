@@ -24,6 +24,12 @@ Best used in the exploration/planning phase before committing to an approach. It
 - Output is new/refined acceptance criteria per pass — hand to `Spec` or `Orchestrate/Decompose`
 - Diminishing returns past ~5 passes for most problems
 
+## Gotchas
+
+- Convergence (a pass with no new findings) is the stop signal — don't pad to hit the pass count.
+- The value is *different* lenses; repeating the functional pass louder adds nothing.
+- This produces criteria, not code — hand off to `Spec` or `Orchestrate/Decompose`.
+
 ## Examples
 
 **Example 1: Surface hidden requirements on a redesign**

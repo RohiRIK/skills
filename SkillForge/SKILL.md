@@ -25,6 +25,12 @@ It does not create skills. Authoring a new skill is `CreateSkill`'s job (and the
 - Pairs with `CreateSkill` (builds one skill) and `Prompting` (wording); SkillForge measures + instruments the set
 - Shared state lives in `.agent-state.md`; telemetry in `~/.claude/state/execution.jsonl`
 
+## Gotchas
+
+- Tier-A reference skills are "reference, exempt" — never score them as single-shot failures.
+- Telemetry presence is per action workflow, not per skill.
+- This audits/instruments the fleet; authoring one skill is `CreateSkill`'s job.
+
 ## Examples
 
 **Example 1: Score the whole library**

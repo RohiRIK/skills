@@ -27,6 +27,12 @@ Runs forked (Tier D) so the heavy multi-unit coordination doesn't consume the pa
 - Reviewer never wrote the code it reviews (author-bias elimination); each unit gated by `Verify` before landing
 - Tier drives pipeline depth + model (trivial→Haiku, large→Opus); acceptance reuses `Spec` output
 
+## Gotchas
+
+- Overlapping unit file-sets are the #1 cause of merge evictions — draw boundaries to keep them disjoint.
+- The reviewer must not be the unit's author — reusing the writing context defeats author-bias elimination.
+- Eviction is the recovery mechanism, not failure; the captured context is what lets a unit restructure.
+
 ## Examples
 
 **Example 1: Land a multi-unit feature**

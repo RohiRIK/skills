@@ -27,6 +27,12 @@ This is the autonomous-iteration primitive. Unlike a single workflow run, `/loop
 - Each pass calls the `Verify` skill as its quality gate and the `Reflect` skill as its self-evaluation step
 - On failure, capture full context into state and change approach — do not blind-retry
 
+## Gotchas
+
+- Exit conditions are mandatory — never loop unbounded; if you can't name the exit you're driving toward, stop.
+- `## Dead Ends` is binding for the rest of the run — record *why* an approach failed, not just that it did.
+- One change per pass; bundling makes a NOT READY verdict ambiguous.
+
 ## Examples
 
 **Example 1: Iterate on a skill until it routes cleanly**

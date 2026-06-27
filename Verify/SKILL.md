@@ -25,6 +25,12 @@ A FAIL in an early phase stops the gate: fix it before continuing, because later
 - Output is a fixed report ending in `READY` or `NOT READY` for commit/PR
 - Designed to be called by `Loop` (as the per-pass gate) and by `Build`/`Test`
 
+## Gotchas
+
+- A green test suite on a failing build is meaningless — build halts the gate first.
+- `SKIP` (missing tooling) never blocks; only `FAIL` does. Don't fail a phase the project simply doesn't have.
+- Report, don't auto-fix, inside the gate — auto-fixing hides the signal a loop needs.
+
 ## Examples
 
 **Example 1: Pre-commit gate**

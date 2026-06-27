@@ -24,6 +24,12 @@ The discipline that makes it work: every score below 5 cites the specific gap, a
 - Fix-now rule: any axis ≤3 fixable in <30s is fixed in place; larger gaps are flagged
 - Composes with `Loop` (each pass's Reflect score steers the next) and `Test` (scores the test additions)
 
+## Gotchas
+
+- Score each axis independently; don't pick an overall feeling and backfill the parts.
+- Every sub-5 score must cite the exact gap — "show the gap, don't just name it".
+- The bias is to over-score your own output; if you can't cite evidence for a 5, it isn't a 5.
+
 ## Examples
 
 **Example 1: After a multi-file change**
