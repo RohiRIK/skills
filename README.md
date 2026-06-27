@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-27-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-30-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -18,6 +18,8 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`BackendDesign/`](BackendDesign) | Reference for API design, database schema, and server architecture. |
 | [`Build/`](Build) | Implement plan tasks one at a time with compile and commit gates. |
 | [`CodingStandards/`](CodingStandards) | Language coding standards — TS, Python, Bash, PowerShell, Swift, Rust. |
+| [`CodebaseOnboarding/`](CodebaseOnboarding) | Analyze an unfamiliar repo → architecture map, entry points, conventions, starter CLAUDE.md. |
+| [`ContextBudget/`](ContextBudget) | Audit Claude Code context-window consumption and produce prioritized token-savings recommendations. |
 | [`CreateMcp/`](CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
 | [`CreateCLI/`](CreateCLI) | Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif), Bun-only, gated by Verify. |
 | [`CreateSkill/`](CreateSkill) | Build and maintain skills in canonical structure. |
@@ -25,6 +27,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`DockerPatterns/`](DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
 | [`FrontendDesign/`](FrontendDesign) | Reference for React and Next.js component design patterns. |
 | [`FrontendAesthetics/`](FrontendAesthetics) | Anti-slop visual direction — typography, color, hierarchy, motion — so UI looks intentional, not AI-generated. |
+| [`GitWorkflow/`](GitWorkflow) | Reference for git branching, commit conventions, merge vs rebase, and conflict resolution. |
 | [`Hygiene/`](Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
 | [`IterativeDepth/`](IterativeDepth) | Run 2-8 multi-lens passes over a problem to surface hidden requirements; feeds `Spec`/`Orchestrate`. |
 | [`Iterate/`](Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
