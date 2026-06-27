@@ -48,3 +48,22 @@ User: "/hygiene --fix"
 ## Reference
 
 Issue taxonomy: `SkillSearch('hygiene rules')` → loads `Reference/Rules.md`
+
+## Gotchas
+
+- Repo hygiene is not a build gate — for build/type/test correctness use `Verify`; this skill audits git/skill/code/rules hygiene of `~/.claude`.
+- Report before auto-fixing; some "issues" are intentional local config.
+
+## Examples
+
+**Example 1: Health check**
+```
+User: "check my ~/.claude hygiene"
+→ RunHygiene → flags stale symlinks, malformed skills, rule drift
+```
+
+**Example 2: Auto-fix**
+```
+User: "fix the safe ones"
+→ AutoFix → applies low-risk fixes, lists the rest
+```

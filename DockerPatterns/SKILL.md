@@ -50,3 +50,22 @@ Load the file matching the task:
 # BAD: Putting secrets in docker-compose.yml
 # Use .env files (gitignored) or Docker secrets
 ```
+
+## Gotchas
+
+- Order Dockerfile layers from least- to most-frequently-changed so the build cache survives code edits; copying source before installing deps busts the cache every build.
+- Bind-mount source for local dev, but never bake secrets into an image layer — they persist in history even if later removed.
+
+## Examples
+
+**Example 1: Local dev compose**
+```
+User: "set up docker-compose for my app + postgres"
+→ service definitions, volume for db, source bind-mount, healthcheck
+```
+
+**Example 2: Slim image**
+```
+User: "my image is huge"
+→ multi-stage build, layer ordering, .dockerignore
+```

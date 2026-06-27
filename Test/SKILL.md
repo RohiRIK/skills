@@ -32,3 +32,8 @@ User: "/test the auth token expires too early"
 → Invokes ProveIt workflow
 → Write failing test → confirm failure → fix → confirm pass → regression sweep
 ```
+
+## Gotchas
+
+- Prove-It first: write the failing test that reproduces the bug before any fix — a fix with no failing test proves nothing.
+- After the run, Reflect scores the test additions; a low Completeness score usually means an untested edge case worth adding before stopping.

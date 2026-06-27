@@ -50,3 +50,17 @@ Run a workflow:
 - Pairs with `CodingStandards/TypeScript.md` for TS rules in components
 - Pairs with `code-reviewer` agent after building new components
 - Pairs with `SecurityReview` for XSS/input sanitisation in forms
+
+## Examples
+
+**Example 1: Build a component**
+```
+User: "create a sortable data table component"
+→ GenerateComponent → typed Props, composition, co-located state
+```
+
+**Example 2: Fix re-renders**
+```
+User: "this list re-renders on every keystroke"
+→ OptimizePerformance → profile → memo/callback where it pays, virtualize if >100 rows
+```

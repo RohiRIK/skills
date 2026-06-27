@@ -173,3 +173,8 @@ User: "visualize humans vs AI decision-making"
 → Creates side-by-side visual
 → Charcoal sketch with labeled elements
 ```
+
+## Gotchas
+
+- Pick the workflow by artifact type (diagram vs chart vs thumbnail) — the routing list maps intent to the right one; using the generic path loses format-specific quality.
+- `agy` (Nano Banana over cached Google OAuth) is the default generator with no API key; API fallbacks need keys in `.env` and only beat agy for transparency/reference-image features.

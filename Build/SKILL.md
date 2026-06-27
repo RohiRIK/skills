@@ -35,3 +35,9 @@ User: "/build implement the auth middleware task"
 ```
 
 *(Invokes TddWorkflow:RedGreenRefactor per task — does not duplicate TDD logic)*
+
+## Gotchas
+
+- Each task commits only on a Verify `READY` verdict — never commit through a failing gate.
+- The workflow is idempotent: re-running on a clean tree with all tasks done is a no-op, so `/iterate` can drive it safely.
+- One task per commit; bundling tasks makes a failed gate ambiguous about which change broke it.

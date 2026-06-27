@@ -48,3 +48,22 @@ Read `$ARGUMENTS`, classify intent, load the matching workflow.
 - Always preflight `opencode --version` and confirm a provider before the first run.
 - Default to `opencode run '<prompt>'` (non-interactive). Never start the bare TUI
   (`opencode` with no subcommand) — it is interactive and will hang this session.
+
+## Gotchas
+
+- OpenCode runs autonomously — scope the task and verify the diff; treat its output as a worker's draft, not finished truth.
+- Non-zero exit writes failure context to `.agent-state.md` so the next loop/orchestrate pass replans rather than repeating.
+
+## Examples
+
+**Example 1: Delegate a coding task**
+```
+User: "have opencode add pagination to the list endpoint"
+→ Delegate workflow → runs autonomously → diff verified before reporting
+```
+
+**Example 2: PR review**
+```
+User: "opencode review this PR"
+→ ReviewPR workflow → findings summarized
+```

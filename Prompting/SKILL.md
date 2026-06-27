@@ -41,3 +41,22 @@ The **core is vendor-agnostic and durable** — no model or vendor pinning. Prov
 - `Tools/ValidateTemplate.ts` — validate template syntax against sample data.
 
 See `TemplatingSystem.md` for usage.
+
+## Gotchas
+
+- This skill is the base; when porting from markdown-only houses, keep the XML steering for Claude — a wholesale swap to markdown-only is a downgrade.
+- Reserve `CRITICAL`/`MUST`/`NEVER` for genuine safety gates; forceful language makes eager models overtrigger (see `vendors/Claude.md`).
+
+## Examples
+
+**Example 1: Author a skill prompt**
+```
+User: "word this SKILL.md well"
+→ Core.md principles + a Frameworks.md frame (RISEN) + vendors/Claude.md calibration
+```
+
+**Example 2: Render a templated prompt**
+```
+User: "build an agent roster prompt"
+→ Primitives/Roster.hbs + Data/Agents.yaml via Tools/RenderTemplate.ts
+```

@@ -47,3 +47,8 @@ User: "Turn this ticket dump into something I can present to the team."
 User: "Just help me understand this spreadsheet."
 → BuildReport: defaults (mixed audience, diplomatic) stated in one line → Summary + Raw Data
 ```
+
+## Gotchas
+
+- Never mutate the source data — the report is two layers: a plain-language summary plus the untouched raw data. Altering raw values destroys the audit trail.
+- Validate column types before aggregating; a numeric column read as text silently produces wrong totals.

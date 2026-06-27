@@ -719,3 +719,17 @@ git add node_modules/
 
 - Rebase rewrites history — never rebase a branch others have already pulled; merge instead.
 - A conflict resolution that just picks one side without reading both usually drops real work — read both hunks before resolving.
+
+## Examples
+
+**Example 1: Pick a branching model**
+```
+User: "what branching strategy for a small team?"
+→ trunk-based vs GitHub-flow tradeoffs, commit conventions
+```
+
+**Example 2: Resolve a conflict**
+```
+User: "rebase conflict on a shared branch"
+→ read both hunks, resolve, and why to merge not rebase shared history
+```

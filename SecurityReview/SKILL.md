@@ -36,3 +36,22 @@ Full checklist: `Overview.md` (12KB — loaded on demand by AuditCode workflow)
 - After writing auth/API/input-handling code → auto-trigger
 - Before `/commit-push-pr` on security-sensitive changes → manual trigger
 - Pairs with `code-reviewer` for complete post-implementation review
+
+## Gotchas
+
+- Trace untrusted input from entry point to sink — a vuln is the *path*, not the function; reviewing functions in isolation misses injection that spans layers.
+- Flag secrets by pattern even if they "look like examples" — committed example-looking keys are still leaks.
+
+## Examples
+
+**Example 1: Pre-commit audit**
+```
+User: "security-review this branch"
+→ AuditCode → secrets, injection, authz, unsafe crypto, OWASP top 10
+```
+
+**Example 2: Endpoint review**
+```
+User: "is this upload handler safe?"
+→ AuditCode → path traversal, type/size validation, SSRF
+```

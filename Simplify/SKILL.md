@@ -39,3 +39,22 @@ Invoke the `code-simplifier` agent on files changed in this session.
 ```
 /plan → implement → /capture → /simplify → /verify → /commit-push-pr
 ```
+
+## Gotchas
+
+- Scope is the session diff, not the repo — for repo-wide dead-code use a dedicated cleanup pass; widening scope here risks unrelated churn.
+- Verify behaviour is unchanged after simplifying; "simpler" that alters semantics is a regression, not a cleanup.
+
+## Examples
+
+**Example 1: After a feature**
+```
+User: "/simplify"
+→ flatten nesting, remove dead branches, drop needless abstraction in changed files
+```
+
+**Example 2: Post-fix tidy**
+```
+User: "clean up what I just changed"
+→ scoped to the diff → verified no behaviour change
+```

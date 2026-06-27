@@ -58,3 +58,8 @@ User: "Add a send-email tool to my MCP server"
 → BuildServer: registerTool with validated inputSchema, return content[] result,
   re-check Security.md (input validation, no token passthrough).
 ```
+
+## Gotchas
+
+- Validate every tool input with Zod at the boundary — an MCP server is a remote attack surface; an unvalidated tool arg is an injection vector.
+- Pick transport deliberately: stdio for local single-client, HTTP for shared/remote — mixing them up breaks discovery.

@@ -50,3 +50,22 @@ Read `$ARGUMENTS`, classify intent, load the matching workflow.
   answer, exits). Never start the bare TUI (`pi` with no `-p`/`--mode`) — it is
   interactive and will hang this session.
 - Non-interactive modes ignore project-local context unless you pass `-a`/`--approve`.
+
+## Gotchas
+
+- Pi is an autonomous worker — give it acceptance criteria and verify; do not assume the task is done because it exited 0.
+- Non-zero exit writes failure context to `.agent-state.md` for replanning (no blind retry).
+
+## Examples
+
+**Example 1: Delegate a refactor**
+```
+User: "have pi migrate these tests to vitest"
+→ Delegate workflow → runs autonomously → result verified
+```
+
+**Example 2: PR review**
+```
+User: "pi review this branch"
+→ ReviewPR workflow → findings summarized
+```

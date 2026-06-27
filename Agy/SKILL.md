@@ -51,3 +51,23 @@ Read `$ARGUMENTS`, classify intent, load the matching workflow.
 - Default to **print mode** `agy -p '<prompt>'` (non-interactive, prints, exits).
   Never start the bare TUI (`agy` with no `-p`) — it is interactive and will hang
   this session.
+
+## Gotchas
+
+- `agy` is an autonomous worker, not a deterministic API — give it an exact task + acceptance criteria and verify the result; do not assume it did what was asked.
+- On non-zero worker exit the failure context is written to `.agent-state.md` (see the workflow) so a `/iterate` or `Orchestrate` pass replans instead of blind-retrying.
+- Confirm the agy CLI is signed in before delegating; a stale OAuth fails silently mid-task.
+
+## Examples
+
+**Example 1: Delegate a refactor**
+```
+User: "have agy extract the auth logic into a module"
+→ Delegate workflow → agy runs autonomously → result verified before reporting
+```
+
+**Example 2: Second opinion / image task**
+```
+User: "use agy to review this PR" / "generate a hero image with agy"
+→ ReviewPR or GenerateImage workflow → monitored, result summarized
+```

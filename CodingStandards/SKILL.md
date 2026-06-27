@@ -50,3 +50,22 @@ Running the **WorkflowName** workflow from the **CodingStandards** skill...
 | Rust | `Result<T,E>` + `?` everywhere · `thiserror` libs · `anyhow` apps · no `.unwrap()` |
 
 **context7:** Always prepend `use context7` before writing code against any external library.
+
+## Gotchas
+
+- Load only the language file you need (TypeScript.md, Python.md, …) — pulling all of them wastes context.
+- These are house standards, not generic linting — they encode choices a linter won't catch (immutability, error-handling shape, file size).
+
+## Examples
+
+**Example 1: Before writing code**
+```
+User: "scaffold a TS service module"
+→ load TypeScript.md → apply strict types, no any, spread-not-mutate
+```
+
+**Example 2: Review**
+```
+User: "does this Python match our standards?"
+→ load Python.md → check typing, validation, idioms
+```
