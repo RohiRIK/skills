@@ -1,6 +1,6 @@
 ---
 name: FrontendDesign
-description: "Reference for React and Next.js component design patterns."
+description: "Reference for building React/Next.js components, hooks, state, and performance. NOT FOR visual styling, typography, color, or making UI look less generic (use FrontendAesthetics)."
 category: reference
 effort: low
 user-invocable: false
@@ -38,8 +38,15 @@ Run a workflow:
 - Virtualise lists >100 items (use `@tanstack/virtual`)
 - Co-locate state as close to where it's used as possible
 
+## Gotchas
+
+- This skill is engineering-only — it has no visual-aesthetic guidance. For typography, color, hierarchy, motion direction, or "make it look less generic", use `FrontendAesthetics`.
+- When a request is BOTH look and build (e.g. "polished hero component"): run `FrontendAesthetics` first to set the visual direction, then `FrontendDesign` to build to it.
+- `useMemo`/`useCallback` pre-emptively is a common mistake — only add when profiling shows a real problem.
+
 ## Integration
 
+- Visual direction / anti-slop → `FrontendAesthetics` (the look half of this topic)
 - Pairs with `CodingStandards/TypeScript.md` for TS rules in components
 - Pairs with `code-reviewer` agent after building new components
 - Pairs with `SecurityReview` for XSS/input sanitisation in forms

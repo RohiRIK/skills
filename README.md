@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-25-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-26-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -23,6 +23,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`DataReportBuilder/`](DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
 | [`DockerPatterns/`](DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
 | [`FrontendDesign/`](FrontendDesign) | Reference for React and Next.js component design patterns. |
+| [`FrontendAesthetics/`](FrontendAesthetics) | Anti-slop visual direction — typography, color, hierarchy, motion — so UI looks intentional, not AI-generated. |
 | [`Hygiene/`](Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
 | [`IterativeDepth/`](IterativeDepth) | Run 2-8 multi-lens passes over a problem to surface hidden requirements; feeds `Spec`/`Orchestrate`. |
 | [`Iterate/`](Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
