@@ -2,6 +2,15 @@
 
 All notable changes to this skills library. Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## 2026-06-27 — GitHubOps
+
+### Added
+- **GitHubOps** — manage a GitHub repo via the `gh` CLI. Five workflows: RepoHygiene (audit + fix branches/secrets/paths/large-files/gitignore), Changelog (build from commits since last tag), CommitPush (conventional, branch-first, sanitized), PullRequest (summary from full commit range), Release (semver tag + `gh release create`). Outward/irreversible actions are confirmed before running.
+
+### Changed
+- `GitWorkflow` and `GitHubOps` carry mutual `NOT FOR` triggers — reference (git theory) vs action (gh operations).
+- Skill count 32 → 33; `skills.json` + `llms.txt` regenerated.
+
 ## 2026-06-27 — Agentic skill suite
 
 Upgraded the library from a flat set of skills into a composable agentic system. Skill count 18 → 32.
