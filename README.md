@@ -80,6 +80,13 @@ See [INSTALL-AI.md](INSTALL-AI.md) — covers Claude Code, opencode, Cursor, VS 
 - **[AGENTS.md](AGENTS.md)** — brief for non-Claude-Code AI tools.
 - **[INSTALL-AI.md](INSTALL-AI.md)** — full install guide for all supported tools.
 
+## For AI agents fetching this repo
+
+- **[llms.txt](llms.txt)** — AI-discovery index: project summary, how to consume the repo, every skill grouped by category with one-line descriptions.
+- **[skills.json](skills.json)** — machine-readable manifest (name, path, category, effort, tier, workflows, description) — parse this instead of opening every `SKILL.md`.
+
+Both are generated from each skill's frontmatter — regenerate after adding or editing a skill.
+
 ## Adding a skill
 
 1. Create a folder at the repo root named after the skill.
