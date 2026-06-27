@@ -90,7 +90,8 @@ Both are generated from each skill's frontmatter — regenerate after adding or 
 ## Adding a skill
 
 1. Create a folder at the repo root named after the skill.
-2. Add a `SKILL.md` with `name` + `description` frontmatter.
+2. Add a `SKILL.md` with `name`, `description`, `category`, `effort` frontmatter.
 3. Add a row to the table above.
+4. Run `./gen-manifest.sh` to regenerate `skills.json` + `llms.txt`.
 
 Folders here use TitleCase to match the live `~/.claude/skills` layout; the `name:` field inside each `SKILL.md` is what drives activation.
