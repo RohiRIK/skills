@@ -1,6 +1,6 @@
 ---
 name: Verify
-description: "Run a structured build, type, lint, test, secret, and diff gate, ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate."
+description: "Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate."
 category: quality
 effort: medium
 disable-model-invocation: true

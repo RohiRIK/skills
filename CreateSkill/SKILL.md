@@ -1,6 +1,6 @@
 ---
 name: CreateSkill
-description: "Skill development lifecycle across two tracks — structure (scaffold, validate, update, canonicalize) and effectiveness (test, improve, optimize triggers). USE WHEN create skill, new skill, validate skill, test skill, improve skill, optimize description, skill not triggering, canonicalize, or scaffold skill. NOT FOR TypeScript CLI generation (use CreateCLI)."
+description: "Create, validate, canonicalize, test, improve, and optimize-triggers for skills. USE WHEN create/new/validate/test/improve/canonicalize a skill, or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI)."
 category: meta
 effort: medium
 ---

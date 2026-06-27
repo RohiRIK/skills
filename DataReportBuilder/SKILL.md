@@ -1,6 +1,6 @@
 ---
 name: data-report-builder
-description: "Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet and wants a report, analysis, summary, or breakdown."
+description: "Turn a raw Excel/CSV dataset into a two-layer report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet wanting a report, analysis, summary, or breakdown."
 category: workflow
 effort: medium
 ---

@@ -1,6 +1,6 @@
 ---
 name: Orchestrate
-description: "Decompose a spec into a dependency DAG, run independent units in parallel via delegation, and review each in a separate context. USE WHEN orchestrating multi-unit work, parallel implementation, or landing a large spec."
+description: "Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a large spec."
 category: workflow
 effort: high
 context: fork

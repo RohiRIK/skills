@@ -1,6 +1,6 @@
 ---
 name: IterativeDepth
-description: "Run 2-8 sequential passes through the same problem, each from a different lens, to surface requirements and edge cases invisible from a single angle. USE WHEN exploring deeper, multi-angle analysis, or surfacing hidden requirements before building."
+description: "Run 2-8 lens passes over the same problem to surface requirements and edge cases a single angle misses. USE WHEN exploring deeper, multi-angle analysis, or surfacing hidden requirements before building."
 category: workflow
 effort: high
 ---

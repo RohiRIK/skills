@@ -1,6 +1,6 @@
 ---
 name: Research
-description: "Research a question at one of three depths — quick single-search, standard cross-check, or deep multi-agent fan-out — then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or asking for a second opinion across providers."
+description: "Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion."
 category: workflow
 effort: medium
 disable-model-invocation: true

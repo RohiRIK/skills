@@ -1,6 +1,6 @@
 ---
 name: CreateCLI
-description: "Generate a production-ready TypeScript CLI with a 3-tier template system (manual argv / Commander / oclif). USE WHEN create CLI, build CLI, command-line tool, wrap an API as a CLI, or add a command. NOT FOR agent skill scaffolding (use CreateSkill). NOT FOR Python."
+description: "Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif). USE WHEN create CLI, build a command-line tool, wrap an API as a CLI, or add a command. NOT FOR agent skill scaffolding (use CreateSkill). NOT FOR Python."
 category: meta
 effort: medium
 ---

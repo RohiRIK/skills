@@ -1,6 +1,6 @@
 ---
 name: FrontendAesthetics
-description: "Give UI an intentional visual direction — typography, color, hierarchy, motion — so it doesn't read as generic AI-slop. USE WHEN make it less generic, polish the UI, looks templated/AI-made, design direction, or set the variance/density. NOT FOR component logic, hooks, or performance (use FrontendDesign)."
+description: "Visual direction — typography, color, hierarchy, motion — so UI isn't generic AI-slop. USE WHEN make it less generic, polish the UI, looks templated/AI-made, or design direction. NOT FOR component logic, hooks, or performance (use FrontendDesign)."
 category: reference
 effort: low
 ---

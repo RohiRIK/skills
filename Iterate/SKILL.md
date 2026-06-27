@@ -1,6 +1,6 @@
 ---
 name: Iterate
-description: "Iteratively refine a target across multiple passes toward a goal, with a state file and a hard exit condition. USE WHEN iterate, refine, loop, keep improving, multiple passes, or run until done."
+description: "Refine a target across bounded passes toward a goal, with a state file and a hard exit condition. USE WHEN iterate, refine, loop, keep improving, or run until done."
 category: workflow
 effort: medium
 disable-model-invocation: true
