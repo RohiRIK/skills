@@ -1,6 +1,8 @@
 ---
 name: agy
 description: "Delegate a coding, refactor, PR-review, or image-generation task to the Antigravity CLI (agy) as an autonomous worker, then monitor and report results. USE WHEN delegating a coding, refactor, PR-review, or image-generation task to Antigravity/agy, or running a task via the agy CLI."
+category: delegation
+effort: medium
 argument-hint: [task description]
 ---
 

@@ -1,6 +1,8 @@
 ---
 name: StrategicCompact
 description: "Reference for context compaction strategy and timing guidance."
+category: reference
+effort: low
 user-invocable: false
 ---
 

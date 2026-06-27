@@ -1,6 +1,8 @@
 ---
 name: FrontendDesign
 description: "Reference for React and Next.js component design patterns."
+category: reference
+effort: low
 user-invocable: false
 ---
 

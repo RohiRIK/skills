@@ -1,6 +1,8 @@
 ---
 name: opencode
 description: "Delegate a coding, refactor, or PR-review task to the OpenCode CLI as an autonomous worker, then monitor and report results. USE WHEN delegating a coding, refactor, or PR-review task to OpenCode, or running a task via the opencode CLI."
+category: delegation
+effort: medium
 argument-hint: [task description]
 ---
 

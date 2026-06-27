@@ -1,6 +1,8 @@
 ---
 name: SecurityReview
 description: Audits code for vulnerabilities and secrets. USE WHEN reviewing code for security issues.
+category: quality
+effort: high
 context: fork
 agent: security-reviewer
 allowed-tools: Read, Grep, Glob, Bash

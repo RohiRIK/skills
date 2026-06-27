@@ -1,6 +1,8 @@
 ---
 name: docker-patterns
 description: "Reference for Docker and Docker Compose local dev patterns."
+category: reference
+effort: low
 user-invocable: false
 ---
 

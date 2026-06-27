@@ -1,6 +1,8 @@
 ---
 name: BackendDesign
 description: "Reference for API design, database schema, and server architecture."
+category: reference
+effort: low
 user-invocable: false
 ---
 

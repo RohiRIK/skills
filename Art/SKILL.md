@@ -1,6 +1,8 @@
 ---
 name: Art
 description: "Generates images, diagrams, and visual output. USE WHEN producing any visual artifact."
+category: visual
+effort: high
 ---
 
 # Art Skill

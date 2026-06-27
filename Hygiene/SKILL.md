@@ -1,6 +1,8 @@
 ---
 name: hygiene
 description: "Audit ~/.claude for git, skill, code, and rules hygiene issues."
+category: quality
+effort: medium
 disable-model-invocation: true
 argument-hint: [--fix]
 allowed-tools: Bash(bun:*), Bash(git:*), Read, Edit

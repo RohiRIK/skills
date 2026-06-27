@@ -1,6 +1,8 @@
 ---
 name: pi
 description: "Delegate a coding, refactor, or PR-review task to the Pi (pi.dev) CLI as an autonomous worker, then monitor and report results. USE WHEN delegating a coding, refactor, or PR-review task to Pi, or running a task via the pi CLI."
+category: delegation
+effort: medium
 argument-hint: [task description]
 ---
 
