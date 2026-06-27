@@ -161,7 +161,7 @@ bun run ~/.claude/skills/Art/Tools/Generate.ts \
 - **NO shoulders, NO neck, NO body** - face fills entire frame
 - Pure black background (for easy removal)
 - Face fills 95% of image area
-- Load facial features from user customizations at `SKILLCUSTOMIZATIONS/Art/CharacterSpecs.md`
+- Load facial features from a local `CharacterSpecs.md` reference if the user provides one
 
 ### Example FACE-ONLY Prompts
 
@@ -198,11 +198,10 @@ Rembrandt lighting pattern. Looking at camera. Ultra-tight crop on face only.
 ```bash
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 
-# Load reference images from user customizations
-# Default location: ~/.claude/skills/CORE/USER/SKILLCUSTOMIZATIONS/Art/References/
+# Load reference images from a local references directory if the user provides one
 bun ~/.claude/skills/Headshot/Tools/Headshot.ts \
   --prompt "[FACE-ONLY HEADSHOT PROMPT]" \
-  --reference ~/.claude/skills/CORE/USER/SKILLCUSTOMIZATIONS/Art/References/reference.png \
+  --reference ./references/reference.png \
   --size 2K \
   --aspect-ratio 1:1 \
   --output ~/Downloads/yt-headshot-${TIMESTAMP}.png

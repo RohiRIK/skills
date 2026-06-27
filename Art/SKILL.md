@@ -53,7 +53,6 @@ Route to the appropriate workflow based on the request.
   - Comic or sequential panels → `Workflows/Comics.md`
   - YouTube thumbnail (with existing assets) → `Workflows/YouTubeThumbnail.md`
   - Ad-hoc YouTube thumbnail (generate from content) → `Workflows/AdHocYouTubeThumbnail.md`
-  - PAI pack icon → `Workflows/CreatePAIPackIcon.md`
 
 ---
 
@@ -78,8 +77,7 @@ Route to the appropriate workflow based on the request.
 (Gemini image models) over the machine's cached Google OAuth. No API key in
 `.env`, no per-image Replicate/OpenAI cost. This is the default in `Generate.ts`.
 
-**Override:** user customization at `SKILLCUSTOMIZATIONS/Art/PREFERENCES.md`.
-**API fallbacks** (need keys in `${PAI_DIR}/.env`): `nano-banana-pro` (GOOGLE_API_KEY),
+**API fallbacks** (need keys in `.env`): `nano-banana-pro` (GOOGLE_API_KEY),
 `gpt-image-1` (OPENAI_API_KEY), `flux` / `nano-banana` (REPLICATE_API_TOKEN). Use a
 fallback when agy is unavailable, or when you need transparency / reference-image
 features the API path supports.
@@ -144,7 +142,7 @@ bun run ~/.claude/skills/Art/Tools/Generate.ts \
 - Up to 6 object reference images
 - Maximum 14 total reference images per request
 
-**API keys in:** `${PAI_DIR}/.env`
+**API keys in:** `.env`
 
 ## Examples
 
@@ -172,15 +170,4 @@ User: "visualize humans vs AI decision-making"
 → Invokes COMPARISONS workflow
 → Creates side-by-side visual
 → Charcoal sketch with labeled elements
-```
-
-**Example 4: PAI pack icon**
-```
-User: "create icon for the skill system pack"
-→ Invokes CREATEPAIPACKICON workflow
-→ Reads workflow from Workflows/CreatePAIPackIcon.md
-→ Generates 1K image with --remove-bg for transparency
-→ Resizes to 256x256 RGBA PNG
-→ Outputs to ~/Downloads/ for preview
-→ After approval, copies to ~/Projects/PAI/Packs/icons/
 ```

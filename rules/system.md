@@ -85,7 +85,7 @@ Frontend:  code / logic / hooks / performance      → FrontendDesign
 Meta:      build/scaffold ONE skill                 → CreateSkill
            audit/instrument the WHOLE library       → SkillForge
 CLI:       generate a standalone TypeScript CLI     → CreateCLI
-           author a PAI/agent skill                 → CreateSkill
+           author a Claude Code agent skill         → CreateSkill
 ```
 
 ## 5. Shared state
@@ -112,7 +112,7 @@ Fixed schema (`ts, skill, workflow, status, duration_s`, optional `input`). Tier
 
 ## 8. Porting rule (skills from ECC / LifeOS)
 
-When adopting an external skill, strip environment coupling: LifeOS's voice-notification block (`curl localhost:31337/notify`), `SKILLCUSTOMIZATIONS` indirection, and hardcoded `~/.claude/PAI/...` paths (repoint logs to `~/.claude/state/`); ECC's references to its own metrics log or Context7 MCP unless that service is connected. Add `category`/`effort` frontmatter and run through `CreateSkill/ValidateSkill`. Keep skills portable.
+When adopting an external skill, strip environment coupling: the donor's voice-notification block (a `curl` to a localhost notify port), its user-customization indirection layer, and hardcoded private home-relative tool paths (repoint any execution log to `~/.claude/state/`); also drop a donor's references to its own metrics log or to a documentation MCP unless that service is connected here. Add `category`/`effort` frontmatter and run through `CreateSkill/ValidateSkill`. Keep skills portable.
 
 ---
 
