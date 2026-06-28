@@ -1,0 +1,18 @@
+{
+  "name": "data-report-builder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Two-layer Excel report engine (bun + ExcelJS) for the DataReportBuilder skill.",
+  "scripts": {
+    "recalc": "bun Recalc.ts",
+    "example": "bun Example.ts"
+  },
+  "dependencies": {
+    "csv-parse": "^7.0.0",
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
