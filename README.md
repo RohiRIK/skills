@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-33-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-34-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -46,6 +46,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`TddWorkflow/`](skills/TddWorkflow) | Test-first development workflow. |
 | [`Test/`](skills/Test) | Run TDD for features and bug fixes. |
 | [`Verify/`](skills/Verify) | Six-phase quality gate (build→type→lint→test→secret→diff) ending in a READY / NOT READY verdict (`/verify`). |
+| [`Workflows/`](skills/Workflows) | Index of composed skill chains — which skills to run, in what order, for a full job. Routes a task to the right chain; full steps in [`workflows/`](workflows). |
 
 ## Install
 

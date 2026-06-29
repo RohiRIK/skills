@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-06-29T10:09:13Z",
+  "generated": "2026-06-29T10:41:16Z",
   "skills": [
     {
       "name": "agy",
@@ -300,6 +300,15 @@
       "tier": "B-command",
       "workflows": "RunVerify",
       "description": "Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate."
+    },
+    {
+      "name": "Workflows",
+      "path": "skills/Workflows/",
+      "category": "workflow",
+      "effort": "low",
+      "tier": "C-auto",
+      "workflows": "",
+      "description": "Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job."
     }
   ],
   "workflows_index": "workflows/README.md",

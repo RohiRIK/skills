@@ -14,7 +14,7 @@ Retro-futuristic 1960s mission-control command room, cinematic photorealistic 3D
 
 Append a per-skill centerpiece clause (below) to that prefix.
 
-## Pending heroes (17) — centerpiece clauses
+## Pending heroes (18) — centerpiece clauses
 
 | Skill | File | Centerpiece clause |
 |-------|------|--------------------|
@@ -35,6 +35,7 @@ Append a per-skill centerpiece clause (below) to that prefix.
 | TddWorkflow | `tdd-workflow-hero.jpg` | a red-to-green test cycle ring (RED → GREEN → REFACTOR), symbolizing test-first development. |
 | Test | `test-hero.jpg` | a row of pass/fail gauges with green checkmarks, symbolizing automated test runs. |
 | Verify | `verify-hero.jpg` | a six-segment shield with a checkmark and a glowing READY stamp, symbolizing an automated verification gate. |
+| Workflows | `workflows-hero.jpg` | a glowing flowchart of connected nodes lighting up in sequence along a chosen path, symbolizing composed skill chains. |
 
 ## Batch command (when agy quota is available)
 

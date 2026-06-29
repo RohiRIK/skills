@@ -5,6 +5,7 @@ All notable changes to this skills library. Format loosely follows [Keep a Chang
 ## 2026-06-29 — Workflows + CreateMcp
 
 ### Added
+- **Workflows** skill (`skills/Workflows/`) — installed, model-invocable router that gives an AI agent the composed chains as an actionable layer (the `workflows/` docs themselves aren't symlinked into `~/.claude`). `SKILL.md` routes a task → workflow; `Chains.md` holds all 22 chains with their skill sequences. Skill count 33 → 34.
 - **`workflows/`** — composed skill chains documenting how to combine skills into full jobs, **one document per workflow**, in two families. Build & ship: `ship-fast`, `spec-to-ship`, `research-to-build`, `research-to-report`, `research-to-buy`, `onboard`, `build-cli`, `build-mcp`, `ui-feature`, `api-feature`, `security-pass`, `context-diet`, `repo-hygiene`. Maintain the library: `new-skill-quick`, `new-skill-heavy`, `canonicalize-skill`, `fix-trigger`, `autonomous-loop`, `library-audit`, `batch-build`, `release`. Indexed by `workflows/README.md`; pointers added to `README.md` + `CLAUDE.md`.
 - **CreateMcp** — `Threats.md` (OWASP LLM × MCP, CoSAI, tool poisoning) and `Workflows/TestServer.md` (mcp-testing-kit + Inspector CLI + security suite), both wired into routing.
 

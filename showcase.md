@@ -2,7 +2,7 @@
 
 A visual index of the library. Each skill gets a hero image in a shared house style: a **retro-futuristic 1960s mission-control room** — banks of vintage CRT monitors, brass-and-wood consoles with operators, and a glowing holographic emblem unique to that skill. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 16 / 33 heroes generated. The remaining 17 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 16 / 34 heroes generated. The remaining 18 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
 
@@ -136,3 +136,6 @@ _hero pending_ — Run TDD for features and bug fixes.
 
 ### [Verify](skills/Verify) 🎨
 _hero pending_ — Six-phase quality gate (build→type→lint→test→secret→diff) ending in a READY / NOT READY verdict.
+
+### [Workflows](skills/Workflows) 🎨
+_hero pending_ — Index of composed skill chains; routes a task to the right ordered chain of skills.

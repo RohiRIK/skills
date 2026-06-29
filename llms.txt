@@ -23,6 +23,7 @@
 - [Spec](skills/Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
 - [TddWorkflow](skills/TddWorkflow/SKILL.md) — Test-first development workflow. USE WHEN writing a feature test-first or fixing a bug with TDD.
 - [Test](skills/Test/SKILL.md) — Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests.
+- [Workflows](skills/Workflows/SKILL.md) — Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job.
 
 ### quality
 - [hygiene](skills/Hygiene/SKILL.md) — Audit ~/.claude for git, skill, code, and rules hygiene issues.
