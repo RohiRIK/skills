@@ -52,9 +52,13 @@ Make tool `description`s precise — that text is how the model decides to call 
 
 ## Step 5 — Security pass
 
-Run the `Security.md` pre-ship gate: input validation, env-only secrets, least privilege, no token passthrough (HTTP). Do this *now*, not after shipping.
+Run the `Security.md` pre-ship gate *now*, not after shipping. Hard gates: validate inputs · **no generic pass-through tool** · never return secrets (central redaction) · **fail closed** on missing creds · read-only default, writes behind enforceable `confirm` · per-tool least privilege · pagination cap + rate limit + outbound timeout · static first-party tool defs · (HTTP) token-audience validation + TLS 1.3 + SSRF checks. `Threats.md` explains why each control exists.
 
-## Step 6 — Smoke test
+## Step 6 — Test
+
+Write automated tests → `Workflows/TestServer.md`: `mcp-testing-kit` unit tests + a security suite asserting the Step 5 gates + an Inspector `--cli` CI smoke. Every tool gets a happy-path **and** a negative test.
+
+## Step 7 — Smoke test (interactive)
 
 ```bash
 bunx @modelcontextprotocol/inspector bun run index.ts
@@ -63,6 +67,22 @@ bunx @modelcontextprotocol/inspector bun run index.ts
 The Inspector lists your tools/resources/prompts and lets you call them without a host. Fix errors before connecting.
 
 → Register with a host: `Workflows/ConnectServer.md`.
+
+## Examples
+
+**New server from scratch**
+```
+User: "Create an MCP server that queries my Postgres DB"
+→ scaffold TS project, registerTool("query", …) with a Zod inputSchema,
+  add a resource for the schema, stdio transport → ConnectServer to register + test.
+```
+
+**Extend an existing server**
+```
+User: "Add a send-email tool to my MCP server"
+→ registerTool with validated inputSchema, return content[] result,
+  re-check Security.md (input validation, no token passthrough).
+```
 
 ## Execution Log
 

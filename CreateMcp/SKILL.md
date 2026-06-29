@@ -17,6 +17,7 @@ The MCP API surface changes between SDK releases. Prepend `use context7` before 
 | Workflow | Trigger | File |
 |----------|---------|------|
 | **BuildServer** | "create an MCP", "build a server", "add a tool/resource/prompt" | `Workflows/BuildServer.md` |
+| **TestServer** | "test the server", "write MCP tests", "security tests", "CI" | `Workflows/TestServer.md` |
 | **ConnectServer** | "connect", "register", "add to Claude", "test with inspector" | `Workflows/ConnectServer.md` |
 
 ## Quick Reference
@@ -26,40 +27,22 @@ Built from the full modelcontextprotocol.io docs. Load the layer you need:
 - **Full pipeline** (plan → architect → build → secure → test → connect): `SkillSearch('createmcp pipeline')` → `Pipeline.md`
 - Mental model (layers, lifecycle, all primitives): `SkillSearch('createmcp architecture')` → `Architecture.md`
 - Primitive specs (tools/resources/prompts + sampling/elicitation/roots + SDK code): `SkillSearch('createmcp primitives')` → `Primitives.md`
-- Security + authorization checklist: `SkillSearch('createmcp security')` → `Security.md`
-- Test + debug (Inspector, logging, failures): `SkillSearch('createmcp debug')` → `DebugTest.md`
+- Security + hardening checklist (OWASP/CoSAI-grounded): `SkillSearch('createmcp security')` → `Security.md`
+- Threat model (OWASP LLM × MCP, CoSAI, tool poisoning): `SkillSearch('createmcp threats')` → `Threats.md`
+- Automated tests (mcp-testing-kit + Inspector CLI + security suite): `SkillSearch('createmcp test')` → `Workflows/TestServer.md`
+- Protocol debug (Inspector, logging, failures): `SkillSearch('createmcp debug')` → `DebugTest.md`
 
 ## Pipeline (the whole job)
 
-```
-PLAN → ARCHITECT → DESIGN PRIMITIVES → BUILD → SECURE → TEST/DEBUG → CONNECT → ITERATE
-```
-
-Read `Pipeline.md` for the stage-by-stage runbook. For a single build pass, jump to the `BuildServer` workflow.
-
-## Decide First
-
-1. **Primitives needed?** Actions the model triggers → **tools**. Read-only context the app pulls → **resources**. User-invoked templates → **prompts**. Need the host LLM / user input / file scope → **sampling / elicitation / roots** (client features, optional).
-2. **Transport?** Runs on the user's machine → **stdio** (default, simplest). Hosted/shared over network → **Streamable HTTP** (needs OAuth — see `Security.md`).
-3. **Language?** TypeScript or Python are Tier-1 SDKs. Default TypeScript run via `bun`.
-
-## Examples
-
-**Example 1: New server from scratch**
-```
-User: "Create an MCP server that queries my Postgres DB"
-→ BuildServer: scaffold TS project, registerTool("query", …) with a Zod inputSchema,
-  add a resource for the schema, stdio transport → ConnectServer to register + test.
-```
-
-**Example 2: Extend an existing server**
-```
-User: "Add a send-email tool to my MCP server"
-→ BuildServer: registerTool with validated inputSchema, return content[] result,
-  re-check Security.md (input validation, no token passthrough).
-```
+`PLAN → ARCHITECT → DESIGN PRIMITIVES → BUILD → SECURE → TEST/DEBUG → CONNECT → ITERATE` — stage-by-stage runbook (incl. primitive/transport/language decisions) in `Pipeline.md`. For a single build pass, jump to `BuildServer`; examples live there too.
 
 ## Gotchas
 
 - Validate every tool input with Zod at the boundary — an MCP server is a remote attack surface; an unvalidated tool arg is an injection vector.
 - Pick transport deliberately: stdio for local single-client, HTTP for shared/remote — mixing them up breaks discovery.
+- **No generic pass-through tool** (`run_query(string)`, `exec`, `call_api(path)`) — it bypasses every guardrail at once; the #1 MCP injection vector. Fixed endpoints + typed params.
+- **Excessive Agency is the CRITICAL MCP risk** — ship read-only first; gate writes behind an enforceable `confirm:true` schema param (not a `destructiveHint` annotation — hosts can ignore annotations).
+- Tool definitions must be **static first-party code** — never generate names/descriptions/schemas from user or backend data (tool/schema poisoning, MCPTox).
+- **Fail closed**: refuse to start without required creds; never `process.env.X || "default"`. Central secret redaction, not per-tool.
+- Stdout is the JSON-RPC wire — `console.log` corrupts the protocol; log to stderr.
+- Tests aren't optional: `mcp-testing-kit` (in-process unit) + Inspector `--cli` (CI smoke). Every tool gets a happy-path + a negative/security assertion.

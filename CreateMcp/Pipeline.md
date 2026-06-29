@@ -33,13 +33,13 @@ Map each planned capability to a concrete registration:
 
 Scaffold (TS + `bun`), register primitives, wire `StdioServerTransport`. `use context7` for current SDK signatures. Log to stderr only.
 
-## 5. SECURE → `Security.md`
+## 5. SECURE → `Security.md` (threat model: `Threats.md`)
 
-Run the pre-ship gate now, not later: input validation, env-only secrets, least privilege, no token passthrough (HTTP), consent-before-`state` (proxy/auth).
+Run the pre-ship gate now, not later. Core gates: input validation · **no generic pass-through tool** · never return secrets (central redaction) · **fail closed** on missing creds · read-only default with writes behind enforceable `confirm` · per-tool least privilege · pagination caps + rate limit + outbound timeout · static first-party tool defs · (HTTP) token-audience validation, TLS 1.3, SSRF redirect checks · (proxy) consent-before-`state`. Reason about *why* each control exists in `Threats.md` (OWASP LLM × MCP, CoSAI, tool poisoning).
 
-## 6. TEST / DEBUG → `DebugTest.md`
+## 6. TEST → `Workflows/TestServer.md` · DEBUG → `DebugTest.md`
 
-Prove it in the **MCP Inspector** before any host. Fix stdout pollution, schema mismatches, env gaps. Use host logs (`mcp-server-<NAME>.log`) when a host won't connect.
+Automated tests: **mcp-testing-kit** (in-process unit) + a **security suite** asserting the gates above (bad input rejected, no secrets in output, no generic tool, confirm-gated writes, pagination cap) + **Inspector `--cli`** CI smoke. Target ≥ 80% coverage; every tool gets a happy-path + a negative test. For live protocol debugging (stdout pollution, schema mismatch, env gaps, host won't connect) use `DebugTest.md` + host logs (`mcp-server-<NAME>.log`).
 
 ## 7. CONNECT → `Workflows/ConnectServer.md`
 
@@ -47,7 +47,7 @@ Register with the host: `claude mcp add` (Claude Code) or `claude_desktop_config
 
 ## 8. ITERATE
 
-Adding a capability re-enters at stage 3 (design the primitive) → 4 (build) → 5 (re-run security gate) → 6 (re-test in Inspector). If the tool list changes at runtime and you declared `listChanged`, the SDK emits `tools/list_changed` and the host re-lists.
+Adding a capability re-enters at stage 3 (design the primitive) → 4 (build) → 5 (re-run security gate + add its security test) → 6 (unit + security suite + Inspector smoke). If the tool list changes at runtime and you declared `listChanged`, the SDK emits `tools/list_changed` and the host re-lists.
 
 ## Source map (built from modelcontextprotocol.io)
 
@@ -62,3 +62,5 @@ Adding a capability re-enters at stage 3 (design the primitive) → 4 (build) �
 | Security + authorization | `/docs/tutorials/security/security_best_practices` |
 | SDKs (TS/Python Tier-1) | `/docs/sdk` |
 | Agent-skill-driven build | `/docs/develop/build-with-agent-skills` |
+| Test frameworks | `mcp-testing-kit` (npm) · MCP Inspector `--cli` · `f/mcptools` |
+| Threat model (`Threats.md`) | OWASP LLM Top 10 2025 · OWASP Agentic 2026 · CoSAI/OASIS MCP Security · NSA MCP guidance · MCPTox |
