@@ -77,6 +77,7 @@ See [INSTALL-AI.md](INSTALL-AI.md) — covers Claude Code, opencode, Cursor, VS 
 
 ## Docs
 
+- **[showcase.md](showcase.md)** — visual gallery: a hero image per skill.
 - **[CLAUDE.md](CLAUDE.md)** — auto-loaded by Claude Code; repo layout + conventions.
 - **[workflows/](workflows)** — composed skill chains, one document per workflow, two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, release).
 - **[AGENTS.md](AGENTS.md)** — brief for non-Claude-Code AI tools.
