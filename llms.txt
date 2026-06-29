@@ -7,6 +7,7 @@
 - **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, tier, workflows, and description as JSON. Parse this instead of opening every file.
 - **Per skill:** read `<SkillName>/SKILL.md` — the `description` field states WHAT it does + WHEN to use it; the `## Workflow Routing` table maps intents to `Workflows/*.md`; `## Gotchas` holds the highest-density failure knowledge; `## Examples` shows trigger->action.
 - **System model:** [rules/system.md](rules/system.md) — tier model (A/B/C/D), frontmatter contract, composition graph, state + telemetry conventions.
+- **Composed workflows:** [workflows/README.md](workflows/README.md) — multi-skill chains for full jobs (build & ship, maintain the library); each chain in its own doc. `skills.json` also carries a `workflows` array.
 
 ## Skills by category
 
@@ -57,11 +58,39 @@
 ### prompting
 - [Prompting](skills/Prompting/SKILL.md) — Vendor-agnostic prompt-engineering standard library. USE WHEN authoring or refining a prompt, system message, skill, agent instruction, or rule file.
 
+## Workflows (composed skill chains)
+
+> Multi-skill chains for full jobs — one document per workflow. Two families: build & ship (use the skills on a project) and maintain the library (meta). Index: [workflows/README.md](workflows/README.md).
+
+- [api-feature](workflows/api-feature.md) — A backend / API change, security-gated.
+- [autonomous-loop](workflows/autonomous-loop.md) — Hands-off improvement. Point `Iterate` at a target with a goal and an exit condition; it runs repeated PLAN → ACT → VERIFY → REFLECT passes unattended, each pass building on the last.
+- [batch-build](workflows/batch-build.md) — Build or refactor many skills (or many workflows in one skill) at once, in parallel, each reviewed in isolation.
+- [build-cli](workflows/build-cli.md) — Ship a TypeScript command-line tool.
+- [build-mcp](workflows/build-mcp.md) — Scaffold, secure, test, and connect a Model Context Protocol server.
+- [canonicalize-skill](workflows/canonicalize-skill.md) — Fix a skill's structure to conform to canon.
+- [context-diet](workflows/context-diet.md) — Cut context-window bloat. No feature change.
+- [fix-trigger](workflows/fix-trigger.md) — A skill won't activate (or mis-fires). Repair its routing.
+- [frontend-build](workflows/frontend-build.md) — Full frontend feature — from spec through visual direction, component architecture, assets, testing, to ship. The heavyweight counterpart to `ui-feature` (which is a quick polish pass).
+- [library-audit](workflows/library-audit.md) — Whole-library health sweep. Periodic.
+- [new-skill-heavy](workflows/new-skill-heavy.md) — Author a complex, multi-workflow skill where the shape isn't obvious yet.
+- [new-skill-quick](workflows/new-skill-quick.md) — Author a new skill, clear scope, single capability. Daily path.
+- [onboard](workflows/onboard.md) — Get productive in an unfamiliar repo fast, then make the first change.
+- [release](workflows/release.md) — Cut a tagged version of the library.
+- [repo-hygiene](workflows/repo-hygiene.md) — Periodic cleanup of config + project repo.
+- [research-to-build](workflows/research-to-build.md) — Understand a domain / library / API before building it.
+- [research-to-buy](workflows/research-to-buy.md) — Compare options before a purchase or adoption decision — tech stack, SaaS, tools, hardware, vendors. Reuses the **Research** skill; no dedicated skill needed.
+- [research-to-report](workflows/research-to-report.md) — Deliverable is cited findings + visuals, not code.
+- [security-pass](workflows/security-pass.md) — Harden existing code before release. No new feature.
+- [ship-fast](workflows/ship-fast.md) — Move fast — explore while you build. Scope is clear enough to start; you'll discover the details as you go. Entry: `/plan`.
+- [spec-to-ship](workflows/spec-to-ship.md) — Spec-driven build — you know exactly what to build. Entry: `/spec`.
+- [ui-feature](workflows/ui-feature.md) — A frontend change that looks intentional, not AI-slop.
+
 ## Key docs
 
 - [README.md](README.md) — human-facing index + install guide
+- [workflows/README.md](workflows/README.md) — composed skill chains (one doc per workflow)
 - [rules/system.md](rules/system.md) — canonical skill-system spec
 - [CLAUDE.md](CLAUDE.md) — Claude Code loader + composition map
 - [AGENTS.md](AGENTS.md) — brief for non-Claude-Code tools
 - [INSTALL-AI.md](INSTALL-AI.md) — install guide for all supported tools
-- [skills.json](skills.json) — machine-readable manifest of all skills
+- [skills.json](skills.json) — machine-readable manifest (skills + workflows)

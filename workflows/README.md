@@ -19,6 +19,7 @@ Two families:
 | Build a CLI | `[Research] → CreateCLI → Test → Verify → PR` | [build-cli.md](build-cli.md) |
 | Build an MCP server | `CreateMcp:BuildServer → SecurityReview → :TestServer → :ConnectServer → PR` | [build-mcp.md](build-mcp.md) |
 | UI feature (anti-slop) | `FrontendAesthetics → FrontendDesign → /simplify → Verify → CommitPush` | [ui-feature.md](ui-feature.md) |
+| Frontend build (full) | `/spec → FrontendAesthetics → FrontendDesign → Art → /plan → /build → /test → Reflect → /verify → PR` | [frontend-build.md](frontend-build.md) |
 | Backend / API feature | `BackendDesign → /spec → /build → Test → SecurityReview → PR` | [api-feature.md](api-feature.md) |
 | Security pass | `SecurityReview → fix → Verify → CommitPush` | [security-pass.md](security-pass.md) |
 | Context diet | `ContextBudget → trim → Verify` | [context-diet.md](context-diet.md) |

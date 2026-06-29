@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-06-29T07:21:03Z",
+  "generated": "2026-06-29T10:09:13Z",
   "skills": [
     {
       "name": "agy",
@@ -300,6 +300,119 @@
       "tier": "B-command",
       "workflows": "RunVerify",
       "description": "Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate."
+    }
+  ],
+  "workflows_index": "workflows/README.md",
+  "workflows": [
+    {
+      "name": "api-feature",
+      "path": "workflows/api-feature.md",
+      "summary": "A backend / API change, security-gated."
+    },
+    {
+      "name": "autonomous-loop",
+      "path": "workflows/autonomous-loop.md",
+      "summary": "Hands-off improvement. Point `Iterate` at a target with a goal and an exit condition; it runs repeated PLAN → ACT → VERIFY → REFLECT passes unattended, each pass building on the last."
+    },
+    {
+      "name": "batch-build",
+      "path": "workflows/batch-build.md",
+      "summary": "Build or refactor many skills (or many workflows in one skill) at once, in parallel, each reviewed in isolation."
+    },
+    {
+      "name": "build-cli",
+      "path": "workflows/build-cli.md",
+      "summary": "Ship a TypeScript command-line tool."
+    },
+    {
+      "name": "build-mcp",
+      "path": "workflows/build-mcp.md",
+      "summary": "Scaffold, secure, test, and connect a Model Context Protocol server."
+    },
+    {
+      "name": "canonicalize-skill",
+      "path": "workflows/canonicalize-skill.md",
+      "summary": "Fix a skill's structure to conform to canon."
+    },
+    {
+      "name": "context-diet",
+      "path": "workflows/context-diet.md",
+      "summary": "Cut context-window bloat. No feature change."
+    },
+    {
+      "name": "fix-trigger",
+      "path": "workflows/fix-trigger.md",
+      "summary": "A skill won't activate (or mis-fires). Repair its routing."
+    },
+    {
+      "name": "frontend-build",
+      "path": "workflows/frontend-build.md",
+      "summary": "Full frontend feature — from spec through visual direction, component architecture, assets, testing, to ship. The heavyweight counterpart to `ui-feature` (which is a quick polish pass)."
+    },
+    {
+      "name": "library-audit",
+      "path": "workflows/library-audit.md",
+      "summary": "Whole-library health sweep. Periodic."
+    },
+    {
+      "name": "new-skill-heavy",
+      "path": "workflows/new-skill-heavy.md",
+      "summary": "Author a complex, multi-workflow skill where the shape isn't obvious yet."
+    },
+    {
+      "name": "new-skill-quick",
+      "path": "workflows/new-skill-quick.md",
+      "summary": "Author a new skill, clear scope, single capability. Daily path."
+    },
+    {
+      "name": "onboard",
+      "path": "workflows/onboard.md",
+      "summary": "Get productive in an unfamiliar repo fast, then make the first change."
+    },
+    {
+      "name": "release",
+      "path": "workflows/release.md",
+      "summary": "Cut a tagged version of the library."
+    },
+    {
+      "name": "repo-hygiene",
+      "path": "workflows/repo-hygiene.md",
+      "summary": "Periodic cleanup of config + project repo."
+    },
+    {
+      "name": "research-to-build",
+      "path": "workflows/research-to-build.md",
+      "summary": "Understand a domain / library / API before building it."
+    },
+    {
+      "name": "research-to-buy",
+      "path": "workflows/research-to-buy.md",
+      "summary": "Compare options before a purchase or adoption decision — tech stack, SaaS, tools, hardware, vendors. Reuses the **Research** skill; no dedicated skill needed."
+    },
+    {
+      "name": "research-to-report",
+      "path": "workflows/research-to-report.md",
+      "summary": "Deliverable is cited findings + visuals, not code."
+    },
+    {
+      "name": "security-pass",
+      "path": "workflows/security-pass.md",
+      "summary": "Harden existing code before release. No new feature."
+    },
+    {
+      "name": "ship-fast",
+      "path": "workflows/ship-fast.md",
+      "summary": "Move fast — explore while you build. Scope is clear enough to start; you'll discover the details as you go. Entry: `/plan`."
+    },
+    {
+      "name": "spec-to-ship",
+      "path": "workflows/spec-to-ship.md",
+      "summary": "Spec-driven build — you know exactly what to build. Entry: `/spec`."
+    },
+    {
+      "name": "ui-feature",
+      "path": "workflows/ui-feature.md",
+      "summary": "A frontend change that looks intentional, not AI-slop."
     }
   ]
 }

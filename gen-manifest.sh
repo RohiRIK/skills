@@ -19,6 +19,16 @@ frontmatter() { awk 'NR==1&&/^---/{f=1;next} f&&/^---/{exit} f{print}' "$1"; }
 field() { printf '%s\n' "$1" | grep "^$2:" | sed "s/^$2: *//; s/^\"//; s/\"$//"; }
 esc() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
 
+# Composed workflow chains live in workflows/ (one .md per workflow, plus README index).
+workflow_docs() {
+  for f in workflows/*.md; do
+    [ "$(basename "$f")" = "README.md" ] && continue
+    [ -f "$f" ] && echo "$f"
+  done | sort
+}
+wf_name() { basename "$1" .md; }
+wf_desc() { awk '/^# /{f=1;next} f&&NF{print;exit}' "$1"; }
+
 tier_of() {
   local fm="$1"
   if   printf '%s\n' "$fm" | grep -q '^user-invocable: *false';        then echo "A-reference"
@@ -52,6 +62,19 @@ gen_json() {
     echo "      \"description\": \"$(esc "$desc")\""
   done
   echo '    }'
+  echo '  ],'
+  echo '  "workflows_index": "workflows/README.md",'
+  echo '  "workflows": ['
+  local wf_first=1 f wname wdesc
+  for f in $(workflow_docs); do
+    wname="$(wf_name "$f")"; wdesc="$(wf_desc "$f")"
+    [ $wf_first -eq 0 ] && echo '    },'; wf_first=0
+    echo '    {'
+    echo "      \"name\": \"$(esc "$wname")\","
+    echo "      \"path\": \"$f\","
+    echo "      \"summary\": \"$(esc "$wdesc")\""
+  done
+  echo '    }'
   echo '  ]'
   echo '}'
 }
@@ -68,6 +91,7 @@ gen_llms() {
 - **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, tier, workflows, and description as JSON. Parse this instead of opening every file.
 - **Per skill:** read `<SkillName>/SKILL.md` — the `description` field states WHAT it does + WHEN to use it; the `## Workflow Routing` table maps intents to `Workflows/*.md`; `## Gotchas` holds the highest-density failure knowledge; `## Examples` shows trigger->action.
 - **System model:** [rules/system.md](rules/system.md) — tier model (A/B/C/D), frontmatter contract, composition graph, state + telemetry conventions.
+- **Composed workflows:** [workflows/README.md](workflows/README.md) — multi-skill chains for full jobs (build & ship, maintain the library); each chain in its own doc. `skills.json` also carries a `workflows` array.
 
 ## Skills by category
 HEAD
@@ -77,16 +101,25 @@ HEAD
     echo "### ${c}"
     jq -r --arg c "$c" '.skills[] | select(.category==$c) | "- [\(.name)](\(.path)SKILL.md) — \(.description)"' skills.json
   done
+
+  echo ""
+  echo "## Workflows (composed skill chains)"
+  echo ""
+  echo "> Multi-skill chains for full jobs — one document per workflow. Two families: build & ship (use the skills on a project) and maintain the library (meta). Index: [workflows/README.md](workflows/README.md)."
+  echo ""
+  jq -r '.workflows[] | "- [\(.name)](\(.path)) — \(.summary)"' skills.json
+
   cat <<'FOOT'
 
 ## Key docs
 
 - [README.md](README.md) — human-facing index + install guide
+- [workflows/README.md](workflows/README.md) — composed skill chains (one doc per workflow)
 - [rules/system.md](rules/system.md) — canonical skill-system spec
 - [CLAUDE.md](CLAUDE.md) — Claude Code loader + composition map
 - [AGENTS.md](AGENTS.md) — brief for non-Claude-Code tools
 - [INSTALL-AI.md](INSTALL-AI.md) — install guide for all supported tools
-- [skills.json](skills.json) — machine-readable manifest of all skills
+- [skills.json](skills.json) — machine-readable manifest (skills + workflows)
 FOOT
 }
 
@@ -94,4 +127,4 @@ gen_json > skills.json
 jq empty skills.json   # fail loudly if invalid JSON
 gen_llms > llms.txt
 
-echo "gen-manifest: wrote skills.json ($(jq '.skills | length' skills.json) skills) + llms.txt"
+echo "gen-manifest: wrote skills.json ($(jq '.skills | length' skills.json) skills, $(jq '.workflows | length' skills.json) workflows) + llms.txt"
