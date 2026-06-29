@@ -70,7 +70,7 @@ git clone https://github.com/RohiRIK/skills.git ~/rohi-skills
 cd ~/rohi-skills && ./install.sh
 ```
 
-`install.sh` symlinks every skill into `~/.claude/skills/` (and the opencode path if present), idempotently.
+`install.sh` symlinks every skill into `~/.claude/skills/` (and the opencode path if present), plus slash commands (`commands/*.md`, e.g. `/workflow`) into `~/.claude/commands/`, idempotently.
 
 ### Manual / other tools
 
