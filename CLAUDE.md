@@ -45,7 +45,7 @@ State:       loop/multi-pass skills share .agent-state.md
 Telemetry:   action workflows append to ~/.claude/state/execution.jsonl
 ```
 
-Composed chains live in **[workflows/](workflows)** — one document per workflow, two families: **build & ship** (ship-fast, spec-to-ship, research, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, release). See `workflows/README.md` for the index.
+Composed chains live in **[workflows/](workflows)** — one document per workflow, two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, release). See `workflows/README.md` for the index.
 
 ## Source of truth
 

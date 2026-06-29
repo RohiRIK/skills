@@ -14,6 +14,7 @@ Two families:
 | **Spec to ship** (spec-driven) | `/spec → /plan → /build (or /dev) → /test → /simplify → /capture → /verify → /commit-push-pr` | [spec-to-ship.md](spec-to-ship.md) |
 | Research → build | `Research → Spec → /plan → /build → Verify → PR` | [research-to-build.md](research-to-build.md) |
 | Research → report | `Research(deep) → DataReportBuilder → Art` | [research-to-report.md](research-to-report.md) |
+| Research → buy (compare options) | `Research(deep) → comparison matrix → scored pick` | [research-to-buy.md](research-to-buy.md) |
 | Onboard a codebase | `CodebaseOnboarding → Research → /spec → spec-to-ship` | [onboard.md](onboard.md) |
 | Build a CLI | `[Research] → CreateCLI → Test → Verify → PR` | [build-cli.md](build-cli.md) |
 | Build an MCP server | `CreateMcp:BuildServer → SecurityReview → :TestServer → :ConnectServer → PR` | [build-mcp.md](build-mcp.md) |

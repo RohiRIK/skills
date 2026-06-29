@@ -5,7 +5,7 @@ All notable changes to this skills library. Format loosely follows [Keep a Chang
 ## 2026-06-29 — Workflows + CreateMcp
 
 ### Added
-- **`workflows/`** — composed skill chains documenting how to combine skills into full jobs, **one document per workflow**, in two families. Build & ship: `ship-fast`, `spec-to-ship`, `research-to-build`, `research-to-report`, `onboard`, `build-cli`, `build-mcp`, `ui-feature`, `api-feature`, `security-pass`, `context-diet`, `repo-hygiene`. Maintain the library: `new-skill-quick`, `new-skill-heavy`, `canonicalize-skill`, `fix-trigger`, `autonomous-loop`, `library-audit`, `batch-build`, `release`. Indexed by `workflows/README.md`; pointers added to `README.md` + `CLAUDE.md`.
+- **`workflows/`** — composed skill chains documenting how to combine skills into full jobs, **one document per workflow**, in two families. Build & ship: `ship-fast`, `spec-to-ship`, `research-to-build`, `research-to-report`, `research-to-buy`, `onboard`, `build-cli`, `build-mcp`, `ui-feature`, `api-feature`, `security-pass`, `context-diet`, `repo-hygiene`. Maintain the library: `new-skill-quick`, `new-skill-heavy`, `canonicalize-skill`, `fix-trigger`, `autonomous-loop`, `library-audit`, `batch-build`, `release`. Indexed by `workflows/README.md`; pointers added to `README.md` + `CLAUDE.md`.
 - **CreateMcp** — `Threats.md` (OWASP LLM × MCP, CoSAI, tool poisoning) and `Workflows/TestServer.md` (mcp-testing-kit + Inspector CLI + security suite), both wired into routing.
 
 ### Changed
