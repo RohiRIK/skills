@@ -16,11 +16,11 @@ tmp/
 node_modules/
 *.xlsx
 
-# build staging (donor downloads, zips)
-doc/_donor/
-doc/skills-update/
-doc/skills-update.zip
-doc/files.zip
+# Personal one-off report scripts (hardcoded private paths — not library material)
+DataReportBuilder/Tools/build-*-report.ts
+
+# build staging (donor downloads, zips, scratch)
+doc/
 docs/files.zip
 skills-update.zip
 .agent-state.md
