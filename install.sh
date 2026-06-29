@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # install.sh — onboard this skills repo into your AI tools.
-# Symlinks every skill folder into ~/.claude/skills (and opencode's path if present).
+# Symlinks every skill folder (skills/*) into ~/.claude/skills (and opencode's path if present).
 # Idempotent: existing correct links are left alone; existing real dirs are skipped with a warning.
 set -euo pipefail
 
@@ -11,10 +11,9 @@ OPENCODE_DIR="$HOME/.config/opencode/skills"
 link_into() {
   local dest_root="$1"
   mkdir -p "$dest_root"
-  for src in "$REPO_DIR"/*/; do
+  for src in "$REPO_DIR"/skills/*/; do
     src="${src%/}"
     local name; name="$(basename "$src")"
-    [ "$name" = "assets" ] && continue
     [ -f "$src/SKILL.md" ] || continue
     local dest="$dest_root/$name"
     if [ -L "$dest" ]; then

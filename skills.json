@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-06-27T19:20:35Z",
+  "generated": "2026-06-29T07:21:03Z",
   "skills": [
     {
       "name": "agy",
-      "path": "Agy/",
+      "path": "skills/Agy/",
       "category": "delegation",
       "effort": "medium",
       "tier": "C-auto",
@@ -15,7 +15,7 @@
     },
     {
       "name": "Art",
-      "path": "Art/",
+      "path": "skills/Art/",
       "category": "visual",
       "effort": "high",
       "tier": "C-auto",
@@ -24,7 +24,7 @@
     },
     {
       "name": "BackendDesign",
-      "path": "BackendDesign/",
+      "path": "skills/BackendDesign/",
       "category": "reference",
       "effort": "low",
       "tier": "A-reference",
@@ -33,7 +33,7 @@
     },
     {
       "name": "Build",
-      "path": "Build/",
+      "path": "skills/Build/",
       "category": "workflow",
       "effort": "medium",
       "tier": "A-reference",
@@ -42,7 +42,7 @@
     },
     {
       "name": "CodebaseOnboarding",
-      "path": "CodebaseOnboarding/",
+      "path": "skills/CodebaseOnboarding/",
       "category": "workflow",
       "effort": "medium",
       "tier": "C-auto",
@@ -51,7 +51,7 @@
     },
     {
       "name": "CodingStandards",
-      "path": "CodingStandards/",
+      "path": "skills/CodingStandards/",
       "category": "reference",
       "effort": "low",
       "tier": "A-reference",
@@ -60,7 +60,7 @@
     },
     {
       "name": "ContextBudget",
-      "path": "ContextBudget/",
+      "path": "skills/ContextBudget/",
       "category": "meta",
       "effort": "medium",
       "tier": "C-auto",
@@ -69,7 +69,7 @@
     },
     {
       "name": "CreateCLI",
-      "path": "CreateCLI/",
+      "path": "skills/CreateCLI/",
       "category": "meta",
       "effort": "medium",
       "tier": "C-auto",
@@ -78,7 +78,7 @@
     },
     {
       "name": "CreateMcp",
-      "path": "CreateMcp/",
+      "path": "skills/CreateMcp/",
       "category": "reference",
       "effort": "medium",
       "tier": "C-auto",
@@ -87,7 +87,7 @@
     },
     {
       "name": "CreateSkill",
-      "path": "CreateSkill/",
+      "path": "skills/CreateSkill/",
       "category": "meta",
       "effort": "medium",
       "tier": "C-auto",
@@ -96,7 +96,7 @@
     },
     {
       "name": "data-report-builder",
-      "path": "DataReportBuilder/",
+      "path": "skills/DataReportBuilder/",
       "category": "workflow",
       "effort": "medium",
       "tier": "C-auto",
@@ -105,7 +105,7 @@
     },
     {
       "name": "docker-patterns",
-      "path": "DockerPatterns/",
+      "path": "skills/DockerPatterns/",
       "category": "reference",
       "effort": "low",
       "tier": "A-reference",
@@ -114,7 +114,7 @@
     },
     {
       "name": "FrontendAesthetics",
-      "path": "FrontendAesthetics/",
+      "path": "skills/FrontendAesthetics/",
       "category": "reference",
       "effort": "low",
       "tier": "C-auto",
@@ -123,7 +123,7 @@
     },
     {
       "name": "FrontendDesign",
-      "path": "FrontendDesign/",
+      "path": "skills/FrontendDesign/",
       "category": "reference",
       "effort": "low",
       "tier": "A-reference",
@@ -132,7 +132,7 @@
     },
     {
       "name": "GitHubOps",
-      "path": "GitHubOps/",
+      "path": "skills/GitHubOps/",
       "category": "workflow",
       "effort": "medium",
       "tier": "C-auto",
@@ -141,7 +141,7 @@
     },
     {
       "name": "GitWorkflow",
-      "path": "GitWorkflow/",
+      "path": "skills/GitWorkflow/",
       "category": "reference",
       "effort": "low",
       "tier": "C-auto",
@@ -150,7 +150,7 @@
     },
     {
       "name": "hygiene",
-      "path": "Hygiene/",
+      "path": "skills/Hygiene/",
       "category": "quality",
       "effort": "medium",
       "tier": "B-command",
@@ -159,7 +159,7 @@
     },
     {
       "name": "Iterate",
-      "path": "Iterate/",
+      "path": "skills/Iterate/",
       "category": "workflow",
       "effort": "medium",
       "tier": "B-command",
@@ -168,7 +168,7 @@
     },
     {
       "name": "IterativeDepth",
-      "path": "IterativeDepth/",
+      "path": "skills/IterativeDepth/",
       "category": "workflow",
       "effort": "high",
       "tier": "C-auto",
@@ -177,7 +177,7 @@
     },
     {
       "name": "opencode",
-      "path": "OpenCode/",
+      "path": "skills/OpenCode/",
       "category": "delegation",
       "effort": "medium",
       "tier": "C-auto",
@@ -186,7 +186,7 @@
     },
     {
       "name": "Orchestrate",
-      "path": "Orchestrate/",
+      "path": "skills/Orchestrate/",
       "category": "workflow",
       "effort": "high",
       "tier": "D-fork",
@@ -195,7 +195,7 @@
     },
     {
       "name": "pi",
-      "path": "Pi/",
+      "path": "skills/Pi/",
       "category": "delegation",
       "effort": "medium",
       "tier": "C-auto",
@@ -204,7 +204,7 @@
     },
     {
       "name": "Prompting",
-      "path": "Prompting/",
+      "path": "skills/Prompting/",
       "category": "prompting",
       "effort": "low",
       "tier": "A-reference",
@@ -213,7 +213,7 @@
     },
     {
       "name": "Reflect",
-      "path": "Reflect/",
+      "path": "skills/Reflect/",
       "category": "quality",
       "effort": "low",
       "tier": "C-auto",
@@ -222,7 +222,7 @@
     },
     {
       "name": "Research",
-      "path": "Research/",
+      "path": "skills/Research/",
       "category": "workflow",
       "effort": "medium",
       "tier": "B-command",
@@ -231,7 +231,7 @@
     },
     {
       "name": "SecurityReview",
-      "path": "SecurityReview/",
+      "path": "skills/SecurityReview/",
       "category": "quality",
       "effort": "high",
       "tier": "D-fork",
@@ -240,7 +240,7 @@
     },
     {
       "name": "Simplify",
-      "path": "Simplify/",
+      "path": "skills/Simplify/",
       "category": "quality",
       "effort": "low",
       "tier": "A-reference",
@@ -249,7 +249,7 @@
     },
     {
       "name": "SkillForge",
-      "path": "SkillForge/",
+      "path": "skills/SkillForge/",
       "category": "meta",
       "effort": "medium",
       "tier": "C-auto",
@@ -258,7 +258,7 @@
     },
     {
       "name": "Spec",
-      "path": "Spec/",
+      "path": "skills/Spec/",
       "category": "workflow",
       "effort": "medium",
       "tier": "A-reference",
@@ -267,7 +267,7 @@
     },
     {
       "name": "StrategicCompact",
-      "path": "StrategicCompact/",
+      "path": "skills/StrategicCompact/",
       "category": "reference",
       "effort": "low",
       "tier": "A-reference",
@@ -276,7 +276,7 @@
     },
     {
       "name": "TddWorkflow",
-      "path": "TddWorkflow/",
+      "path": "skills/TddWorkflow/",
       "category": "workflow",
       "effort": "medium",
       "tier": "C-auto",
@@ -285,7 +285,7 @@
     },
     {
       "name": "Test",
-      "path": "Test/",
+      "path": "skills/Test/",
       "category": "workflow",
       "effort": "medium",
       "tier": "A-reference",
@@ -294,7 +294,7 @@
     },
     {
       "name": "Verify",
-      "path": "Verify/",
+      "path": "skills/Verify/",
       "category": "quality",
       "effort": "medium",
       "tier": "B-command",

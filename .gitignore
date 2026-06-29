@@ -17,7 +17,7 @@ node_modules/
 *.xlsx
 
 # Personal one-off report scripts (hardcoded private paths — not library material)
-DataReportBuilder/Tools/build-*-report.ts
+skills/DataReportBuilder/Tools/build-*-report.ts
 
 # build staging (donor downloads, zips, scratch)
 doc/

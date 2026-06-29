@@ -1,22 +1,23 @@
 # Skills — personal Agent Skills library
 
-A personal library of reusable Agent Skills. Each subfolder at the repo root is one self-contained skill (its own `SKILL.md` plus any supporting files). [README.md](README.md) is the skill index.
+A personal library of reusable Agent Skills. Each subfolder under `skills/` is one self-contained skill (its own `SKILL.md` plus any supporting files). [README.md](README.md) is the skill index.
 
 ## Repo layout
 
 ```
-<SkillName>/         ← one folder per skill (TitleCase, matches ~/.claude/skills)
+skills/<SkillName>/   ← one folder per skill (TitleCase, matches ~/.claude/skills)
   SKILL.md           ← required: frontmatter (name, description, category, effort) + instructions
   Workflows/*.md     ← optional: execution procedures
   Tools/*            ← optional: executable scripts
   *.md               ← optional: context files (in skill root)
+workflows/           ← composed skill chains (one doc per workflow) — see workflows/README.md
 rules/system.md      ← canonical spec for how the skill system works (READ THIS)
 _state/              ← state-file + execution-log conventions
 README.md            ← skill index
 CLAUDE.md            ← this file — auto-loaded by Claude Code
 AGENTS.md            ← brief for non-Claude-Code tools
 INSTALL-AI.md        ← install guide
-install.sh           ← symlinks all skills into ~/.claude/skills
+install.sh           ← symlinks skills/* into ~/.claude/skills
 ```
 
 ## How the system works → rules/system.md

@@ -42,13 +42,13 @@ The sections below are the manual equivalents, per tool.
 git clone https://github.com/RohiRIK/skills.git ~/rohi-skills
 
 # 2a. Link one skill  (replace Art with any skill folder name)
-ln -s ~/rohi-skills/Art ~/.claude/skills/Art
-ln -s ~/rohi-skills/Art ~/.config/opencode/skills/Art  # opencode
+ln -s ~/rohi-skills/skills/Art ~/.claude/skills/Art
+ln -s ~/rohi-skills/skills/Art ~/.config/opencode/skills/Art  # opencode
 
 # 2b. Or link all skills at once (or just run ./install.sh)
-for d in ~/rohi-skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ~/.claude/skills/"$n"; done
+for d in ~/rohi-skills/skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ~/.claude/skills/"$n"; done
 mkdir -p ~/.config/opencode/skills
-for d in ~/rohi-skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ~/.config/opencode/skills/"$n"; done
+for d in ~/rohi-skills/skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ~/.config/opencode/skills/"$n"; done
 
 # 3. Verify
 test -f ~/.claude/skills/Art/SKILL.md && echo "OK"
@@ -61,10 +61,10 @@ test -f ~/.claude/skills/Art/SKILL.md && echo "OK"
 git clone https://github.com/RohiRIK/skills.git "$env:USERPROFILE\rohi-skills"
 
 # 2a. Link one skill  (replace Art with any skill folder name)
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills\Art" -Target "$env:USERPROFILE\rohi-skills\Art"
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills\Art" -Target "$env:USERPROFILE\rohi-skills\skills\Art"
 
 # 2b. Or link all skills at once
-Get-ChildItem "$env:USERPROFILE\rohi-skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
+Get-ChildItem "$env:USERPROFILE\rohi-skills\skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
   New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills\$($_.Name)" -Target $_.FullName
 }
 
@@ -89,14 +89,14 @@ Cursor loads skills as rule files (`.mdc`) inside `.cursor/rules/`. Run from you
 # Mac / Linux
 git clone https://github.com/RohiRIK/skills.git ~/rohi-skills   # skip if cloned
 mkdir -p .cursor/rules
-for d in ~/rohi-skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; cp "$d/SKILL.md" ".cursor/rules/$n.mdc"; done
+for d in ~/rohi-skills/skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; cp "$d/SKILL.md" ".cursor/rules/$n.mdc"; done
 ```
 
 ```powershell
 # Windows
 git clone https://github.com/RohiRIK/skills.git "$env:USERPROFILE\rohi-skills"   # skip if cloned
 New-Item -ItemType Directory -Force ".cursor\rules" | Out-Null
-Get-ChildItem "$env:USERPROFILE\rohi-skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
+Get-ChildItem "$env:USERPROFILE\rohi-skills\skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
   Copy-Item "$($_.FullName)\SKILL.md" ".cursor\rules\$($_.Name).mdc"
 }
 ```
@@ -113,17 +113,17 @@ VS Code Copilot natively supports the `SKILL.md` format. Link skill folders into
 # Mac / Linux — all skills, project-local
 git clone https://github.com/RohiRIK/skills.git ~/rohi-skills   # skip if cloned
 mkdir -p .github/skills
-for d in ~/rohi-skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ".github/skills/$n"; done
+for d in ~/rohi-skills/skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ".github/skills/$n"; done
 
 # Mac / Linux — all skills, personal (every project)
 mkdir -p ~/.copilot/skills
-for d in ~/rohi-skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ~/.copilot/skills/"$n"; done
+for d in ~/rohi-skills/skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; ln -s "$d" ~/.copilot/skills/"$n"; done
 ```
 
 ```powershell
 # Windows (elevated) — personal
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.copilot\skills" | Out-Null
-Get-ChildItem "$env:USERPROFILE\rohi-skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
+Get-ChildItem "$env:USERPROFILE\rohi-skills\skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
   New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.copilot\skills\$($_.Name)" -Target $_.FullName
 }
 ```
@@ -139,13 +139,13 @@ Windsurf reads project rules from `.windsurfrules` in your project root.
 ```bash
 # Mac / Linux
 git clone https://github.com/RohiRIK/skills.git ~/rohi-skills   # skip if cloned
-for d in ~/rohi-skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; cat "$d/SKILL.md" >> .windsurfrules && echo "" >> .windsurfrules; done
+for d in ~/rohi-skills/skills/*/; do n=$(basename "$d"); [ "$n" = assets ] && continue; cat "$d/SKILL.md" >> .windsurfrules && echo "" >> .windsurfrules; done
 ```
 
 ```powershell
 # Windows
 git clone https://github.com/RohiRIK/skills.git "$env:USERPROFILE\rohi-skills"   # skip if cloned
-Get-ChildItem "$env:USERPROFILE\rohi-skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
+Get-ChildItem "$env:USERPROFILE\rohi-skills\skills" -Directory | Where-Object Name -ne 'assets' | ForEach-Object {
   Get-Content "$($_.FullName)\SKILL.md" | Add-Content ".windsurfrules"
   Add-Content ".windsurfrules" ""
 }
@@ -159,7 +159,7 @@ Get-ChildItem "$env:USERPROFILE\rohi-skills" -Directory | Where-Object Name -ne 
 
 **Broken symlink (Mac/Linux):**
 ```bash
-rm ~/.claude/skills/Art && ln -s ~/rohi-skills/Art ~/.claude/skills/Art
+rm ~/.claude/skills/Art && ln -s ~/rohi-skills/skills/Art ~/.claude/skills/Art
 ```
 
 **"You do not have sufficient privilege" (Windows):** reopen PowerShell as Administrator, then retry.

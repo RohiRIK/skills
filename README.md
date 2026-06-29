@@ -7,45 +7,45 @@
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
 
-My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) — a personal library for Claude Code, opencode, and other AI coding tools. Each top-level folder is a self-contained skill package with its own `SKILL.md` and any supporting workflows, references, or scripts.
+My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) — a personal library for Claude Code, opencode, and other AI coding tools. Each folder under [`skills/`](skills) is a self-contained skill package with its own `SKILL.md` and any supporting workflows, references, or scripts.
 
 ## Skills in this repo
 
 | Skill | What it does |
 |---|---|
-| [`Agy/`](Agy) | Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (`agy`) as an autonomous worker, then monitor and report. |
-| [`Art/`](Art) | Generate images, diagrams, and visual output. Use for any visual artifact. |
-| [`BackendDesign/`](BackendDesign) | Reference for API design, database schema, and server architecture. |
-| [`Build/`](Build) | Implement plan tasks one at a time with compile and commit gates. |
-| [`CodingStandards/`](CodingStandards) | Language coding standards — TS, Python, Bash, PowerShell, Swift, Rust. |
-| [`CodebaseOnboarding/`](CodebaseOnboarding) | Analyze an unfamiliar repo → architecture map, entry points, conventions, starter CLAUDE.md. |
-| [`ContextBudget/`](ContextBudget) | Audit Claude Code context-window consumption and produce prioritized token-savings recommendations. |
-| [`CreateMcp/`](CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
-| [`CreateCLI/`](CreateCLI) | Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif), Bun-only, gated by Verify. |
-| [`CreateSkill/`](CreateSkill) | Build and maintain skills in canonical structure. |
-| [`DataReportBuilder/`](DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
-| [`DockerPatterns/`](DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
-| [`FrontendDesign/`](FrontendDesign) | Reference for React and Next.js component design patterns. |
-| [`FrontendAesthetics/`](FrontendAesthetics) | Anti-slop visual direction — typography, color, hierarchy, motion — so UI looks intentional, not AI-generated. |
-| [`GitWorkflow/`](GitWorkflow) | Reference for git branching, commit conventions, merge vs rebase, and conflict resolution. |
-| [`GitHubOps/`](GitHubOps) | Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. |
-| [`Hygiene/`](Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
-| [`IterativeDepth/`](IterativeDepth) | Run 2-8 multi-lens passes over a problem to surface hidden requirements; feeds `Spec`/`Orchestrate`. |
-| [`Iterate/`](Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
-| [`OpenCode/`](OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
-| [`Orchestrate/`](Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
-| [`Pi/`](Pi) | Delegate a coding/refactor/PR-review task to the Pi (pi.dev) CLI as an autonomous worker. |
-| [`Prompting/`](Prompting) | Vendor-agnostic prompt-engineering standard library for authoring prompts, skills, agents, rules. |
-| [`Reflect/`](Reflect) | Self-rate the just-finished output on five axes with evidence, then fix small gaps in place. |
-| [`Research/`](Research) | Research a question at three depths (quick / standard / deep) by delegating to Agy/OpenCode/Pi + web search, then synthesize cited findings. |
-| [`SecurityReview/`](SecurityReview) | Audit code for vulnerabilities and secrets. |
-| [`SkillForge/`](SkillForge) | Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. |
-| [`Simplify/`](Simplify) | Post-implementation dead-code cleanup (`/simplify`). |
-| [`Spec/`](Spec) | Explore code + memory, then write acceptance criteria before planning. |
-| [`StrategicCompact/`](StrategicCompact) | Reference for context-compaction strategy and timing. |
-| [`TddWorkflow/`](TddWorkflow) | Test-first development workflow. |
-| [`Test/`](Test) | Run TDD for features and bug fixes. |
-| [`Verify/`](Verify) | Six-phase quality gate (build→type→lint→test→secret→diff) ending in a READY / NOT READY verdict (`/verify`). |
+| [`Agy/`](skills/Agy) | Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (`agy`) as an autonomous worker, then monitor and report. |
+| [`Art/`](skills/Art) | Generate images, diagrams, and visual output. Use for any visual artifact. |
+| [`BackendDesign/`](skills/BackendDesign) | Reference for API design, database schema, and server architecture. |
+| [`Build/`](skills/Build) | Implement plan tasks one at a time with compile and commit gates. |
+| [`CodingStandards/`](skills/CodingStandards) | Language coding standards — TS, Python, Bash, PowerShell, Swift, Rust. |
+| [`CodebaseOnboarding/`](skills/CodebaseOnboarding) | Analyze an unfamiliar repo → architecture map, entry points, conventions, starter CLAUDE.md. |
+| [`ContextBudget/`](skills/ContextBudget) | Audit Claude Code context-window consumption and produce prioritized token-savings recommendations. |
+| [`CreateMcp/`](skills/CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
+| [`CreateCLI/`](skills/CreateCLI) | Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif), Bun-only, gated by Verify. |
+| [`CreateSkill/`](skills/CreateSkill) | Build and maintain skills in canonical structure. |
+| [`DataReportBuilder/`](skills/DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
+| [`DockerPatterns/`](skills/DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
+| [`FrontendDesign/`](skills/FrontendDesign) | Reference for React and Next.js component design patterns. |
+| [`FrontendAesthetics/`](skills/FrontendAesthetics) | Anti-slop visual direction — typography, color, hierarchy, motion — so UI looks intentional, not AI-generated. |
+| [`GitWorkflow/`](skills/GitWorkflow) | Reference for git branching, commit conventions, merge vs rebase, and conflict resolution. |
+| [`GitHubOps/`](skills/GitHubOps) | Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. |
+| [`Hygiene/`](skills/Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
+| [`IterativeDepth/`](skills/IterativeDepth) | Run 2-8 multi-lens passes over a problem to surface hidden requirements; feeds `Spec`/`Orchestrate`. |
+| [`Iterate/`](skills/Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
+| [`OpenCode/`](skills/OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
+| [`Orchestrate/`](skills/Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
+| [`Pi/`](skills/Pi) | Delegate a coding/refactor/PR-review task to the Pi (pi.dev) CLI as an autonomous worker. |
+| [`Prompting/`](skills/Prompting) | Vendor-agnostic prompt-engineering standard library for authoring prompts, skills, agents, rules. |
+| [`Reflect/`](skills/Reflect) | Self-rate the just-finished output on five axes with evidence, then fix small gaps in place. |
+| [`Research/`](skills/Research) | Research a question at three depths (quick / standard / deep) by delegating to Agy/OpenCode/Pi + web search, then synthesize cited findings. |
+| [`SecurityReview/`](skills/SecurityReview) | Audit code for vulnerabilities and secrets. |
+| [`SkillForge/`](skills/SkillForge) | Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. |
+| [`Simplify/`](skills/Simplify) | Post-implementation dead-code cleanup (`/simplify`). |
+| [`Spec/`](skills/Spec) | Explore code + memory, then write acceptance criteria before planning. |
+| [`StrategicCompact/`](skills/StrategicCompact) | Reference for context-compaction strategy and timing. |
+| [`TddWorkflow/`](skills/TddWorkflow) | Test-first development workflow. |
+| [`Test/`](skills/Test) | Run TDD for features and bug fixes. |
+| [`Verify/`](skills/Verify) | Six-phase quality gate (build→type→lint→test→secret→diff) ending in a READY / NOT READY verdict (`/verify`). |
 
 ## Install
 
@@ -92,7 +92,7 @@ Both are generated from each skill's frontmatter — regenerate after adding or 
 
 ## Adding a skill
 
-1. Create a folder at the repo root named after the skill.
+1. Create a folder under `skills/` named after the skill.
 2. Add a `SKILL.md` with `name`, `description`, `category`, `effort` frontmatter.
 3. Add a row to the table above.
 4. Run `./gen-manifest.sh` to regenerate `skills.json` + `llms.txt`.

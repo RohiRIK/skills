@@ -9,6 +9,7 @@ All notable changes to this skills library. Format loosely follows [Keep a Chang
 - **CreateMcp** — `Threats.md` (OWASP LLM × MCP, CoSAI, tool poisoning) and `Workflows/TestServer.md` (mcp-testing-kit + Inspector CLI + security suite), both wired into routing.
 
 ### Changed
+- **Repo restructure** — all 33 skill folders moved from the repo root into **`skills/`**. `install.sh` + `gen-manifest.sh` now scan `skills/*`; `skills.json` / `llms.txt` paths are `skills/<Name>/`; README, CLAUDE.md, AGENTS.md, INSTALL-AI.md updated. `workflows/`, `rules/`, `_state/`, `assets/` stay at root. **Re-run `install.sh` to relink** (old symlinks dangle after the move).
 - **CreateMcp** — `SKILL.md` slimmed 74 → 48 lines to meet the ≤50-line canon (dupe Pipeline/Decide sections dropped, examples relocated to `BuildServer.md`); expanded `Security.md` pre-ship gates.
 - `.gitignore` consolidated — collapsed granular `doc/` staging rules into a single `doc/` guard; ignore personal `DataReportBuilder/Tools/build-*-report.ts` (hardcoded private paths).
 

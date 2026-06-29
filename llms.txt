@@ -1,6 +1,6 @@
 # Skills — personal Agent Skills library
 
-> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder at the repo root with a `SKILL.md` (frontmatter: name, description, category, effort + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, IterativeDepth, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
+> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder under `skills/` with a `SKILL.md` (frontmatter: name, description, category, effort + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, IterativeDepth, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
 
 ## How to consume this repo (for AI agents)
 
@@ -11,51 +11,51 @@
 ## Skills by category
 
 ### workflow
-- [Build](Build/SKILL.md) — Implements plan tasks one at a time with compile and commit gates. USE WHEN building from a plan.
-- [CodebaseOnboarding](CodebaseOnboarding/SKILL.md) — Analyze an unfamiliar codebase and produce an onboarding guide — architecture map, entry points, conventions, starter CLAUDE.md. USE WHEN joining a new project or onboarding a repo.
-- [data-report-builder](DataReportBuilder/SKILL.md) — Turn a raw Excel/CSV dataset into a two-layer report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet wanting a report, analysis, summary, or breakdown.
-- [GitHubOps](GitHubOps/SKILL.md) — Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. USE WHEN clean up the repo, update the changelog, commit/push, open a PR, or cut a release. NOT FOR git branching/merge theory (use GitWorkflow).
-- [Iterate](Iterate/SKILL.md) — Refine a target across bounded passes toward a goal, with a state file and a hard exit condition. USE WHEN iterate, refine, loop, keep improving, or run until done.
-- [IterativeDepth](IterativeDepth/SKILL.md) — Run 2-8 lens passes over the same problem to surface requirements and edge cases a single angle misses. USE WHEN exploring deeper, multi-angle analysis, or surfacing hidden requirements before building.
-- [Orchestrate](Orchestrate/SKILL.md) — Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a large spec.
-- [Research](Research/SKILL.md) — Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion.
-- [Spec](Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
-- [TddWorkflow](TddWorkflow/SKILL.md) — Test-first development workflow. USE WHEN writing a feature test-first or fixing a bug with TDD.
-- [Test](Test/SKILL.md) — Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests.
+- [Build](skills/Build/SKILL.md) — Implements plan tasks one at a time with compile and commit gates. USE WHEN building from a plan.
+- [CodebaseOnboarding](skills/CodebaseOnboarding/SKILL.md) — Analyze an unfamiliar codebase and produce an onboarding guide — architecture map, entry points, conventions, starter CLAUDE.md. USE WHEN joining a new project or onboarding a repo.
+- [data-report-builder](skills/DataReportBuilder/SKILL.md) — Turn a raw Excel/CSV dataset into a two-layer report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet wanting a report, analysis, summary, or breakdown.
+- [GitHubOps](skills/GitHubOps/SKILL.md) — Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. USE WHEN clean up the repo, update the changelog, commit/push, open a PR, or cut a release. NOT FOR git branching/merge theory (use GitWorkflow).
+- [Iterate](skills/Iterate/SKILL.md) — Refine a target across bounded passes toward a goal, with a state file and a hard exit condition. USE WHEN iterate, refine, loop, keep improving, or run until done.
+- [IterativeDepth](skills/IterativeDepth/SKILL.md) — Run 2-8 lens passes over the same problem to surface requirements and edge cases a single angle misses. USE WHEN exploring deeper, multi-angle analysis, or surfacing hidden requirements before building.
+- [Orchestrate](skills/Orchestrate/SKILL.md) — Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a large spec.
+- [Research](skills/Research/SKILL.md) — Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion.
+- [Spec](skills/Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
+- [TddWorkflow](skills/TddWorkflow/SKILL.md) — Test-first development workflow. USE WHEN writing a feature test-first or fixing a bug with TDD.
+- [Test](skills/Test/SKILL.md) — Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests.
 
 ### quality
-- [hygiene](Hygiene/SKILL.md) — Audit ~/.claude for git, skill, code, and rules hygiene issues.
-- [Reflect](Reflect/SKILL.md) — Self-rate the just-finished output on five axes with evidence, then fix any gap scored ≤3. USE WHEN a non-trivial task finishes — 3+ files, a multi-step workflow, or 3+ debug attempts.
-- [SecurityReview](SecurityReview/SKILL.md) — Audits code for vulnerabilities and secrets. USE WHEN reviewing code for security issues.
-- [Simplify](Simplify/SKILL.md) — Post-implementation dead-code cleanup. USE WHEN running /simplify after finishing a feature or fix.
-- [Verify](Verify/SKILL.md) — Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate.
+- [hygiene](skills/Hygiene/SKILL.md) — Audit ~/.claude for git, skill, code, and rules hygiene issues.
+- [Reflect](skills/Reflect/SKILL.md) — Self-rate the just-finished output on five axes with evidence, then fix any gap scored ≤3. USE WHEN a non-trivial task finishes — 3+ files, a multi-step workflow, or 3+ debug attempts.
+- [SecurityReview](skills/SecurityReview/SKILL.md) — Audits code for vulnerabilities and secrets. USE WHEN reviewing code for security issues.
+- [Simplify](skills/Simplify/SKILL.md) — Post-implementation dead-code cleanup. USE WHEN running /simplify after finishing a feature or fix.
+- [Verify](skills/Verify/SKILL.md) — Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate.
 
 ### reference
-- [BackendDesign](BackendDesign/SKILL.md) — Reference for API design, database schema, and server architecture.
-- [CodingStandards](CodingStandards/SKILL.md) — Language coding standards (TS, Python, Bash, PowerShell, Swift, Rust). USE WHEN writing, reviewing, or scaffolding code.
-- [CreateMcp](CreateMcp/SKILL.md) — Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, and security. USE WHEN creating, scaffolding, connecting, or debugging an MCP server.
-- [docker-patterns](DockerPatterns/SKILL.md) — Reference for Docker and Docker Compose local dev patterns.
-- [FrontendAesthetics](FrontendAesthetics/SKILL.md) — Visual direction — typography, color, hierarchy, motion — so UI isn't generic AI-slop. USE WHEN make it less generic, polish the UI, looks templated/AI-made, or design direction. NOT FOR component logic, hooks, or performance (use FrontendDesign).
-- [FrontendDesign](FrontendDesign/SKILL.md) — Reference for building React/Next.js components, hooks, state, and performance. NOT FOR visual styling, typography, color, or making UI look less generic (use FrontendAesthetics).
-- [GitWorkflow](GitWorkflow/SKILL.md) — Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions. NOT FOR running gh repo operations like push/PR/release (use GitHubOps).
-- [StrategicCompact](StrategicCompact/SKILL.md) — Reference for context compaction strategy and timing guidance.
+- [BackendDesign](skills/BackendDesign/SKILL.md) — Reference for API design, database schema, and server architecture.
+- [CodingStandards](skills/CodingStandards/SKILL.md) — Language coding standards (TS, Python, Bash, PowerShell, Swift, Rust). USE WHEN writing, reviewing, or scaffolding code.
+- [CreateMcp](skills/CreateMcp/SKILL.md) — Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, and security. USE WHEN creating, scaffolding, connecting, or debugging an MCP server.
+- [docker-patterns](skills/DockerPatterns/SKILL.md) — Reference for Docker and Docker Compose local dev patterns.
+- [FrontendAesthetics](skills/FrontendAesthetics/SKILL.md) — Visual direction — typography, color, hierarchy, motion — so UI isn't generic AI-slop. USE WHEN make it less generic, polish the UI, looks templated/AI-made, or design direction. NOT FOR component logic, hooks, or performance (use FrontendDesign).
+- [FrontendDesign](skills/FrontendDesign/SKILL.md) — Reference for building React/Next.js components, hooks, state, and performance. NOT FOR visual styling, typography, color, or making UI look less generic (use FrontendAesthetics).
+- [GitWorkflow](skills/GitWorkflow/SKILL.md) — Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions. NOT FOR running gh repo operations like push/PR/release (use GitHubOps).
+- [StrategicCompact](skills/StrategicCompact/SKILL.md) — Reference for context compaction strategy and timing guidance.
 
 ### delegation
-- [agy](Agy/SKILL.md) — Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (agy) as an autonomous worker. USE WHEN delegating such a task to agy/Antigravity, or running the agy CLI.
-- [opencode](OpenCode/SKILL.md) — Delegate a coding, refactor, or PR-review task to the OpenCode CLI as an autonomous worker. USE WHEN delegating such a task to OpenCode, or running the opencode CLI.
-- [pi](Pi/SKILL.md) — Delegate a coding, refactor, or PR-review task to the Pi (pi.dev) CLI as an autonomous worker. USE WHEN delegating such a task to Pi, or running the pi CLI.
+- [agy](skills/Agy/SKILL.md) — Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (agy) as an autonomous worker. USE WHEN delegating such a task to agy/Antigravity, or running the agy CLI.
+- [opencode](skills/OpenCode/SKILL.md) — Delegate a coding, refactor, or PR-review task to the OpenCode CLI as an autonomous worker. USE WHEN delegating such a task to OpenCode, or running the opencode CLI.
+- [pi](skills/Pi/SKILL.md) — Delegate a coding, refactor, or PR-review task to the Pi (pi.dev) CLI as an autonomous worker. USE WHEN delegating such a task to Pi, or running the pi CLI.
 
 ### meta
-- [ContextBudget](ContextBudget/SKILL.md) — Audit Claude Code context-window consumption across agents, skills, MCP servers, and rules, and produce prioritized token-savings recommendations. USE WHEN context feels bloated or you want to cut token usage.
-- [CreateCLI](CreateCLI/SKILL.md) — Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif). USE WHEN create CLI, build a command-line tool, wrap an API as a CLI, or add a command. NOT FOR agent skill scaffolding (use CreateSkill). NOT FOR Python.
-- [CreateSkill](CreateSkill/SKILL.md) — Create, validate, canonicalize, test, improve, and optimize-triggers for skills. USE WHEN create/new/validate/test/improve/canonicalize a skill, or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI).
-- [SkillForge](SkillForge/SKILL.md) — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill).
+- [ContextBudget](skills/ContextBudget/SKILL.md) — Audit Claude Code context-window consumption across agents, skills, MCP servers, and rules, and produce prioritized token-savings recommendations. USE WHEN context feels bloated or you want to cut token usage.
+- [CreateCLI](skills/CreateCLI/SKILL.md) — Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif). USE WHEN create CLI, build a command-line tool, wrap an API as a CLI, or add a command. NOT FOR agent skill scaffolding (use CreateSkill). NOT FOR Python.
+- [CreateSkill](skills/CreateSkill/SKILL.md) — Create, validate, canonicalize, test, improve, and optimize-triggers for skills. USE WHEN create/new/validate/test/improve/canonicalize a skill, or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI).
+- [SkillForge](skills/SkillForge/SKILL.md) — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill).
 
 ### visual
-- [Art](Art/SKILL.md) — Generates images, diagrams, and visual output. USE WHEN producing any visual artifact.
+- [Art](skills/Art/SKILL.md) — Generates images, diagrams, and visual output. USE WHEN producing any visual artifact.
 
 ### prompting
-- [Prompting](Prompting/SKILL.md) — Vendor-agnostic prompt-engineering standard library. USE WHEN authoring or refining a prompt, system message, skill, agent instruction, or rule file.
+- [Prompting](skills/Prompting/SKILL.md) — Vendor-agnostic prompt-engineering standard library. USE WHEN authoring or refining a prompt, system message, skill, agent instruction, or rule file.
 
 ## Key docs
 

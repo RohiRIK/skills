@@ -1,6 +1,6 @@
 # Skills — personal Agent Skills library
 
-Personal library of reusable Agent Skills. Each subfolder is one skill.
+Personal library of reusable Agent Skills. Each subfolder under `skills/` is one skill.
 
 ## Your role
 
@@ -12,7 +12,7 @@ Help add and maintain skills correctly. Apply the rules below on every skill-cre
 
 ## Rules (essentials)
 
-- Each skill is a folder at the repo root with a `SKILL.md` carrying `name`, `description` (WHAT + WHEN, ≤30 words), `category` (`workflow·reference·delegation·meta·visual·prompting·quality`), and `effort` (`low·medium·high`).
+- Each skill is a folder under `skills/` with a `SKILL.md` carrying `name`, `description` (WHAT + WHEN, ≤30 words), `category` (`workflow·reference·delegation·meta·visual·prompting·quality`), and `effort` (`low·medium·high`).
 - Folder + file names are TitleCase (mirror `~/.claude/skills`); the `name:` field drives activation.
 - Flat structure, 2 levels max; only `Workflows/` and `Tools/` subdirs; context files in the skill root; `SKILL.md` ≤ 50 lines.
 - Word skills via the `Prompting` skill. Reserve `CRITICAL`/`MUST`/`NEVER` for genuine safety gates.

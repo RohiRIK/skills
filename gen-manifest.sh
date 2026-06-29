@@ -9,9 +9,8 @@ cd "$REPO_DIR"
 command -v jq >/dev/null || { echo "gen-manifest: jq is required" >&2; exit 1; }
 
 skill_dirs() {
-  for d in */; do
+  for d in skills/*/; do
     d="${d%/}"
-    case "$d" in doc|docs|assets|rules|_state) continue;; esac
     [ -f "$d/SKILL.md" ] && echo "$d"
   done | sort
 }
@@ -62,7 +61,7 @@ gen_llms() {
   cat <<'HEAD'
 # Skills — personal Agent Skills library
 
-> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder at the repo root with a `SKILL.md` (frontmatter: name, description, category, effort + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, IterativeDepth, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
+> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder under `skills/` with a `SKILL.md` (frontmatter: name, description, category, effort + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, IterativeDepth, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
 
 ## How to consume this repo (for AI agents)
 
