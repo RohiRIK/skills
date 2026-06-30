@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Frontend build
+description: Full frontend feature from spec through visual direction, components, assets, tests, to ship.
+tags: [build-ship, heavy]
+chain: "/spec → FrontendAesthetics → FrontendDesign → Art → /plan → /build → /test → /simplify → Reflect → /verify → /commit-push-pr"
+---
+
 # Workflow: frontend-build
 
 Full frontend feature — from spec through visual direction, component architecture, assets, testing, to ship. The heavyweight counterpart to `ui-feature` (which is a quick polish pass).
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 /spec → FrontendAesthetics(direction) → FrontendDesign(architecture) → Art(assets) → /plan → /build → /test → /simplify → Reflect → /verify → /commit-push-pr

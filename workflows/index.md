@@ -2,9 +2,13 @@
 
 A single skill does one thing. A **workflow** wires several into a full job. **One workflow per document** — this file is the index; click through for the steps.
 
-Two families:
-- **Build & ship** — use the skills on a real project.
-- **Maintain the library** — meta chains that keep *this* repo healthy.
+This directory is an **OKF bundle** ([Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)): every workflow is a markdown *concept* with YAML frontmatter (`type: Workflow`, plus `title`, `description`, `tags`, and a `chain` field carrying the canonical skill sequence). `index.md` (this file) and `log.md` are the OKF reserved files.
+
+**A chain is executable, not descriptive.** Each step in a `chain` (e.g. `Spec`, `Verify`, `CreateMcp:BuildServer`, `/plan`) names a **skill or slash-command you must fetch and invoke** — load the skill with the Skill tool, or run the `/command`. Reading the doc is not running it. To traverse: read this index for the menu, open a concept, state its `chain` to the user, then invoke each step in order.
+
+Two families (carried in each concept's `tags`):
+- **Build & ship** (`build-ship`) — use the skills on a real project.
+- **Maintain the library** (`maintain-library`) — meta chains that keep *this* repo healthy.
 
 ## A. Build & ship
 

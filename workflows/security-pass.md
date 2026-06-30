@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Security pass
+description: Harden existing code before release — no new feature.
+tags: [build-ship]
+chain: "SecurityReview → fix CRITICAL/HIGH → Verify → GitHubOps:CommitPush"
+---
+
 # Workflow: security-pass
 
 Harden existing code before release. No new feature.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 SecurityReview → fix CRITICAL/HIGH → Verify → GitHubOps:CommitPush

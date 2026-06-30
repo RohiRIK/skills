@@ -10,7 +10,7 @@ skills/<SkillName>/   ← one folder per skill (TitleCase, matches ~/.claude/ski
   Workflows/*.md     ← optional: execution procedures
   Tools/*            ← optional: executable scripts
   *.md               ← optional: context files (in skill root)
-workflows/           ← composed skill chains (one doc per workflow) — see workflows/README.md
+workflows/           ← composed skill chains, OKF bundle (one concept per workflow) — see workflows/index.md
 rules/system.md      ← canonical spec for how the skill system works (READ THIS)
 _state/              ← state-file + execution-log conventions
 README.md            ← skill index
@@ -46,7 +46,7 @@ State:       loop/multi-pass skills share .agent-state.md
 Telemetry:   action workflows append to ~/.claude/state/execution.jsonl
 ```
 
-Composed chains live in **[workflows/](workflows)** — one document per workflow, two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, release). See `workflows/README.md` for the index.
+Composed chains live in **[workflows/](workflows)** — an **OKF bundle**, one markdown concept per workflow (YAML frontmatter: `type: Workflow`, `chain`, `tags`), two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, release). See `workflows/index.md` for the index.
 
 ## Source of truth
 

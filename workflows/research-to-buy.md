@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Research to buy
+description: Compare options before a purchase or adoption decision, then score a pick.
+tags: [build-ship, research]
+chain: "Research(deep) → comparison matrix → scored recommendation"
+---
+
 # Workflow: research-to-buy
 
 Compare options before a purchase or adoption decision — tech stack, SaaS, tools, hardware, vendors. Reuses the **Research** skill; no dedicated skill needed.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 Research(deep) → comparison matrix → scored recommendation

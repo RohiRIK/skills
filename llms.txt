@@ -7,7 +7,7 @@
 - **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, tier, workflows, and description as JSON. Parse this instead of opening every file.
 - **Per skill:** read `<SkillName>/SKILL.md` — the `description` field states WHAT it does + WHEN to use it; the `## Workflow Routing` table maps intents to `Workflows/*.md`; `## Gotchas` holds the highest-density failure knowledge; `## Examples` shows trigger->action.
 - **System model:** [rules/system.md](rules/system.md) — tier model (A/B/C/D), frontmatter contract, composition graph, state + telemetry conventions.
-- **Composed workflows:** [workflows/README.md](workflows/README.md) — multi-skill chains for full jobs (build & ship, maintain the library); each chain in its own doc. `skills.json` also carries a `workflows` array.
+- **Composed workflows:** [workflows/index.md](workflows/index.md) — an OKF bundle of multi-skill chains for full jobs (build & ship, maintain the library); each chain is one markdown concept with YAML frontmatter (`type: Workflow`, `chain`, `tags`). `skills.json` also carries a `workflows` array with each chain's `title`, `chain`, `tags`, and `summary`.
 
 ## Skills by category
 
@@ -23,7 +23,7 @@
 - [Spec](skills/Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
 - [TddWorkflow](skills/TddWorkflow/SKILL.md) — Test-first development workflow. USE WHEN writing a feature test-first or fixing a bug with TDD.
 - [Test](skills/Test/SKILL.md) — Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests.
-- [Workflows](skills/Workflows/SKILL.md) — Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job.
+- [Workflows](skills/Workflows/SKILL.md) — Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, secure, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job.
 
 ### quality
 - [hygiene](skills/Hygiene/SKILL.md) — Audit ~/.claude for git, skill, code, and rules hygiene issues.
@@ -61,35 +61,35 @@
 
 ## Workflows (composed skill chains)
 
-> Multi-skill chains for full jobs — one document per workflow. Two families: build & ship (use the skills on a project) and maintain the library (meta). Index: [workflows/README.md](workflows/README.md).
+> Multi-skill chains for full jobs, as an OKF bundle — one markdown concept per workflow with YAML frontmatter. Two families: build & ship (use the skills on a project) and maintain the library (meta). Index: [workflows/index.md](workflows/index.md).
 
-- [api-feature](workflows/api-feature.md) — A backend / API change, security-gated.
-- [autonomous-loop](workflows/autonomous-loop.md) — Hands-off improvement. Point `Iterate` at a target with a goal and an exit condition; it runs repeated PLAN → ACT → VERIFY → REFLECT passes unattended, each pass building on the last.
-- [batch-build](workflows/batch-build.md) — Build or refactor many skills (or many workflows in one skill) at once, in parallel, each reviewed in isolation.
-- [build-cli](workflows/build-cli.md) — Ship a TypeScript command-line tool.
-- [build-mcp](workflows/build-mcp.md) — Scaffold, secure, test, and connect a Model Context Protocol server.
-- [canonicalize-skill](workflows/canonicalize-skill.md) — Fix a skill's structure to conform to canon.
-- [context-diet](workflows/context-diet.md) — Cut context-window bloat. No feature change.
-- [fix-trigger](workflows/fix-trigger.md) — A skill won't activate (or mis-fires). Repair its routing.
-- [frontend-build](workflows/frontend-build.md) — Full frontend feature — from spec through visual direction, component architecture, assets, testing, to ship. The heavyweight counterpart to `ui-feature` (which is a quick polish pass).
-- [library-audit](workflows/library-audit.md) — Whole-library health sweep. Periodic.
-- [new-skill-heavy](workflows/new-skill-heavy.md) — Author a complex, multi-workflow skill where the shape isn't obvious yet.
-- [new-skill-quick](workflows/new-skill-quick.md) — Author a new skill, clear scope, single capability. Daily path.
-- [onboard](workflows/onboard.md) — Get productive in an unfamiliar repo fast, then make the first change.
-- [release](workflows/release.md) — Cut a tagged version of the library.
-- [repo-hygiene](workflows/repo-hygiene.md) — Periodic cleanup of config + project repo.
-- [research-to-build](workflows/research-to-build.md) — Understand a domain / library / API before building it.
-- [research-to-buy](workflows/research-to-buy.md) — Compare options before a purchase or adoption decision — tech stack, SaaS, tools, hardware, vendors. Reuses the **Research** skill; no dedicated skill needed.
-- [research-to-report](workflows/research-to-report.md) — Deliverable is cited findings + visuals, not code.
-- [security-pass](workflows/security-pass.md) — Harden existing code before release. No new feature.
-- [ship-fast](workflows/ship-fast.md) — Move fast — explore while you build. Scope is clear enough to start; you'll discover the details as you go. Entry: `/plan`.
-- [spec-to-ship](workflows/spec-to-ship.md) — Spec-driven build — you know exactly what to build. Entry: `/spec`.
-- [ui-feature](workflows/ui-feature.md) — A frontend change that looks intentional, not AI-slop.
+- [API feature](workflows/api-feature.md) — A backend or API change, security-gated from design to PR. · chain: BackendDesign(ref) → /spec → /build → Test → SecurityReview → GitHubOps:PullRequest
+- [Autonomous loop](workflows/autonomous-loop.md) — Hands-off improvement of a target via Iterate, with a mandatory exit condition. · chain: Iterate(target, goal, max) → [Verify + Reflect each pass] → GitHubOps:CommitPush
+- [Multi-skill batch build](workflows/batch-build.md) — Build or refactor many skills at once, in parallel, each reviewed in isolation. · chain: Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify → GitHubOps:PullRequest
+- [Build a CLI](workflows/build-cli.md) — Ship a TypeScript command-line tool, tier-picked and Verify-gated. · chain: [Research(API, if wrapping)] → CreateCLI → Test → Verify → GitHubOps:PullRequest
+- [Build an MCP server](workflows/build-mcp.md) — Scaffold, secure, test, and connect a Model Context Protocol server. · chain: CreateMcp:BuildServer → SecurityReview → CreateMcp:TestServer → CreateMcp:ConnectServer → GitHubOps:PullRequest
+- [Canonicalize a skill](workflows/canonicalize-skill.md) — Fix a skill's structure to conform to canon — naming, frontmatter, routing. · chain: CreateSkill:ValidateSkill → CreateSkill:CanonicalizeSkill → GitHubOps:CommitPush
+- [Context diet](workflows/context-diet.md) — Cut context-window bloat across agents, skills, MCP, and rules — no feature change. · chain: ContextBudget → trim agents / skills / MCP / rules → Verify
+- [Fix a skill's trigger](workflows/fix-trigger.md) — A skill won't activate or mis-fires — repair its description and routing. · chain: CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush
+- [Frontend build](workflows/frontend-build.md) — Full frontend feature from spec through visual direction, components, assets, tests, to ship. · chain: /spec → FrontendAesthetics → FrontendDesign → Art → /plan → /build → /test → /simplify → Reflect → /verify → /commit-push-pr
+- [Library-wide audit](workflows/library-audit.md) — Whole-library health sweep — agentic readiness, telemetry, canon, repo hygiene. · chain: SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush
+- [New skill — heavy](workflows/new-skill-heavy.md) — Author a complex, multi-workflow skill whose shape isn't obvious yet. · chain: IterativeDepth → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest
+- [New skill — quick](workflows/new-skill-quick.md) — Author a new skill with clear scope and a single capability. Daily path. · chain: Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush
+- [Onboard a codebase](workflows/onboard.md) — Get productive in an unfamiliar repo fast, then make the first change. · chain: CodebaseOnboarding → Research(fill gaps) → /spec (first change) → spec-to-ship
+- [Release](workflows/release.md) — Cut a tagged version of the library — hygiene, changelog, GitHub release. · chain: GitHubOps:RepoHygiene → GitHubOps:Changelog → GitHubOps:Release
+- [Repo hygiene](workflows/repo-hygiene.md) — Periodic cleanup of config and project repo — git, skills, rules, manifest drift. · chain: Hygiene → fix → GitHubOps:RepoHygiene
+- [Research to build](workflows/research-to-build.md) — Ground an unknown domain, library, or API before building against it. · chain: Research(standard|deep) → Spec → /plan → /build → Verify → GitHubOps:PullRequest
+- [Research to buy](workflows/research-to-buy.md) — Compare options before a purchase or adoption decision, then score a pick. · chain: Research(deep) → comparison matrix → scored recommendation
+- [Research to report](workflows/research-to-report.md) — Deliverable is cited findings plus visuals, not code. · chain: Research(deep) → DataReportBuilder → Art(diagrams)
+- [Security pass](workflows/security-pass.md) — Harden existing code before release — no new feature. · chain: SecurityReview → fix CRITICAL/HIGH → Verify → GitHubOps:CommitPush
+- [Ship fast](workflows/ship-fast.md) — Clear-enough scope; move fast and discover the details mid-flight. · chain: [observe] → /plan → IMPLEMENT → /capture → /simplify → /verify → /commit-push-pr
+- [Spec to ship](workflows/spec-to-ship.md) — Know exactly what to build; spec-driven build from criteria to PR. · chain: /spec → /plan → /build (or /dev) → /test → /simplify → /capture → /verify → /commit-push-pr
+- [UI feature](workflows/ui-feature.md) — A frontend change that looks intentional, not AI-slop — direction before components. · chain: FrontendAesthetics(direction) → FrontendDesign(build) → /simplify → Verify → GitHubOps:CommitPush
 
 ## Key docs
 
 - [README.md](README.md) — human-facing index + install guide
-- [workflows/README.md](workflows/README.md) — composed skill chains (one doc per workflow)
+- [workflows/index.md](workflows/index.md) — composed skill chains, OKF bundle (one concept per workflow)
 - [rules/system.md](rules/system.md) — canonical skill-system spec
 - [CLAUDE.md](CLAUDE.md) — Claude Code loader + composition map
 - [AGENTS.md](AGENTS.md) — brief for non-Claude-Code tools

@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: API feature
+description: A backend or API change, security-gated from design to PR.
+tags: [build-ship]
+chain: "BackendDesign(ref) → /spec → /build → Test → SecurityReview → GitHubOps:PullRequest"
+---
+
 # Workflow: api-feature
 
 A backend / API change, security-gated.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 BackendDesign(ref) → /spec → /build → Test → SecurityReview → GitHubOps:PullRequest

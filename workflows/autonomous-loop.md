@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Autonomous loop
+description: Hands-off improvement of a target via Iterate, with a mandatory exit condition.
+tags: [maintain-library, autonomous]
+chain: "Iterate(target, goal, max) → [Verify + Reflect each pass] → GitHubOps:CommitPush"
+---
+
 # Workflow: autonomous-loop
 
 Hands-off improvement. Point `Iterate` at a target with a goal and an exit condition; it runs repeated PLAN → ACT → VERIFY → REFLECT passes unattended, each pass building on the last.
+
+> **Run it, don't just read it.** State the chain above to the user **and name the exit condition first**, then start the loop. `Iterate`, `Verify`, `Reflect` are skills — invoke them via the Skill tool each pass; don't simulate them in prose.
 
 ```
 Iterate (target, goal, max)  →  [Verify + Reflect each pass]  →  GitHubOps:CommitPush

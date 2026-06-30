@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Multi-skill batch build
+description: Build or refactor many skills at once, in parallel, each reviewed in isolation.
+tags: [maintain-library, heavy]
+chain: "Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify → GitHubOps:PullRequest"
+---
+
 # Workflow: batch-build
 
 Build or refactor many skills (or many workflows in one skill) at once, in parallel, each reviewed in isolation.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 Spec  →  Orchestrate (Decompose → RunLayer → MergeQueue)  →  Verify  →  GitHubOps:PullRequest

@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Ship fast
+description: Clear-enough scope; move fast and discover the details mid-flight.
+tags: [build-ship, quick]
+chain: "[observe] → /plan → IMPLEMENT → /capture → /simplify → /verify → /commit-push-pr"
+---
+
 # Workflow: ship-fast
 
 Move fast — explore while you build. Scope is clear enough to start; you'll discover the details as you go. Entry: `/plan`.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 [observe] → /plan → IMPLEMENT (auto-accept: Shift+Tab×2) → /capture → /simplify → /verify → /commit-push-pr

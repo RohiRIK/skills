@@ -1,37 +1,54 @@
 ---
 name: Workflows
-description: "Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job."
+description: "Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, secure, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job."
 category: workflow
 effort: low
 ---
 
 # Workflows
 
-The library's skills compose into repeatable **chains**. A single skill does one thing; a workflow runs several in order. This skill is the router: given a task, name the workflow and run its chain.
+Skills compose into repeatable **chains** — one skill does one thing; a workflow runs several in order. The router for any developer or researcher: match the job to a chain, state it, run it. `Chains.md` carries every exact skill sequence; repo-side the chains are an **OKF bundle** (`workflows/index.md`). **Invoked without a named workflow** → present both tables below and ask which to run; **with one named** → open its doc and run its chain.
 
-Two families: **build & ship** (work on a project) and **maintain the library** (meta).
+## Build & ship software
 
-## Routing
+| Job | Workflow |
+|-----|----------|
+| Ship fast, scope clear enough, explore mid-flight | ship-fast |
+| Spec-driven build, or a bug fix | spec-to-ship |
+| Learn a domain / library / API before building | research-to-build |
+| Deliver cited findings + visuals, not code | research-to-report |
+| Compare options before buying or adopting | research-to-buy |
+| Get productive in an unfamiliar repo | onboard |
+| Build a TypeScript CLI | build-cli |
+| Build an MCP server | build-mcp |
+| Quick UI polish (anti-slop) | ui-feature |
+| Full frontend feature end-to-end | frontend-build |
+| Backend / API change, security-gated | api-feature |
+| Harden existing code before release | security-pass |
+| Cut context-window bloat | context-diet |
+| Clean up config / project repo | repo-hygiene |
 
-Pick by task. Load `Chains.md` for all 22 chains with their exact skill sequences. Full step-by-step per chain lives in the repo at `workflows/<name>.md` (index: `workflows/README.md`).
+## Author & maintain skills
 
-| Task | Workflow |
-|------|----------|
-| Ship a feature — exploring | ship-fast |
-| Ship a feature — spec-driven / bug fix | spec-to-ship |
-| Understand a domain before building | research-to-build |
-| Compare options before buying/adopting | research-to-buy |
-| Deliver findings, not code | research-to-report |
-| Join an unfamiliar repo | onboard |
-| Build a CLI / MCP server | build-cli / build-mcp |
-| UI / backend feature | ui-feature / api-feature |
-| Create / fix a skill | new-skill-quick / canonicalize-skill / fix-trigger |
-| Audit or release the library | library-audit / release |
+| Job | Workflow |
+|-----|----------|
+| New skill, clear single capability | new-skill-quick |
+| New skill, complex / shape unclear | new-skill-heavy |
+| Fix a skill's broken structure | canonicalize-skill |
+| Skill won't trigger or mis-fires | fix-trigger |
+| Improve a target hands-off (loop) | autonomous-loop |
+| Whole-library health audit | library-audit |
+| Build / refactor many skills at once | batch-build |
+| Cut a tagged release | release |
 
-→ Load **`Chains.md`** for the complete list (22) with chain arrows and when-to-use.
+**Running a chain:** open the workflow doc and state its `chain` to the user. Then **invoke each step — they are skills and slash-commands, not prose**: load each named skill with the Skill tool (or run the `/command`) and let it do the work, in order. Honor gates (e.g. `Verify` before shipping) and any loop's named exit condition.
 
 ## Gotchas
 
-- A workflow is an **ordered chain of skills**, not one skill — pick the chain, then run its skills in sequence.
 - Every autonomous loop names its **exit condition** first; no unbounded loops.
-- Auto-composition is already wired: `Iterate` calls Verify+Reflect, `Orchestrate` gates with Verify — don't re-chain those by hand.
+- `Iterate` already calls Verify+Reflect and `Orchestrate` gates with Verify — don't re-chain those by hand.
+
+## Examples
+
+- "ship a small feature fast" → ship-fast → state chain → `/plan` → IMPLEMENT → … → `/commit-push-pr`.
+- "my skill won't trigger" → fix-trigger → OptimizeDescription → TestSkill.

@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Build a CLI
+description: Ship a TypeScript command-line tool, tier-picked and Verify-gated.
+tags: [build-ship]
+chain: "[Research(API, if wrapping)] → CreateCLI → Test → Verify → GitHubOps:PullRequest"
+---
+
 # Workflow: build-cli
 
 Ship a TypeScript command-line tool.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 [Research(API, if wrapping)] → CreateCLI → Test → Verify → GitHubOps:PullRequest

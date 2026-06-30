@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: UI feature
+description: A frontend change that looks intentional, not AI-slop — direction before components.
+tags: [build-ship, quick]
+chain: "FrontendAesthetics(direction) → FrontendDesign(build) → /simplify → Verify → GitHubOps:CommitPush"
+---
+
 # Workflow: ui-feature
 
 A frontend change that looks intentional, not AI-slop.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 FrontendAesthetics(direction) → FrontendDesign(build) → /simplify → Verify → GitHubOps:CommitPush

@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Library-wide audit
+description: Whole-library health sweep — agentic readiness, telemetry, canon, repo hygiene.
+tags: [maintain-library]
+chain: "SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush"
+---
+
 # Workflow: library-audit
 
 Whole-library health sweep. Periodic.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 SkillForge(audit agentic + telemetry) → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush

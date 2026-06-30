@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Build an MCP server
+description: Scaffold, secure, test, and connect a Model Context Protocol server.
+tags: [build-ship]
+chain: "CreateMcp:BuildServer → SecurityReview → CreateMcp:TestServer → CreateMcp:ConnectServer → GitHubOps:PullRequest"
+---
+
 # Workflow: build-mcp
 
 Scaffold, secure, test, and connect a Model Context Protocol server.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 CreateMcp:BuildServer → SecurityReview → CreateMcp:TestServer → CreateMcp:ConnectServer → GitHubOps:PullRequest

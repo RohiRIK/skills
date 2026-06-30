@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Spec to ship
+description: Know exactly what to build; spec-driven build from criteria to PR.
+tags: [build-ship, heavy]
+chain: "/spec → /plan → /build (or /dev) → /test → /simplify → /capture → /verify → /commit-push-pr"
+---
+
 # Workflow: spec-to-ship
 
 Spec-driven build — you know exactly what to build. Entry: `/spec`.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 /spec → /plan → /build (or /dev) → /test → /simplify → /capture → /verify → /commit-push-pr

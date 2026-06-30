@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: New skill — quick
+description: Author a new skill with clear scope and a single capability. Daily path.
+tags: [maintain-library, quick]
+chain: "Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush"
+---
+
 # Workflow: new-skill-quick
 
 Author a new skill, clear scope, single capability. Daily path.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush

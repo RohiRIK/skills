@@ -2,12 +2,23 @@
 
 All notable changes to this skills library. Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## 2026-06-30 — Workflows → OKF bundle
+
+### Added
+- **`workflows/` is now an OKF bundle** ([Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)) — every workflow is a markdown *concept* with YAML frontmatter (`type: Workflow`, `title`, `description`, `tags`, `chain`). Reserved files `index.md` (the progressive-disclosure index, renamed from `README.md`) and `log.md` (bundle history). Each concept opens with a read-receipt step: state the `chain` before running it.
+
+### Changed
+- **`Workflows` skill made granular + general** — routing is now one row per workflow across two families (**Build & ship software**, **Author & maintain skills**), framed for any developer/researcher rather than this repo only. Invoked without a named workflow → presents the full menu and asks which to run.
+- **`gen-manifest.sh` reads workflow frontmatter** — the `workflows` array in `skills.json` now carries `title`, `tags`, `chain`, and `summary` pulled from each concept's frontmatter (was: first heading line); `workflows_index` → `workflows/index.md`. `llms.txt` lists each chain with its sequence.
+
+### Removed
+- **`/workflow` slash command** (`commands/workflow.md`) and its `install.sh` command-install plumbing — redundant with the model-invocable `Workflows` skill, which is now the sole router.
+
 ## 2026-06-29 — Workflows + CreateMcp
 
 ### Added
-- **`/workflow` slash command** (`commands/workflow.md`) — call a workflow by name (`/workflow ship-fast`) to run its chain, or `/workflow` alone to list them. `install.sh` now also symlinks `commands/*.md` into `~/.claude/commands/` (skips existing real files).
 - **Workflows** skill (`skills/Workflows/`) — installed, model-invocable router that gives an AI agent the composed chains as an actionable layer (the `workflows/` docs themselves aren't symlinked into `~/.claude`). `SKILL.md` routes a task → workflow; `Chains.md` holds all 22 chains with their skill sequences. Skill count 33 → 34.
-- **`workflows/`** — composed skill chains documenting how to combine skills into full jobs, **one document per workflow**, in two families. Build & ship: `ship-fast`, `spec-to-ship`, `research-to-build`, `research-to-report`, `research-to-buy`, `onboard`, `build-cli`, `build-mcp`, `ui-feature`, `api-feature`, `security-pass`, `context-diet`, `repo-hygiene`. Maintain the library: `new-skill-quick`, `new-skill-heavy`, `canonicalize-skill`, `fix-trigger`, `autonomous-loop`, `library-audit`, `batch-build`, `release`. Indexed by `workflows/README.md`; pointers added to `README.md` + `CLAUDE.md`.
+- **`workflows/`** — composed skill chains documenting how to combine skills into full jobs, **one document per workflow**, in two families. Build & ship: `ship-fast`, `spec-to-ship`, `research-to-build`, `research-to-report`, `research-to-buy`, `onboard`, `build-cli`, `build-mcp`, `ui-feature`, `api-feature`, `security-pass`, `context-diet`, `repo-hygiene`. Maintain the library: `new-skill-quick`, `new-skill-heavy`, `canonicalize-skill`, `fix-trigger`, `autonomous-loop`, `library-audit`, `batch-build`, `release`. Indexed by `workflows/index.md`; pointers added to `README.md` + `CLAUDE.md`.
 - **CreateMcp** — `Threats.md` (OWASP LLM × MCP, CoSAI, tool poisoning) and `Workflows/TestServer.md` (mcp-testing-kit + Inspector CLI + security suite), both wired into routing.
 
 ### Changed

@@ -1,8 +1,8 @@
 # Chains — the full workflow index
 
-Every composed chain in the library. Pick by task, run the skills left-to-right. Full step-by-step for each is in the repo at `workflows/<name>.md` (from this installed skill: `../../../workflows/<name>.md`).
+Every composed chain in the library. Pick by task, run the skills left-to-right. Full step-by-step for each is in the repo as an **OKF bundle** at `workflows/<name>.md` (from this installed skill: `../../../workflows/<name>.md`) — each doc has YAML frontmatter (`type: Workflow`, `chain`, `tags`); bundle index `workflows/index.md`. This table is the portable mirror for when the bundle isn't reachable.
 
-## A. Build & ship (use the skills on a project)
+## A. Build & ship software (developer / researcher work on a project)
 
 | Workflow | Chain | When |
 |----------|-------|------|
@@ -21,7 +21,7 @@ Every composed chain in the library. Pick by task, run the skills left-to-right.
 | **context-diet** | `ContextBudget → trim → Verify` | Cut context-window bloat. |
 | **repo-hygiene** | `Hygiene → fix → GitHubOps:RepoHygiene` | Periodic config + repo cleanup. |
 
-## B. Maintain the library (meta)
+## B. Author & maintain skills (build your own skill library — not specific to this repo)
 
 | Workflow | Chain | When |
 |----------|-------|------|

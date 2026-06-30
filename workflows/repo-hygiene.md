@@ -1,6 +1,16 @@
+---
+type: Workflow
+title: Repo hygiene
+description: Periodic cleanup of config and project repo — git, skills, rules, manifest drift.
+tags: [build-ship]
+chain: "Hygiene → fix → GitHubOps:RepoHygiene"
+---
+
 # Workflow: repo-hygiene
 
 Periodic cleanup of config + project repo.
+
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
 Hygiene → fix → GitHubOps:RepoHygiene

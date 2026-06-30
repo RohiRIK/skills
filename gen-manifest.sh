@@ -19,15 +19,15 @@ frontmatter() { awk 'NR==1&&/^---/{f=1;next} f&&/^---/{exit} f{print}' "$1"; }
 field() { printf '%s\n' "$1" | grep "^$2:" | sed "s/^$2: *//; s/^\"//; s/\"$//"; }
 esc() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
 
-# Composed workflow chains live in workflows/ (one .md per workflow, plus README index).
+# Composed workflow chains live in workflows/ — an OKF bundle (one concept .md per workflow,
+# plus the OKF reserved files index.md + log.md). Each concept carries YAML frontmatter.
 workflow_docs() {
   for f in workflows/*.md; do
-    [ "$(basename "$f")" = "README.md" ] && continue
+    case "$(basename "$f")" in index.md|log.md) continue ;; esac
     [ -f "$f" ] && echo "$f"
   done | sort
 }
 wf_name() { basename "$1" .md; }
-wf_desc() { awk '/^# /{f=1;next} f&&NF{print;exit}' "$1"; }
 
 tier_of() {
   local fm="$1"
@@ -63,15 +63,21 @@ gen_json() {
   done
   echo '    }'
   echo '  ],'
-  echo '  "workflows_index": "workflows/README.md",'
+  echo '  "workflows_index": "workflows/index.md",'
   echo '  "workflows": ['
-  local wf_first=1 f wname wdesc
+  local wf_first=1 f wname wfm wtitle wdesc wchain wtags
   for f in $(workflow_docs); do
-    wname="$(wf_name "$f")"; wdesc="$(wf_desc "$f")"
+    wname="$(wf_name "$f")"
+    wfm="$(frontmatter "$f")"
+    wtitle="$(field "$wfm" title)"; wdesc="$(field "$wfm" description)"
+    wchain="$(field "$wfm" chain)"; wtags="$(field "$wfm" tags)"
     [ $wf_first -eq 0 ] && echo '    },'; wf_first=0
     echo '    {'
     echo "      \"name\": \"$(esc "$wname")\","
+    echo "      \"title\": \"$(esc "$wtitle")\","
     echo "      \"path\": \"$f\","
+    echo "      \"tags\": \"$(esc "$wtags")\","
+    echo "      \"chain\": \"$(esc "$wchain")\","
     echo "      \"summary\": \"$(esc "$wdesc")\""
   done
   echo '    }'
@@ -91,7 +97,7 @@ gen_llms() {
 - **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, tier, workflows, and description as JSON. Parse this instead of opening every file.
 - **Per skill:** read `<SkillName>/SKILL.md` — the `description` field states WHAT it does + WHEN to use it; the `## Workflow Routing` table maps intents to `Workflows/*.md`; `## Gotchas` holds the highest-density failure knowledge; `## Examples` shows trigger->action.
 - **System model:** [rules/system.md](rules/system.md) — tier model (A/B/C/D), frontmatter contract, composition graph, state + telemetry conventions.
-- **Composed workflows:** [workflows/README.md](workflows/README.md) — multi-skill chains for full jobs (build & ship, maintain the library); each chain in its own doc. `skills.json` also carries a `workflows` array.
+- **Composed workflows:** [workflows/index.md](workflows/index.md) — an OKF bundle of multi-skill chains for full jobs (build & ship, maintain the library); each chain is one markdown concept with YAML frontmatter (`type: Workflow`, `chain`, `tags`). `skills.json` also carries a `workflows` array with each chain's `title`, `chain`, `tags`, and `summary`.
 
 ## Skills by category
 HEAD
@@ -105,16 +111,16 @@ HEAD
   echo ""
   echo "## Workflows (composed skill chains)"
   echo ""
-  echo "> Multi-skill chains for full jobs — one document per workflow. Two families: build & ship (use the skills on a project) and maintain the library (meta). Index: [workflows/README.md](workflows/README.md)."
+  echo "> Multi-skill chains for full jobs, as an OKF bundle — one markdown concept per workflow with YAML frontmatter. Two families: build & ship (use the skills on a project) and maintain the library (meta). Index: [workflows/index.md](workflows/index.md)."
   echo ""
-  jq -r '.workflows[] | "- [\(.name)](\(.path)) — \(.summary)"' skills.json
+  jq -r '.workflows[] | "- [\(.title)](\(.path)) — \(.summary) · chain: \(.chain)"' skills.json
 
   cat <<'FOOT'
 
 ## Key docs
 
 - [README.md](README.md) — human-facing index + install guide
-- [workflows/README.md](workflows/README.md) — composed skill chains (one doc per workflow)
+- [workflows/index.md](workflows/index.md) — composed skill chains, OKF bundle (one concept per workflow)
 - [rules/system.md](rules/system.md) — canonical skill-system spec
 - [CLAUDE.md](CLAUDE.md) — Claude Code loader + composition map
 - [AGENTS.md](AGENTS.md) — brief for non-Claude-Code tools
