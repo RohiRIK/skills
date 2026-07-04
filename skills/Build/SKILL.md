@@ -3,7 +3,6 @@ name: Build
 description: "Implements plan tasks one at a time with compile and commit gates. USE WHEN building from a plan."
 category: workflow
 effort: medium
-user-invocable: false
 ---
 
 # Build
