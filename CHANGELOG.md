@@ -2,6 +2,20 @@
 
 All notable changes to this skills library. Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## 2026-07-04 — Fleet audit: broken refs repaired, triggers fixed, big skills split
+
+Library-wide SKILL.md audit (all 34 skills scanned for frontmatter validity, trigger quality, and dangling references) — re-scan reports zero issues.
+
+### Fixed
+- **Broken internal references**: Art routed to a deleted `YouTubeThumbnail.md` workflow; CodingStandards routed to a nonexistent `Workflows/Review.md` and six nonexistent `StarterTemplates/*.md` paths (files exist flat as `StarterTemplateX.md`).
+- **Six frontmatter names didn't match their directory** (DockerPatterns, DataReportBuilder, Hygiene, Pi, Agy, OpenCode) — normalized to the PascalCase house convention.
+- **Five descriptions lacked USE WHEN triggers** (StrategicCompact, BackendDesign, DockerPatterns, FrontendDesign, Hygiene) — Hygiene in particular never triggered despite covering config audits.
+
+### Changed
+- **GitWorkflow** split: 15.4KB monolithic SKILL.md → 2.5KB router + six on-demand `References/*.md` (branching, commits, merge/rebase, PRs, releases, config).
+- **CodebaseOnboarding** split: embedded output templates moved to `Templates/`; SKILL.md 239→155 lines.
+- **Build, Spec, Test, Simplify** are now user-invocable (`user-invocable: false` removed) — their `~/.claude` command wrappers pointed at long-renamed skill names and were deleted.
+
 ## 2026-06-30 — Workflows → OKF bundle
 
 ### Added
