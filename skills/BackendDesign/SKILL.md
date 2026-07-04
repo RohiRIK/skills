@@ -1,6 +1,6 @@
 ---
 name: BackendDesign
-description: "Reference for API design, database schema, and server architecture."
+description: "Reference for API design, database schema, and server architecture. USE WHEN designing an API, modeling a schema, or structuring a backend service."
 category: reference
 effort: low
 user-invocable: false

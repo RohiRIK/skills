@@ -1,6 +1,6 @@
 ---
-name: docker-patterns
-description: "Reference for Docker and Docker Compose local dev patterns."
+name: DockerPatterns
+description: "Reference for Docker and Docker Compose local dev patterns. USE WHEN writing a Dockerfile or compose file, or containerizing local dev."
 category: reference
 effort: low
 user-invocable: false

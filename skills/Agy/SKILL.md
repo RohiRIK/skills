@@ -1,5 +1,5 @@
 ---
-name: agy
+name: Agy
 description: "Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (agy) as an autonomous worker. USE WHEN delegating such a task to agy/Antigravity, or running the agy CLI."
 category: delegation
 effort: medium

@@ -1,5 +1,5 @@
 ---
-name: pi
+name: Pi
 description: "Delegate a coding, refactor, or PR-review task to the Pi (pi.dev) CLI as an autonomous worker. USE WHEN delegating such a task to Pi, or running the pi CLI."
 category: delegation
 effort: medium

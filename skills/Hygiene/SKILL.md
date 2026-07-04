@@ -1,6 +1,6 @@
 ---
-name: hygiene
-description: "Audit ~/.claude for git, skill, code, and rules hygiene issues."
+name: Hygiene
+description: "Audit ~/.claude for git, skill, code, and rules hygiene issues. USE WHEN auditing the Claude config, checking harness health, or cleaning up skills/hooks/rules."
 category: quality
 effort: medium
 disable-model-invocation: true

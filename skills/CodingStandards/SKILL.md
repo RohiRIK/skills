@@ -16,12 +16,12 @@ Load the language file first, then implement:
 
 | Language detected | Standards | Starter Template |
 |-------------------|-----------|-----------------|
-| TypeScript / JS / Bun / Hono | `TypeScript.md` | `StarterTemplates/TypeScript.md` |
-| Python / uv / pydantic | `Python.md` | `StarterTemplates/Python.md` |
-| PowerShell / Azure / Entra / Graph | `PowerShell.md` | `StarterTemplates/PowerShell.md` |
-| Bash / shell / CI | `Bash.md` | `StarterTemplates/Bash.md` |
-| Swift / AppKit / SwiftUI / macOS | `Swift.md` | `StarterTemplates/Swift.md` |
-| Rust / Cargo / Tokio / Axum | `Rust.md` | `StarterTemplates/Rust.md` |
+| TypeScript / JS / Bun / Hono | `TypeScript.md` | `StarterTemplateTypeScript.md` |
+| Python / uv / pydantic | `Python.md` | `StarterTemplatePython.md` |
+| PowerShell / Azure / Entra / Graph | `PowerShell.md` | `StarterTemplatePowerShell.md` |
+| Bash / shell / CI | `Bash.md` | `StarterTemplateBash.md` |
+| Swift / AppKit / SwiftUI / macOS | `Swift.md` | `StarterTemplateSwift.md` |
+| Rust / Cargo / Tokio / Axum | `Rust.md` | `StarterTemplateRust.md` |
 
 **Load StarterTemplates when:** user says "new project", "scaffold", "starting a project", or asks which template to use.
 **Load M365Admin.md when:** user mentions Graph API, Exchange Online, Entra ID, Teams admin, SharePoint, PnP, or M365 admin tasks.

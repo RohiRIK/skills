@@ -1,5 +1,5 @@
 ---
-name: opencode
+name: OpenCode
 description: "Delegate a coding, refactor, or PR-review task to the OpenCode CLI as an autonomous worker. USE WHEN delegating such a task to OpenCode, or running the opencode CLI."
 category: delegation
 effort: medium

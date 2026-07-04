@@ -1,6 +1,6 @@
 ---
 name: StrategicCompact
-description: "Reference for context compaction strategy and timing guidance."
+description: "Reference for context compaction strategy and timing guidance. USE WHEN deciding when or how to compact a long session, or planning context strategy."
 category: reference
 effort: low
 user-invocable: false
