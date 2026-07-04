@@ -26,17 +26,9 @@ Load the language file first, then implement:
 **Load StarterTemplates when:** user says "new project", "scaffold", "starting a project", or asks which template to use.
 **Load M365Admin.md when:** user mentions Graph API, Exchange Online, Entra ID, Teams admin, SharePoint, PnP, or M365 admin tasks.
 
-## Workflow Routing
+## Code Review
 
-**When executing a workflow, output this notification:**
-
-```
-Running the **WorkflowName** workflow from the **CodingStandards** skill...
-```
-
-| Workflow | Trigger | File |
-|----------|---------|------|
-| **Review** | "review my code", "check this code", "code review" | `Workflows/Review.md` |
+For "review my code" / "code review" requests, use the `code-review` skill (or the code-reviewer agent) — this skill supplies the standards it checks against.
 
 ## Quick Reference
 
