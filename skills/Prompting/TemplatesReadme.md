@@ -1,11 +1,11 @@
-# PAI Templating System
+# Templating System
 
 **Version:** 1.0.0
 **Rollback Point:** v2.5.0
 
 ## Overview
 
-The PAI templating system enables **prompts that write prompts**—dynamic composition where structure is fixed but content is parameterized. Based on Anthropic's official `{{variable}}` syntax and industry best practices.
+This templating system enables **prompts that write prompts**—dynamic composition where structure is fixed but content is parameterized. Based on Anthropic's official `{{variable}}` syntax and industry best practices.
 
 ## Directory Structure
 
@@ -36,7 +36,7 @@ Templates/
 
 ## Core Syntax
 
-PAI uses Handlebars notation for template variables:
+Templates use Handlebars notation for template variables:
 
 | Syntax | Purpose | Example |
 |--------|---------|---------|

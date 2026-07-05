@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-07-05T11:17:32Z",
+  "generated": "2026-07-05T11:28:49Z",
   "skills": [
     {
       "name": "agy",
@@ -20,7 +20,7 @@
       "effort": "high",
       "tier": "C-auto",
       "workflows": "AdHocYouTubeThumbnail,AnnotatedScreenshots,Aphorisms,Comics,Comparisons,D3Dashboards,Essay,Frameworks,Maps,Mermaid,RecipeCards,RemoveBackground,Stats,Taxonomies,TechnicalDiagrams,Timelines,Visualize,YouTubeThumbnailChecklist",
-      "description": "Generates images, diagrams, and visual output. USE WHEN producing any visual artifact."
+      "description": "Generates images, diagrams, and visual output. USE WHEN producing any visual artifact — illustration, diagram, chart, thumbnail, card. NOT FOR in-app chart components (use the dataviz skill)."
     },
     {
       "name": "BackendDesign",

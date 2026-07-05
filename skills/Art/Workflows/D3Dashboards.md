@@ -44,19 +44,18 @@ Creates sophisticated, interactive data visualizations using D3.js for dashboard
 
 ---
 
-## Color Palette (PAI Standard)
+## Color Palette
 
-**Primary Colors:**
+Derive the palette from the subject per the OKLCH method in `FrontendAesthetics/Craft.md` — base hue from the subject's world, neutrals at whisper chroma, one deliberate accent. No default purple (top AI tell). When the dashboard belongs to a project with a `design-brief.md`, use its tokens verbatim.
+
 ```
-Deep Purple: #4A148C   - Brand accent
-Deep Teal:   #00796B   - Secondary accent
-Charcoal:    #2D2D2D   - Text and lines
+Text/lines: oklch(0.28 0.01 <base-hue>)   Accent: derived, ≤5% of painted area
 ```
 
-**Data Visualization Colors:**
+**Data scale colors** (these encode data, not brand — keep them perceptual):
 - Sequential scales for continuous data: `d3.interpolateViridis`, `d3.interpolatePlasma`
-- Categorical scales for discrete data: `d3.schemeCategory10`, `d3.schemeSet3`
-- Maintain accessibility with sufficient contrast
+- Categorical scales for discrete data: `d3.schemeTableau10` (better contrast spread than `schemeCategory10`)
+- Every pairing passes WCAG AA against its background
 
 **Typography:**
 - System fonts: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto`

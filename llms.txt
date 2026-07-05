@@ -54,7 +54,7 @@
 - [SkillForge](skills/SkillForge/SKILL.md) — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill).
 
 ### visual
-- [Art](skills/Art/SKILL.md) — Generates images, diagrams, and visual output. USE WHEN producing any visual artifact.
+- [Art](skills/Art/SKILL.md) — Generates images, diagrams, and visual output. USE WHEN producing any visual artifact — illustration, diagram, chart, thumbnail, card. NOT FOR in-app chart components (use the dataviz skill).
 
 ### prompting
 - [Prompting](skills/Prompting/SKILL.md) — Vendor-agnostic prompt-engineering standard library. USE WHEN authoring or refining a prompt, system message, skill, agent instruction, or rule file.

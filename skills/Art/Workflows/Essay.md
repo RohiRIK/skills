@@ -763,7 +763,7 @@ open /path/to/generated-image.png
 - [ ] **FULL FRAME** — subjects nearly touch all edges, NO large empty margins
 - [ ] **SUBJECTS LARGE** — dominant, filling the available space
 - [ ] **NO BACKGROUND FILL** — floats in empty/transparent space (but subjects are LARGE)
-- [ ] **KAI SIGNATURE** — small cursive charcoal in BOTTOM RIGHT CORNER
+- [ ] **SIGNATURE** — small cursive charcoal in BOTTOM RIGHT CORNER (if requested)
 - [ ] **MARGIN CHECK** — is there more than 20% empty space on any edge? If yes, REGENERATE
 
 **QUALITY (all required):**
