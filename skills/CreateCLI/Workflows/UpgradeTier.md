@@ -10,7 +10,7 @@ purpose: Migrate CLI from Tier 1 (manual) to Tier 2 (Commander.js)
 
 ## 🎯 PURPOSE
 
-Convert Tier 1 CLI (llcli-style) to Tier 2 (Commander.js) when complexity demands it.
+Convert Tier 1 CLI (minimal parseArgs pattern) to Tier 2 (Commander.js) when complexity demands it.
 
 ---
 

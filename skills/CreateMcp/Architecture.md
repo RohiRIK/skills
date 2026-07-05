@@ -27,13 +27,13 @@ The SDK abstracts most of this — you register primitives and pick a transport.
 | Transport | When | Auth |
 |-----------|------|------|
 | **stdio** | Server runs locally as a subprocess of the host. Default, simplest, no network. | OS process boundary |
-| **Streamable HTTP** | Server is hosted / shared over a network. | OAuth 2.0 — see `Security.md` |
+| **Streamable HTTP** | Server is hosted / shared over a network. | OAuth 2.1 — see `Security.md` |
 
 Default to stdio for personal/local servers.
 
 ## Lifecycle
 
-1. **Initialize** — client sends `initialize` with its `protocolVersion` (e.g. `2025-06-18`), `capabilities`, and `clientInfo`. Server replies with its own. **If no mutually compatible protocol version is negotiated, terminate the connection.**
+1. **Initialize** — client sends `initialize` with its `protocolVersion` (e.g. `2025-11-25`), `capabilities`, and `clientInfo`. Server replies with its own. **If no mutually compatible protocol version is negotiated, terminate the connection.**
 2. **Capability negotiation** — each side declares what it supports. Examples:
    - Server: `"tools": { "listChanged": true }` → supports tools *and* will emit `tools/list_changed` notifications.
    - Server: `"resources": {}` → supports resources, no change notifications.

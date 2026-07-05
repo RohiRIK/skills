@@ -6,10 +6,9 @@
 
 ## Step 1: Load Reference Docs
 
-```
-SkillSearch('createskill conventions')   → loads Conventions.md (structure rules)
-SkillSearch('createskill frontmatter')   → loads Frontmatter.md (tier system + fields)
-```
+Read these context files with the Read tool before making changes:
+- `Conventions.md` (structure rules)
+- `Frontmatter.md` (tier system + fields)
 
 ---
 

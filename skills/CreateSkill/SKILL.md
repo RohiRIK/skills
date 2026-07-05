@@ -1,6 +1,6 @@
 ---
 name: CreateSkill
-description: "Create, validate, canonicalize, test, improve, and optimize-triggers for skills. USE WHEN create/new/validate/test/improve/canonicalize a skill, or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI)."
+description: "Create, validate, and improve individual skills. USE WHEN create/validate/improve a skill or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI) or whole-library audits (use SkillForge)."
 category: meta
 effort: medium
 ---
@@ -45,16 +45,4 @@ Canon lives in context files: `Conventions.md` (structure), `Frontmatter.md` (ti
 User: "Create a skill for managing my recipes"
 → CreateSkill workflow → classify type → scaffold TitleCase dir + SKILL.md + Workflows/
 → Suggests TestSkill to verify it helps
-```
-
-**Example 2: Skill isn't routing**
-```
-User: "The Research skill doesn't trigger on pentesting questions"
-→ OptimizeDescription → 20 should/shouldn't queries → re-test → rewrite description
-```
-
-**Example 3: Validate before publishing**
-```
-User: "check the Iterate skill is canon-compliant"
-→ ValidateSkill → naming, frontmatter (incl. category/effort), Gotchas, structure → COMPLIANT / NON-COMPLIANT
 ```

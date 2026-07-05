@@ -5,7 +5,7 @@ purpose: Generate complete, production-ready TypeScript CLI from requirements
 
 # Create CLI Workflow
 
-**Generate production-quality TypeScript command-line interfaces following llcli pattern and CLI-First Architecture.**
+**Generate production-quality TypeScript command-line interfaces following the Tier 1 minimal pattern and CLI-First Architecture.**
 
 
 ## 🎯 PURPOSE
@@ -13,7 +13,7 @@ purpose: Generate complete, production-ready TypeScript CLI from requirements
 This workflow generates a complete, immediately usable TypeScript CLI tool with:
 - Full type safety and error handling
 - Comprehensive documentation (README + QUICKSTART)
-- Clean architecture (following llcli pattern)
+- Clean architecture (following the Tier 1 minimal pattern)
 - Production-ready code
 - Quality validation gates
 
@@ -26,7 +26,7 @@ Activate this workflow when user requests:
 - "Build a command-line interface"
 - "Make a CLI that does X"
 - "Generate a CLI tool"
-- "I need something like llcli but for Y"
+- "I need a zero-dependency CLI for Y"
 
 ---
 
@@ -49,7 +49,7 @@ START: User describes CLI requirements
 ├─ Does it need complex nested options? ────── YES → Tier 2 (Commander.js)
 │                                             NO  ↓
 │
-└─ Use Tier 1 (llcli-style) ← DEFAULT
+└─ Use Tier 1 (minimal, parseArgs) ← DEFAULT
    ↑
    └─ 80% of CLIs end up here
 ```
@@ -173,7 +173,7 @@ interface Config {
 
 ### Step 4: Generate Configuration Section
 
-**Pattern from llcli:**
+**Tier 1 configuration pattern:**
 
 ```typescript
 // ============================================================================
@@ -312,7 +312,7 @@ async function {{commandName}}(
 
 ### Step 6: Generate Help Documentation
 
-**Comprehensive help text following llcli pattern:**
+**Comprehensive hand-written help text (Tier 1 pattern):**
 
 ```typescript
 // ============================================================================
@@ -374,36 +374,42 @@ function showVersion(): void {
 
 ### Step 7: Generate Main Entry Point
 
-**Argument parsing and command routing:**
+**Argument parsing and command routing — default to `node:util` `parseArgs` (stable since Node 20, works in Bun), zero dependencies:**
 
 ```typescript
 // ============================================================================
 // Main CLI Entry Point
 // ============================================================================
 
-async function main() {
-  const args = process.argv.slice(2);
+import { parseArgs } from 'node:util';
 
-  // Handle help/version
-  if (args.length === 0 || args[0] === 'help' || args[0] === '--help' || args[0] === '-h') {
+async function main() {
+  const { values, positionals } = parseArgs({
+    args: process.argv.slice(2),
+    allowPositionals: true,
+    options: {
+      help: { type: 'boolean', short: 'h' },
+      version: { type: 'boolean', short: 'v' },
+      limit: { type: 'string' },
+      {{OPTION_DEFS}}
+    },
+  });
+
+  const command = positionals[0];
+
+  if (values.help || !command || command === 'help') {
     showHelp();
     return;
   }
 
-  if (args[0] === 'version' || args[0] === '--version' || args[0] === '-v') {
+  if (values.version || command === 'version') {
     showVersion();
     return;
   }
 
-  const command = args[0];
-
-  // Parse common options (e.g., --limit)
-  const limitIndex = args.indexOf('--limit');
-  const limit = limitIndex !== -1 && args[limitIndex + 1]
-    ? parseInt(args[limitIndex + 1], 10)
-    : undefined;
-
-  if (limitIndex !== -1 && (isNaN(limit!) || limit! <= 0)) {
+  // Validate parsed options (e.g., --limit)
+  const limit = values.limit !== undefined ? parseInt(values.limit, 10) : undefined;
+  if (values.limit !== undefined && (isNaN(limit!) || limit! <= 0)) {
     console.error('Error: --limit must be a positive number');
     process.exit(1);
   }
@@ -426,11 +432,13 @@ main().catch((error) => {
 });
 ```
 
+> Fully manual `process.argv` scanning is a fallback only for positional-heavy grammars `parseArgs` can't express (e.g. `convert <from> <to> [files...]` with interleaved flags).
+
 ---
 
 ### Step 8: Generate Documentation Files
 
-**README.md structure (following llcli):**
+**README.md structure:**
 
 ```markdown
 # {{CLI_NAME}} - {{CLI_DESCRIPTION}}
@@ -545,12 +553,18 @@ See: <output-dir>/{{CLI_NAME}}/README.md
   "scripts": {
     "help": "bun run {{CLI_NAME}}.ts --help"
   },
+  "engines": {
+    "node": ">=22.12",
+    "bun": ">=1.0"
+  },
   "keywords": [{{KEYWORDS}}],
   "author": "",
   "license": "MIT",
   "dependencies": {}
 }
 ```
+
+> Bin-only CLIs don't need an `"exports"` field — add one only if the package also exposes an importable API surface.
 
 **tsconfig.json:**
 ```json
@@ -647,7 +661,7 @@ Next steps:
 2. Test: notioncli databases
 3. Read: <output-dir>/notioncli/README.md
 
-The CLI follows llcli pattern with type safety, error handling,
+The CLI follows the Tier 1 minimal pattern with type safety, error handling,
 and comprehensive documentation.
 ```
 
@@ -656,12 +670,10 @@ and comprehensive documentation.
 ## 🔗 RELATED WORKFLOWS
 
 **After creating CLI:**
-- `add-command.md` - Add more commands to existing CLI
-- `add-testing.md` - Generate test suite
-- `setup-distribution.md` - Setup npm publishing or binary distribution
+- `AddCommand.md` - Add more commands to existing CLI
 
 **Escalation:**
-- `upgrade-tier.md` - Migrate from Tier 1 → Tier 2 if CLI grows complex
+- `UpgradeTier.md` - Migrate from Tier 1 → Tier 2 if CLI grows complex
 
 ---
 
@@ -738,8 +750,8 @@ Show real usage examples, not just flag descriptions.
 ### 7. **Test Immediately**
 Run `--help` and version command before reporting success.
 
-### 8. **Follow llcli Pattern**
-Use proven structure from <output-dir>/llcli/ as reference.
+### 8. **Follow the Tier 1 Minimal Pattern**
+Use the section templates in this workflow (Config → Types → API → Commands → Help → Entry) as the structural reference.
 
 ---
 
@@ -790,15 +802,15 @@ Before reporting CLI as complete, verify:
 - [ ] JSON output valid (test with `| jq empty`)
 - [ ] Configuration loaded from expected location
 - [ ] CLI name is kebab-case
-- [ ] Follows llcli structure pattern
+- [ ] Follows the Tier 1 structure pattern (Config → Types → API → Commands → Help → Entry)
 
 ### Workflow Integration
 - [ ] If this CLI will be called by workflows, document the intent-to-flag mapping pattern
-- [ ] Flag names match standard conventions (see CliFirstArchitecture.md)
+- [ ] Flag names match standard conventions (`--help/-h`, `--version/-v`, kebab-case long flags)
 
 ---
 
-**This workflow generates production-ready CLIs that work immediately, following the proven llcli pattern and CLI-First Architecture principles.**
+**This workflow generates production-ready CLIs that work immediately, following the Tier 1 minimal pattern and CLI-First Architecture principles.**
 
 ## Output Location (ask the user)
 

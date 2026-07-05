@@ -21,7 +21,7 @@
 
 | Framework | Stars | Bundle Size | TypeScript | Best For | Tier |
 |-----------|-------|-------------|------------|----------|----------|
-| **Manual Parsing** | N/A | 0 KB | Native | Simple CLIs (llcli) | Tier 1 ⭐ DEFAULT |
+| **Manual Parsing** | N/A | 0 KB | Native | Simple CLIs | Tier 1 ⭐ DEFAULT |
 | **Commander.js** | 25K+ | ~100 KB | Built-in | General CLIs | Tier 2 |
 | **oclif** | 12K+ | 22+ MB | First-class | Enterprise plugins | Tier 3 (ref only) |
 | **cleye** | N/A | Small | Schema inference | Modern TS CLIs | Alternative |
@@ -30,12 +30,14 @@
 
 ---
 
-## 1️⃣ TIER 1: Manual Parsing (llcli Pattern)
+## 1️⃣ TIER 1: Manual Parsing Pattern
 
-### Pattern
+### Pattern (default — `node:util` `parseArgs`, stable since Node 20, works in Bun)
 
 ```typescript
 #!/usr/bin/env bun
+
+import { parseArgs } from 'node:util';
 
 async function main() {
   const args = process.argv.slice(2);
@@ -46,22 +48,28 @@ async function main() {
   }
 
   const command = args[0];
+  const { values: options, positionals } = parseArgs({
+    args: args.slice(1),
+    options: {
+      limit: { type: 'string' },
+    },
+    allowPositionals: true,
+  });
 
   switch (command) {
     case 'today':
       await fetchToday();
       break;
     case 'date':
-      if (!args[1]) {
+      if (!positionals[0]) {
         console.error('Error: date requires YYYY-MM-DD argument');
         process.exit(1);
       }
-      await fetchDate(args[1]);
+      await fetchDate(positionals[0]);
       break;
     case 'search':
-      const keyword = args[1];
-      const limitIdx = args.indexOf('--limit');
-      const limit = limitIdx !== -1 ? parseInt(args[limitIdx + 1]) : 20;
+      const keyword = positionals[0];
+      const limit = options.limit ? parseInt(options.limit) : 20;
       await fetchSearch(keyword, limit);
       break;
     default:
@@ -76,13 +84,15 @@ main().catch(error => {
 });
 ```
 
+**Fallback:** for positional-heavy CLIs where `parseArgs`'s option schema gets in the way, hand-roll the `--flag`/positional split instead (see `Patterns.md` § Argument Parsing Pattern).
+
 ### Pros
 - ✅ Zero dependencies (no node_modules bloat)
 - ✅ Complete control over parsing logic
 - ✅ Type-safe with TypeScript interfaces
 - ✅ 300-400 lines total (easy to understand)
 - ✅ Fast development (no framework learning curve)
-- ✅ Proven pattern (llcli is production-ready)
+- ✅ Proven pattern (battle-tested in production CLIs)
 - ✅ Perfect for Bun runtime
 - ✅ Deterministic behavior
 
@@ -102,9 +112,7 @@ main().catch(error => {
 - ✅ Fast development priority
 
 ### Reference Implementation
-**Location:** `~/.claude/Bin/llcli/llcli.ts` (327 lines)
-**Commands:** today, date, search
-**Pattern:** Exactly what this tier generates
+A complete Tier 1 CLI lands at roughly 300-400 lines including help text — the pattern section below and `Patterns.md` show exactly what this tier generates.
 
 ---
 
@@ -233,7 +241,7 @@ export default class Hello extends Command {
 - ❌ Steep learning curve
 - ❌ Complex setup
 - ❌ Overkill for 99% of CLIs
-- ❌ Not aligned with PAI's minimal approach
+- ❌ Not aligned with this skill's minimal approach
 
 ### When to Reference (RARE)
 - Enterprise plugin systems (Heroku CLI scale)
@@ -342,7 +350,7 @@ runMain(convert);
 - [ ] No subcommand grouping needed
 - [ ] Zero dependencies preferred
 - [ ] Fast development critical
-- [ ] Following llcli pattern
+- [ ] Following the Tier 1 minimal pattern
 
 **→ 80% of CLIs should use Tier 1**
 
@@ -370,12 +378,12 @@ runMain(convert);
 
 ---
 
-## 🎯 llcli Pattern Analysis
+## 🎯 Tier 1 Minimal-Pattern Analysis
 
 ### Why Manual Parsing Works
 
-**llcli demonstrates:**
-1. **327 lines total** - Complete CLI with docs
+**A well-built Tier 1 CLI demonstrates:**
+1. **~300-400 lines total** - Complete CLI with docs
 2. **Zero dependencies** - No node_modules needed
 3. **Type-safe** - Full TypeScript interfaces
 4. **Production-ready** - Error handling, help, validation
@@ -389,7 +397,7 @@ runMain(convert);
 - Faster to develop (no API to learn)
 - Deterministic (no framework updates breaking things)
 
-### When llcli Pattern Breaks Down
+### When the Tier 1 Pattern Breaks Down
 
 **Indicators to escalate:**
 - 15+ commands making switch statement unwieldy
@@ -413,7 +421,7 @@ Every dependency is debt. Justify it.
 Manual parsing with TypeScript beats framework without types.
 
 ### 4. **Help Text Quality Matters**
-Auto-generated help is convenient but often poor quality. Manual help (like llcli) is better.
+Auto-generated help is convenient but often poor quality. Hand-written help (the Tier 1 pattern) is better.
 
 ### 5. **Composability > Features**
 JSON output + pipes > built-in table rendering.
@@ -422,7 +430,7 @@ JSON output + pipes > built-in table rendering.
 Run `--help` before declaring framework choice successful.
 
 ### 7. **Read Real Code**
-Study llcli, not just framework docs.
+Study a shipped Tier 1 CLI you've generated, not just framework docs.
 
 ### 8. **Benchmark Size**
 Check dist/ folder size. Tier 1 CLIs are <100 KB.
@@ -431,7 +439,7 @@ Check dist/ folder size. Tier 1 CLIs are <100 KB.
 
 ## 📚 Additional Research
 
-### Yargs (NOT Recommended for PAI)
+### Yargs (NOT Recommended)
 
 **Why not recommended:**
 - Larger bundle size than Commander
@@ -459,9 +467,9 @@ Check dist/ folder size. Tier 1 CLIs are <100 KB.
 
 ## ✅ Final Recommendation
 
-**For PAI createcli skill:**
+**For this skill:**
 
-1. **Default:** Tier 1 (Manual Parsing / llcli pattern)
+1. **Default:** Tier 1 (`node:util` `parseArgs` / minimal pattern)
 2. **Escalation:** Tier 2 (Commander.js) when decision tree indicates
 3. **Reference:** Tier 3 (oclif) for documentation only
 
@@ -470,8 +478,5 @@ Check dist/ folder size. Tier 1 CLIs are <100 KB.
 ---
 
 **Sources:**
-- llcli production implementation (~/.claude/Bin/llcli/)
-- Commander.js 12.x documentation
+- Commander.js v15 documentation (v15+ is ESM-only and requires Node ≥22.12; v14 is the last with maintenance support)
 - oclif core documentation
-- Perplexity research (32 sub-queries on CLI frameworks)
-- Codex research (tsx, vite, next, bun CLI analysis)

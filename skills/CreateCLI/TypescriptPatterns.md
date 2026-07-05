@@ -649,9 +649,9 @@ await main().catch(async (err) => {
 
 ---
 
-## 6️⃣ RECOMMENDED PATTERNS FOR KAI CLIS
+## 6️⃣ RECOMMENDED PATTERNS FOR GENERATED CLIS
 
-### For Tier 1 (llcli-style):
+### For Tier 1 (manual-parsing style):
 
 ```typescript
 #!/usr/bin/env bun
@@ -678,7 +678,7 @@ class CLIError extends Error {
 }
 
 function loadConfig(): Config {
-  // ... load from ${PAI_DIR}/.env
+  // ... load from process.cwd()/.env
   throw new CLIError('API_KEY not found', 'ERR_NO_API_KEY');
 }
 

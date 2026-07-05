@@ -15,7 +15,7 @@ How to prove a server works and diagnose it when it doesn't. Sources: legacy/too
 bunx @modelcontextprotocol/inspector bun run index.ts
 
 # a published/npm server
-bunx @modelcontextprotocol/inspector npx -y @modelcontextprotocol/server-filesystem /path
+bunx @modelcontextprotocol/inspector bunx @modelcontextprotocol/server-filesystem /path
 ```
 
 In the UI: list and call **Tools**, read **Resources** (direct + templates), fetch **Prompts**, and inspect the live request/response + notification stream. If a call fails here, it will fail in the host too — fix it here first.

@@ -1,6 +1,6 @@
 # Common CLI Patterns
 
-**Reusable patterns for TypeScript CLIs based on llcli and production CLIs.**
+**Reusable patterns for TypeScript CLIs based on production CLIs.**
 
 ---
 
@@ -8,7 +8,7 @@
 
 ### 1. Configuration Loading
 
-**Pattern from llcli:**
+**Configuration loading pattern:**
 
 ```typescript
 interface Config {
@@ -23,7 +23,7 @@ const DEFAULTS = {
 } as const;
 
 function loadConfig(): Config {
-  const envPath = join(homedir(), '.claude', '.env');
+  const envPath = join(process.cwd(), '.env');
 
   try {
     const envContent = readFileSync(envPath, 'utf-8');
@@ -34,7 +34,7 @@ function loadConfig(): Config {
       ?.trim();
 
     if (!apiKey) {
-      console.error('Error: API_KEY not found in ${PAI_DIR}/.env');
+      console.error('Error: API_KEY not found in ./.env');
       console.error('Add: API_KEY=your_key_here');
       process.exit(1);
     }
@@ -44,15 +44,15 @@ function loadConfig(): Config {
       baseUrl: process.env.API_BASE_URL || DEFAULTS.baseUrl,
     };
   } catch (error) {
-    console.error('Error: Cannot read ${PAI_DIR}/.env');
-    console.error('Create file: touch ${PAI_DIR}/.env');
+    console.error('Error: Cannot read ./.env');
+    console.error('Create file: touch .env');
     process.exit(1);
   }
 }
 ```
 
 **Key principles:**
-- Load from ${PAI_DIR}/.env (PAI standard)
+- Load from ./.env (project-local convention)
 - Clear error messages with resolution steps
 - Defaults for optional config
 - Type-safe Config interface
@@ -152,10 +152,32 @@ async function fetchByDate(
 
 ### 4. Argument Parsing Pattern
 
-**Manual parsing with validation:**
+**Tier 1 default — `node:util` `parseArgs` (stable since Node 20, works in Bun):**
 
 ```typescript
-function parseArguments(args: string[]): {
+import { parseArgs } from 'node:util';
+
+function parseArguments(args: string[]) {
+  const command = args[0] ?? 'help';
+
+  const { values: options, positionals } = parseArgs({
+    args: args.slice(1),
+    options: {
+      limit: { type: 'string' },
+      format: { type: 'string' },
+      verbose: { type: 'boolean' },
+    },
+    allowPositionals: true,
+  });
+
+  return { command, args: positionals, options };
+}
+```
+
+**Fallback — fully manual parsing (for positional-heavy CLIs where `parseArgs`'s option schema gets in the way):**
+
+```typescript
+function parseArgumentsManual(args: string[]): {
   command: string;
   args: string[];
   options: Record<string, string | boolean>;
@@ -238,11 +260,11 @@ OUTPUT:
   Exit code: 0 = success, 1 = error
 
 CONFIGURATION:
-  API Key: ${PAI_DIR}/.env (API_KEY=your_key)
+  API Key: ./.env (API_KEY=your_key)
   Base URL: ${DEFAULTS.baseUrl}
 
 PHILOSOPHY:
-  ${CLI_NAME} follows PAI's CLI-First Architecture:
+  ${CLI_NAME} follows a CLI-first architecture:
   - Deterministic: Same input → Same output
   - Clean: Single responsibility
   - Composable: Pipes to jq, grep, etc.
@@ -406,7 +428,7 @@ async function writeJsonFile<T>(path: string, data: T): Promise<void> {
 
 ### 9. Progress Indicator Pattern
 
-**For long operations:**
+**For long operations (Tier 2+ only — `ora` is a dependency, so Tier 1 stays zero-dependency and skips this pattern):**
 
 ```typescript
 import ora from 'ora';
@@ -471,7 +493,7 @@ describe('CLI', () => {
 
 When building a CLI, use these patterns:
 
-- [ ] Configuration loading (from ${PAI_DIR}/.env)
+- [ ] Configuration loading (from ./.env)
 - [ ] API client with error handling
 - [ ] One function per command
 - [ ] Manual argument parsing (Tier 1) or Commander (Tier 2)
@@ -484,4 +506,4 @@ When building a CLI, use these patterns:
 
 ---
 
-**All patterns battle-tested in llcli and production CLIs.**
+**All patterns battle-tested in production CLIs.**

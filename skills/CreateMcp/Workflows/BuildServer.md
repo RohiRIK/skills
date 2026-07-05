@@ -4,8 +4,8 @@ Scaffold (or extend) an MCP server. Default stack: TypeScript + official SDK, ru
 
 ## Step 0 — Load context
 
-- `SkillSearch('createmcp architecture')` — layers, lifecycle, transport choice.
-- `SkillSearch('createmcp primitives')` — tool/resource/prompt SDK shapes.
+- Read `Architecture.md` with the Read tool when layers, lifecycle, or transport choice become relevant.
+- Read `Primitives.md` with the Read tool when tool/resource/prompt SDK shapes become relevant.
 - `use context7` for `@modelcontextprotocol/sdk` — the API shifts between releases; context7 overrides any snippet here.
 
 ## Step 1 — Decide

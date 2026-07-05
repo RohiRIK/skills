@@ -48,8 +48,10 @@ Sources: MCP security best practices + MCP Authorization spec + OAuth 2.0 BCP (R
 | | stdio (local) | Streamable HTTP (remote) |
 |---|---|---|
 | Exposure | local pipe, no network | network — must harden |
-| Auth | process ownership | Bearer token or **mTLS** (don't reuse backend creds for transport) |
+| Auth | process ownership | **OAuth 2.1 + PKCE** (required) or mTLS (don't reuse backend creds for transport) |
 | Required | — | TLS 1.3 min · bind loopback by default · CORS origin allowlist · payload limits · reject pre-init unauthorized RPC · validate redirect targets, block private/link-local URLs (SSRF) |
+
+Per the current MCP authorization spec: clients **MUST** implement RFC 8707 (Resource Indicators) so an access token is scoped to the intended server, and servers **MUST** implement RFC 9728 (Protected Resource Metadata) so clients can discover the correct authorization server. Both are non-negotiable for HTTP-transport servers, not optional hardening.
 
 ### Token Passthrough — forbidden
 A server **must not** accept a client token and forward it downstream without validating it was issued *for this server*. Breaks rate-limit/validation controls, destroys audit trail, lets a stolen token traverse services. **Validate token audience = your server; reject otherwise.** Mint a separate credential for downstream calls.
@@ -92,6 +94,7 @@ A proxy fronting a third-party API can be tricked into emitting auth codes witho
 - [ ] Tool defs static/first-party; no dynamic metadata from untrusted data
 - [ ] Errors normalized; logs to stderr; no stack traces or cred metadata
 - [ ] (HTTP) token audience validated · TLS 1.3 · loopback bind · CORS allowlist · payload limits · SSRF redirect validation
+- [ ] (HTTP) OAuth 2.1 + PKCE enforced; client implements RFC 8707, server implements RFC 9728
 - [ ] (proxy/auth) consent before `state`; PKCE; exact redirect-URI
 - [ ] Deps pinned + lockfile + `bun audit`; approved-server inventory
 - [ ] Security tests assert all of the above (see `Workflows/TestServer.md`)

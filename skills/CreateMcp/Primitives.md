@@ -52,6 +52,26 @@ server.registerTool(
 - Errors: return `{ content: [...], isError: true }` rather than throwing, so the model sees the failure.
 - If the tool set changes at runtime and you declared `listChanged`, the SDK emits `tools/list_changed`.
 
+**Structured output** — declare `outputSchema`, return `structuredContent` alongside `content` (keep both in sync; `content` is the fallback for clients that don't read structured data):
+
+```ts
+server.registerTool(
+  "add",
+  { title: "Addition", inputSchema: { a: z.number(), b: z.number() },
+    outputSchema: { sum: z.number() } },
+  async ({ a, b }) => ({
+    content: [{ type: "text", text: String(a + b) }],
+    structuredContent: { sum: a + b },
+  }),
+);
+```
+
+**Resource link** — a tool result can point at a resource instead of inlining it (large files, resources the client should fetch lazily):
+
+```ts
+content: [{ type: "resource_link", uri: "file:///report.csv", name: "report.csv" }]
+```
+
 ## Resources
 
 Read-only context, addressed by **URI**, with a declared MIME type.

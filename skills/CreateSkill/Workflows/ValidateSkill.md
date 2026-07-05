@@ -6,10 +6,9 @@
 
 ## Step 1: Load Reference Docs
 
-```
-SkillSearch('createskill conventions')   → loads Conventions.md (structure rules)
-SkillSearch('createskill frontmatter')   → loads Frontmatter.md (tier system + fields)
-```
+Read these context files with the Read tool before validating:
+- `Conventions.md` (structure rules)
+- `Frontmatter.md` (tier system + fields)
 
 ---
 
@@ -46,7 +45,7 @@ ls ~/.claude/skills/[SkillName]/Workflows/
 - ✓ Correct format for tier: `"[WHAT]. USE WHEN [trigger]."` (Tier C/D), imperative (Tier B), noun phrase (Tier A)
 - ✗ Bare `"USE WHEN..."` with no WHAT clause (Tier C/D) — wrong
 - ✗ Keyword list: `"skill, create, validate"` — wrong
-- ✗ `SkillSearch()` in description — wrong
+- ✗ Tool-call syntax (e.g. `SomeFunction(...)`) in description — wrong
 - ✗ Multi-line using `|` — wrong
 - ✗ Separate `triggers:` or `workflows:` arrays — old format, wrong
 

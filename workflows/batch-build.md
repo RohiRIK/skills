@@ -3,7 +3,7 @@ type: Workflow
 title: Multi-skill batch build
 description: Build or refactor many skills at once, in parallel, each reviewed in isolation.
 tags: [maintain-library, heavy]
-chain: "Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify → GitHubOps:PullRequest"
+chain: "Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify [final integration gate — Orchestrate already verifies each unit] → GitHubOps:PullRequest"
 ---
 
 # Workflow: batch-build
@@ -13,7 +13,7 @@ Build or refactor many skills (or many workflows in one skill) at once, in paral
 > **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
-Spec  →  Orchestrate (Decompose → RunLayer → MergeQueue)  →  Verify  →  GitHubOps:PullRequest
+Spec  →  Orchestrate (Decompose → RunLayer → MergeQueue)  →  Verify [final integration gate — Orchestrate already verifies each unit]  →  GitHubOps:PullRequest
 ```
 
 ## Steps
@@ -23,7 +23,7 @@ Spec  →  Orchestrate (Decompose → RunLayer → MergeQueue)  →  Verify  →
    - **Decompose** — split the spec into a dependency DAG of units.
    - **RunLayer** — build independent units in parallel, delegating to **Agy / OpenCode / Pi** as autonomous workers.
    - **MergeQueue** — land each finished unit; review it in its own context; gate with **Verify**.
-3. **Verify** — final full gate across the merged result.
+3. **Verify** — final integration gate across the merged result (Orchestrate already verified each unit individually; this is the whole-batch check).
 4. **GitHubOps:PullRequest** — one PR, notes generated from the full commit range (`base...HEAD`).
 
 ## Delegation

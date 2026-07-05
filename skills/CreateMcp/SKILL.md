@@ -22,19 +22,19 @@ The MCP API surface changes between SDK releases. Prepend `use context7` before 
 
 ## Quick Reference
 
-Built from the full modelcontextprotocol.io docs. Load the layer you need:
+Full pipeline (plan → architect → build → secure → test → connect): `Pipeline.md`. Read each file with the Read tool when its topic becomes relevant:
+- Mental model (layers, lifecycle, all primitives) → `Architecture.md`
+- Primitive specs (tools/resources/prompts + sampling/elicitation/roots + SDK code) → `Primitives.md`
+- Security + hardening checklist (OWASP/CoSAI-grounded) → `Security.md`
+- Threat model (OWASP LLM × MCP, CoSAI, tool poisoning) → `Threats.md`
+- Automated tests (mcp-testing-kit + Inspector CLI + security suite) → `Workflows/TestServer.md`
+- Protocol debug (Inspector, logging, failures) → `DebugTest.md`
 
-- **Full pipeline** (plan → architect → build → secure → test → connect): `SkillSearch('createmcp pipeline')` → `Pipeline.md`
-- Mental model (layers, lifecycle, all primitives): `SkillSearch('createmcp architecture')` → `Architecture.md`
-- Primitive specs (tools/resources/prompts + sampling/elicitation/roots + SDK code): `SkillSearch('createmcp primitives')` → `Primitives.md`
-- Security + hardening checklist (OWASP/CoSAI-grounded): `SkillSearch('createmcp security')` → `Security.md`
-- Threat model (OWASP LLM × MCP, CoSAI, tool poisoning): `SkillSearch('createmcp threats')` → `Threats.md`
-- Automated tests (mcp-testing-kit + Inspector CLI + security suite): `SkillSearch('createmcp test')` → `Workflows/TestServer.md`
-- Protocol debug (Inspector, logging, failures): `SkillSearch('createmcp debug')` → `DebugTest.md`
+## Examples
 
-## Pipeline (the whole job)
+**New server:** "Create an MCP server that queries my Postgres DB" → scaffold TS project, `registerTool("query", …)` with a Zod `inputSchema`, add a schema resource, stdio transport → `ConnectServer`.
 
-`PLAN → ARCHITECT → DESIGN PRIMITIVES → BUILD → SECURE → TEST/DEBUG → CONNECT → ITERATE` — stage-by-stage runbook (incl. primitive/transport/language decisions) in `Pipeline.md`. For a single build pass, jump to `BuildServer`; examples live there too.
+**Extend a server:** "Add a send-email tool to my MCP server" → `registerTool` with validated `inputSchema`, return `content[]`, re-check `Security.md`.
 
 ## Gotchas
 

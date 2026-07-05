@@ -6,10 +6,9 @@
 
 ## Step 1: Load Reference Docs
 
-```
-SkillSearch('createskill conventions')   → loads Conventions.md (structure rules)
-SkillSearch('createskill frontmatter')   → loads Frontmatter.md (tier system + fields)
-```
+Read these context files with the Read tool before restructuring:
+- `Conventions.md` (structure rules)
+- `Frontmatter.md` (tier system + fields)
 
 ---
 
@@ -32,13 +31,16 @@ Identify what's wrong:
 
 ---
 
-## Step 3: Backup
+## Step 3: Safety Check (git, not a copy)
+
+The library is git-tracked, so git is the backup — no side-copy needed.
 
 ```bash
-cp -r ~/.claude/skills/[skill-name]/ ~/.claude/History/Backups/[skill-name]-backup-$(date +%Y%m%d)/
+git status --short ~/.claude/skills/[skill-name]/
 ```
 
-**Note:** Backups go to `~/.claude/History/Backups/`, NEVER inside skill directories.
+- If there are uncommitted changes, commit them first (or `git stash push -- ~/.claude/skills/[skill-name]/`) so the restructure has a clean rollback point.
+- If the tree is already clean, proceed — `git diff`/`git checkout` can always recover the pre-restructure state.
 
 ---
 
@@ -143,7 +145,7 @@ User: "[Typical user request]"
 
 If SKILL.md is over 100 lines after canonicalization:
 1. Move detailed content to named context files in skill root (e.g., `Conventions.md`, `Examples.md`)
-2. Slim SKILL.md to 30-50 lines with routing table + `SkillSearch()` pointers
+2. Slim SKILL.md to 30-50 lines with routing table + pointers to the context files (read on demand with the Read tool)
 3. See Conventions.md dynamic loading pattern
 
 ---

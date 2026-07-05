@@ -20,7 +20,8 @@ All frontmatter fields and the tier system for classifying skills.
 ## All Frontmatter Fields
 
 ### `name`
-- Lowercase, hyphens, max 64 chars (e.g. `create-skill`, `tdd-workflow`)
+- TitleCase, identical to the skill's directory name, max 64 chars (e.g. `CreateSkill`, `TddWorkflow`)
+- Note: Anthropic's upstream Agent Skills spec uses lowercase-hyphen names; this library deliberately deviates — `name:` is always TitleCase and matches the directory.
 
 ### `description`
 - States **WHAT** the skill does **and WHEN** to use it (see format rules below)
@@ -62,7 +63,7 @@ All frontmatter fields and the tier system for classifying skills.
 
 ### `agent`
 - Which agent type to use when `context: fork`
-- Values: `Explore`, `general-purpose`, `Plan`
+- Any agent type defined in `~/.claude/agents/`, e.g. `Explore`, `general-purpose`, `security-reviewer`
 
 ### `hooks`
 - Skill-scoped lifecycle hooks (e.g. run a script before/after)
@@ -83,7 +84,7 @@ For auto-trigger skills the `USE WHEN` clause is load-bearing — it is the sign
 
 **Never:**
 - Keyword lists: `"skill, create, validate, structure"` ✗
-- `SkillSearch()` calls in description ✗
+- Tool-call syntax (e.g. `SomeFunction(...)`) in the description ✗
 - More than 30 words ✗
 - A bare `USE WHEN …` with no WHAT clause (auto-trigger) ✗
 
@@ -118,7 +119,7 @@ When user types `/recall docker patterns`, `$ARGUMENTS` becomes `docker patterns
 
 ```yaml
 ---
-name: commit
+name: Commit
 description: "Stage, commit, and push changes with a conventional message."
 category: workflow
 effort: low
@@ -131,7 +132,7 @@ argument-hint: [optional message]
 
 ```yaml
 ---
-name: security-audit
+name: SecurityAudit
 description: "USE WHEN auditing code for vulnerabilities."
 category: quality
 effort: high

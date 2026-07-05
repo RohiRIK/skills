@@ -17,7 +17,7 @@ Write a one-paragraph capability spec before any code:
 
 ## 2. ARCHITECT — pick the shape → `Architecture.md`
 
-- **Transport:** local subprocess → **stdio** (default). Hosted/shared → **Streamable HTTP** + OAuth.
+- **Transport:** local subprocess → **stdio** (default). Hosted/shared → **Streamable HTTP** + OAuth 2.1.
 - **Lifecycle:** initialize → capability negotiation → operation → shutdown. Declare only the capabilities you implement.
 - **Primitive set:** server (tools/resources/prompts), client (sampling/elicitation/roots/logging), utility (notifications/progress/cancellation/ping/tasks).
 

@@ -47,7 +47,7 @@ User: "/hygiene --fix"
 
 ## Reference
 
-Issue taxonomy: `SkillSearch('hygiene rules')` → loads `Reference/Rules.md`
+Issue taxonomy: read `Reference/Rules.md` with the Read tool when classifying issues
 
 ## Gotchas
 

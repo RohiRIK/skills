@@ -57,8 +57,8 @@ skills/SkillName/Context/                    # NEVER create Context/ ✗
 
 | Layer | What it contains | When loaded |
 |-------|-----------------|-------------|
-| SKILL.md | Frontmatter, routing table, SkillSearch pointers | On skill invocation |
-| Context files (root .md) | SOPs, guides, references | On-demand via SkillSearch |
+| SKILL.md | Frontmatter, routing table, pointers to context files | On skill invocation |
+| Context files (root .md) | SOPs, guides, references | Read with the Read tool when their topic becomes relevant |
 | Workflows/ | Execution procedures | On workflow trigger |
 
 ### Minimal SKILL.md template
@@ -81,8 +81,8 @@ Brief description.
 
 ## Quick Reference
 
-- Detail 1: `SkillSearch('skillname detail1')` → loads Detail1.md
-- Detail 2: `SkillSearch('skillname detail2')` → loads Detail2.md
+- Detail 1: read `Detail1.md` with the Read tool when this topic becomes relevant
+- Detail 2: read `Detail2.md` with the Read tool when this topic becomes relevant
 ```
 
 ### NO Context/ subdirectory

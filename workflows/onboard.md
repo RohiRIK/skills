@@ -6,7 +6,7 @@ tags: [build-ship]
 chain: "CodebaseOnboarding → Research(fill gaps) → /spec (first change) → spec-to-ship"
 ---
 
-# Workflow: onboard-codebase
+# Workflow: onboard
 
 Get productive in an unfamiliar repo fast, then make the first change.
 
