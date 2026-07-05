@@ -1,8 +1,3 @@
----
-name: tdd-workflow
-description: Test-Driven Development patterns and workflows.
----
-
 # Test-Driven Development Workflow
 
 This context covers the principles and patterns for TDD.

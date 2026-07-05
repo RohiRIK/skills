@@ -1,8 +1,3 @@
----
-name: security-review
-description: Comprehensive security checklist and patterns.
----
-
 # Security Review Skill
 
 This skill ensures all code follows security best practices and identifies potential vulnerabilities.
