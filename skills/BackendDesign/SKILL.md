@@ -3,32 +3,28 @@ name: BackendDesign
 description: "Reference for API design, database schema, and server architecture. USE WHEN designing an API, modeling a schema, or structuring a backend service."
 category: reference
 effort: low
-user-invocable: false
+user-invocable: true
 ---
 
 # BackendDesign
 
-Backend architecture patterns and best practices for Bun/Hono/Drizzle/Cloudflare Workers stacks.
+Backend architecture patterns, Bun-first (Hono / Drizzle / Cloudflare Workers focus). `Patterns.md` carries framework-generic patterns on web-standard `Request`/`Response` that apply to all of them.
 
 ## Quick Reference
 
 | Need | Load |
 |------|------|
 | API design, REST, validation | `API.md` |
-| DB schema, queries, indexing | `Patterns.md` |
-| ClickHouse streaming/analytics | `clickhouse-io.md` |
-| Project-specific guidelines | `project-guidelines-example.md` |
+| Architecture, DB, caching, auth, queues | `Patterns.md` |
+| ClickHouse streaming/analytics | `ClickhouseIo.md` |
 
 ## Workflow Routing
 
 | Workflow | Trigger |
 |----------|---------|
-| **ApplyPatterns** | "apply backend pattern", "refactor backend", "how should I structure this API", "best practice for X", "design this endpoint" |
+| **ApplyPatterns** | "apply backend pattern", "refactor backend", "how should I structure this API", "design this endpoint" |
 
-Run a workflow:
-`Run the ApplyPatterns workflow`
-
-## Key Principles (from Patterns.md)
+## Key Principles
 
 - API routes: validate input with Zod before touching business logic
 - DB: prefer Drizzle ORM with explicit schema; avoid raw SQL for user input
@@ -38,9 +34,7 @@ Run a workflow:
 
 ## Integration
 
-- Pairs with `CodingStandards/TypeScript.md` for implementation rules
-- Pairs with `SecurityReview` for auth/input handling audits
-- Pairs with `database-reviewer` agent for query optimisation
+- `CodingStandards/TypeScript.md` for implementation rules · `SecurityReview` for auth/input audits · `database-reviewer` agent for query optimisation
 
 ## Gotchas
 
@@ -49,14 +43,6 @@ Run a workflow:
 
 ## Examples
 
-**Example 1: New endpoint**
-```
-User: "design a paginated /orders API"
-→ ApplyPatterns → resource naming, status codes, cursor pagination, error shape
-```
+**Example 1:** "design a paginated /orders API" → ApplyPatterns → resource naming, status codes, cursor pagination, error shape.
 
-**Example 2: Schema review**
-```
-User: "review this Postgres schema for the cart feature"
-→ ApplyPatterns → normalization, FK/index choices, migration safety
-```
+**Example 2:** "review this Postgres schema for the cart feature" → ApplyPatterns → normalization, FK/index choices, migration safety.

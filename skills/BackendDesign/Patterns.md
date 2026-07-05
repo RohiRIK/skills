@@ -1,11 +1,6 @@
----
-name: backend-patterns
-description: Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes.
----
-
 # Backend Development Patterns
 
-Backend architecture patterns and best practices for scalable server-side applications.
+Framework-generic backend patterns on web-standard `Request`/`Response` — they apply directly to Hono, Bun.serve, Next.js App Router route handlers, and Cloudflare Workers.
 
 ## API Design Patterns
 
@@ -89,31 +84,33 @@ class MarketService {
 
 ### Middleware Pattern
 
+Web-standard `Request`/`Response` handler wrapping (works in Hono, Bun.serve, App Router, Workers):
+
 ```typescript
-// Request/response processing pipeline
-export function withAuth(handler: NextApiHandler): NextApiHandler {
-  return async (req, res) => {
-    const token = req.headers.authorization?.replace('Bearer ', '')
+type Handler = (request: Request, user: JWTPayload) => Promise<Response>
 
+export function withAuth(handler: Handler) {
+  return async (request: Request): Promise<Response> => {
+    const token = request.headers.get('authorization')?.replace('Bearer ', '')
     if (!token) {
-      return res.status(401).json({ error: 'Unauthorized' })
+      return Response.json({ error: 'Unauthorized' }, { status: 401 })
     }
-
     try {
       const user = await verifyToken(token)
-      req.user = user
-      return handler(req, res)
-    } catch (error) {
-      return res.status(401).json({ error: 'Invalid token' })
+      return handler(request, user)
+    } catch {
+      return Response.json({ error: 'Invalid token' }, { status: 401 })
     }
   }
 }
 
-// Usage
-export default withAuth(async (req, res) => {
-  // Handler has access to req.user
+// Usage (App Router route handler / Bun.serve fetch)
+export const GET = withAuth(async (request, user) => {
+  return Response.json({ userId: user.userId })
 })
 ```
+
+In Hono, prefer its native middleware (`app.use('*', jwt({ secret }))` or a custom `createMiddleware`) over hand-rolled wrappers.
 
 ## Database Patterns
 
