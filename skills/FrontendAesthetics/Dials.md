@@ -12,6 +12,23 @@ Adapted from `taste-skill`. Load this only when the user wants explicit control 
 
 Baseline `8 / 6 / 4`. Use these unless the design read overrides them. Set overrides **conversationally** — don't ask the user to edit a file.
 
+### Use-case presets (start here, then adjust from the design read)
+
+| Use case | VARIANCE | MOTION | DENSITY |
+|----------|----------|--------|---------|
+| Landing — SaaS, mainstream | 7 | 6 | 4 |
+| Landing — agency / creative | 9 | 8 | 3 |
+| Landing — premium consumer | 7 | 6 | 3 |
+| Portfolio — designer / studio | 8 | 7 | 3 |
+| Portfolio — developer | 6 | 5 | 4 |
+| Editorial / blog | 6 | 4 | 3 |
+| Product tool / dashboard | 4 | 3 | 7 |
+| Public-sector / regulated | 3 | 2 | 5 |
+| Redesign — preserve | match existing | match+1 | match |
+| Redesign — overhaul | +2 | +2 | match |
+
+Implementation values for each `MOTION_INTENSITY` band (durations, easings, what animates) live in `Craft.md` → Motion spec.
+
 Dial-gated rules:
 - `DESIGN_VARIANCE > 4` → avoid centered hero/H1; force split-screen, left-content/right-asset, asymmetric whitespace, or scroll-pinned structure.
 - `VISUAL_DENSITY > 7` → generic card containers banned; metrics breathe in plain layout.
@@ -25,6 +42,8 @@ Dial-gated rules:
 - A 4-line hero headline is a **font-size error**, never a copy-length error. Plan font and asset size together; default `text-4xl md:text-5xl lg:text-6xl`, reserve `text-6xl md:text-7xl` for 3-5 word headlines.
 
 ## Banned tells (audit before ship)
+
+The full banned-pattern catalog (hero tells, label tells, copy tells, em-dash ban, asset rules) is `Tells.md` — `Workflows/SlopAudit.md` runs it. Highest-frequency offenders:
 
 - **Serif by default.** "Creative/premium/editorial → serif" is the most-tested AI tell. `Fraunces` and `Instrument_Serif` banned as defaults. Emphasis within a headline = italic/bold of the *same* family, never a random serif word injected into a sans headline.
 - **Premium-consumer palette** (warm beige/cream + brass/clay/oxblood/ochre + espresso text) banned as the default reach for cookware/wellness/artisan/luxury briefs — acceptable only when the brand brief names those colors.

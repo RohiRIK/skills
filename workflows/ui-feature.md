@@ -3,7 +3,7 @@ type: Workflow
 title: UI feature
 description: A frontend change that looks intentional, not AI-slop — direction before components.
 tags: [build-ship, quick]
-chain: "FrontendAesthetics(direction) → FrontendDesign(build) → /simplify → Verify → GitHubOps:CommitPush"
+chain: "FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → /simplify → Verify → GitHubOps:CommitPush"
 ---
 
 # Workflow: ui-feature
@@ -13,16 +13,17 @@ A frontend change that looks intentional, not AI-slop.
 > **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
-FrontendAesthetics(direction) → FrontendDesign(build) → /simplify → Verify → GitHubOps:CommitPush
+FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → /simplify → Verify → GitHubOps:CommitPush
 ```
 
-1. **FrontendAesthetics** — *first*. Visual direction: typography, color, hierarchy, motion. Decide the look before writing components.
-2. **FrontendDesign** — build it: React/Next components, hooks, state, performance.
-3. **/simplify → Verify → ship**.
+1. **FrontendAesthetics:DesignBrief** — *first*. Design read, dials, token system → writes `design-brief.md`. The build derives every visual value from it.
+2. **FrontendDesign** — build it: React/Next components, hooks, state, performance — from the brief's tokens.
+3. **FrontendAesthetics:SlopAudit** — the gate: 11 mechanical checks + 7-axis rubric; one revision loop on fail.
+4. **/simplify → Verify → ship**.
 
 ## Order matters
 
-Aesthetics **before** Design. Skip the direction step and you get generic, templated output — the exact thing FrontendAesthetics exists to prevent.
+Brief **before** build, audit **after**. Skip the brief and you get generic, templated output; skip the audit and slop ships.
 
 ## When to use
 

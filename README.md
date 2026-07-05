@@ -21,12 +21,12 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`CodebaseOnboarding/`](skills/CodebaseOnboarding) | Analyze an unfamiliar repo → architecture map, entry points, conventions, starter CLAUDE.md. |
 | [`ContextBudget/`](skills/ContextBudget) | Audit Claude Code context-window consumption and produce prioritized token-savings recommendations. |
 | [`CreateMcp/`](skills/CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
-| [`CreateCLI/`](skills/CreateCLI) | Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif), Bun-only, gated by Verify. |
+| [`CreateCLI/`](skills/CreateCLI) | Generate a production-ready TypeScript CLI (3 tiers: parseArgs / Commander / oclif), Bun-only, gated by Verify. |
 | [`CreateSkill/`](skills/CreateSkill) | Build and maintain skills in canonical structure. |
 | [`DataReportBuilder/`](skills/DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
 | [`DockerPatterns/`](skills/DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
 | [`FrontendDesign/`](skills/FrontendDesign) | Reference for React and Next.js component design patterns. |
-| [`FrontendAesthetics/`](skills/FrontendAesthetics) | Anti-slop visual direction — typography, color, hierarchy, motion — so UI looks intentional, not AI-generated. |
+| [`FrontendAesthetics/`](skills/FrontendAesthetics) | Anti-slop pipeline — DesignBrief before code, SlopAudit gate after, Redesign protocol; craft library of font pairings, OKLCH palettes, banned tells. |
 | [`GitWorkflow/`](skills/GitWorkflow) | Reference for git branching, commit conventions, merge vs rebase, and conflict resolution. |
 | [`GitHubOps/`](skills/GitHubOps) | Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. |
 | [`Hygiene/`](skills/Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |

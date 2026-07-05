@@ -10,9 +10,15 @@ intent_map:
 This workflow generates a production-ready React component structure.
 
 ## Prerequisites
-- **Context**: Read `skills/FrontendDesign/Context-FrontendPatterns.md` to understand the "Composition Over Inheritance" and "Compound Components" patterns.
+- **Context**: Read `skills/FrontendDesign/Patterns.md` to understand the "Composition Over Inheritance" and "Compound Components" patterns.
 
 ## Steps
+
+### 0. Load the Design Brief (when one exists)
+
+Look for `design-brief.md` in the target project (default `docs/design-brief.md`, else project root). When present, it is the single source of visual truth: derive every color, font, radius, shadow, and motion value from its `:root` tokens — never invent a hex, font name, or duration inline. When absent and the component is user-facing, recommend running `FrontendAesthetics` → DesignBrief first; proceed token-less only for internal/unstyled work.
+
+Also decide the component type before writing: Server Component by default; add `"use client"` only if it needs state, events, effects, or browser APIs (see the Server vs Client table in `Patterns.md`).
 
 ### 1. Identify Requirements
 Analyze the user's request to determine:
@@ -26,6 +32,10 @@ Define the Props interface first. Avoid `any`.
 - Use discriminated unions for `variant` props if applicable.
 
 ### 3. Implement Component
+Fast path: scaffold the file set (`<Name>.tsx`, `index.ts`, `<Name>.test.tsx`) with the bundled script, then fill in:
+```bash
+bun skills/FrontendDesign/Tools/GenerateComponent.ts <Name> --path <output-dir>
+```
 Write the code using the **Compound Component** pattern if it involves multiple related parts.
 
 **Template Structure:**
@@ -54,7 +64,7 @@ export function [Name]Header({ children }: { children: React.ReactNode }) {
 ### 4. Accessibility Check
 - Does it need `role` attributes?
 - Are keyboard interactions (Enter, Space, Escape) handled?
-- Refer to the "Accessibility Patterns" section in `Context-FrontendPatterns.md`.
+- Refer to the "Accessibility Patterns" section in `Patterns.md`.
 
 ### 5. Final Output
 Present the complete code block to the user.

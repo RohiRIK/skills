@@ -26,21 +26,21 @@
 - [Workflows](skills/Workflows/SKILL.md) — Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, secure, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job.
 
 ### quality
-- [hygiene](skills/Hygiene/SKILL.md) — Audit ~/.claude for git, skill, code, and rules hygiene issues.
+- [hygiene](skills/Hygiene/SKILL.md) — Audit ~/.claude for git, skill, code, and rules hygiene issues. USE WHEN auditing the Claude config, checking harness health, or cleaning up skills/hooks/rules.
 - [Reflect](skills/Reflect/SKILL.md) — Self-rate the just-finished output on five axes with evidence, then fix any gap scored ≤3. USE WHEN a non-trivial task finishes — 3+ files, a multi-step workflow, or 3+ debug attempts.
 - [SecurityReview](skills/SecurityReview/SKILL.md) — Audits code for vulnerabilities and secrets. USE WHEN reviewing code for security issues.
 - [Simplify](skills/Simplify/SKILL.md) — Post-implementation dead-code cleanup. USE WHEN running /simplify after finishing a feature or fix.
 - [Verify](skills/Verify/SKILL.md) — Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate.
 
 ### reference
-- [BackendDesign](skills/BackendDesign/SKILL.md) — Reference for API design, database schema, and server architecture.
+- [BackendDesign](skills/BackendDesign/SKILL.md) — Reference for API design, database schema, and server architecture. USE WHEN designing an API, modeling a schema, or structuring a backend service.
 - [CodingStandards](skills/CodingStandards/SKILL.md) — Language coding standards (TS, Python, Bash, PowerShell, Swift, Rust). USE WHEN writing, reviewing, or scaffolding code.
 - [CreateMcp](skills/CreateMcp/SKILL.md) — Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, and security. USE WHEN creating, scaffolding, connecting, or debugging an MCP server.
-- [docker-patterns](skills/DockerPatterns/SKILL.md) — Reference for Docker and Docker Compose local dev patterns.
-- [FrontendAesthetics](skills/FrontendAesthetics/SKILL.md) — Visual direction — typography, color, hierarchy, motion — so UI isn't generic AI-slop. USE WHEN make it less generic, polish the UI, looks templated/AI-made, or design direction. NOT FOR component logic, hooks, or performance (use FrontendDesign).
-- [FrontendDesign](skills/FrontendDesign/SKILL.md) — Reference for building React/Next.js components, hooks, state, and performance. NOT FOR visual styling, typography, color, or making UI look less generic (use FrontendAesthetics).
+- [docker-patterns](skills/DockerPatterns/SKILL.md) — Reference for Docker and Docker Compose local dev patterns. USE WHEN writing a Dockerfile or compose file, or containerizing local dev.
+- [FrontendAesthetics](skills/FrontendAesthetics/SKILL.md) — Visual direction and anti-slop gate — typography, color, motion. USE WHEN building any page/dashboard/UI, redesigning, design direction, or looks templated/AI-made. NOT FOR component logic or performance (use FrontendDesign).
+- [FrontendDesign](skills/FrontendDesign/SKILL.md) — Reference for building React/Next.js components, hooks, state, and performance. USE WHEN building components, hooks, state, or optimizing renders. NOT FOR visual styling, typography, or color (use FrontendAesthetics).
 - [GitWorkflow](skills/GitWorkflow/SKILL.md) — Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions. NOT FOR running gh repo operations like push/PR/release (use GitHubOps).
-- [StrategicCompact](skills/StrategicCompact/SKILL.md) — Reference for context compaction strategy and timing guidance.
+- [StrategicCompact](skills/StrategicCompact/SKILL.md) — Reference for context compaction strategy and timing guidance. USE WHEN deciding when or how to compact a long session, or planning context strategy.
 
 ### delegation
 - [agy](skills/Agy/SKILL.md) — Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (agy) as an autonomous worker. USE WHEN delegating such a task to agy/Antigravity, or running the agy CLI.
@@ -49,8 +49,8 @@
 
 ### meta
 - [ContextBudget](skills/ContextBudget/SKILL.md) — Audit Claude Code context-window consumption across agents, skills, MCP servers, and rules, and produce prioritized token-savings recommendations. USE WHEN context feels bloated or you want to cut token usage.
-- [CreateCLI](skills/CreateCLI/SKILL.md) — Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif). USE WHEN create CLI, build a command-line tool, wrap an API as a CLI, or add a command. NOT FOR agent skill scaffolding (use CreateSkill). NOT FOR Python.
-- [CreateSkill](skills/CreateSkill/SKILL.md) — Create, validate, canonicalize, test, improve, and optimize-triggers for skills. USE WHEN create/new/validate/test/improve/canonicalize a skill, or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI).
+- [CreateCLI](skills/CreateCLI/SKILL.md) — Generate a production-ready TypeScript CLI (3 tiers: parseArgs/Commander/oclif). USE WHEN create a CLI, command-line tool, or wrap an API. NOT FOR agent skills (use CreateSkill) or Python.
+- [CreateSkill](skills/CreateSkill/SKILL.md) — Create, validate, and improve individual skills. USE WHEN create/validate/improve a skill or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI) or whole-library audits (use SkillForge).
 - [SkillForge](skills/SkillForge/SKILL.md) — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill).
 
 ### visual

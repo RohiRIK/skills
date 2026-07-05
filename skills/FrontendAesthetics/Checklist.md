@@ -1,6 +1,6 @@
 # Checklist — the gate
 
-Adapted from ECC's `frontend-design-direction`. The fast pre-ship gate: pick a direction, avoid the anti-patterns, run the review.
+Adapted from ECC's `frontend-design-direction`. The fast pre-ship gate: pick a direction, avoid the anti-patterns, run the review. `Workflows/SlopAudit.md` is the executor — it runs this review plus the `Tells.md` catalog and scores the result.
 
 ## Pick a direction before coding
 

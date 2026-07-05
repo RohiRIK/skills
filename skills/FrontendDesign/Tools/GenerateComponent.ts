@@ -59,7 +59,7 @@ describe('${name}', () => {
 
 function showHelp(): void {
   console.log(`
-GenerateComponent - Scaffold React components following PAI patterns.
+GenerateComponent - Scaffold React components following FrontendDesign patterns.
 
 USAGE:
   GenerateComponent <name> [options]

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-06-30T06:15:07Z",
+  "generated": "2026-07-05T11:17:32Z",
   "skills": [
     {
       "name": "agy",
@@ -29,7 +29,7 @@
       "effort": "low",
       "tier": "A-reference",
       "workflows": "ApplyPatterns",
-      "description": "Reference for API design, database schema, and server architecture."
+      "description": "Reference for API design, database schema, and server architecture. USE WHEN designing an API, modeling a schema, or structuring a backend service."
     },
     {
       "name": "Build",
@@ -70,11 +70,11 @@
     {
       "name": "CreateCLI",
       "path": "skills/CreateCLI/",
-      "category": "meta",
+      "category": "reference",
       "effort": "medium",
       "tier": "C-auto",
       "workflows": "AddCommand,CreateCli,UpgradeTier",
-      "description": "Generate a production-ready TypeScript CLI (3-tier: manual argv / Commander / oclif). USE WHEN create CLI, build a command-line tool, wrap an API as a CLI, or add a command. NOT FOR agent skill scaffolding (use CreateSkill). NOT FOR Python."
+      "description": "Generate a production-ready TypeScript CLI (3 tiers: parseArgs/Commander/oclif). USE WHEN create a CLI, command-line tool, or wrap an API. NOT FOR agent skills (use CreateSkill) or Python."
     },
     {
       "name": "CreateMcp",
@@ -92,7 +92,7 @@
       "effort": "medium",
       "tier": "C-auto",
       "workflows": "CanonicalizeSkill,CreateSkill,ImproveSkill,OptimizeDescription,TestSkill,UpdateSkill,ValidateSkill",
-      "description": "Create, validate, canonicalize, test, improve, and optimize-triggers for skills. USE WHEN create/new/validate/test/improve/canonicalize a skill, or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI)."
+      "description": "Create, validate, and improve individual skills. USE WHEN create/validate/improve a skill or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI) or whole-library audits (use SkillForge)."
     },
     {
       "name": "data-report-builder",
@@ -110,16 +110,16 @@
       "effort": "low",
       "tier": "A-reference",
       "workflows": "",
-      "description": "Reference for Docker and Docker Compose local dev patterns."
+      "description": "Reference for Docker and Docker Compose local dev patterns. USE WHEN writing a Dockerfile or compose file, or containerizing local dev."
     },
     {
       "name": "FrontendAesthetics",
       "path": "skills/FrontendAesthetics/",
       "category": "reference",
-      "effort": "low",
+      "effort": "medium",
       "tier": "C-auto",
       "workflows": "",
-      "description": "Visual direction — typography, color, hierarchy, motion — so UI isn't generic AI-slop. USE WHEN make it less generic, polish the UI, looks templated/AI-made, or design direction. NOT FOR component logic, hooks, or performance (use FrontendDesign)."
+      "description": "Visual direction and anti-slop gate — typography, color, motion. USE WHEN building any page/dashboard/UI, redesigning, design direction, or looks templated/AI-made. NOT FOR component logic or performance (use FrontendDesign)."
     },
     {
       "name": "FrontendDesign",
@@ -128,7 +128,7 @@
       "effort": "low",
       "tier": "A-reference",
       "workflows": "GenerateComponent,OptimizePerformance",
-      "description": "Reference for building React/Next.js components, hooks, state, and performance. NOT FOR visual styling, typography, color, or making UI look less generic (use FrontendAesthetics)."
+      "description": "Reference for building React/Next.js components, hooks, state, and performance. USE WHEN building components, hooks, state, or optimizing renders. NOT FOR visual styling, typography, or color (use FrontendAesthetics)."
     },
     {
       "name": "GitHubOps",
@@ -155,7 +155,7 @@
       "effort": "medium",
       "tier": "B-command",
       "workflows": "AutoFix,RunHygiene",
-      "description": "Audit ~/.claude for git, skill, code, and rules hygiene issues."
+      "description": "Audit ~/.claude for git, skill, code, and rules hygiene issues. USE WHEN auditing the Claude config, checking harness health, or cleaning up skills/hooks/rules."
     },
     {
       "name": "Iterate",
@@ -272,7 +272,7 @@
       "effort": "low",
       "tier": "A-reference",
       "workflows": "RunCompact",
-      "description": "Reference for context compaction strategy and timing guidance."
+      "description": "Reference for context compaction strategy and timing guidance. USE WHEN deciding when or how to compact a long session, or planning context strategy."
     },
     {
       "name": "TddWorkflow",

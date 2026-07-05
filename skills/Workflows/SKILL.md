@@ -9,7 +9,7 @@ effort: low
 
 Skills compose into repeatable **chains** — one skill does one thing; a workflow runs several in order. The router for any developer or researcher: match the job to a chain, state it, run it. `Chains.md` carries every exact skill sequence; repo-side the chains are an **OKF bundle** (`workflows/index.md`). **Invoked without a named workflow** → present both tables below and ask which to run; **with one named** → open its doc and run its chain.
 
-## Build & ship software
+## Build & ship
 
 | Job | Workflow |
 |-----|----------|
@@ -28,7 +28,7 @@ Skills compose into repeatable **chains** — one skill does one thing; a workfl
 | Cut context-window bloat | context-diet |
 | Clean up config / project repo | repo-hygiene |
 
-## Author & maintain skills
+## Maintain the library
 
 | Job | Workflow |
 |-----|----------|

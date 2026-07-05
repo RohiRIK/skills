@@ -1,11 +1,106 @@
----
-name: frontend-patterns
-description: Frontend development patterns for React, Next.js, state management, performance optimization, and UI best practices.
----
-
 # Frontend Development Patterns
 
-Modern frontend patterns for React, Next.js, and performant user interfaces.
+Modern frontend patterns for React 19, Next.js (App Router), and performant user interfaces.
+
+## Server vs Client Components (App Router)
+
+Server Components are the default — a component only becomes a Client Component when it earns it.
+
+| Needs | Component type |
+|-------|---------------|
+| Fetch data, read backend resources, render static markup | **Server** (default, no directive) |
+| `useState`/`useReducer`, event handlers (`onClick`, `onChange`) | **Client** (`"use client"`) |
+| `useEffect`, browser APIs (localStorage, IntersectionObserver) | **Client** |
+| Animation libraries (Motion, GSAP), portals | **Client** — isolate in a leaf |
+| Context providers | **Client**, but keep the provider file tiny and pass server children through |
+
+Rules:
+- Put `"use client"` at the **leaves**, not the layout — every import below the directive joins the client bundle.
+- Server Components can render Client Components and pass them serializable props (and `children`); a Client Component never imports a Server Component directly — pass it through `children`.
+- Data flows down: fetch in the Server Component, pass data (or a promise) to the client island.
+
+```tsx
+// app/products/page.tsx — Server Component (no directive)
+export default async function ProductsPage() {
+  const products = await getProducts()          // direct async, no useEffect
+  return <ProductGrid products={products} />    // client island gets plain data
+}
+```
+
+## React 19 Patterns
+
+### use() — unwrap promises in the client
+
+```tsx
+// Server passes the promise; client suspends on it
+export default function Page() {
+  const commentsPromise = getComments()          // NOT awaited on the server
+  return (
+    <Suspense fallback={<CommentsSkeleton />}>
+      <Comments commentsPromise={commentsPromise} />
+    </Suspense>
+  )
+}
+
+'use client'
+function Comments({ commentsPromise }: { commentsPromise: Promise<Comment[]> }) {
+  const comments = use(commentsPromise)          // suspends until resolved
+  return comments.map(c => <p key={c.id}>{c.text}</p>)
+}
+```
+
+### Actions — forms without handler boilerplate
+
+```tsx
+'use client'
+function Rename({ id }: { id: string }) {
+  const [state, submitAction, isPending] = useActionState(
+    async (_prev: string | null, formData: FormData) => {
+      const error = await renameItem(id, formData.get('name') as string)
+      return error ?? null
+    },
+    null,
+  )
+  return (
+    <form action={submitAction}>
+      <input name="name" />
+      <button disabled={isPending}>Rename</button>
+      {state && <p role="alert">{state}</p>}
+    </form>
+  )
+}
+```
+
+### useOptimistic — instant UI, reconciled on settle
+
+```tsx
+'use client'
+function Likes({ count, like }: { count: number; like: () => Promise<void> }) {
+  const [optimistic, addOptimistic] = useOptimistic(count, (c) => c + 1)
+  return (
+    <form action={async () => { addOptimistic(null); await like() }}>
+      <button>♥ {optimistic}</button>
+    </form>
+  )
+}
+```
+
+### ref as a prop — forwardRef is over
+
+```tsx
+// ✅ React 19: ref is a normal prop
+function Input({ ref, ...props }: { ref?: React.Ref<HTMLInputElement> } & InputProps) {
+  return <input ref={ref} {...props} />
+}
+// ❌ Legacy: React.forwardRef((props, ref) => …) — don't write new code with it
+```
+
+## App Router Data Fetching
+
+- `fetch` in Server Components is **not cached by default** (Next 15+): opt in with `{ cache: 'force-cache' }` or `{ next: { revalidate: 60 } }`; tag-based invalidation via `{ next: { tags: ['products'] } }` + `revalidateTag`.
+- Request APIs (`cookies()`, `headers()`, `params`, `searchParams`) are **async** — `await` them.
+- Mutations: Server Actions (`'use server'`) + `revalidatePath`/`revalidateTag`, consumed through the Actions patterns above.
+- Client-side server state (polling, infinite scroll, optimistic caches beyond one action): TanStack Query or SWR — not hand-rolled `useEffect` fetching.
 
 ## Component Patterns
 
@@ -140,7 +235,9 @@ export function useToggle(initialValue = false): [boolean, () => void] {
 const [isOpen, toggleOpen] = useToggle()
 ```
 
-### Async Data Fetching Hook
+### Async Data Fetching Hook (legacy fallback)
+
+> **Prefer a data library.** Default to TanStack Query or SWR on the client, or React Server Components + `use()` when server data flows down. The hand-rolled `useEffect` fetch hook below is a last resort for zero-dependency constraints — it has no cache, no dedupe, no revalidation, and is race-prone.
 
 ```typescript
 interface UseQueryOptions<T> {
