@@ -28,16 +28,18 @@ Fallback stack pattern: `"<Display>", <generic class>` and `"<Body>", system-ui,
 Work in OKLCH (`oklch(L C H)`) — perceptually uniform, so a lightness ladder actually looks even. Method:
 
 1. **Base hue from the subject's world.** Name the material first, then the hue: clay → 40°, steel → 240°, moss → 140°, wheat → 90°. A hue chosen from the subject is defensible; a hue chosen from habit is a default.
-2. **Neutrals are the base hue at whisper chroma** (C 0.005-0.02), never pure gray. Ladder: surface L 0.98 → raised 0.95 → border 0.88 → muted text 0.55 → body text 0.30 → display text 0.20.
-3. **Primary = base hue at working chroma** (C 0.10-0.15), L ≈ 0.55 for fills with white text, L ≈ 0.45 for text-on-light.
-4. **One deliberate accent**: analogous (base ± 30-40°) for harmony, near-complement (base + 150-180°) for tension. Cap accent at ~5% of painted area — it marks *the* action or *the* signature, nothing else.
-5. **Dark mode**: flip the L ladder (surface 0.16 → raised 0.20 → text 0.90), raise chroma slightly (+0.02) to survive dark surrounds.
+2. **Neutrals are the base hue at whisper chroma** (C 0.005-0.02), never pure gray. Ladder, WCAG-AA-verified against a L 0.96-0.98 surface at this chroma range: surface L 0.98 → raised 0.95 → border 0.88 → muted text **L 0.32** → body text **L 0.26** → display text L 0.20.
+3. **Primary = base hue at working chroma** (C 0.10-0.15). **L ≈ 0.30-0.35 for fills with white/near-white text** (verified ≥4.5:1 at C 0.13); **L ≈ 0.30-0.34 for text-on-light use** (primary used as a colored label or link on the surface color, not as a button fill) — these are two different roles at similar L, not the same value reused, so check which one you're rendering.
+4. **One deliberate accent**: analogous (base ± 30-40°) for harmony, near-complement (base + 150-180°) for tension. Cap accent at ~5% of painted area — it marks *the* action or *the* signature, nothing else. **If the accent draws a UI boundary** (focus ring, active border, hover outline — anything WCAG 1.4.11 covers), it needs ≥3:1 against its surround: target **L ≈ 0.35-0.40 on a light surface**, L ≈ 0.60-0.66 on a dark one. A lighter/desaturated accent used purely as a decorative fill or swatch color (no boundary or focus role) is exempt from this floor.
+5. **Dark mode**: flip the L ladder (surface 0.16 → raised 0.20 → muted text 0.72 → text 0.80 → display-text 0.92), raise chroma slightly (+0.02) to survive dark surrounds; primary L ≈ 0.60-0.65 against a near-black `--on-primary` (~L 0.14) clears 4.5:1 comfortably at this range.
+
+**Verification is not optional.** These L values are computed via OKLCH→linear-sRGB→WCAG relative luminance at the stated chroma/hue ranges, not eyeballed — the previous version of this formula (L 0.55 for muted text, L 0.55 for primary-with-white-text, L 0.62-0.78 for accents) measured 1.3:1-2.4:1 against its own worked examples' surfaces and failed AA on every one. `Workflows/SlopAudit.md` M5 re-verifies the actual build; treat these numbers as a validated starting point, not a substitute for that check — a hue/chroma combination far from the ones tested here can still fail.
 
 **Worked example A — freight ops dashboard** (subject: steel, containers, night shifts):
-`--surface: oklch(0.97 0.008 240)` · `--raised: oklch(0.94 0.01 240)` · `--border: oklch(0.87 0.012 240)` · `--text: oklch(0.28 0.02 240)` · `--primary: oklch(0.52 0.12 240)` · `--accent (signal orange, containers): oklch(0.68 0.17 55)` — accent only on active-alert states.
+`--surface: oklch(0.97 0.008 240)` · `--raised: oklch(0.94 0.01 240)` · `--border: oklch(0.87 0.012 240)` · `--text: oklch(0.28 0.02 240)` · `--primary: oklch(0.32 0.12 240)` · `--on-primary: oklch(1 0 0)` · `--accent (signal orange, containers): oklch(0.38 0.17 55)` — accent only on active-alert states, darkened from a first-draft L 0.68 (2.6:1) to clear the 3:1 UI-boundary floor.
 
 **Worked example B — pottery studio landing** (subject: iron-oxide clay, glaze, kiln):
-`--surface: oklch(0.96 0.012 65)` · `--display-text: oklch(0.24 0.03 40)` · `--primary (fired clay): oklch(0.50 0.13 40)` · `--accent (celadon glaze): oklch(0.78 0.07 160)` — accent on the single CTA and the glaze-swatch signature element. Note: this is *derived from kiln materials*, which is what separates it from banned-default cream+terracotta — the critique note in the brief must say so.
+`--surface: oklch(0.96 0.012 65)` · `--display-text: oklch(0.24 0.03 40)` · `--primary (fired clay): oklch(0.30 0.13 40)` · `--on-primary: oklch(1 0 0)` · `--accent (celadon glaze): oklch(0.40 0.07 160)` — accent on the single CTA and the glaze-swatch signature element, darkened from a first-draft L 0.78 (1.3:1) to clear 3:1. Note: this is *derived from kiln materials*, which is what separates it from banned-default cream+terracotta — the critique note in the brief must say so.
 
 ## Scale recipes
 
@@ -67,4 +69,4 @@ Rules at any intensity: every animation names what it communicates (hierarchy, f
 
 ## Output convention
 
-Emit the chosen system as CSS custom properties in the design brief (see `Workflows/DesignBrief.md` template) — `--font-display`, `--font-body`, the OKLCH ladder, `--radius`, `--shadow`, `--ease`, `--dur-*`. The build derives every visual value from these tokens; a hex or font name typed inline during the build is a defect.
+Emit the chosen system as CSS custom properties in the design brief (see `Workflows/DesignBrief.md` template) — `--font-display`, `--font-body`, the OKLCH ladder, `--on-primary`, `--radius`, `--shadow`, `--ease`, `--dur-*`. Always define `--on-primary` explicitly (text/icons rendered on a `--primary` fill) rather than reusing `--surface` — the page background and "readable text on a colored button" are different jobs with different contrast requirements, and conflating them is how a button ships unreadable. The build derives every visual value from these tokens; a hex or font name typed inline during the build is a defect.

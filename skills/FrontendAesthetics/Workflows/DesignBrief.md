@@ -54,7 +54,8 @@ Ask the user where it lives (default `docs/design-brief.md` in the target projec
   --font-body: "<Body>", <fallbacks>;
   --surface: oklch(…);  --raised: oklch(…);  --border: oklch(…);
   --text: oklch(…);     --text-muted: oklch(…);
-  --primary: oklch(…);  --accent: oklch(…);   /* accent ≤5% of painted area */
+  --primary: oklch(…);  --on-primary: oklch(…);  /* text/icons on --primary fills — never reuse --surface here */
+  --accent: oklch(…);   /* accent ≤5% of painted area; ≥3:1 vs its surround if it draws a UI boundary (focus ring, border) */
   --radius: <px>;  --shadow: <stance>;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);  --dur-fast: <ms>;  --dur-base: <ms>;
 }
