@@ -2,6 +2,33 @@
 
 All notable changes to this skills library. Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## 2026-07-05 — Anti-slop frontend pipeline, CreateSkill/CreateCLI/CreateMcp fleet audit, Art/BackendDesign canonicalization
+
+Subagent audit of CreateSkill, CreateCLI, CreateMcp, front-end skills, and the workflows bundle, followed by a full FrontendAesthetics rebuild and cleanup passes across Art, BackendDesign, CodebaseOnboarding, ContextBudget, and CodingStandards.
+
+### Added
+- **FrontendAesthetics anti-slop pipeline**: `DesignBrief` workflow writes a `design-brief.md` token artifact *before* any code is written (design read, dials, OKLCH palette, typography, signature element, similar-prompt critique); `SlopAudit` gates *after* the build (11 mechanical checks + 7-axis scored rubric, one revision loop); `Redesign` handles existing sites (mode detection, brand-token extraction, preservation rules).
+- **Craft.md, Tells.md, Vocabulary.md**: new FrontendAesthetics material — 12 tone-tagged font pairings, an OKLCH palette-construction formula with worked examples, a motion spec, a banned-pattern catalog, and a named-pattern vocabulary (adapted from `Leonxlnx/taste-skill`).
+- **FrontendDesign** gained React 19 / RSC / Next.js App Router patterns (`use()`, Actions, `useOptimistic`, ref-as-prop) and a design-brief-aware `GenerateComponent` step 0.
+- `skills/SkillForge/Tools/SyncMirrors.ts` — resyncs `skills.json`/`llms.txt` descriptions from SKILL.md frontmatter.
+
+### Fixed
+- **CreateSkill**: `Frontmatter.md` mandated lowercase-hyphen `name:` values, contradicting the repo's TitleCase convention used by all 34 skills — corrected with an explicit documented deviation from Anthropic's upstream spec. Removed references to a fictional `SkillSearch()` loading tool (also fixed in CreateMcp, Hygiene) in favor of plain Read-tool wording.
+- **CreateCLI**: stripped donor-system leftovers (`${PAI_DIR}`, "KAI", `~/.claude/Bin/llcli/` paths) from Patterns.md/TypescriptPatterns.md/FrameworkComparison.md; fixed broken workflow references (`CliFirstArchitecture.md`, `add-testing.md`, `setup-distribution.md` never existed); Tier 1 now defaults to `node:util` `parseArgs` instead of hand-rolled argv scanning; Commander cited at current v15 (ESM-only, Node ≥22.12).
+- **CreateMcp**: `npx -y` → `bunx`; OAuth 2.0 → 2.1 with RFC 8707/9728 requirements; added the `## Examples` section every other skill already had; added structured tool output (`outputSchema`/`structuredContent`) and `resource_link` examples.
+- **Workflows bundle**: `workflows/index.md` and `skills/Workflows/Chains.md` had drifted from each other and from the per-workflow `chain:` frontmatter (bare names like `ValidateSkill` instead of `CreateSkill:ValidateSkill` — not real top-level skills); resynced verbatim. `build-mcp` gained a `Verify` gate before PR; `batch-build`'s redundant `Verify` step annotated as the final integration gate.
+- **FrontendDesign**: broken 3-hop reference chain (`Context-Overview.md` → `Context-FrontendPatterns.md`, a file that never existed); orphaned `Tools/GenerateComponent.ts` now wired into its own workflow.
+- **Art**: dropped unreferenced Midjourney/Discord-bot tools (zero call sites); removed a dead `PREFERENCES.md`/`CharacterSpecs.md` customization block that pointed at files that don't exist; D3Dashboards palette now derives per-brief via OKLCH instead of a fixed "deep purple" default.
+- **BackendDesign**: middleware pattern rewritten from Next.js `(req, res)` to web-standard `Request`/`Response` (works across Hono/Bun.serve/App Router/Workers); dead `ApplyPatterns` workflow reference to a nonexistent `Context-Patterns.md`; stray skill-style frontmatter stripped from `Patterns.md` and `ClickhouseIo.md`.
+- Stray SKILL.md-style frontmatter (donor leftover) removed from `TddWorkflow/Overview.md` and `SecurityReview/Overview.md`.
+- All PAI/KAI donor-branding references removed fleet-wide (Prompting, Art, CreateCLI).
+
+### Changed
+- **CodingStandards, CodebaseOnboarding, ContextBudget**: trimmed SKILL.md back under the 50-line cap; the latter two had their 4-phase workflow content extracted into proper `Workflows/*.md` files instead of living inline in SKILL.md.
+- **CreateCLI**: `category: meta` → `reference` (meta is reserved for library-management skills); package.json template gained an `engines` pin.
+- `ui-feature` and `frontend-build` workflow chains now run `FrontendAesthetics:DesignBrief` before the build and `FrontendAesthetics:SlopAudit` before shipping.
+- Both FrontendAesthetics and FrontendDesign are now `user-invocable: true`.
+
 ## 2026-07-04 — Fleet audit: broken refs repaired, triggers fixed, big skills split
 
 Library-wide SKILL.md audit (all 34 skills scanned for frontmatter validity, trigger quality, and dangling references) — re-scan reports zero issues.
