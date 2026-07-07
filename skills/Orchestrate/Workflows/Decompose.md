@@ -4,7 +4,7 @@ Turn a spec into a dependency DAG of work units that can be implemented in paral
 
 ## Step 1: Get the Spec
 
-Read the spec/RFC. If its acceptance criteria are thin, run the `Spec` skill first (or `IterativeDepth/Explore` → `Spec` for a deep one) so each unit has concrete criteria to implement against.
+Read the spec/RFC. If its acceptance criteria are thin, run the `Spec` skill first (or `Iterate/RunLenses` → `Spec` for a deep one) so each unit has concrete criteria to implement against.
 
 ## Step 2: Produce Work Units
 

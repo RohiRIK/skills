@@ -38,4 +38,4 @@ User: "/spec the session token expires too early"
 ## Gotchas
 
 - Acceptance criteria must be testable — "works well" is not a criterion; "returns 404 for unknown id" is.
-- For high-stakes work use `--deep` (runs IterativeDepth/Explore first) so criteria cover failure, security, and integration lenses, not just the happy path.
+- For high-stakes work use `--deep` (runs Iterate/RunLenses first) so criteria cover failure, security, and integration lenses, not just the happy path.

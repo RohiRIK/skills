@@ -54,4 +54,4 @@ echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Spec","workflow":"Explor
 
 ## Wiring: --deep mode
 
-With `--deep`, run **IterativeDepth/Explore** first (multi-lens passes over the problem), then write the acceptance criteria from the deduplicated lens findings. Without `--deep`, the single-pass exploration below is the default — keep it as the fast path.
+With `--deep`, run **Iterate/RunLenses** first (multi-lens analysis passes over the problem), then write the acceptance criteria from the deduplicated lens findings. Without `--deep`, the single-pass exploration below is the default — keep it as the fast path.

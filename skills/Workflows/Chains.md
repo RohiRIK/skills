@@ -26,10 +26,10 @@ Every composed chain in the library. Pick by task, run the skills left-to-right.
 | Workflow | Chain | When |
 |----------|-------|------|
 | **new-skill-quick** | `Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush` | New skill, clear scope, single capability. |
-| **new-skill-heavy** | `IterativeDepth → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest` | Complex, multi-workflow skill; shape unclear. |
+| **new-skill-heavy** | `Iterate(--lenses) → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest` | Complex, multi-workflow skill; shape unclear. |
 | **canonicalize-skill** | `CreateSkill:ValidateSkill → CreateSkill:CanonicalizeSkill → GitHubOps:CommitPush` | Skill structure broken / drifted from canon. |
 | **fix-trigger** | `CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush` | Skill won't activate or mis-fires. |
-| **autonomous-loop** | `Iterate(target, goal, max) → [Verify + Reflect each pass] → GitHubOps:CommitPush` | Improve a target hands-off; Iterate auto-runs Verify+Reflect each pass. |
+| **autonomous-loop** | `Iterate(target, goal, [max]) → [one pass/turn, Verify + Reflect, ScheduleWakeup re-fires until exit] → GitHubOps:CommitPush` | Improve a target hands-off. Iterate runs one pass per turn and re-invokes itself via `ScheduleWakeup` until goal met or cap; unset args default. Launch directly or as `/loop /iterate …`. |
 | **library-audit** | `SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush` | Whole-library health sweep. |
 | **batch-build** | `Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify [final integration gate — Orchestrate already verifies each unit] → GitHubOps:PullRequest` | Build/refactor many skills at once. |
 | **release** | `GitHubOps:RepoHygiene → GitHubOps:Changelog → GitHubOps:Release` | Cut a tagged version. |
@@ -37,8 +37,20 @@ Every composed chain in the library. Pick by task, run the skills left-to-right.
 ## Operating modes
 
 - **Quick** — clear scope, manual review between steps (ship-fast).
-- **Autonomous** — defined goal + exit condition, hands-off loop (autonomous-loop).
+- **Autonomous** — defined goal + exit condition, hands-off loop (autonomous-loop). Self-re-invokes
+  via `ScheduleWakeup`; use `/schedule` to make it recurring on a cron.
 - **Heavy** — multi-unit/parallel, PR-gated (spec-to-ship, batch-build).
+
+## Native loop primitives
+
+The autonomous chains sit on the harness's built-in loop surface:
+- **`/loop <interval> <prompt>`** — re-run a prompt/command on your machine on an interval; omit the
+  interval for model-paced (dynamic) re-invocation. `/loop /iterate …` drives the autonomous-loop chain.
+- **`/schedule`** — move a recurring routine to a cloud cron (survives your machine being off).
+- **`ScheduleWakeup`** — the tool `Iterate` calls to re-fire itself pass-by-pass; the self-contained
+  path when you invoke `/iterate` directly rather than under `/loop`.
+- **`/goal`** — evaluator-enforced exit condition. Research preview; if unavailable, `Iterate`'s
+  state-file exit conditions provide the equivalent.
 
 ## Hard rule
 

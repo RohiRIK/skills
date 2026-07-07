@@ -1,6 +1,6 @@
 ---
 name: Workflows
-description: "Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, secure, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job."
+description: "Index of composed skill chains: which skills to run in what order for a full job. USE WHEN combining skills or asked 'what's the workflow for X'."
 category: workflow
 effort: low
 ---

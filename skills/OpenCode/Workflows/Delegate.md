@@ -65,15 +65,22 @@ timeout 900 opencode run '<task B>' --dir ../task-b    # run_in_background: true
 
 Poll each with `BashOutput`. Clean up worktrees when done.
 
-## 5. Report back
+## 5. Double-check the result, then report
+
+An autonomous worker can exit 0 and still leave broken, partial, or off-spec work — exit code is not
+correctness. Verify before you trust it.
 
 After OpenCode exits:
 
 - Run `git status` / `git diff --stat` in the target dir to see what changed.
-- Summarize: what it did, files touched, test/typecheck result, anything it left
-  incomplete or flagged.
-- Do **not** commit OpenCode's work automatically — surface the diff and let the
-  user decide (follow this repo's normal commit workflow).
+- **Run the `Verify` skill** (`Verify/Workflows/RunVerify.md`) on the changed files against the task's
+  done condition — do this even on a clean (exit 0) run.
+  - **NOT READY** → append the failure context (blocking issues, file+line, the diff) to
+    `.agent-state.md` under the current iteration (schema: `_state/StateFileSchema.md`), exactly as a
+    non-zero exit would, so a `/iterate` or `Orchestrate` pass replans instead of trusting bad work.
+- Summarize: what it did, files touched, the Verify verdict, anything left incomplete or flagged.
+- Do **not** commit OpenCode's work automatically — surface the diff and let the user decide (follow
+  this repo's normal commit workflow).
 
 ## Execution Log
 
@@ -84,4 +91,4 @@ echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"OpenCode","workflow":"De
 
 ## Wiring: capture failure to state
 
-On a non-zero worker exit, append the failure context — command, exit code, last output, and the relevant diff — to `.agent-state.md` under the current iteration (schema: `_state/StateFileSchema.md`). A `/iterate` or `Orchestrate` pass then replans around the failure instead of blind-retrying.
+On a non-zero worker exit **or a NOT READY Verify verdict** (Step 5), append the failure context — command, exit code, last output, and the relevant diff — to `.agent-state.md` under the current iteration (schema: `_state/StateFileSchema.md`). A `/iterate` or `Orchestrate` pass then replans around the failure instead of blind-retrying.
