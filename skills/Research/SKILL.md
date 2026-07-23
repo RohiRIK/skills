@@ -4,7 +4,7 @@ description: "Research a question at three depths (quick / standard / deep multi
 category: workflow
 effort: medium
 domain: docs
-disable-model-invocation: true
+disable-model-invocation: false
 argument-hint: [query]
 ---
 

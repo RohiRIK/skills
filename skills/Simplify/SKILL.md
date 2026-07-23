@@ -4,7 +4,7 @@ description: "Post-implementation dead-code cleanup. USE WHEN running /simplify 
 category: quality
 effort: low
 domain: dev
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 # Simplify

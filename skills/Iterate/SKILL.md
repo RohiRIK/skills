@@ -4,7 +4,7 @@ description: "Bounded multi-pass loop: improve mode (self-re-invokes via Schedul
 category: workflow
 effort: medium
 domain: meta
-disable-model-invocation: true
+disable-model-invocation: false
 argument-hint: [--target PATH --goal TEXT --max N]
 ---
 
