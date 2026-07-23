@@ -3,6 +3,7 @@ name: SkillForge
 description: "Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill)."
 category: meta
 effort: medium
+domain: meta
 ---
 
 # SkillForge

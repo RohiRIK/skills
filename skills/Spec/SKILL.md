@@ -3,6 +3,7 @@ name: Spec
 description: "Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning."
 category: workflow
 effort: medium
+domain: dev
 ---
 
 # Spec

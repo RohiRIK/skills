@@ -48,6 +48,7 @@ name: SkillName
 description: "[What it does]. USE WHEN [intent triggers, OR-joined]. NOT FOR [confusable alternative]."
 category: workflow   # workflow · reference · delegation · meta · visual · prompting · quality
 effort: medium       # low · medium · high
+domain: dev          # dev · security · design · data · ops · agents · testing · prompting · meta · docs
 ---
 
 # SkillName
@@ -121,8 +122,8 @@ See `_state/ExecutionLog.md` for the schema.
 - [ ] Routing-table names match file names exactly
 
 ### Frontmatter
-- [ ] `name`, `description` (WHAT + WHEN, ≤30 words), `category`, `effort` all present
-- [ ] `category` ∈ {workflow, reference, delegation, meta, visual, prompting, quality}; `effort` ∈ {low, medium, high}
+- [ ] `name`, `description` (WHAT + WHEN, ≤30 words), `category`, `effort`, `domain` all present
+- [ ] `category` ∈ {workflow, reference, delegation, meta, visual, prompting, quality}; `effort` ∈ {low, medium, high}; `domain` ∈ {dev, security, design, data, ops, agents, testing, prompting, meta, docs}
 - [ ] `NOT FOR` clause present if the skill has confusable neighbours
 - [ ] Tier flags correct (A: `user-invocable: false` · B: `disable-model-invocation: true` · D: `context: fork` + `agent`)
 

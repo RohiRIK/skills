@@ -33,9 +33,10 @@ Every skill's frontmatter carries:
 | `description` | yes | WHAT it does + WHEN to use it (≤30 words). The routing signal. |
 | `category` | yes | Purpose class: `workflow · reference · delegation · meta · visual · prompting · quality` |
 | `effort` | yes | `low · medium · high` — cost/latency hint, pairs with tier for model routing |
+| `domain` | yes | Subject-matter tag, orthogonal to `category`: `dev · security · design · data · ops · agents · testing · prompting · meta · docs` |
 | tier flags | as needed | `disable-model-invocation` (B), `user-invocable: false` (A), `context: fork` + `agent` (D) |
 
-`category` and `effort` are tooling annotations (the loader ignores unknown keys). They make the library groupable by purpose and sortable by cost, and they feed `SkillForge/AuditAgentic`.
+`category`, `effort`, and `domain` are tooling annotations (the loader ignores unknown keys). They make the library groupable by purpose, sortable by cost, and filterable by topic, and they feed `SkillForge/AuditAgentic`.
 
 ## 3. The tier model
 

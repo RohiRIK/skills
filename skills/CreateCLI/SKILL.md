@@ -3,6 +3,7 @@ name: CreateCLI
 description: "Generate a production-ready TypeScript CLI (3 tiers: parseArgs/Commander/oclif). USE WHEN create a CLI, command-line tool, or wrap an API. NOT FOR agent skills (use CreateSkill) or Python."
 category: reference
 effort: medium
+domain: dev
 ---
 
 # CreateCLI

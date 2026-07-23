@@ -3,6 +3,7 @@ name: GitHubOps
 description: "Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. USE WHEN clean up the repo, update the changelog, commit/push, open a PR, or cut a release. NOT FOR git branching/merge theory (use GitWorkflow)."
 category: workflow
 effort: medium
+domain: ops
 ---
 
 # GitHubOps

@@ -3,6 +3,7 @@ name: FrontendDesign
 description: "Reference for building React/Next.js components, hooks, state, and performance. USE WHEN building components, hooks, state, or optimizing renders. NOT FOR visual styling, typography, or color (use FrontendAesthetics)."
 category: reference
 effort: low
+domain: dev
 user-invocable: true
 ---
 

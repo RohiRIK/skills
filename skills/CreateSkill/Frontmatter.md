@@ -38,7 +38,12 @@ All frontmatter fields and the tier system for classifying skills.
 - Allowed values: `low · medium · high`
 - Placed directly under `category`
 
-> `category` and `effort` are tooling annotations — the Claude Code loader ignores unknown keys, so they are safe to add. Both are required on every skill.
+### `domain` (required)
+- Subject-matter tag for filtering the library by topic, orthogonal to `category` (which is purpose class, not topic)
+- Allowed values: `dev · security · design · data · ops · agents · testing · prompting · meta · docs`
+- Placed directly under `effort`
+
+> `category`, `effort`, and `domain` are tooling annotations — the Claude Code loader ignores unknown keys, so they are safe to add. All three are required on every skill.
 
 ### `disable-model-invocation`
 - `true` for Tier B — skill only fires when user types `/skill-name`
@@ -113,6 +118,7 @@ When user types `/recall docker patterns`, `$ARGUMENTS` becomes `docker patterns
 - [ ] `description` (WHAT + WHEN, ≤30 words, correct format for tier)
 - [ ] `category` present, in {workflow, reference, delegation, meta, visual, prompting, quality}
 - [ ] `effort` present, in {low, medium, high}
+- [ ] `domain` present, in {dev, security, design, data, ops, agents, testing, prompting, meta, docs}
 - [ ] Tier flags as needed (A: `user-invocable: false` · B: `disable-model-invocation: true` · D: `context: fork` + `agent`)
 
 ## Example: Tier B Skill

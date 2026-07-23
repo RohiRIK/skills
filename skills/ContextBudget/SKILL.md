@@ -3,6 +3,7 @@ name: ContextBudget
 description: "Audit Claude Code context-window consumption across agents, skills, MCP servers, and rules, and produce prioritized token-savings recommendations. USE WHEN context feels bloated or you want to cut token usage."
 category: meta
 effort: medium
+domain: ops
 ---
 
 # ContextBudget

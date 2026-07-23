@@ -3,6 +3,7 @@ name: Iterate
 description: "Bounded multi-pass loop: improve mode (self-re-invokes via ScheduleWakeup until done) or analysis mode (--lenses, read-only, feeds Spec). USE WHEN iterate, refine, keep improving, or explore deeper."
 category: workflow
 effort: medium
+domain: meta
 disable-model-invocation: true
 argument-hint: [--target PATH --goal TEXT --max N]
 ---

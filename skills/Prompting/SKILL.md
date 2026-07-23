@@ -3,6 +3,7 @@ name: Prompting
 description: "Vendor-agnostic prompt-engineering standard library. USE WHEN authoring or refining a prompt, system message, skill, agent instruction, or rule file."
 category: prompting
 effort: low
+domain: prompting
 user-invocable: false
 ---
 

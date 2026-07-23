@@ -3,6 +3,7 @@ name: CodingStandards
 description: "Language coding standards (TS, Python, Bash, PowerShell, Swift, Rust). USE WHEN writing, reviewing, or scaffolding code."
 category: reference
 effort: low
+domain: dev
 user-invocable: false
 ---
 

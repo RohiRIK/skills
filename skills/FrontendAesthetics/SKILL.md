@@ -3,6 +3,7 @@ name: FrontendAesthetics
 description: "Visual direction and anti-slop gate — typography, color, motion. USE WHEN building any page/dashboard/UI, redesigning, design direction, or looks templated/AI-made. NOT FOR component logic or performance (use FrontendDesign)."
 category: reference
 effort: medium
+domain: design
 user-invocable: true
 ---
 

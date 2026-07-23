@@ -3,6 +3,7 @@ name: CreateSkill
 description: "Create, validate, and improve individual skills. USE WHEN create/validate/improve a skill or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI) or whole-library audits (use SkillForge)."
 category: meta
 effort: medium
+domain: meta
 ---
 
 # CreateSkill

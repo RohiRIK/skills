@@ -3,6 +3,7 @@ name: Hygiene
 description: "Audit ~/.claude for git, skill, code, and rules hygiene issues. USE WHEN auditing the Claude config, checking harness health, or cleaning up skills/hooks/rules."
 category: quality
 effort: medium
+domain: ops
 disable-model-invocation: true
 argument-hint: [--fix]
 allowed-tools: Bash(bun:*), Bash(git:*), Read, Edit

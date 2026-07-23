@@ -3,6 +3,7 @@ name: Workflows
 description: "Index of composed skill chains: which skills to run in what order for a full job. USE WHEN combining skills or asked 'what's the workflow for X'."
 category: workflow
 effort: low
+domain: meta
 ---
 
 # Workflows

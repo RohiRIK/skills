@@ -3,6 +3,7 @@ name: Research
 description: "Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion."
 category: workflow
 effort: medium
+domain: docs
 disable-model-invocation: true
 argument-hint: [query]
 ---

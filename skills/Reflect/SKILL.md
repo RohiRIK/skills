@@ -3,6 +3,7 @@ name: Reflect
 description: "Self-rate the just-finished output on five axes with evidence, then fix any gap scored ≤3. USE WHEN a non-trivial task finishes — 3+ files, a multi-step workflow, or 3+ debug attempts."
 category: quality
 effort: low
+domain: meta
 ---
 
 # Reflect

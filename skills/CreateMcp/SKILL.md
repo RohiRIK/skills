@@ -3,6 +3,7 @@ name: CreateMcp
 description: "Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, and security. USE WHEN creating, scaffolding, connecting, or debugging an MCP server."
 category: reference
 effort: medium
+domain: dev
 argument-hint: [what the server should do]
 ---
 

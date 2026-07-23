@@ -3,6 +3,7 @@ name: DockerPatterns
 description: "Reference for Docker and Docker Compose local dev patterns. USE WHEN writing a Dockerfile or compose file, or containerizing local dev."
 category: reference
 effort: low
+domain: ops
 user-invocable: false
 ---
 

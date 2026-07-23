@@ -45,11 +45,11 @@ gen_json() {
   echo '  "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",'
   echo "  \"generated\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\","
   echo '  "skills": ['
-  local first=1 d fm name desc catg eff tier wf
+  local first=1 d fm name desc catg eff dom tier wf
   for d in $(skill_dirs); do
     fm="$(frontmatter "$d/SKILL.md")"
     name="$(field "$fm" name)"; desc="$(field "$fm" description)"
-    catg="$(field "$fm" category)"; eff="$(field "$fm" effort)"; tier="$(tier_of "$fm")"
+    catg="$(field "$fm" category)"; eff="$(field "$fm" effort)"; dom="$(field "$fm" domain)"; tier="$(tier_of "$fm")"
     wf="$(ls "$d/Workflows" 2>/dev/null | sed 's/\.md$//' | paste -sd, - 2>/dev/null || true)"
     [ $first -eq 0 ] && echo '    },'; first=0
     echo '    {'
@@ -57,6 +57,7 @@ gen_json() {
     echo "      \"path\": \"$d/\","
     echo "      \"category\": \"$(esc "$catg")\","
     echo "      \"effort\": \"$(esc "$eff")\","
+    echo "      \"domain\": \"$(esc "$dom")\","
     echo "      \"tier\": \"$tier\","
     echo "      \"workflows\": \"$(esc "$wf")\","
     echo "      \"description\": \"$(esc "$desc")\""
@@ -90,11 +91,11 @@ gen_llms() {
   cat <<'HEAD'
 # Skills — personal Agent Skills library
 
-> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder under `skills/` with a `SKILL.md` (frontmatter: name, description, category, effort + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, IterativeDepth, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
+> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder under `skills/` with a `SKILL.md` (frontmatter: name, description, category, effort, domain + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, IterativeDepth, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
 
 ## How to consume this repo (for AI agents)
 
-- **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, tier, workflows, and description as JSON. Parse this instead of opening every file.
+- **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, domain, tier, workflows, and description as JSON. Parse this instead of opening every file.
 - **Per skill:** read `<SkillName>/SKILL.md` — the `description` field states WHAT it does + WHEN to use it; the `## Workflow Routing` table maps intents to `Workflows/*.md`; `## Gotchas` holds the highest-density failure knowledge; `## Examples` shows trigger->action.
 - **System model:** [rules/system.md](rules/system.md) — tier model (A/B/C/D), frontmatter contract, composition graph, state + telemetry conventions.
 - **Composed workflows:** [workflows/index.md](workflows/index.md) — an OKF bundle of multi-skill chains for full jobs (build & ship, maintain the library); each chain is one markdown concept with YAML frontmatter (`type: Workflow`, `chain`, `tags`). `skills.json` also carries a `workflows` array with each chain's `title`, `chain`, `tags`, and `summary`.

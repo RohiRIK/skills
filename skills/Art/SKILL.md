@@ -3,6 +3,7 @@ name: Art
 description: "Generates images, diagrams, and visual output. USE WHEN producing any visual artifact — illustration, diagram, chart, thumbnail, card. NOT FOR in-app chart components (use the dataviz skill)."
 category: visual
 effort: high
+domain: design
 ---
 
 # Art

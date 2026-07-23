@@ -3,6 +3,7 @@ name: Test
 description: "Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests."
 category: workflow
 effort: medium
+domain: testing
 ---
 
 # Test

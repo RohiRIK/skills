@@ -3,6 +3,7 @@ name: Verify
 description: "Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate."
 category: quality
 effort: medium
+domain: testing
 disable-model-invocation: true
 ---
 

@@ -3,6 +3,7 @@ name: CodebaseOnboarding
 description: "Analyze an unfamiliar codebase and produce an onboarding guide — architecture map, entry points, conventions, starter CLAUDE.md. USE WHEN joining a new project or onboarding a repo."
 category: workflow
 effort: medium
+domain: dev
 ---
 
 # CodebaseOnboarding

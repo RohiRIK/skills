@@ -2,13 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-07-05T11:35:36Z",
+  "generated": "2026-07-23T09:36:37Z",
   "skills": [
     {
-      "name": "agy",
+      "name": "Agy",
       "path": "skills/Agy/",
       "category": "delegation",
       "effort": "medium",
+      "domain": "agents",
       "tier": "C-auto",
       "workflows": "Delegate,GenerateImage,ReviewPR",
       "description": "Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (agy) as an autonomous worker. USE WHEN delegating such a task to agy/Antigravity, or running the agy CLI."
@@ -18,6 +19,7 @@
       "path": "skills/Art/",
       "category": "visual",
       "effort": "high",
+      "domain": "design",
       "tier": "C-auto",
       "workflows": "AdHocYouTubeThumbnail,AnnotatedScreenshots,Aphorisms,Comics,Comparisons,D3Dashboards,Essay,Frameworks,Maps,Mermaid,RecipeCards,RemoveBackground,Stats,Taxonomies,TechnicalDiagrams,Timelines,Visualize,YouTubeThumbnailChecklist",
       "description": "Generates images, diagrams, and visual output. USE WHEN producing any visual artifact — illustration, diagram, chart, thumbnail, card. NOT FOR in-app chart components (use the dataviz skill)."
@@ -27,7 +29,8 @@
       "path": "skills/BackendDesign/",
       "category": "reference",
       "effort": "low",
-      "tier": "A-reference",
+      "domain": "dev",
+      "tier": "C-auto",
       "workflows": "ApplyPatterns",
       "description": "Reference for API design, database schema, and server architecture. USE WHEN designing an API, modeling a schema, or structuring a backend service."
     },
@@ -36,7 +39,8 @@
       "path": "skills/Build/",
       "category": "workflow",
       "effort": "medium",
-      "tier": "A-reference",
+      "domain": "dev",
+      "tier": "C-auto",
       "workflows": "IncrementalBuild",
       "description": "Implements plan tasks one at a time with compile and commit gates. USE WHEN building from a plan."
     },
@@ -45,8 +49,9 @@
       "path": "skills/CodebaseOnboarding/",
       "category": "workflow",
       "effort": "medium",
+      "domain": "dev",
       "tier": "C-auto",
-      "workflows": "",
+      "workflows": "Onboard",
       "description": "Analyze an unfamiliar codebase and produce an onboarding guide — architecture map, entry points, conventions, starter CLAUDE.md. USE WHEN joining a new project or onboarding a repo."
     },
     {
@@ -54,6 +59,7 @@
       "path": "skills/CodingStandards/",
       "category": "reference",
       "effort": "low",
+      "domain": "dev",
       "tier": "A-reference",
       "workflows": "",
       "description": "Language coding standards (TS, Python, Bash, PowerShell, Swift, Rust). USE WHEN writing, reviewing, or scaffolding code."
@@ -63,8 +69,9 @@
       "path": "skills/ContextBudget/",
       "category": "meta",
       "effort": "medium",
+      "domain": "ops",
       "tier": "C-auto",
-      "workflows": "",
+      "workflows": "Audit",
       "description": "Audit Claude Code context-window consumption across agents, skills, MCP servers, and rules, and produce prioritized token-savings recommendations. USE WHEN context feels bloated or you want to cut token usage."
     },
     {
@@ -72,15 +79,27 @@
       "path": "skills/CreateCLI/",
       "category": "reference",
       "effort": "medium",
+      "domain": "dev",
       "tier": "C-auto",
       "workflows": "AddCommand,CreateCli,UpgradeTier",
       "description": "Generate a production-ready TypeScript CLI (3 tiers: parseArgs/Commander/oclif). USE WHEN create a CLI, command-line tool, or wrap an API. NOT FOR agent skills (use CreateSkill) or Python."
+    },
+    {
+      "name": "CreateHook",
+      "path": "skills/CreateHook/",
+      "category": "meta",
+      "effort": "medium",
+      "domain": "dev",
+      "tier": "C-auto",
+      "workflows": "ClaudeCode,Hermes,OpenClaw,OpenCode",
+      "description": "Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenCode, OpenClaw, Hermes Agent). USE WHEN writing, wiring, or debugging an event hook, plugin hook, or agent automation trigger."
     },
     {
       "name": "CreateMcp",
       "path": "skills/CreateMcp/",
       "category": "reference",
       "effort": "medium",
+      "domain": "dev",
       "tier": "C-auto",
       "workflows": "BuildServer,ConnectServer,TestServer",
       "description": "Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, and security. USE WHEN creating, scaffolding, connecting, or debugging an MCP server."
@@ -90,24 +109,27 @@
       "path": "skills/CreateSkill/",
       "category": "meta",
       "effort": "medium",
+      "domain": "meta",
       "tier": "C-auto",
       "workflows": "CanonicalizeSkill,CreateSkill,ImproveSkill,OptimizeDescription,TestSkill,UpdateSkill,ValidateSkill",
       "description": "Create, validate, and improve individual skills. USE WHEN create/validate/improve a skill or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI) or whole-library audits (use SkillForge)."
     },
     {
-      "name": "data-report-builder",
+      "name": "DataReportBuilder",
       "path": "skills/DataReportBuilder/",
       "category": "workflow",
       "effort": "medium",
+      "domain": "data",
       "tier": "C-auto",
       "workflows": "BuildReport",
       "description": "Turn a raw Excel/CSV dataset into a two-layer report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet wanting a report, analysis, summary, or breakdown."
     },
     {
-      "name": "docker-patterns",
+      "name": "DockerPatterns",
       "path": "skills/DockerPatterns/",
       "category": "reference",
       "effort": "low",
+      "domain": "ops",
       "tier": "A-reference",
       "workflows": "",
       "description": "Reference for Docker and Docker Compose local dev patterns. USE WHEN writing a Dockerfile or compose file, or containerizing local dev."
@@ -117,8 +139,9 @@
       "path": "skills/FrontendAesthetics/",
       "category": "reference",
       "effort": "medium",
+      "domain": "design",
       "tier": "C-auto",
-      "workflows": "",
+      "workflows": "DesignBrief,Redesign,SlopAudit",
       "description": "Visual direction and anti-slop gate — typography, color, motion. USE WHEN building any page/dashboard/UI, redesigning, design direction, or looks templated/AI-made. NOT FOR component logic or performance (use FrontendDesign)."
     },
     {
@@ -126,7 +149,8 @@
       "path": "skills/FrontendDesign/",
       "category": "reference",
       "effort": "low",
-      "tier": "A-reference",
+      "domain": "dev",
+      "tier": "C-auto",
       "workflows": "GenerateComponent,OptimizePerformance",
       "description": "Reference for building React/Next.js components, hooks, state, and performance. USE WHEN building components, hooks, state, or optimizing renders. NOT FOR visual styling, typography, or color (use FrontendAesthetics)."
     },
@@ -135,6 +159,7 @@
       "path": "skills/GitHubOps/",
       "category": "workflow",
       "effort": "medium",
+      "domain": "ops",
       "tier": "C-auto",
       "workflows": "Changelog,CommitPush,PullRequest,Release,RepoHygiene",
       "description": "Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. USE WHEN clean up the repo, update the changelog, commit/push, open a PR, or cut a release. NOT FOR git branching/merge theory (use GitWorkflow)."
@@ -144,15 +169,17 @@
       "path": "skills/GitWorkflow/",
       "category": "reference",
       "effort": "low",
+      "domain": "dev",
       "tier": "C-auto",
       "workflows": "",
       "description": "Reference for git branching strategies, commit conventions, merge vs rebase, and conflict resolution. USE WHEN choosing a branching model, resolving conflicts, or setting commit conventions. NOT FOR running gh repo operations like push/PR/release (use GitHubOps)."
     },
     {
-      "name": "hygiene",
+      "name": "Hygiene",
       "path": "skills/Hygiene/",
       "category": "quality",
       "effort": "medium",
+      "domain": "ops",
       "tier": "B-command",
       "workflows": "AutoFix,RunHygiene",
       "description": "Audit ~/.claude for git, skill, code, and rules hygiene issues. USE WHEN auditing the Claude config, checking harness health, or cleaning up skills/hooks/rules."
@@ -162,24 +189,17 @@
       "path": "skills/Iterate/",
       "category": "workflow",
       "effort": "medium",
-      "tier": "B-command",
-      "workflows": "ResumeLoop,RunLoop",
-      "description": "Refine a target across bounded passes toward a goal, with a state file and a hard exit condition. USE WHEN iterate, refine, loop, keep improving, or run until done."
-    },
-    {
-      "name": "IterativeDepth",
-      "path": "skills/IterativeDepth/",
-      "category": "workflow",
-      "effort": "high",
+      "domain": "meta",
       "tier": "C-auto",
-      "workflows": "Explore",
-      "description": "Run 2-8 lens passes over the same problem to surface requirements and edge cases a single angle misses. USE WHEN exploring deeper, multi-angle analysis, or surfacing hidden requirements before building."
+      "workflows": "ResumeLoop,RunLenses,RunLoop",
+      "description": "Bounded multi-pass loop: improve mode (self-re-invokes via ScheduleWakeup until done) or analysis mode (--lenses, read-only, feeds Spec). USE WHEN iterate, refine, keep improving, or explore deeper."
     },
     {
-      "name": "opencode",
+      "name": "OpenCode",
       "path": "skills/OpenCode/",
       "category": "delegation",
       "effort": "medium",
+      "domain": "agents",
       "tier": "C-auto",
       "workflows": "Delegate,ReviewPR",
       "description": "Delegate a coding, refactor, or PR-review task to the OpenCode CLI as an autonomous worker. USE WHEN delegating such a task to OpenCode, or running the opencode CLI."
@@ -189,15 +209,17 @@
       "path": "skills/Orchestrate/",
       "category": "workflow",
       "effort": "high",
+      "domain": "agents",
       "tier": "D-fork",
       "workflows": "Decompose,MergeQueue,RunLayer",
-      "description": "Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a large spec."
+      "description": "Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a spec."
     },
     {
-      "name": "pi",
+      "name": "Pi",
       "path": "skills/Pi/",
       "category": "delegation",
       "effort": "medium",
+      "domain": "agents",
       "tier": "C-auto",
       "workflows": "Delegate,ReviewPR",
       "description": "Delegate a coding, refactor, or PR-review task to the Pi (pi.dev) CLI as an autonomous worker. USE WHEN delegating such a task to Pi, or running the pi CLI."
@@ -207,6 +229,7 @@
       "path": "skills/Prompting/",
       "category": "prompting",
       "effort": "low",
+      "domain": "prompting",
       "tier": "A-reference",
       "workflows": "",
       "description": "Vendor-agnostic prompt-engineering standard library. USE WHEN authoring or refining a prompt, system message, skill, agent instruction, or rule file."
@@ -216,6 +239,7 @@
       "path": "skills/Reflect/",
       "category": "quality",
       "effort": "low",
+      "domain": "meta",
       "tier": "C-auto",
       "workflows": "RunReflect",
       "description": "Self-rate the just-finished output on five axes with evidence, then fix any gap scored ≤3. USE WHEN a non-trivial task finishes — 3+ files, a multi-step workflow, or 3+ debug attempts."
@@ -225,7 +249,8 @@
       "path": "skills/Research/",
       "category": "workflow",
       "effort": "medium",
-      "tier": "B-command",
+      "domain": "docs",
+      "tier": "C-auto",
       "workflows": "RunResearch",
       "description": "Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion."
     },
@@ -234,6 +259,7 @@
       "path": "skills/SecurityReview/",
       "category": "quality",
       "effort": "high",
+      "domain": "security",
       "tier": "D-fork",
       "workflows": "AuditCode",
       "description": "Audits code for vulnerabilities and secrets. USE WHEN reviewing code for security issues."
@@ -243,7 +269,8 @@
       "path": "skills/Simplify/",
       "category": "quality",
       "effort": "low",
-      "tier": "A-reference",
+      "domain": "dev",
+      "tier": "C-auto",
       "workflows": "",
       "description": "Post-implementation dead-code cleanup. USE WHEN running /simplify after finishing a feature or fix."
     },
@@ -252,6 +279,7 @@
       "path": "skills/SkillForge/",
       "category": "meta",
       "effort": "medium",
+      "domain": "meta",
       "tier": "C-auto",
       "workflows": "AddTelemetry,AuditAgentic",
       "description": "Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill)."
@@ -261,7 +289,8 @@
       "path": "skills/Spec/",
       "category": "workflow",
       "effort": "medium",
-      "tier": "A-reference",
+      "domain": "dev",
+      "tier": "C-auto",
       "workflows": "ExploreAndSpec",
       "description": "Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning."
     },
@@ -270,6 +299,7 @@
       "path": "skills/StrategicCompact/",
       "category": "reference",
       "effort": "low",
+      "domain": "meta",
       "tier": "A-reference",
       "workflows": "RunCompact",
       "description": "Reference for context compaction strategy and timing guidance. USE WHEN deciding when or how to compact a long session, or planning context strategy."
@@ -279,6 +309,7 @@
       "path": "skills/TddWorkflow/",
       "category": "workflow",
       "effort": "medium",
+      "domain": "testing",
       "tier": "C-auto",
       "workflows": "RedGreenRefactor",
       "description": "Test-first development workflow. USE WHEN writing a feature test-first or fixing a bug with TDD."
@@ -288,7 +319,8 @@
       "path": "skills/Test/",
       "category": "workflow",
       "effort": "medium",
-      "tier": "A-reference",
+      "domain": "testing",
+      "tier": "C-auto",
       "workflows": "FeatureTdd,ProveIt",
       "description": "Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests."
     },
@@ -297,6 +329,7 @@
       "path": "skills/Verify/",
       "category": "quality",
       "effort": "medium",
+      "domain": "testing",
       "tier": "B-command",
       "workflows": "RunVerify",
       "description": "Run a build/type/lint/test/secret/diff gate ending in a READY / NOT READY verdict. USE WHEN verifying changes, before commit or PR, or as a quality gate."
@@ -306,9 +339,10 @@
       "path": "skills/Workflows/",
       "category": "workflow",
       "effort": "low",
+      "domain": "meta",
       "tier": "C-auto",
       "workflows": "",
-      "description": "Index of composed skill chains — which skills to run, in what order, for a full job (ship a feature, research, build a CLI/MCP, author a skill, secure, release). USE WHEN deciding how to combine skills, asked 'what's the workflow for X', or chaining skills into one job."
+      "description": "Index of composed skill chains: which skills to run in what order for a full job. USE WHEN combining skills or asked 'what's the workflow for X'."
     }
   ],
   "workflows_index": "workflows/index.md",
@@ -334,7 +368,7 @@
       "title": "Multi-skill batch build",
       "path": "workflows/batch-build.md",
       "tags": "[maintain-library, heavy]",
-      "chain": "Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify → GitHubOps:PullRequest",
+      "chain": "Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify [final integration gate — Orchestrate already verifies each unit] → GitHubOps:PullRequest",
       "summary": "Build or refactor many skills at once, in parallel, each reviewed in isolation."
     },
     {
@@ -350,7 +384,7 @@
       "title": "Build an MCP server",
       "path": "workflows/build-mcp.md",
       "tags": "[build-ship]",
-      "chain": "CreateMcp:BuildServer → SecurityReview → CreateMcp:TestServer → CreateMcp:ConnectServer → GitHubOps:PullRequest",
+      "chain": "CreateMcp:BuildServer → SecurityReview → CreateMcp:TestServer → CreateMcp:ConnectServer → Verify → GitHubOps:PullRequest",
       "summary": "Scaffold, secure, test, and connect a Model Context Protocol server."
     },
     {
@@ -382,7 +416,7 @@
       "title": "Frontend build",
       "path": "workflows/frontend-build.md",
       "tags": "[build-ship, heavy]",
-      "chain": "/spec → FrontendAesthetics → FrontendDesign → Art → /plan → /build → /test → /simplify → Reflect → /verify → /commit-push-pr",
+      "chain": "/spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → /plan → /build → /test → FrontendAesthetics:SlopAudit → /simplify → Reflect → /verify → /commit-push-pr",
       "summary": "Full frontend feature from spec through visual direction, components, assets, tests, to ship."
     },
     {
@@ -486,7 +520,7 @@
       "title": "UI feature",
       "path": "workflows/ui-feature.md",
       "tags": "[build-ship, quick]",
-      "chain": "FrontendAesthetics(direction) → FrontendDesign(build) → /simplify → Verify → GitHubOps:CommitPush",
+      "chain": "FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → /simplify → Verify → GitHubOps:CommitPush",
       "summary": "A frontend change that looks intentional, not AI-slop — direction before components."
     }
   ]
