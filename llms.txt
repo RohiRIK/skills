@@ -1,6 +1,6 @@
 # Skills — personal Agent Skills library
 
-> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder under `skills/` with a `SKILL.md` (frontmatter: name, description, category, effort, domain + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, IterativeDepth, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
+> A library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each skill is a self-contained folder under `skills/` with a `SKILL.md` (frontmatter: name, description, category, effort, domain + instructions). The agentic skills compose: primitives (Verify, Reflect) are called by drivers (Iterate, Orchestrate, Research); meta skills (CreateSkill, SkillForge) build and audit the library.
 
 ## How to consume this repo (for AI agents)
 
@@ -20,8 +20,7 @@
 - [Orchestrate](skills/Orchestrate/SKILL.md) — Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a spec.
 - [Research](skills/Research/SKILL.md) — Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion.
 - [Spec](skills/Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
-- [TddWorkflow](skills/TddWorkflow/SKILL.md) — Test-first development workflow. USE WHEN writing a feature test-first or fixing a bug with TDD.
-- [Test](skills/Test/SKILL.md) — Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests.
+- [Test](skills/Test/SKILL.md) — Runs test-first development for features and bug fixes. USE WHEN writing tests first, testing a new feature, or fixing a bug with a failing test.
 - [Workflows](skills/Workflows/SKILL.md) — Index of composed skill chains: which skills to run in what order for a full job. USE WHEN combining skills or asked 'what's the workflow for X'.
 
 ### quality
@@ -73,7 +72,7 @@
 - [Fix a skill's trigger](workflows/fix-trigger.md) — A skill won't activate or mis-fires — repair its description and routing. · chain: CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush
 - [Frontend build](workflows/frontend-build.md) — Full frontend feature from spec through visual direction, components, assets, tests, to ship. · chain: /spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → /plan → /build → /test → FrontendAesthetics:SlopAudit → /simplify → Reflect → /verify → /commit-push-pr
 - [Library-wide audit](workflows/library-audit.md) — Whole-library health sweep — agentic readiness, telemetry, canon, repo hygiene. · chain: SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush
-- [New skill — heavy](workflows/new-skill-heavy.md) — Author a complex, multi-workflow skill whose shape isn't obvious yet. · chain: IterativeDepth → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest
+- [New skill — heavy](workflows/new-skill-heavy.md) — Author a complex, multi-workflow skill whose shape isn't obvious yet. · chain: Iterate:RunLenses → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest
 - [New skill — quick](workflows/new-skill-quick.md) — Author a new skill with clear scope and a single capability. Daily path. · chain: Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush
 - [Onboard a codebase](workflows/onboard.md) — Get productive in an unfamiliar repo fast, then make the first change. · chain: CodebaseOnboarding → Research(fill gaps) → /spec (first change) → spec-to-ship
 - [Release](workflows/release.md) — Cut a tagged version of the library — hygiene, changelog, GitHub release. · chain: GitHubOps:RepoHygiene → GitHubOps:Changelog → GitHubOps:Release

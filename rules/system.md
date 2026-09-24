@@ -59,7 +59,7 @@ Primitives (called by others):
 Drivers (call the primitives):
   Iterate         — bounded PLAN→ACT→VERIFY→REFLECT passes; calls Verify + Reflect each pass
   Orchestrate  — Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates units with Verify
-  IterativeDepth — multi-lens exploration; feeds criteria to Spec / Orchestrate
+  Iterate:RunLenses — multi-lens exploration; feeds criteria to Spec / Orchestrate
   Research     — multi-depth; fans out to Agy/OpenCode/Pi, synthesizes
 
 Meta:
@@ -69,7 +69,7 @@ Meta:
 Existing skills wired in:
   Build  → calls Verify at each commit gate; idempotent so Iterate can drive it
   Test   → calls Reflect on its test additions
-  Spec   → --deep mode runs IterativeDepth first
+  Spec   → --deep mode runs Iterate:RunLenses first
   Agy/OpenCode/Pi → on worker failure, write context to .agent-state.md (no blind retry)
 ```
 

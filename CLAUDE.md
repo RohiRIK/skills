@@ -38,10 +38,10 @@ install.sh           ← symlinks skills/* into ~/.claude/skills
 Primitives:  Verify (quality gate) · Reflect (self-eval)
 Drivers:     Iterate → calls Verify + Reflect each pass
              Orchestrate → Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates with Verify
-             IterativeDepth → feeds criteria to Spec / Orchestrate
+             Iterate:RunLenses → feeds criteria to Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi
 Meta:        SkillForge → audits + instruments the whole library;  CreateSkill → builds one skill
-Wired in:    Build→Verify · Test→Reflect · Spec --deep→IterativeDepth · Agy/OpenCode/Pi→.agent-state.md on failure
+Wired in:    Build→Verify · Test→Reflect · Spec --deep→Iterate:RunLenses · Agy/OpenCode/Pi→.agent-state.md on failure
 State:       loop/multi-pass skills share .agent-state.md
 Telemetry:   action workflows append to ~/.claude/state/execution.jsonl
 ```

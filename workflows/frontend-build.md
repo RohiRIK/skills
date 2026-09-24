@@ -18,7 +18,7 @@ Full frontend feature — from spec through visual direction, component architec
 
 ## Steps
 
-1. **/spec** — explore codebase + recall LTM → acceptance criteria covering UX behaviour, responsive breakpoints, accessibility, and visual expectations. Use `--deep` (IterativeDepth) for multi-page features.
+1. **/spec** — explore codebase + recall LTM → acceptance criteria covering UX behaviour, responsive breakpoints, accessibility, and visual expectations. Use `--deep` (Iterate:RunLenses) for multi-page features.
 2. **FrontendAesthetics:DesignBrief** — set visual direction *before* touching code: design read, dials, token system from `Craft.md`, signature element, similar-prompt critique. Writes `design-brief.md` — the build's single source of visual truth.
 3. **FrontendDesign** — component architecture: composition tree, props contracts, state placement, data-flow, hook inventory. Outputs a component plan that satisfies the spec *and* derives all visual values from the brief's tokens.
 4. **Art** *(if the feature needs generated visuals)* — hero images, illustrations, icons. Generate to `~/Downloads/` → user previews → copy to project on approval.

@@ -14,13 +14,12 @@ Retro-futuristic 1960s mission-control command room, cinematic photorealistic 3D
 
 Append a per-skill centerpiece clause (below) to that prefix.
 
-## Pending heroes (18) — centerpiece clauses
+## Pending heroes (16) — centerpiece clauses
 
 | Skill | File | Centerpiece clause |
 |-------|------|--------------------|
 | Hygiene | `hygiene-hero.jpg` | a sparkling cleaning/maintenance emblem — a broom and a glowing checklist sweeping a control panel spotless, symbolizing config hygiene. |
 | Iterate | `iterate-hero.jpg` | a glowing circular loop of arrows tightening toward a bullseye, symbolizing bounded iterative refinement toward a goal. |
-| IterativeDepth | `iterative-depth-hero.jpg` | nested concentric lenses / stacked translucent layers receding into depth, symbolizing multi-lens analysis passes. |
 | OpenCode | `open-code-hero.jpg` | an open-source terminal emblem with code brackets and a delegation arrow, symbolizing an autonomous coding worker. |
 | Orchestrate | `orchestrate-hero.jpg` | a conductor's podium over a glowing node-graph DAG with parallel streams converging, symbolizing parallel orchestration. |
 | Pi | `pi-hero.jpg` | a glowing π symbol with delegation streams branching out, symbolizing the Pi CLI worker. |
@@ -32,7 +31,6 @@ Append a per-skill centerpiece clause (below) to that prefix.
 | SkillForge | `skill-forge-hero.jpg` | an anvil and forge with glowing tools being hammered into shape, symbolizing building and instrumenting skills. |
 | Spec | `spec-hero.jpg` | a glowing blueprint with a checklist of acceptance criteria, symbolizing spec-writing. |
 | StrategicCompact | `strategic-compact-hero.jpg` | folding/compressing panels of text into a dense glowing core, symbolizing context compaction. |
-| TddWorkflow | `tdd-workflow-hero.jpg` | a red-to-green test cycle ring (RED → GREEN → REFACTOR), symbolizing test-first development. |
 | Test | `test-hero.jpg` | a row of pass/fail gauges with green checkmarks, symbolizing automated test runs. |
 | Verify | `verify-hero.jpg` | a six-segment shield with a checkmark and a glowing READY stamp, symbolizing an automated verification gate. |
 | Workflows | `workflows-hero.jpg` | a glowing flowchart of connected nodes lighting up in sequence along a chosen path, symbolizing composed skill chains. |

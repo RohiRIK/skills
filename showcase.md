@@ -92,9 +92,6 @@ _hero pending_ — Audit `~/.claude` for git, skill, code, and rules hygiene iss
 ### [Iterate](skills/Iterate) 🎨
 _hero pending_ — Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions.
 
-### [IterativeDepth](skills/IterativeDepth) 🎨
-_hero pending_ — Run 2–8 multi-lens passes over a problem to surface hidden requirements.
-
 ### [OpenCode](skills/OpenCode) 🎨
 _hero pending_ — Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker.
 
@@ -127,9 +124,6 @@ _hero pending_ — Explore code + memory, then write acceptance criteria before 
 
 ### [StrategicCompact](skills/StrategicCompact) 🎨
 _hero pending_ — Reference for context-compaction strategy and timing.
-
-### [TddWorkflow](skills/TddWorkflow) 🎨
-_hero pending_ — Test-first development workflow.
 
 ### [Test](skills/Test) 🎨
 _hero pending_ — Run TDD for features and bug fixes.

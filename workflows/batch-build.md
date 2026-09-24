@@ -18,7 +18,7 @@ Spec  →  Orchestrate (Decompose → RunLayer → MergeQueue)  →  Verify [fin
 
 ## Steps
 
-1. **Spec** — write acceptance criteria for the whole batch (one criterion per unit). For a fuzzy batch, prefix with **IterativeDepth** to surface the real unit boundaries.
+1. **Spec** — write acceptance criteria for the whole batch (one criterion per unit). For a fuzzy batch, prefix with **Iterate:RunLenses** to surface the real unit boundaries.
 2. **Orchestrate**:
    - **Decompose** — split the spec into a dependency DAG of units.
    - **RunLayer** — build independent units in parallel, delegating to **Agy / OpenCode / Pi** as autonomous workers.

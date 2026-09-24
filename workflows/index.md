@@ -34,7 +34,7 @@ Two families (carried in each concept's `tags`):
 | Workflow | Chain | Doc |
 |----------|-------|-----|
 | New skill — quick | `Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush` | [new-skill-quick.md](new-skill-quick.md) |
-| New skill — heavy | `IterativeDepth → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest` | [new-skill-heavy.md](new-skill-heavy.md) |
+| New skill — heavy | `Iterate:RunLenses → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest` | [new-skill-heavy.md](new-skill-heavy.md) |
 | Canonicalize a skill | `CreateSkill:ValidateSkill → CreateSkill:CanonicalizeSkill → GitHubOps:CommitPush` | [canonicalize-skill.md](canonicalize-skill.md) |
 | Fix a skill's trigger | `CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush` | [fix-trigger.md](fix-trigger.md) |
 | Iterate a skill (hands-off) | `Iterate(target, goal, max) → [Verify + Reflect each pass] → GitHubOps:CommitPush` | [autonomous-loop.md](autonomous-loop.md) |
@@ -54,7 +54,7 @@ Two families (carried in each concept's `tags`):
 
 - `Iterate` → calls **Verify** + **Reflect** every pass; carries dead-ends forward.
 - `Orchestrate` → gates each unit with **Verify**, reviews each in its own context.
-- `IterativeDepth` → feeds criteria into **Spec** / **Orchestrate**.
+- `Iterate:RunLenses` → feeds criteria into **Spec** / **Orchestrate**.
 - `Research` → fans out to **Agy / OpenCode / Pi** + web search.
 
 ## State & telemetry

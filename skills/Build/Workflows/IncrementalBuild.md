@@ -20,7 +20,7 @@ Read the relevant existing code, types, and patterns used nearby. Understand the
 
 ### Step 3: TDD — RED → GREEN → REFACTOR
 
-Run `TddWorkflow:RedGreenRefactor` scoped to this task's acceptance criteria:
+Run `Test:FeatureTdd` scoped to this task's acceptance criteria:
 - Write a failing test that captures the acceptance criteria (RED)
 - Write the minimum implementation to pass it (GREEN)
 - Refactor while keeping tests green (REFACTOR)

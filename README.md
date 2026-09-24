@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-34-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-33-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -31,7 +31,6 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`GitWorkflow/`](skills/GitWorkflow) | Reference for git branching, commit conventions, merge vs rebase, and conflict resolution. |
 | [`GitHubOps/`](skills/GitHubOps) | Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. |
 | [`Hygiene/`](skills/Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
-| [`IterativeDepth/`](skills/IterativeDepth) | Run 2-8 multi-lens passes over a problem to surface hidden requirements; feeds `Spec`/`Orchestrate`. |
 | [`Iterate/`](skills/Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
 | [`OpenCode/`](skills/OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
 | [`Orchestrate/`](skills/Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
@@ -44,8 +43,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Simplify/`](skills/Simplify) | Post-implementation dead-code cleanup (`/simplify`). |
 | [`Spec/`](skills/Spec) | Explore code + memory, then write acceptance criteria before planning. |
 | [`StrategicCompact/`](skills/StrategicCompact) | Reference for context-compaction strategy and timing. |
-| [`TddWorkflow/`](skills/TddWorkflow) | Test-first development workflow. |
-| [`Test/`](skills/Test) | Run TDD for features and bug fixes. |
+| [`Test/`](skills/Test) | Single TDD entry point for test-first features and bug fixes; runs `FeatureTdd` or `ProveIt`. |
 | [`Verify/`](skills/Verify) | Six-phase quality gate (build→type→lint→test→secret→diff) ending in a READY / NOT READY verdict (`/verify`). |
 | [`Workflows/`](skills/Workflows) | Index of composed skill chains — which skills to run, in what order, for a full job. Routes a task to the right chain; full steps in [`workflows/`](workflows). |
 

@@ -20,7 +20,7 @@ All frontmatter fields and the tier system for classifying skills.
 ## All Frontmatter Fields
 
 ### `name`
-- TitleCase, identical to the skill's directory name, max 64 chars (e.g. `CreateSkill`, `TddWorkflow`)
+- TitleCase, identical to the skill's directory name, max 64 chars (e.g. `CreateSkill`, `Test`)
 - Note: Anthropic's upstream Agent Skills spec uses lowercase-hyphen names; this library deliberately deviates — `name:` is always TitleCase and matches the directory.
 
 ### `description`

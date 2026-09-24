@@ -1,6 +1,6 @@
 ---
 name: Test
-description: "Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests."
+description: "Runs test-first development for features and bug fixes. USE WHEN writing tests first, testing a new feature, or fixing a bug with a failing test."
 category: workflow
 effort: medium
 domain: testing
@@ -35,5 +35,7 @@ User: "/test the auth token expires too early"
 
 ## Gotchas
 
+- RED must fail for the right reason — a setup error or typo is not a valid failing test.
+- Refactor only while green; separate behavior changes from structural cleanup.
 - Prove-It first: write the failing test that reproduces the bug before any fix — a fix with no failing test proves nothing.
 - After the run, Reflect scores the test additions; a low Completeness score usually means an untested edge case worth adding before stopping.

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-07-23T09:36:37Z",
+  "generated": "2026-09-24T10:40:13Z",
   "skills": [
     {
       "name": "Agy",
@@ -305,16 +305,6 @@
       "description": "Reference for context compaction strategy and timing guidance. USE WHEN deciding when or how to compact a long session, or planning context strategy."
     },
     {
-      "name": "TddWorkflow",
-      "path": "skills/TddWorkflow/",
-      "category": "workflow",
-      "effort": "medium",
-      "domain": "testing",
-      "tier": "C-auto",
-      "workflows": "RedGreenRefactor",
-      "description": "Test-first development workflow. USE WHEN writing a feature test-first or fixing a bug with TDD."
-    },
-    {
       "name": "Test",
       "path": "skills/Test/",
       "category": "workflow",
@@ -322,7 +312,7 @@
       "domain": "testing",
       "tier": "C-auto",
       "workflows": "FeatureTdd,ProveIt",
-      "description": "Runs TDD for features and bug fixes. USE WHEN testing a new feature or fixing a bug with tests."
+      "description": "Runs test-first development for features and bug fixes. USE WHEN writing tests first, testing a new feature, or fixing a bug with a failing test."
     },
     {
       "name": "Verify",
@@ -432,7 +422,7 @@
       "title": "New skill — heavy",
       "path": "workflows/new-skill-heavy.md",
       "tags": "[maintain-library, heavy]",
-      "chain": "IterativeDepth → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest",
+      "chain": "Iterate:RunLenses → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest",
       "summary": "Author a complex, multi-workflow skill whose shape isn't obvious yet."
     },
     {

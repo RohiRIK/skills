@@ -34,7 +34,7 @@ User: "/build implement the auth middleware task"
 → TDD → compile gate → commit
 ```
 
-*(Invokes TddWorkflow:RedGreenRefactor per task — does not duplicate TDD logic)*
+*(Invokes Test:FeatureTdd per task — does not duplicate TDD logic)*
 
 ## Gotchas
 

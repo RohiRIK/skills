@@ -2,6 +2,14 @@
 
 All notable changes to this skills library. Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## 2026-09-24 — Consolidated TDD entry point
+
+### Changed
+- Consolidated `TddWorkflow` into `Test`; `Test:FeatureTdd` is the single feature-TDD path and `Test:ProveIt` is the single bug-fix path.
+
+### Fixed
+- Replaced stale `IterativeDepth` references with `Iterate:RunLenses` and regenerated the machine indexes.
+
 ## 2026-07-05 — Anti-slop frontend pipeline, CreateSkill/CreateCLI/CreateMcp fleet audit, Art/BackendDesign canonicalization
 
 Subagent audit of CreateSkill, CreateCLI, CreateMcp, front-end skills, and the workflows bundle, followed by a full FrontendAesthetics rebuild and cleanup passes across Art, BackendDesign, CodebaseOnboarding, ContextBudget, and CodingStandards.
