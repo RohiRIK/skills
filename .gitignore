@@ -24,3 +24,6 @@ doc/
 docs/files.zip
 skills-update.zip
 .agent-state.md
+
+# graphify hook build output (regenerated on every commit hook run)
+graphify-out/
