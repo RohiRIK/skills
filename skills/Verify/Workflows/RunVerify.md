@@ -55,7 +55,7 @@ NOT READY    # one or more phases FAIL — list above is the fix list
 - **READY** — every phase that ran is `PASS`. `SKIP` (missing tooling) does not block.
 - **NOT READY** — any phase is `FAIL`. The blocking-issues list is the concrete fix list, with file + line wherever the tool gave one.
 
-When called from `Iterate` or `Orchestrate`, a NOT READY verdict means the caller appends this report's blocking issues to `.agent-state.md` under the current iteration (no blind retry — see `_state/StateFileSchema.md`).
+When called from `Iterate` or `Orchestrate`, a NOT READY verdict means the caller appends this report's blocking issues to `.agent-state.md` under the current iteration (no blind retry — see `Iterate/StateFileSchema.md`).
 
 ## Gotchas
 

@@ -9,6 +9,14 @@ All notable changes to this skills library. Format loosely follows [Keep a Chang
 
 ### Changed
 - README skill badge 33 → 34; `showcase.md` now indexes `CreatePlugin` and the previously missing `CreateHook` (both hero-pending).
+- **`Iterate` is now host-portable.** `RunLoop` Step 0 capability-checks the host: a wake primitive (`ScheduleWakeup`, `/loop`) still means one pass per turn, but hosts without one (pi, opencode, MCP) run the passes inline up to `--max` instead of silently stopping after a single pass. `ResumeLoop` reads `mode` from state; both skills gained the "never fabricate the wake call" gotcha. `SKILL.md` trimmed to the 50-line canon and `--lenses` added to `argument-hint`.
+- **Chains name skills, not slash commands.** All 22 `workflows/*.md` chains now resolve to real skills or `Skill:Workflow` steps (`/plan`→`Spec`, `/build`→`Build`, `/test`→`Test`, `/capture`→`Reflect`, `/verify`→`Verify`, `/commit-push-pr`→`GitHubOps:CommitPush`+`GitHubOps:PullRequest`); the unrunnable `IMPLEMENT` step in `ship-fast` is gone, as are host-only bits (PrePlan hook, Shift+Tab auto-accept, an `openltm` call).
+- `skills/Workflows` — dead `../../../workflows/<name>.md` pointer corrected, the "native loop primitives" section is now explicitly optional per host, and the router's two tables merged into one (50 lines).
+- `rules/system.md` §7 gained a binding **host portability** rule (name skills not commands; capability-check native tools and ship an inline fallback), mirrored in `CLAUDE.md` and `AGENTS.md`.
+
+### Fixed
+- `skills/Iterate/_state/StateFileSchema.md` (a canon-violating third-level subdir) and the root `_state/StateFileSchema.md` had drifted apart — both are now one canonical `skills/Iterate/StateFileSchema.md`, with the 14 referring files repointed.
+- `gen-manifest.sh` now fails on chain drift: every concept's `chain:` must match the copies in `workflows/index.md` and `skills/Workflows/Chains.md`, and no chain may name a host slash command or a bare `IMPLEMENT` (verified with a negative fixture).
 
 ## 2026-09-24 — Consolidated TDD entry point
 

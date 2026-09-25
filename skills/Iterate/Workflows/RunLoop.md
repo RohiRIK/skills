@@ -1,14 +1,22 @@
 # RunLoop Workflow
 
-A bounded PLAN → ACT → VERIFY → REFLECT loop that runs **one pass per turn** and re-invokes itself
-through the harness until an exit condition fires. Each pass builds on the last through
-`.agent-state.md`, carries failure context forward, and refuses to retry rejected approaches. The
-loop always terminates — exit conditions are mandatory.
+A bounded PLAN → ACT → VERIFY → REFLECT loop that repeats passes until an exit condition fires.
+Each pass builds on the last through `.agent-state.md`, carries failure context forward, and refuses
+to retry rejected approaches. The loop always terminates — exit conditions are mandatory.
 
-Why one pass per turn: a skill cannot loop itself inside a single turn. To actually iterate
-unattended, each pass ends by scheduling its own re-invocation with `ScheduleWakeup` (the mechanism
-behind `/loop` dynamic mode). The turn ends, the harness re-fires `/iterate … --resume`, and
-`ResumeLoop` runs the next pass. Omit the wakeup and the loop stops.
+## Step 0: Pick the Pass Driver (capability check — do this first)
+
+A skill cannot re-invoke itself. How the *next* pass starts depends on the host, and this is the
+step that used to assume a tool that most hosts do not have.
+
+| Host capability | Driver | Behaviour |
+|-----------------|--------|-----------|
+| Wake primitive available (Claude Code `ScheduleWakeup`, `/loop`) | **wake mode** | One pass per turn; end the turn by scheduling the re-fire. |
+| No wake primitive (pi, opencode, most MCP hosts) | **inline mode** | Run passes back-to-back **in this turn**, up to `--max`, stopping the moment an exit condition fires. |
+
+Check the host's actual tool list — do not assume either mode. Record the chosen mode in `## Config`
+as `mode: wake | inline`. Everything below is identical in both modes except how the loop continues
+(Step 5). If the user invoked under a host loop (`/loop /iterate …` on Claude Code), that is wake mode.
 
 ## Step 1: Parse Arguments & Apply Defaults
 
@@ -19,14 +27,14 @@ behind `/loop` dynamic mode). The turn ends, the harness re-fires `/iterate … 
 | `--max N` | hard cap on passes (safety backstop) | `5` |
 | `--until-goal` | make the goal the primary exit | off; when set, raise the cap to `25` |
 | `--threshold F` | Reflect score that counts as done | `4.5` |
-| `--delay S` | seconds between passes (ScheduleWakeup interval) | `60` |
+| `--delay S` | seconds between passes — **wake mode only**; ignored inline | `60` |
 
 An unset flag must never stall a run — always fall back to the default above. Record the resolved
 values in `## Config` so every resumed pass reuses them without re-parsing.
 
 ## Step 2: Load or Create State
 
-Read `.agent-state.md` at the repo root (schema: `_state/StateFileSchema.md`). If **absent**, create
+Read `.agent-state.md` at the repo root (schema: `../StateFileSchema.md`). If **absent**, create
 it: `## Goal` from `--goal`, `## Config` from Step 1, empty `## Progress`, `## Dead Ends`,
 `## Iterations`, and a placeholder `## Result`. If **present** (a prior run for the same goal), this
 is a resume — route to `ResumeLoop`.
@@ -58,34 +66,42 @@ Run a **single** pass this turn — do not loop in prose. For pass `N` (next unu
 
 - **Exit condition met** → write the `## Result` block:
   `- Passes: <N> | Exit: <which condition> | Final verify/reflect: <…>`
-  **Do not schedule a wakeup.** Give the user a 2-3 sentence report: what changed across the run, the
-  final verify/reflect state, and anything parked in Dead Ends. The loop is done.
+  Then give the user a 2-3 sentence report: what changed across the run, the final verify/reflect
+  state, the mode it ran in, and anything parked in Dead Ends. The loop is done — in both modes, no
+  wakeup, no further passes.
 
-- **No exit condition met** → schedule the next pass and end the turn:
+- **No exit condition met** → continue per the mode from Step 0:
 
-  ```
-  ScheduleWakeup(
-    delaySeconds = <--delay, default 60>,
-    prompt       = "/iterate --target <PATH> --goal <TEXT> --max <N> --resume",
-    reason       = "iterate pass <N+1>/<max> — <8-word goal>"
-  )
-  ```
+  - **inline mode:** run the next pass immediately (Step 3 at iteration `N+1`), then re-evaluate.
+    Keep going until an exit condition fires or `--max` is reached. Do not stop early and do not
+    invent a wake call.
+  - **wake mode:** schedule the next pass and end the turn:
 
-  Then stop — do not keep working this turn. The harness re-fires the prompt after the delay and
-  `ResumeLoop` runs pass `N+1`. This is the actual iteration: one pass, schedule, stop; repeat.
+    ```
+    ScheduleWakeup(
+      delaySeconds = <--delay, default 60>,
+      prompt       = "/iterate --target <PATH> --goal <TEXT> --max <N> --resume",
+      reason       = "iterate pass <N+1>/<max> — <8-word goal>"
+    )
+    ```
+
+    Then stop — do not keep working this turn. The harness re-fires the prompt after the delay and
+    `ResumeLoop` runs pass `N+1`.
 
 ## Gotchas
 
-- **One pass per turn.** Never try to run passes 2..N in the same turn — that is the old prose-loop
-  bug that stalls. Run one pass, then either finish or schedule the next.
-- **Always end the turn with exactly one decision:** a `## Result` + report (done), or a single
-  `ScheduleWakeup` (continue). Never both, never neither.
+- **Never fabricate the wake call.** If `ScheduleWakeup` is not in the host's tool list, you are in
+  inline mode — calling it anyway either fails or ends the run silently after one pass.
+- **Never end a turn with neither a `## Result` nor a continuation.** Wake mode: one `ScheduleWakeup`.
+  Inline mode: the next pass. Missing both is the stall bug.
 - One change per pass. Bundling changes makes a NOT READY verdict ambiguous.
 - Dead Ends is binding for the rest of the run. Record *why* an approach failed, not just that it did.
 - A pass that only reads/plans without acting still counts toward `--max`; don't burn the budget on
   analysis.
-- Launching as `/loop /iterate …` also works — the native loop re-fires `/iterate` and this workflow
-  behaves identically. `ScheduleWakeup` is the self-contained path when you invoke `/iterate` directly.
+- Inline mode has no delay between passes — with `--max 25` that is a long turn. Cap it, or drop to a
+  lower `--max` and re-run, rather than grinding.
+- On Claude Code, launching as `/loop /iterate …` is wake mode: the host loop re-fires `/iterate` and
+  this workflow behaves identically.
 
 ## Execution Log
 

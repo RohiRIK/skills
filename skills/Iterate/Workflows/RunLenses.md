@@ -62,8 +62,8 @@ concrete, testable statements. Note which lens surfaced each, so the reader sees
   produce the same findings, you picked overlapping lenses — switch lens or stop.
 - Don't pad to hit the pass count. Convergence (no new findings) is the real stop signal; the depth
   number is just a ceiling.
-- This is exploration, not implementation — produce criteria, not code. It does **not** re-invoke via
-  `ScheduleWakeup`; lens passes run in a single turn and stop on convergence.
+- This is exploration, not implementation — produce criteria, not code. `RunLenses` runs entirely in
+  one turn and never re-invokes itself, in either pass mode; it stops on convergence.
 
 ## Execution Log
 

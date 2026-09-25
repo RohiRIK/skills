@@ -72,7 +72,7 @@ After Agy exits:
 - **Run the `Verify` skill** (`Verify/Workflows/RunVerify.md`) on the changed files against the task's
   done condition — do this even on a clean (exit 0) run.
   - **NOT READY** → append the failure context (blocking issues, file+line, the diff) to
-    `.agent-state.md` under the current iteration (schema: `_state/StateFileSchema.md`), exactly as a
+    `.agent-state.md` under the current iteration (schema: `Iterate/StateFileSchema.md`), exactly as a
     non-zero exit would, so a `/iterate` or `Orchestrate` pass replans instead of trusting bad work.
 - Summarize: what it did, files touched, the Verify verdict, anything left incomplete or flagged.
 - Do **not** commit Agy's work automatically — surface the diff and let the user decide (follow this
@@ -87,4 +87,4 @@ echo '{"ts":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","skill":"Agy","workflow":"Delegat
 
 ## Wiring: capture failure to state
 
-On a non-zero worker exit **or a NOT READY Verify verdict** (Step 5), append the failure context — command, exit code, last output, and the relevant diff — to `.agent-state.md` under the current iteration (schema: `_state/StateFileSchema.md`). A `/iterate` or `Orchestrate` pass then replans around the failure instead of blind-retrying.
+On a non-zero worker exit **or a NOT READY Verify verdict** (Step 5), append the failure context — command, exit code, last output, and the relevant diff — to `.agent-state.md` under the current iteration (schema: `Iterate/StateFileSchema.md`). A `/iterate` or `Orchestrate` pass then replans around the failure instead of blind-retrying.

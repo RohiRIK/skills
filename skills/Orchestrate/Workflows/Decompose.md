@@ -37,7 +37,7 @@ Topologically sort the units. Layer 0 = units with no deps; layer N = units whos
 
 ## Step 5: Write the Plan to State
 
-Record the units, their tiers, and the layer grouping in `.agent-state.md` (schema: `_state/StateFileSchema.md`) — set `## Goal` from the spec, list the units under `## Progress`, and note the layer order. `RunLayer` reads this.
+Record the units, their tiers, and the layer grouping in `.agent-state.md` (schema: `Iterate/StateFileSchema.md`) — set `## Goal` from the spec, list the units under `## Progress`, and note the layer order. `RunLayer` reads this.
 
 ## Gotchas
 

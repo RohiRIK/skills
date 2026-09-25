@@ -12,7 +12,7 @@ skills/<SkillName>/   ← one folder per skill (TitleCase, matches ~/.claude/ski
   *.md               ← optional: context files (in skill root)
 workflows/           ← composed skill chains, OKF bundle (one concept per workflow) — see workflows/index.md
 rules/system.md      ← canonical spec for how the skill system works (READ THIS)
-_state/              ← state-file + execution-log conventions
+_state/              ← execution-log conventions (state-file schema: skills/Iterate/StateFileSchema.md)
 README.md            ← skill index
 CLAUDE.md            ← this file — auto-loaded by Claude Code
 AGENTS.md            ← brief for non-Claude-Code tools
@@ -29,6 +29,7 @@ install.sh           ← symlinks skills/* into ~/.claude/skills
 - **Folder + file naming:** TitleCase. The `name:` field drives activation.
 - **Frontmatter:** every skill has `name`, `description` (WHAT + WHEN, ≤30 words), `category` (`workflow·reference·delegation·meta·visual·prompting·quality`), and `effort` (`low·medium·high`). Tier flags as needed.
 - **Structure:** flat, 2 levels max; only `Workflows/` and `Tools/` subdirs; context files in the skill root; `SKILL.md` ≤ 50 lines.
+- **Host portability:** name skills, not slash commands; capability-check host-native tools and always ship an inline fallback (see `rules/system.md` §7).
 - **Authoring:** word every skill via the `Prompting` skill. Reserve `CRITICAL`/`MUST`/`NEVER` for real gates.
 - **README:** every skill needs a row in the index. Adding a skill without one is incomplete.
 
@@ -36,7 +37,7 @@ install.sh           ← symlinks skills/* into ~/.claude/skills
 
 ```
 Primitives:  Verify (quality gate) · Reflect (self-eval)
-Drivers:     Iterate → calls Verify + Reflect each pass
+Drivers:     Iterate → calls Verify + Reflect each pass; wake primitive if the host has one, inline passes if not
              Orchestrate → Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates with Verify
              Iterate:RunLenses → feeds criteria to Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi

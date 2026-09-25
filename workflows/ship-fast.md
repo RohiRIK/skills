@@ -3,36 +3,38 @@ type: Workflow
 title: Ship fast
 description: Clear-enough scope; move fast and discover the details mid-flight.
 tags: [build-ship, quick]
-chain: "[observe] → /plan → IMPLEMENT → /capture → /simplify → /verify → /commit-push-pr"
+chain: "Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest"
 ---
 
 # Workflow: ship-fast
 
-Move fast — explore while you build. Scope is clear enough to start; you'll discover the details as you go. Entry: `/plan`.
+Move fast — explore while you build. Scope is clear enough to start; you'll discover the details as you go. Entry: `Spec`.
 
-> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill or slash-command to invoke** (load the skill with the Skill tool, or run the `/command`), not prose to summarize. Resolve each name to its skill and let it do the work.
+> **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill to invoke** (load it with the Skill tool), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
-[observe] → /plan → IMPLEMENT (auto-accept: Shift+Tab×2) → /capture → /simplify → /verify → /commit-push-pr
+Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
 ```
 
 ## Steps
 
-1. **[observe]** — auto-fires (PrePlan hook); injects git state + topic-scoped LTM recalls. You don't call it.
-2. **/plan** — before any non-trivial change. After it confirms, switch to **auto-accept** (Shift+Tab×2) for the implement burst.
-3. **IMPLEMENT** — write the change.
-4. **/capture** — save session context + fire `/learn` in one shot.
-5. **/simplify** — flatten nesting, drop dead abstraction in the diff.
-6. **/verify** — gate (optional on small changes).
-7. **/commit-push-pr** — ship.
+1. **Spec** — quick pass before any non-trivial change; keep it light, this is the fast lane.
+2. **Build** — write the change.
+3. **Reflect** — self-eval the result, record the score in `.agent-state.md`.
+4. **Simplify** — flatten nesting, drop dead abstraction in the diff.
+5. **Verify** — gate (optional on small changes).
+6. **GitHubOps:CommitPush** then **GitHubOps:PullRequest** — ship.
 
-## Command → skill (this repo)
+## If you came from the command version
 
-| `/command` | Skill | `/command` | Skill |
-|-----------|-------|-----------|-------|
-| `/plan` | plan | `/verify` | Verify |
-| `/simplify` | Simplify | `/capture` | `openltm:memory learn --save-context` |
-| `/commit-push-pr` | GitHubOps:CommitPush | | |
+| Old command | Portable skill |
+|-------------|----------------|
+| `/plan` | `Spec` |
+| `IMPLEMENT`, `/build` | `Build` |
+| `/capture` | `Reflect` |
+| `/simplify` | `Simplify` |
+| `/verify` | `Verify` |
+| `/commit-push-pr` | `GitHubOps:CommitPush` + `GitHubOps:PullRequest` |
 
 ## When to use
 

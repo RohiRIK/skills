@@ -130,8 +130,29 @@ HEAD
 FOOT
 }
 
+# ---- chain drift check ----
+# `chain:` frontmatter in workflows/*.md is the single source of truth; index.md and
+# Chains.md mirror it. Fail loudly instead of letting the three copies drift apart.
+check_chains() {
+  local f chain escaped bad=0
+  for f in $(workflow_docs); do
+    chain="$(field "$(frontmatter "$f")" chain)"
+    if [ -z "$chain" ]; then echo "gen-manifest: $f has no chain:" >&2; bad=1; continue; fi
+    escaped="$(printf '%s' "$chain" | sed 's/|/\\|/g')"   # tables escape pipes
+    grep -qF -- "$escaped" workflows/index.md || { echo "gen-manifest: $f chain missing from workflows/index.md: $chain" >&2; bad=1; }
+    grep -qF -- "$escaped" skills/Workflows/Chains.md || { echo "gen-manifest: $f chain missing from skills/Workflows/Chains.md: $chain" >&2; bad=1; }
+  done
+  # A step that is not a skill is unrunnable: no slash commands, no bare IMPLEMENT.
+  if grep -hoE 'chain: .*' workflows/*.md | grep -E '(^|[ →(])/[a-z-]+|(^| → )IMPLEMENT( |$)'; then
+    echo "gen-manifest: a chain references a host slash command or bare IMPLEMENT — name the skill instead" >&2
+    bad=1
+  fi
+  return $bad
+}
+
 gen_json > skills.json
 jq empty skills.json   # fail loudly if invalid JSON
 gen_llms > llms.txt
+check_chains || { echo "gen-manifest: chain drift — fix the reported mismatches" >&2; exit 1; }
 
-echo "gen-manifest: wrote skills.json ($(jq '.skills | length' skills.json) skills, $(jq '.workflows | length' skills.json) workflows) + llms.txt"
+echo "gen-manifest: wrote skills.json ($(jq '.skills | length' skills.json) skills, $(jq '.workflows | length' skills.json) workflows) + llms.txt (chains in sync)"

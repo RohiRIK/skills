@@ -15,6 +15,7 @@ Help add and maintain skills correctly. Apply the rules below on every skill-cre
 - Each skill is a folder under `skills/` with a `SKILL.md` carrying `name`, `description` (WHAT + WHEN, ≤30 words), `category` (`workflow·reference·delegation·meta·visual·prompting·quality`), and `effort` (`low·medium·high`).
 - Folder + file names are TitleCase (mirror `~/.claude/skills`); the `name:` field drives activation.
 - Flat structure, 2 levels max; only `Workflows/` and `Tools/` subdirs; context files in the skill root; `SKILL.md` ≤ 50 lines.
+- Host portability: name skills (not slash commands) and capability-check host-native tools with an inline fallback.
 - Word skills via the `Prompting` skill. Reserve `CRITICAL`/`MUST`/`NEVER` for genuine safety gates.
 - Every skill needs a row in [README.md](README.md).
 
@@ -22,7 +23,7 @@ Help add and maintain skills correctly. Apply the rules below on every skill-cre
 
 ```
 Primitives:  Verify (quality gate) · Reflect (self-eval)
-Drivers:     Iterate → Verify + Reflect each pass
+Drivers:     Iterate → Verify + Reflect each pass (wake primitive if the host has one, inline passes if not)
              Orchestrate → Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates with Verify
              Iterate:RunLenses → feeds Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi

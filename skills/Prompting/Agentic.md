@@ -7,7 +7,7 @@ Prompt-authoring guidance for long-horizon, multi-context, and multi-agent work.
 For tasks that span more than one context window:
 
 - **First-context setup.** Establish the framework before iterative work: test structures, validation scripts, explicit success criteria.
-- **State tracking.** Use structured formats (JSON) for schema-dependent data like test status; unstructured text for progress notes; git for checkpoints across sessions. (This repo's convention is `.agent-state.md` — see `_state/StateFileSchema.md`.)
+- **State tracking.** Use structured formats (JSON) for schema-dependent data like test status; unstructured text for progress notes; git for checkpoints across sessions. (This repo's convention is `.agent-state.md` — see `Iterate/StateFileSchema.md`.)
 - **Quality-of-life tooling.** A setup script (`init.sh`) for graceful startup, test-env init, and state restoration pays for itself across resets.
 - **Starting fresh vs compacting.** Strong models discover state from the filesystem well — a full context reset is often more effective than aggressive compaction of a degraded long context. (See `StrategicCompact`.)
 - **Verification without a human in the loop.** Give the agent a way to check its own work: automated test suites, browser/visual validation, self-checking mechanisms. This is what makes an unattended loop trustworthy (see `Verify`).

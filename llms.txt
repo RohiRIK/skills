@@ -16,7 +16,7 @@
 - [CodebaseOnboarding](skills/CodebaseOnboarding/SKILL.md) — Analyze an unfamiliar codebase and produce an onboarding guide — architecture map, entry points, conventions, starter CLAUDE.md. USE WHEN joining a new project or onboarding a repo.
 - [DataReportBuilder](skills/DataReportBuilder/SKILL.md) — Turn a raw Excel/CSV dataset into a two-layer report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet wanting a report, analysis, summary, or breakdown.
 - [GitHubOps](skills/GitHubOps/SKILL.md) — Manage a GitHub repo via the gh CLI — hygiene, changelog, commit/push, PRs, releases, branch cleanup. USE WHEN clean up the repo, update the changelog, commit/push, open a PR, or cut a release. NOT FOR git branching/merge theory (use GitWorkflow).
-- [Iterate](skills/Iterate/SKILL.md) — Bounded multi-pass loop: improve mode (self-re-invokes via ScheduleWakeup until done) or analysis mode (--lenses, read-only, feeds Spec). USE WHEN iterate, refine, keep improving, or explore deeper.
+- [Iterate](skills/Iterate/SKILL.md) — Bounded multi-pass loop: improve mode (one change per pass, Verify + Reflect, inline or wake-driven) or analysis mode (--lenses, read-only). USE WHEN iterate, refine, keep improving, or explore deeper.
 - [Orchestrate](skills/Orchestrate/SKILL.md) — Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a spec.
 - [Research](skills/Research/SKILL.md) — Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion.
 - [Spec](skills/Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
@@ -63,7 +63,7 @@
 
 > Multi-skill chains for full jobs, as an OKF bundle — one markdown concept per workflow with YAML frontmatter. Two families: build & ship (use the skills on a project) and maintain the library (meta). Index: [workflows/index.md](workflows/index.md).
 
-- [API feature](workflows/api-feature.md) — A backend or API change, security-gated from design to PR. · chain: BackendDesign(ref) → /spec → /build → Test → SecurityReview → GitHubOps:PullRequest
+- [API feature](workflows/api-feature.md) — A backend or API change, security-gated from design to PR. · chain: BackendDesign(ref) → Spec → Build → Test → SecurityReview → GitHubOps:PullRequest
 - [Autonomous loop](workflows/autonomous-loop.md) — Hands-off improvement of a target via Iterate, with a mandatory exit condition. · chain: Iterate(target, goal, max) → [Verify + Reflect each pass] → GitHubOps:CommitPush
 - [Multi-skill batch build](workflows/batch-build.md) — Build or refactor many skills at once, in parallel, each reviewed in isolation. · chain: Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify [final integration gate — Orchestrate already verifies each unit] → GitHubOps:PullRequest
 - [Build a CLI](workflows/build-cli.md) — Ship a TypeScript command-line tool, tier-picked and Verify-gated. · chain: [Research(API, if wrapping)] → CreateCLI → Test → Verify → GitHubOps:PullRequest
@@ -71,20 +71,20 @@
 - [Canonicalize a skill](workflows/canonicalize-skill.md) — Fix a skill's structure to conform to canon — naming, frontmatter, routing. · chain: CreateSkill:ValidateSkill → CreateSkill:CanonicalizeSkill → GitHubOps:CommitPush
 - [Context diet](workflows/context-diet.md) — Cut context-window bloat across agents, skills, MCP, and rules — no feature change. · chain: ContextBudget → trim agents / skills / MCP / rules → Verify
 - [Fix a skill's trigger](workflows/fix-trigger.md) — A skill won't activate or mis-fires — repair its description and routing. · chain: CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush
-- [Frontend build](workflows/frontend-build.md) — Full frontend feature from spec through visual direction, components, assets, tests, to ship. · chain: /spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → /plan → /build → /test → FrontendAesthetics:SlopAudit → /simplify → Reflect → /verify → /commit-push-pr
+- [Frontend build](workflows/frontend-build.md) — Full frontend feature from spec through visual direction, components, assets, tests, to ship. · chain: Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
 - [Library-wide audit](workflows/library-audit.md) — Whole-library health sweep — agentic readiness, telemetry, canon, repo hygiene. · chain: SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush
 - [New skill — heavy](workflows/new-skill-heavy.md) — Author a complex, multi-workflow skill whose shape isn't obvious yet. · chain: Iterate:RunLenses → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest
-- [New skill — quick](workflows/new-skill-quick.md) — Author a new skill with clear scope and a single capability. Daily path. · chain: Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush
-- [Onboard a codebase](workflows/onboard.md) — Get productive in an unfamiliar repo fast, then make the first change. · chain: CodebaseOnboarding → Research(fill gaps) → /spec (first change) → spec-to-ship
+- [New skill — quick](workflows/new-skill-quick.md) — Author a new skill with clear scope and a single capability. Daily path. · chain: Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → Simplify → GitHubOps:CommitPush
+- [Onboard a codebase](workflows/onboard.md) — Get productive in an unfamiliar repo fast, then make the first change. · chain: CodebaseOnboarding → Research(fill gaps) → Spec (first change) → spec-to-ship
 - [Release](workflows/release.md) — Cut a tagged version of the library — hygiene, changelog, GitHub release. · chain: GitHubOps:RepoHygiene → GitHubOps:Changelog → GitHubOps:Release
 - [Repo hygiene](workflows/repo-hygiene.md) — Periodic cleanup of config and project repo — git, skills, rules, manifest drift. · chain: Hygiene → fix → GitHubOps:RepoHygiene
-- [Research to build](workflows/research-to-build.md) — Ground an unknown domain, library, or API before building against it. · chain: Research(standard|deep) → Spec → /plan → /build → Verify → GitHubOps:PullRequest
+- [Research to build](workflows/research-to-build.md) — Ground an unknown domain, library, or API before building against it. · chain: Research(standard|deep) → Spec → Build → Verify → GitHubOps:PullRequest
 - [Research to buy](workflows/research-to-buy.md) — Compare options before a purchase or adoption decision, then score a pick. · chain: Research(deep) → comparison matrix → scored recommendation
 - [Research to report](workflows/research-to-report.md) — Deliverable is cited findings plus visuals, not code. · chain: Research(deep) → DataReportBuilder → Art(diagrams)
 - [Security pass](workflows/security-pass.md) — Harden existing code before release — no new feature. · chain: SecurityReview → fix CRITICAL/HIGH → Verify → GitHubOps:CommitPush
-- [Ship fast](workflows/ship-fast.md) — Clear-enough scope; move fast and discover the details mid-flight. · chain: [observe] → /plan → IMPLEMENT → /capture → /simplify → /verify → /commit-push-pr
-- [Spec to ship](workflows/spec-to-ship.md) — Know exactly what to build; spec-driven build from criteria to PR. · chain: /spec → /plan → /build (or /dev) → /test → /simplify → /capture → /verify → /commit-push-pr
-- [UI feature](workflows/ui-feature.md) — A frontend change that looks intentional, not AI-slop — direction before components. · chain: FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → /simplify → Verify → GitHubOps:CommitPush
+- [Ship fast](workflows/ship-fast.md) — Clear-enough scope; move fast and discover the details mid-flight. · chain: Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
+- [Spec to ship](workflows/spec-to-ship.md) — Know exactly what to build; spec-driven build from criteria to PR. · chain: Spec → Build → Test → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
+- [UI feature](workflows/ui-feature.md) — A frontend change that looks intentional, not AI-slop — direction before components. · chain: FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Simplify → Verify → GitHubOps:CommitPush
 
 ## Key docs
 

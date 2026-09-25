@@ -57,7 +57,7 @@ Primitives (called by others):
   Reflect  — 5-axis self-evaluation scorecard
 
 Drivers (call the primitives):
-  Iterate         — bounded PLAN→ACT→VERIFY→REFLECT passes; calls Verify + Reflect each pass
+  Iterate         — bounded PLAN→ACT→VERIFY→REFLECT passes; calls Verify + Reflect each pass; picks a wake or inline pass driver from the host's capabilities
   Orchestrate  — Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates units with Verify
   Iterate:RunLenses — multi-lens exploration; feeds criteria to Spec / Orchestrate
   Research     — multi-depth; fans out to Agy/OpenCode/Pi, synthesizes
@@ -91,7 +91,7 @@ CLI:       generate a standalone TypeScript CLI     → CreateCLI
 
 ## 5. Shared state
 
-Iterate and multi-pass skills persist progress in a repo-local `.agent-state.md`. Fixed sections: `## Goal`, `## Progress`, `## Dead Ends` (never retry these), `## Iterations`, `## Result`. This bridges context between independent passes/agents. Full schema: `_state/StateFileSchema.md`.
+Iterate and multi-pass skills persist progress in a repo-local `.agent-state.md`. Fixed sections: `## Goal`, `## Progress`, `## Dead Ends` (never retry these), `## Iterations`, `## Result`. This bridges context between independent passes/agents. Full schema: `skills/Iterate/StateFileSchema.md`.
 
 ## 6. Telemetry
 
@@ -110,6 +110,22 @@ Fixed schema (`ts, skill, workflow, status, duration_s`, optional `input`). Tier
 - **Make a skill loop-ready** → `CreateSkill` already does this for new skills (it wires Verify/Reflect + telemetry). For an existing skill, add the wiring per its workflow and re-validate.
 - **Audit the library** → `SkillForge/AuditAgentic`.
 - **Word any prompt/skill/workflow** → the `Prompting` skill. Reserve `CRITICAL`/`MUST`/`NEVER` for genuine safety/irreversibility gates; plain declarative everywhere else.
+
+### Host portability (binding)
+
+This library runs on Claude Code, pi, opencode, and MCP hosts alike, so a skill may not assume one
+host's tool surface:
+
+- **Name skills, not slash commands.** Chain steps are `Spec`, `Verify`, `Test:ProveIt` — never
+  `/plan` or `/verify`, which exist only where the user has that host's command installed.
+- **Capability-check host-native tools before using them.** A wake primitive (`ScheduleWakeup`,
+  `/loop`) is an *optimization* for unattended pass-by-pass runs, never a dependency: provide an
+  inline fallback that produces the same result in the current turn. A skill whose behaviour silently
+  degrades on an unlisted host is broken.
+- **No host-only chrome in docs** — keybindings, auto-accept modes, private tool names, and per-user
+  hook paths do not belong in a published skill.
+- `gen-manifest.sh` enforces part of this: it fails when a `workflows/*.md` chain names a slash
+  command or drifts from the chain mirrored in `workflows/index.md` and `skills/Workflows/Chains.md`.
 
 ## 8. Porting rule (skills from ECC / LifeOS)
 

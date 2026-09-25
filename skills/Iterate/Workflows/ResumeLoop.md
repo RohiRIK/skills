@@ -1,16 +1,19 @@
 # ResumeLoop Workflow
 
 Run the next pass of an in-flight loop from where it stopped, with all prior context intact. This is
-what a `ScheduleWakeup` re-invocation (or a manual `--resume`) lands in. Same pass mechanics as
-`RunLoop` — this workflow handles rehydration, the budget check, and the reschedule-or-stop decision.
+what a wake re-invocation lands in (Claude Code `ScheduleWakeup`), what `/iterate … --resume` lands
+in, and what the user gets when they say "resume the loop" in a host with no wake primitive. Same
+pass mechanics as `RunLoop` — this workflow handles rehydration, the budget check, and the
+resume-or-stop decision.
 
-One wake = one pass. It does not run to completion in a single turn.
+**Mode comes from `## Config`** (`mode: wake | inline`): in wake mode one resume runs one pass; in
+inline mode keep running passes back-to-back until an exit condition fires (`RunLoop` Step 5).
 
 ## Step 1: Rehydrate from State
 
-Read `.agent-state.md` at the repo root (schema: `_state/StateFileSchema.md`). Extract:
+Read `.agent-state.md` at the repo root (schema: `../StateFileSchema.md`). Extract:
 - `## Goal` — the original objective.
-- `## Config` — target, max, threshold, delay, until_goal (reuse these; do not re-parse flags).
+- `## Config` — target, max, threshold, until_goal, and `mode` (reuse these; do not re-parse flags).
 - `## Dead Ends` — approaches that are still off-limits.
 - `## Iterations` — the last iteration number `N` and the most recent failure context.
 - `## Result` — present only if the loop already exited.
@@ -36,12 +39,13 @@ Apply `RunLoop` Step 4 (max reached / Verify READY + Reflect ≥ threshold / 3×
 
 ## Step 5: Continue or Finish
 
-Identical to `RunLoop` Step 5:
-- **Exit met** → write `## Result`, give a 2-3 sentence report noting this was a resumed run and how
-  many total passes it took. **No wakeup.**
-- **Not met** → `ScheduleWakeup(delaySeconds=<config delay>, prompt="/iterate --target … --goal …
-  --max … --resume", reason="iterate pass <N+2>/<max>")`, then stop. The harness re-fires and the
-  next wake runs the following pass.
+Follow `RunLoop` Step 5 for the mode recorded in `## Config`:
+- **Exit met** → write `## Result`, give a 2-3 sentence report noting this was a resumed run, how many
+  total passes it took, and the mode. No wakeup.
+- **Wake mode, not met** → `ScheduleWakeup(delaySeconds=<config delay>, prompt="/iterate --target …
+  --goal … --max … --resume", reason="iterate pass <N+2>/<max>")`, then stop.
+- **Inline mode, not met** → run the next pass now and re-evaluate; continue until an exit condition
+  or the cap.
 
 ## Gotchas
 
@@ -51,8 +55,8 @@ Identical to `RunLoop` Step 5:
   carry it into the first PLAN.
 - If the goal in state no longer matches what the user now wants, start a fresh `RunLoop` instead of
   resuming a stale goal.
-- One pass per wake — end the turn with exactly one `## Result`+report or one `ScheduleWakeup`, never
-  both.
+- One pass per resume in wake mode; in inline mode, passes run until an exit condition — never end a
+  turn with neither a `## Result` nor a continuation.
 
 ## Execution Log
 

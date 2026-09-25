@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-09-25T14:38:00Z",
+  "generated": "2026-09-25T17:37:20Z",
   "skills": [
     {
       "name": "Agy",
@@ -202,7 +202,7 @@
       "domain": "meta",
       "tier": "C-auto",
       "workflows": "ResumeLoop,RunLenses,RunLoop",
-      "description": "Bounded multi-pass loop: improve mode (self-re-invokes via ScheduleWakeup until done) or analysis mode (--lenses, read-only, feeds Spec). USE WHEN iterate, refine, keep improving, or explore deeper."
+      "description": "Bounded multi-pass loop: improve mode (one change per pass, Verify + Reflect, inline or wake-driven) or analysis mode (--lenses, read-only). USE WHEN iterate, refine, keep improving, or explore deeper."
     },
     {
       "name": "OpenCode",
@@ -352,7 +352,7 @@
       "title": "API feature",
       "path": "workflows/api-feature.md",
       "tags": "[build-ship]",
-      "chain": "BackendDesign(ref) → /spec → /build → Test → SecurityReview → GitHubOps:PullRequest",
+      "chain": "BackendDesign(ref) → Spec → Build → Test → SecurityReview → GitHubOps:PullRequest",
       "summary": "A backend or API change, security-gated from design to PR."
     },
     {
@@ -416,7 +416,7 @@
       "title": "Frontend build",
       "path": "workflows/frontend-build.md",
       "tags": "[build-ship, heavy]",
-      "chain": "/spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → /plan → /build → /test → FrontendAesthetics:SlopAudit → /simplify → Reflect → /verify → /commit-push-pr",
+      "chain": "Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
       "summary": "Full frontend feature from spec through visual direction, components, assets, tests, to ship."
     },
     {
@@ -440,7 +440,7 @@
       "title": "New skill — quick",
       "path": "workflows/new-skill-quick.md",
       "tags": "[maintain-library, quick]",
-      "chain": "Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → /simplify → GitHubOps:CommitPush",
+      "chain": "Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → Simplify → GitHubOps:CommitPush",
       "summary": "Author a new skill with clear scope and a single capability. Daily path."
     },
     {
@@ -448,7 +448,7 @@
       "title": "Onboard a codebase",
       "path": "workflows/onboard.md",
       "tags": "[build-ship]",
-      "chain": "CodebaseOnboarding → Research(fill gaps) → /spec (first change) → spec-to-ship",
+      "chain": "CodebaseOnboarding → Research(fill gaps) → Spec (first change) → spec-to-ship",
       "summary": "Get productive in an unfamiliar repo fast, then make the first change."
     },
     {
@@ -472,7 +472,7 @@
       "title": "Research to build",
       "path": "workflows/research-to-build.md",
       "tags": "[build-ship, research]",
-      "chain": "Research(standard|deep) → Spec → /plan → /build → Verify → GitHubOps:PullRequest",
+      "chain": "Research(standard|deep) → Spec → Build → Verify → GitHubOps:PullRequest",
       "summary": "Ground an unknown domain, library, or API before building against it."
     },
     {
@@ -504,7 +504,7 @@
       "title": "Ship fast",
       "path": "workflows/ship-fast.md",
       "tags": "[build-ship, quick]",
-      "chain": "[observe] → /plan → IMPLEMENT → /capture → /simplify → /verify → /commit-push-pr",
+      "chain": "Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
       "summary": "Clear-enough scope; move fast and discover the details mid-flight."
     },
     {
@@ -512,7 +512,7 @@
       "title": "Spec to ship",
       "path": "workflows/spec-to-ship.md",
       "tags": "[build-ship, heavy]",
-      "chain": "/spec → /plan → /build (or /dev) → /test → /simplify → /capture → /verify → /commit-push-pr",
+      "chain": "Spec → Build → Test → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
       "summary": "Know exactly what to build; spec-driven build from criteria to PR."
     },
     {
@@ -520,7 +520,7 @@
       "title": "UI feature",
       "path": "workflows/ui-feature.md",
       "tags": "[build-ship, quick]",
-      "chain": "FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → /simplify → Verify → GitHubOps:CommitPush",
+      "chain": "FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Simplify → Verify → GitHubOps:CommitPush",
       "summary": "A frontend change that looks intentional, not AI-slop — direction before components."
     }
   ]
