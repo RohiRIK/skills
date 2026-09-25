@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-09-24T10:40:13Z",
+  "generated": "2026-09-25T14:38:00Z",
   "skills": [
     {
       "name": "Agy",
@@ -103,6 +103,16 @@
       "tier": "C-auto",
       "workflows": "BuildServer,ConnectServer,TestServer",
       "description": "Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, and security. USE WHEN creating, scaffolding, connecting, or debugging an MCP server."
+    },
+    {
+      "name": "CreatePlugin",
+      "path": "skills/CreatePlugin/",
+      "category": "meta",
+      "effort": "high",
+      "domain": "agents",
+      "tier": "C-auto",
+      "workflows": "CreatePlugin",
+      "description": "Package a project as an AI-agent plugin with Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters. USE WHEN porting workflows across agent hosts. NOT FOR standalone CLIs (use CreateCLI)."
     },
     {
       "name": "CreateSkill",

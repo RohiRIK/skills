@@ -49,6 +49,7 @@
 ### meta
 - [ContextBudget](skills/ContextBudget/SKILL.md) — Audit Claude Code context-window consumption across agents, skills, MCP servers, and rules, and produce prioritized token-savings recommendations. USE WHEN context feels bloated or you want to cut token usage.
 - [CreateHook](skills/CreateHook/SKILL.md) — Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenCode, OpenClaw, Hermes Agent). USE WHEN writing, wiring, or debugging an event hook, plugin hook, or agent automation trigger.
+- [CreatePlugin](skills/CreatePlugin/SKILL.md) — Package a project as an AI-agent plugin with Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters. USE WHEN porting workflows across agent hosts. NOT FOR standalone CLIs (use CreateCLI).
 - [CreateSkill](skills/CreateSkill/SKILL.md) — Create, validate, and improve individual skills. USE WHEN create/validate/improve a skill or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI) or whole-library audits (use SkillForge).
 - [SkillForge](skills/SkillForge/SKILL.md) — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill).
 

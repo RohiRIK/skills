@@ -46,10 +46,16 @@ Audit Claude Code context-window consumption and produce prioritized token-savin
 
 Generate a production-ready TypeScript CLI (manual argv / Commander / oclif), Bun-only, gated by Verify.
 
+### [CreateHook](skills/CreateHook) 🎨
+_hero pending_ — Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenCode, OpenClaw, Hermes Agent).
+
 ### [CreateMcp](skills/CreateMcp)
 <img src="assets/create-mcp-hero.jpg" alt="CreateMcp" width="640">
 
 Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security.
+
+### [CreatePlugin](skills/CreatePlugin) 🎨
+_hero pending_ — Package a project as one shared AI-agent plugin with thin Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters.
 
 ### [CreateSkill](skills/CreateSkill)
 <img src="assets/create-skill-hero.jpg" alt="CreateSkill" width="640">

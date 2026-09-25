@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-33-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-34-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -21,6 +21,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`CodebaseOnboarding/`](skills/CodebaseOnboarding) | Analyze an unfamiliar repo → architecture map, entry points, conventions, starter CLAUDE.md. |
 | [`ContextBudget/`](skills/ContextBudget) | Audit Claude Code context-window consumption and produce prioritized token-savings recommendations. |
 | [`CreateMcp/`](skills/CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
+| [`CreatePlugin/`](skills/CreatePlugin) | Package a project as one shared AI-agent plugin with thin Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters. |
 | [`CreateCLI/`](skills/CreateCLI) | Generate a production-ready TypeScript CLI (3 tiers: parseArgs / Commander / oclif), Bun-only, gated by Verify. |
 | [`CreateHook/`](skills/CreateHook) | Generate lifecycle hooks for AI agent runtimes — Claude Code, OpenCode, OpenClaw, Hermes Agent. |
 | [`CreateSkill/`](skills/CreateSkill) | Build and maintain skills in canonical structure. |

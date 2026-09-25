@@ -2,6 +2,14 @@
 
 All notable changes to this skills library. Format loosely follows [Keep a Changelog](https://keepachangelog.com).
 
+## Unreleased
+
+### Added
+- **CreatePlugin** — new `meta` skill that packages a project as one shared AI-agent plugin with thin host adapters for Hermes Agent, Claude Code, OpenClaw, Pi, OpenCode, and MCP-compatible agents. Covers host-doc inspection, safety gates, required tests, host validators, and the four-question completion report.
+
+### Changed
+- README skill badge 33 → 34; `showcase.md` now indexes `CreatePlugin` and the previously missing `CreateHook` (both hero-pending).
+
 ## 2026-09-24 — Consolidated TDD entry point
 
 ### Changed
