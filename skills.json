@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-09-25T17:37:20Z",
+  "generated": "2026-09-29T12:49:55Z",
   "skills": [
     {
       "name": "Agy",
@@ -203,6 +203,16 @@
       "tier": "C-auto",
       "workflows": "ResumeLoop,RunLenses,RunLoop",
       "description": "Bounded multi-pass loop: improve mode (one change per pass, Verify + Reflect, inline or wake-driven) or analysis mode (--lenses, read-only). USE WHEN iterate, refine, keep improving, or explore deeper."
+    },
+    {
+      "name": "MacPluginPlaybook",
+      "path": "skills/MacPluginPlaybook/",
+      "category": "workflow",
+      "effort": "high",
+      "domain": "dev",
+      "tier": "C-auto",
+      "workflows": "NewPlugin",
+      "description": "Phased playbook to build or port a native SwiftUI macOS menu bar app. USE WHEN starting or porting a macOS menu bar plugin. NOT FOR one view's styling (use MacUX)."
     },
     {
       "name": "OpenCode",

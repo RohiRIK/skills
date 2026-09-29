@@ -98,6 +98,9 @@ _hero pending_ — Audit `~/.claude` for git, skill, code, and rules hygiene iss
 ### [Iterate](skills/Iterate) 🎨
 _hero pending_ — Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions.
 
+### [MacPluginPlaybook](skills/MacPluginPlaybook) 🎨
+_hero pending_ — Phased playbook to build or port a native SwiftUI macOS menu bar app, with lessons from a real build.
+
 ### [OpenCode](skills/OpenCode) 🎨
 _hero pending_ — Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker.
 
