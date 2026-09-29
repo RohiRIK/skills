@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-35-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-37-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -23,6 +23,8 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`CreateMcp/`](skills/CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
 | [`CreatePlugin/`](skills/CreatePlugin) | Package a project as one shared AI-agent plugin with thin Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters. |
 | [`CreateCLI/`](skills/CreateCLI) | Generate a production-ready TypeScript CLI (3 tiers: parseArgs / Commander / oclif), Bun-only, gated by Verify. |
+| [`CreateCLI-Agent/`](skills/CreateCLI-Agent) | Generate a production-ready TypeScript CLI for autonomous agents: JSON contract, non-interactive, semantic exits. |
+| [`CreateCLI-Human/`](skills/CreateCLI-Human) | Generate a production-ready TypeScript CLI for human operators: TTY UX, prose help, optional JSON. |
 | [`CreateHook/`](skills/CreateHook) | Generate lifecycle hooks for AI agent runtimes — Claude Code, OpenCode, OpenClaw, Hermes Agent. |
 | [`CreateSkill/`](skills/CreateSkill) | Build and maintain skills in canonical structure. |
 | [`DataReportBuilder/`](skills/DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |

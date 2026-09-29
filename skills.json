@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-09-29T12:49:55Z",
+  "generated": "2026-09-29T19:33:15Z",
   "skills": [
     {
       "name": "Agy",
@@ -83,6 +83,26 @@
       "tier": "C-auto",
       "workflows": "AddCommand,CreateCli,UpgradeTier",
       "description": "Generate a production-ready TypeScript CLI (3 tiers: parseArgs/Commander/oclif). USE WHEN create a CLI, command-line tool, or wrap an API. NOT FOR agent skills (use CreateSkill) or Python."
+    },
+    {
+      "name": "CreateCLI-Agent",
+      "path": "skills/CreateCLI-Agent/",
+      "category": "reference",
+      "effort": "medium",
+      "domain": "dev",
+      "tier": "C-auto",
+      "workflows": "",
+      "description": "Generate a production-ready TypeScript CLI for autonomous agents (JSON contract, non-interactive, semantic exits). USE WHEN create an agent CLI, tool for LLM/automation, or wrap an API for agents. NOT FOR human-first interactive CLIs (use CreateCLI-Human), agent skills (use CreateSkill), or Python."
+    },
+    {
+      "name": "CreateCLI-Human",
+      "path": "skills/CreateCLI-Human/",
+      "category": "reference",
+      "effort": "medium",
+      "domain": "dev",
+      "tier": "C-auto",
+      "workflows": "",
+      "description": "Generate a production-ready TypeScript CLI for human operators (TTY UX, prose help, optional JSON). USE WHEN create a CLI for people, interactive command-line tool, or wrap an API for humans. NOT FOR agent-first CLIs (use CreateCLI-Agent), agent skills (use CreateSkill), or Python."
     },
     {
       "name": "CreateHook",
