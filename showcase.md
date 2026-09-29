@@ -2,7 +2,7 @@
 
 A visual index of the library. Each skill gets a hero image in a shared house style: a **retro-futuristic 1960s mission-control room** — banks of vintage CRT monitors, brass-and-wood consoles with operators, and a glowing holographic emblem unique to that skill. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 16 / 34 heroes generated. The remaining 18 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 16 / 37 heroes generated. The remaining 21 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
 
@@ -45,6 +45,13 @@ Audit Claude Code context-window consumption and produce prioritized token-savin
 <img src="assets/create-cli-hero.jpg" alt="CreateCLI" width="640">
 
 Generate a production-ready TypeScript CLI (manual argv / Commander / oclif), Bun-only, gated by Verify.
+
+### [CreateCLI-Agent](skills/CreateCLI-Agent) 🎨
+_hero pending_ — Generate a production-ready TypeScript CLI for autonomous agents (JSON contract, non-interactive, semantic exits).
+
+### [CreateCLI-Human](skills/CreateCLI-Human) 🎨
+_hero pending_ — Generate a production-ready TypeScript CLI for human operators (TTY UX, prose help, optional JSON).
+
 
 ### [CreateHook](skills/CreateHook) 🎨
 _hero pending_ — Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenCode, OpenClaw, Hermes Agent).
