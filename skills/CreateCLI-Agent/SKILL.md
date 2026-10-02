@@ -136,6 +136,8 @@ Ask for **output directory**. Do not hardcode.
 - Do not retry mutating calls inside the CLI.
 - Do not put secrets on stdout.
 - `NOT FOR` human-first interactive tools — cross-link CreateCLI-Human.
+- A subcommand that is also a **harness hook** speaks the harness's protocol, not the envelope. Claude Code reads exit 2 as *block*, so hook mode must exit 1 on usage errors — including flag-parse errors raised before the handler runs — or one mistyped flag in `settings.json` refuses every tool call.
+- Test the contract on the spawned process, not only the library: parse errors, `--version`, and `--help` on a stdin-reading command fail before any handler.
 
 ## Examples
 
