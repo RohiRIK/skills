@@ -5,11 +5,13 @@ All notable changes to this skills library. Format loosely follows [Keep a Chang
 ## Unreleased
 
 ### Added
+- **Email** — new `workflow` skill for writing email in English and Hebrew. Six workflows (Compose, Reply, Rewrite, Localize, Review, Profile); 23 scenario templates written natively in both languages; register ladder and Israel ↔ US/UK culture bridge; Hebrew rules for gender agreement, technical English kept in English, no parentheses, RTL layout, and the Sunday–Thursday week; `Tells.md` catalog of AI-isms and calques in both directions. `Tools/LintEmail.ts` lints a draft against `Tells.md` and the house rules (`--check-templates` keeps the templates honest); `Tools/RenderEmail.ts` renders paste-ready HTML with per-paragraph direction and a bilingual font stack. Drafts only: no mailbox access, never sends.
 - **CreateCLI-Human** and **CreateCLI-Agent** — sibling `reference` skills that split CLI generation by primary caller. Human defaults to TTY UX, prose help, and optional JSON; Agent defaults to a JSON/NDJSON contract, non-interactive input, and semantic exits. Existing `CreateCLI` is unchanged.
 - **MacPluginPlaybook** — new `workflow` skill: a phased playbook (workspace → research → scaffold → test-first logic → screenshot-driven UI → app shell → audit → PR → record) for building or porting a native SwiftUI macOS menu bar app, plus `Lessons.md` distilled from a real one-day build (tooling, licensing, porting, concurrency, and UI lessons).
 - **CreatePlugin** — new `meta` skill that packages a project as one shared AI-agent plugin with thin host adapters for Hermes Agent, Claude Code, OpenClaw, Pi, OpenCode, and MCP-compatible agents. Covers host-doc inspection, safety gates, required tests, host validators, and the four-question completion report.
 
 ### Changed
+- README skill badge 37 → 38; `showcase.md` indexes `Email` (hero-pending).
 - README skill badge 35 → 37; `showcase.md` indexes `CreateCLI-Human` and `CreateCLI-Agent` (hero-pending).
 - README skill badge 33 → 35; `showcase.md` now indexes `CreatePlugin`, `MacPluginPlaybook`, and the previously missing `CreateHook` (all hero-pending).
 - **`Iterate` is now host-portable.** `RunLoop` Step 0 capability-checks the host: a wake primitive (`ScheduleWakeup`, `/loop`) still means one pass per turn, but hosts without one (pi, opencode, MCP) run the passes inline up to `--max` instead of silently stopping after a single pass. `ResumeLoop` reads `mode` from state; both skills gained the "never fabricate the wake call" gotcha. `SKILL.md` trimmed to the 50-line canon and `--lenses` added to `argument-hint`.

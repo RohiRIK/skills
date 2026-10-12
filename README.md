@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-37-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-38-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -29,6 +29,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`CreateSkill/`](skills/CreateSkill) | Build and maintain skills in canonical structure. |
 | [`DataReportBuilder/`](skills/DataReportBuilder) | Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-language Summary + untouched Raw Data. bun + ExcelJS engine. |
 | [`DockerPatterns/`](skills/DockerPatterns) | Reference for Docker and Docker Compose local-dev patterns. |
+| [`Email/`](skills/Email) | Write, reply to, rewrite, and localize emails in English and Hebrew: brief-first workflows, 23 native bilingual templates, tone and culture rules, an AI-tell and calque lint, RTL-safe HTML rendering. Drafts only, never sends. |
 | [`FrontendDesign/`](skills/FrontendDesign) | Reference for React and Next.js component design patterns. |
 | [`FrontendAesthetics/`](skills/FrontendAesthetics) | Anti-slop pipeline — DesignBrief before code, SlopAudit gate after, Redesign protocol; craft library of font pairings, OKLCH palettes, banned tells. |
 | [`GitWorkflow/`](skills/GitWorkflow) | Reference for git branching, commit conventions, merge vs rebase, and conflict resolution. |

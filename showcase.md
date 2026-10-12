@@ -2,7 +2,7 @@
 
 A visual index of the library. Each skill gets a hero image in a shared house style: a **retro-futuristic 1960s mission-control room** — banks of vintage CRT monitors, brass-and-wood consoles with operators, and a glowing holographic emblem unique to that skill. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 16 / 37 heroes generated. The remaining 21 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 16 / 38 heroes generated. The remaining 22 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
 
@@ -78,6 +78,9 @@ Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-langu
 <img src="assets/docker-patterns-hero.jpg" alt="DockerPatterns" width="640">
 
 Reference for Docker and Docker Compose local-dev patterns.
+
+### [Email](skills/Email) 🎨
+_hero pending_ — Write, reply to, rewrite, and localize emails in English and Hebrew (native templates, tone rules, AI-tell lint).
 
 ### [FrontendAesthetics](skills/FrontendAesthetics)
 <img src="assets/frontend-aesthetics-hero.jpg" alt="FrontendAesthetics" width="640">
