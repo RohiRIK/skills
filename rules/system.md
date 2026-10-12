@@ -87,6 +87,9 @@ Meta:      build/scaffold ONE skill                 → CreateSkill
            audit/instrument the WHOLE library       → SkillForge
 CLI:       generate a standalone TypeScript CLI     → CreateCLI
            author a Claude Code agent skill         → CreateSkill
+Writing:   email (compose / reply / localize)       → Email
+           social post / thread / caption / comment → SocialPost
+           both ("announce it by email and on LinkedIn") → each skill for its own channel
 ```
 
 ## 5. Shared state

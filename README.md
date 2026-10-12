@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-39-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-40-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -47,6 +47,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`SecurityReview/`](skills/SecurityReview) | Audit code for vulnerabilities and secrets. |
 | [`SkillForge/`](skills/SkillForge) | Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. |
 | [`Simplify/`](skills/Simplify) | Post-implementation dead-code cleanup (`/simplify`). |
+| [`SocialPost/`](skills/SocialPost) | Write, rewrite, repurpose, and localize posts for LinkedIn, X, Facebook, Instagram, Threads, Bluesky, Mastodon, WhatsApp, Telegram, TikTok, and YouTube in English and Hebrew: native bilingual templates, a dated platform facts table, exact per-platform counters, and a lint for AI tells, bait, fake formatting, and RTL layout. Drafts only, never posts. |
 | [`Spec/`](skills/Spec) | Explore code + memory, then write acceptance criteria before planning. |
 | [`StrategicCompact/`](skills/StrategicCompact) | Reference for context-compaction strategy and timing. |
 | [`Test/`](skills/Test) | Single TDD entry point for test-first features and bug fixes; runs `FeatureTdd` or `ProveIt`. |
