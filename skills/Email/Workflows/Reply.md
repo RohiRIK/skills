@@ -16,6 +16,8 @@ Input: an incoming email or thread, plus the user's intent ("say yes", "decline"
 
 ## Step 2: Settle the user's position on each item
 
+Apply `../Clarification.md` for missing decisions, signature details, audience/tone, or a genuinely ambiguous language request. Group needed questions once; do not re-ask the approved profile.
+
 - The user's intent covers it: use it.
 - A fact or decision only the user has, such as a price, availability, or a yes or no: ask the user when it's the main point; otherwise put a placeholder such as `[confirm: available Tue 10:00?]`.
 - Never commit the user to a deadline, a discount, attendance, or an opinion they didn't state.

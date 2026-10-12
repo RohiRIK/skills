@@ -25,7 +25,7 @@ Extract what the request already contains, then infer the rest:
 | Facts | only the request and the thread; everything else becomes a `[placeholder]` |
 | Recipient's Hebrew gender | stated by the user, or visible in the recipient's own Hebrew; otherwise gender-free forms |
 
-Ask at most two questions, and only when the answer changes the email: the purpose, or a fact the ask depends on. Otherwise draft now and state the assumptions after the draft.
+Apply `../Clarification.md`: check known context first, then ask one batch of up to four genuinely needed questions about purpose/facts, recipient/tone, ambiguous language, or exact signature spelling. Do not re-ask settled preferences. Draft immediately when the needed information is known; placeholders are the fallback for an explicitly requested rough draft or unanswered questions.
 
 ## Step 3: Pick the scenario
 
