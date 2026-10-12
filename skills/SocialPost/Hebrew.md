@@ -35,7 +35,8 @@ Posts are full of first-person present tense, and Hebrew marks it for gender: "×
 
 ## Language choice
 
-- **LinkedIn**: English reaches global recruiters, investors, and customers; Hebrew gets warmer local engagement. Israeli tech posts in Hebrew keep the tech terms in English. Ask which audience this post is for.
+- **Who chooses**: the owner. Posts are in English unless the owner explicitly requests Hebrew (`Policy.md`); a Hebrew request message or a Hebrew source post doesn't choose. When the owner is deciding, this is the trade-off:
+- **LinkedIn**: English reaches global recruiters, investors, and customers; Hebrew gets warmer local engagement. Israeli tech posts in Hebrew keep the tech terms in English.
 - **Both audiences**: two separate native posts beat one bilingual post. A bilingual post doubles the length, hides the second language behind "see more", and mixes directions. If the user wants one post: the Hebrew block, a blank line, the English block, each written natively and each line starting in its own script. On X, a thread with the primary language first.
 
 ## The Israeli calendar

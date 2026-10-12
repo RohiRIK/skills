@@ -15,10 +15,10 @@ he_gender: ""               # m | f | neutral: Hebrew first-person agreement (◊ê
 handles:                    # only the user's own handles
   x: ""
   linkedin: ""
-languages:                  # default post language per platform
-  linkedin: en              # en | he | both
-  facebook: he
-  x: he
+languages:                  # set only by the owner: en (default) | he | both
+  linkedin: en
+  facebook: en
+  x: en
 register:                   # per platform: formal | professional | friendly | casual
   linkedin: professional
   facebook: friendly
@@ -38,7 +38,7 @@ notes: ""                   # e.g. "never post on Shabbat", "company page uses ◊
 
 ## When the profile is missing
 
-Ask nothing up front. Use gender-free Hebrew first-person forms, the default registers in the platform guides, sparing emoji, and a few hashtags. Offer the Profile workflow once, after the first draft.
+Check approved owner context first and ask only what `Clarification.md` calls essential. Write in English, use the default registers in the platform guides, sparing emoji, and a few hashtags; if Hebrew is requested, use gender-free first-person forms. Offer the Profile workflow only when persistent saving is useful and approved.
 
 ## Using the profile in the lint
 

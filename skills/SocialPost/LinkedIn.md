@@ -19,7 +19,7 @@ Limits and folds: `Platforms.md` rows `linkedin` and `linkedin-comment`. Everyth
 - **Links**: LinkedIn denies a link penalty, but datasets keep showing lower reach for link posts, and moving the link to the first comment is no longer reliably better. Make the post useful without the click, put the link at the end, and tell the user the trade-off. A link preview can't be changed after posting.
 - **Mentions**: only people the user named, 1 to 3, each with a reason in the sentence. Mentions are dropped when the audience isn't Public.
 - **Editing**: text can be edited after posting; images, documents, polls, and link previews can't. Get those right first.
-- **Language**: Hebrew has been a LinkedIn interface language since September 2024, and readers get a "See translation" button. Israeli professionals post in English to reach global readers and in Hebrew for local reach and warmth. Ask which audience matters for this post.
+- **Language**: Hebrew has been a LinkedIn interface language since September 2024, and readers get a "See translation" button. Israeli professionals post in English to reach global readers and in Hebrew for local reach and warmth. The owner chooses; English is the default (`Policy.md`).
 
 ## Formats
 

@@ -52,6 +52,13 @@ const LAT_G = /[A-Za-z]/g
 // Rules a template may trigger on purpose; --check-templates ignores them.
 const TEMPLATE_EXEMPT = new Set(["placeholder", "hook-cut"])
 const NEVER_ALLOW = new Set(["tell", "markdown", "fake-styling", "chatbot-leak", "hebrew-parens", "disclosure", "length", "bom"])
+// Style rules a profile may switch off with --allow; everything else is fixed.
+export const ALLOWABLE = [
+  "em-dash", "exclaim", "emoji-count", "broetry", "gender-slash", "bidi-start", "wrong-way-pointer", "spaced-phone",
+  "leading-sign", "en-quote-midline", "hashtag-portable", "mixed-tag-line", "mention-portable", "bidi-control",
+  "link-glued", "link-shortener", "link-dead", "hashtag-count", "hook-cut", "niqqud", "placeholder",
+]
+export const TYPES = ["post", "hiring"]
 
 const count = (s: string, re: RegExp) => (s.match(re) ?? []).length
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
@@ -150,7 +157,7 @@ const STARTS_WITH_EMOJI = (line: string) => {
 
 export function lint(text: string, opts: Options = {}): Report {
   const tells = opts.tells ?? loadTells()
-  const allow = new Set((opts.allow ?? []).filter((r) => !NEVER_ALLOW.has(r)))
+  const allow = new Set((opts.allow ?? []).filter((r) => ALLOWABLE.includes(r) && !NEVER_ALLOW.has(r)))
   const p: Platform | undefined = opts.platform ? getPlatform(opts.platform) : undefined
   const body = text.replace(/\r\n/g, "\n").replace(/\s+$/, "")
   const lines = body.split("\n")
@@ -484,9 +491,22 @@ export function main(argv: string[]): number {
         return 2
       }
       o.lang = v
-    } else if (a === "--type") o.type = next()
+    } else if (a === "--type") {
+      o.type = next()
+      if (!TYPES.includes(o.type)) {
+        console.error(`Unknown --type "${o.type}". Known: ${TYPES.join(", ")}`)
+        return 2
+      }
+    }
     else if (a === "--sponsored") o.sponsored = true
-    else if (a === "--allow") o.allow = next().split(",").map((s) => s.trim()).filter(Boolean)
+    else if (a === "--allow") {
+      o.allow = next().split(",").map((s) => s.trim()).filter(Boolean)
+      const bad = o.allow.filter((r) => !ALLOWABLE.includes(r))
+      if (bad.length) {
+        console.error(`--allow can't include ${bad.join(", ")}. Allowable: ${ALLOWABLE.join(", ")}`)
+        return 2
+      }
+    }
     else if (a === "--max") {
       o.max = Number(next())
       if (!Number.isInteger(o.max) || o.max <= 0) {
