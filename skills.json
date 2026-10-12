@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-10-12T11:57:55Z",
+  "generated": "2026-10-12T12:12:12Z",
   "skills": [
     {
       "name": "AdaptiveExplainers",
@@ -173,6 +173,16 @@
       "tier": "A-reference",
       "workflows": "",
       "description": "Reference for Docker and Docker Compose local dev patterns. USE WHEN writing a Dockerfile or compose file, or containerizing local dev."
+    },
+    {
+      "name": "Email",
+      "path": "skills/Email/",
+      "category": "workflow",
+      "effort": "medium",
+      "domain": "docs",
+      "tier": "C-auto",
+      "workflows": "Compose,Localize,Profile,Reply,Review,Rewrite",
+      "description": "Use when drafting, replying to, reviewing, or localizing email. Apply owner language policy, native templates, tone rules, and lint. Drafts only; never sends."
     },
     {
       "name": "FrontendAesthetics",
