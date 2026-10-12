@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-37-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-38-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -13,6 +13,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 
 | Skill | What it does |
 |---|---|
+| [`AdaptiveExplainers/`](skills/AdaptiveExplainers) | Choose and verify text, diagrams, interactive HTML, or video; generated HTML defaults to `~/Downloads`. |
 | [`Agy/`](skills/Agy) | Delegate a coding, refactor, PR-review, or image task to the Antigravity CLI (`agy`) as an autonomous worker, then monitor and report. |
 | [`Art/`](skills/Art) | Generate images, diagrams, and visual output. Use for any visual artifact. |
 | [`BackendDesign/`](skills/BackendDesign) | Reference for API design, database schema, and server architecture. |
