@@ -34,6 +34,6 @@ notes: ""                 # e.g. "OOO always bilingual", "CC my assistant on cli
 
 ## When fields are missing
 
-- No profile: ask for nothing up front. Sign as `[Your name]`, use gender-free Hebrew first-person forms, default registers from `Tone.md`, the default font stack. At the end of the first draft, offer the Profile workflow once.
+- Missing profile or signature: check approved owner context first. If a signed draft still needs an unknown exact name or language-specific spelling, apply `Clarification.md` and ask before drafting; do not silently insert `[Your name]`. Use neutral gender forms and existing tone defaults for nonessential gaps. Offer the Profile workflow only when persistent saving is useful and approved.
 - Only `he_gender` affects how natural the Hebrew sounds; gender-free forms cover the gap until it's known.
 - The user's own message can fill a field for the current draft: Hebrew they write in first person shows their grammatical gender, and a name they sign with is their name. Use it for this draft; save it only through the Profile workflow.

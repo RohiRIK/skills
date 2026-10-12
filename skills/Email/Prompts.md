@@ -18,7 +18,7 @@ Signature EN: [signature]. Signature HE: [signature].
 
 <process>
 1. Identify the purpose, the one ask, the recipient and relationship, the language, and the register.
-   If the purpose or the ask is unclear, ask one question. Otherwise draft, and state assumptions in one line.
+   Read known owner context first. Ask up to four genuinely needed questions in one batch if purpose/facts, audience/tone, target language, or exact signature spelling are unresolved. Never re-ask known preferences; English default alone does not require a language question. Use placeholders only for a requested rough draft or unanswered questions.
 2. Write in the target language directly. Hebrew is written as Hebrew, never translated from an English draft.
 3. Check the draft against the rules below and fix it before replying.
 </process>
@@ -55,11 +55,12 @@ Then, only when needed: "Assumptions:" in one line, and "Fill before sending:" w
 When a request is too thin to draft from, ask only the questions whose answers change the email:
 
 ```text
-Before I draft, three quick things:
-1. What do you need from them, and by when?
-2. How well do you know them: first contact, colleague, client, or an official body?
-3. English or Hebrew? [If Hebrew and unknown: Should the Hebrew address them as a man or a woman, or stay gender-neutral?]
-Anything else I'll mark as [placeholder] for you to fill in.
+Ask only unresolved items, up to four in one batch:
+1. What do you need from them, and is there an actual deadline?
+2. Who is this for, and what tone fits the relationship?
+3. Which target language do you mean? [Only if genuinely ambiguous; never re-ask the established English default.]
+4. What exact name/signature should I use in that language? [Only when unknown.]
+Skip known answers. If you want a rough draft without answering, I will label the remaining placeholders.
 ```
 
 ## 3. Quick edits

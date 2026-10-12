@@ -8,7 +8,7 @@ domain: docs
 
 # Email
 
-Read `Policy.md` before any workflow; it governs language selection and untrusted source material.
+Read `Policy.md` before any workflow; read `Clarification.md` when essential information is missing. They govern language, source boundaries, and focused questions.
 
 Bilingual email kit: brief-first workflows, 23 scenario templates written natively in English and in Hebrew, register and culture rules, a lint gate for AI tells, calques, and markdown leaks, and an RTL-safe HTML renderer. Drafts only: no mailbox access, nothing is sent.
 
@@ -37,7 +37,7 @@ Bilingual email kit: brief-first workflows, 23 scenario templates written native
 
 ## Gotchas
 
-- Never invent facts. Names, dates, prices, links, and commitments come from the user or the thread; anything missing becomes a `[placeholder]`. Don't interrogate the user either: draft, then list assumptions and placeholders.
+- Never invent facts. Names, dates, prices, links, and commitments come from verified context. Ask one focused batch for missing essentials (`Clarification.md`); use labeled placeholders only for a requested rough draft or unanswered questions.
 - Write Hebrew in Hebrew, not as a translation of an English draft. Keep technical English terms, product names, and UI labels in English letters. No parentheses in Hebrew text.
 - Hebrew verbs and adjectives carry gender. Take the sender's from the profile; never guess anyone's from their name; use neutral forms (`Hebrew.md`) when unknown.
 - Email is plain text: no `**bold**`, `#` headings, or tables. Deliver the draft in a `text` fence so line breaks survive; use `Tools/RenderEmail.ts` when the user wants rich text.

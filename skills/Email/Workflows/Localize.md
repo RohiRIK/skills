@@ -12,6 +12,8 @@ Localizing is rewriting, not translating. Carry the purpose, the ask, and the fa
 
 ## Step 1: Extract
 
+If the target language or required signature spelling is unresolved after checking owner policy and context, apply `../Clarification.md` before drafting. Do not guess or ask again when already confirmed.
+
 From the source, list: purpose, the ask and its date, every fact (names, numbers, dates, links), the register, and the recipient's culture.
 
 ## Step 2: Re-decide the register for the target reader
