@@ -12,6 +12,7 @@
 ## Skills by category
 
 ### workflow
+- [AdaptiveExplainers](skills/AdaptiveExplainers/SKILL.md) — Choose and verify text, diagrams, interactive HTML, or video when explaining a topic, system, investigation, or decision.
 - [Build](skills/Build/SKILL.md) — Implements plan tasks one at a time with compile and commit gates. USE WHEN building from a plan.
 - [CodebaseOnboarding](skills/CodebaseOnboarding/SKILL.md) — Analyze an unfamiliar codebase and produce an onboarding guide — architecture map, entry points, conventions, starter CLAUDE.md. USE WHEN joining a new project or onboarding a repo.
 - [DataReportBuilder](skills/DataReportBuilder/SKILL.md) — Turn a raw Excel/CSV dataset into a two-layer report — plain-language summary plus untouched raw data. USE WHEN someone shares a spreadsheet wanting a report, analysis, summary, or breakdown.

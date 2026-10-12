@@ -2,8 +2,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-09-29T19:33:15Z",
+  "generated": "2026-10-12T11:57:55Z",
   "skills": [
+    {
+      "name": "AdaptiveExplainers",
+      "path": "skills/AdaptiveExplainers/",
+      "category": "workflow",
+      "effort": "medium",
+      "domain": "docs",
+      "tier": "C-auto",
+      "workflows": "Deliver,Explore,Verify",
+      "description": "Choose and verify text, diagrams, interactive HTML, or video when explaining a topic, system, investigation, or decision."
+    },
     {
       "name": "Agy",
       "path": "skills/Agy/",
