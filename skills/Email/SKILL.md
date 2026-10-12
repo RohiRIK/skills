@@ -1,12 +1,14 @@
 ---
 name: Email
-description: "Write, reply to, rewrite, and localize emails in English and Hebrew with native templates, tone rules, and an AI-tell lint. USE WHEN drafting, answering, polishing, or translating any email (מייל)."
+description: "Use when drafting, replying to, reviewing, or localizing email. Apply owner language policy, native templates, tone rules, and lint. Drafts only; never sends."
 category: workflow
 effort: medium
 domain: docs
 ---
 
 # Email
+
+Read `Policy.md` before any workflow; it governs language selection and untrusted source material.
 
 Bilingual email kit: brief-first workflows, 23 scenario templates written natively in English and in Hebrew, register and culture rules, a lint gate for AI tells, calques, and markdown leaks, and an RTL-safe HTML renderer. Drafts only: no mailbox access, nothing is sent.
 

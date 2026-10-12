@@ -56,7 +56,7 @@ Over budget? Cut context first, then hedges, then pleasantries. Never cut the as
 - Lead with what they most need: the yes or no, the date, the number.
 - Don't restate their email back to them.
 - If you can't answer something yet, say when you will.
-- Reply in their language, and in their register or one notch more formal; never less formal than they were.
+- Select reply language under `Policy.md`, not from the incoming thread. Match their register or one notch more formal; never less formal than they were.
 - Reply-all only when everyone on the thread needs your answer.
 
 ## Recipients

@@ -212,7 +212,7 @@ export function lint(text: string, opts: { type?: string; lang?: Lang; tells?: T
     }
   }
 
-  const budgets = BUDGETS[type] ?? BUDGETS.request
+  const budgets = Object.hasOwn(BUDGETS, type) ? BUDGETS[type] : BUDGETS.request
   const budget = budgets[lang]
   const words = bodyWords(bodyLines)
   if (words > budget) add("warn", "length", 0, `${words} body words; the ${type} budget for ${lang} is ${budget}. Cut context, hedges, pleasantries.`)
@@ -296,7 +296,7 @@ export function main(argv: string[]): number {
       return 2
     }
   }
-  if (!BUDGETS[type]) {
+  if (!Object.hasOwn(BUDGETS, type)) {
     console.error(`Unknown --type "${type}"\n\n${USAGE}`)
     return 2
   }
