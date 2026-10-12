@@ -11,7 +11,7 @@ All notable changes to this skills library. Format loosely follows [Keep a Chang
 - **CreatePlugin** — new `meta` skill that packages a project as one shared AI-agent plugin with thin host adapters for Hermes Agent, Claude Code, OpenClaw, Pi, OpenCode, and MCP-compatible agents. Covers host-doc inspection, safety gates, required tests, host validators, and the four-question completion report.
 
 ### Changed
-- README skill badge 37 → 38; `showcase.md` indexes `Email` (hero-pending).
+- README skill badge 37 → 39 (Email, plus AdaptiveExplainers from main); `showcase.md` indexes `Email` and `AdaptiveExplainers` (hero-pending).
 - README skill badge 35 → 37; `showcase.md` indexes `CreateCLI-Human` and `CreateCLI-Agent` (hero-pending).
 - README skill badge 33 → 35; `showcase.md` now indexes `CreatePlugin`, `MacPluginPlaybook`, and the previously missing `CreateHook` (all hero-pending).
 - **`Iterate` is now host-portable.** `RunLoop` Step 0 capability-checks the host: a wake primitive (`ScheduleWakeup`, `/loop`) still means one pass per turn, but hosts without one (pi, opencode, MCP) run the passes inline up to `--max` instead of silently stopping after a single pass. `ResumeLoop` reads `mode` from state; both skills gained the "never fabricate the wake call" gotcha. `SKILL.md` trimmed to the 50-line canon and `--lenses` added to `argument-hint`.

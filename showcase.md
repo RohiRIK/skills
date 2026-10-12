@@ -2,9 +2,12 @@
 
 A visual index of the library. Each skill gets a hero image in a shared house style: a **retro-futuristic 1960s mission-control room** — banks of vintage CRT monitors, brass-and-wood consoles with operators, and a glowing holographic emblem unique to that skill. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 16 / 38 heroes generated. The remaining 22 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 16 / 39 heroes generated. The remaining 23 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
+
+### [AdaptiveExplainers](skills/AdaptiveExplainers) 🎨
+_hero pending_ — Choose and verify text, diagrams, interactive HTML, or video when explaining a topic, system, investigation, or decision.
 
 ### [Agy](skills/Agy)
 <img src="assets/agy-hero.jpg" alt="Agy" width="640">
