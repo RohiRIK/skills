@@ -42,4 +42,4 @@ Check approved owner context first and ask only what `Clarification.md` calls es
 
 ## Using the profile in the lint
 
-Profile choices map to lint flags, so the gate respects the user's voice: `em_dash: ok` → `--allow em-dash`; `emoji: ok` → `--allow emoji-count`. Ban-level rules (bait, leaks, fake formatting, Hebrew parentheses) can't be allowed away.
+Profile choices map to lint flags, so the gate respects the user's voice: `em_dash: ok` → `--allow em-dash`; `emoji: ok` → `--allow emoji-count`; `openers_to_keep` and `closers_to_keep` → `--keep`, for warn-level phrases only. Ban-level rules (bait, leaks, fake formatting, Hebrew parentheses) can't be allowed away.

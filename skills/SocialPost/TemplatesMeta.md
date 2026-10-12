@@ -87,7 +87,7 @@ Recommendations from people who've used them themselves help most. Thanks in adv
 
 [מה הכי חשוב: תקציב, זמינות, ניסיון עם X.]
 
-הכי עוזרות המלצות ממי שהשתמש בעצמו. תודה מראש!
+אשמח להמלצות מניסיון אישי. תודה מראש!
 ```
 
 ## Instagram feed caption

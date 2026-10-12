@@ -3,7 +3,7 @@
 Pick the scenario, open its file, and adapt the skeleton. A template gives the moves, not the words: every line is rewritten for the user's real facts, and every `[bracket]` is filled from the user or listed for them. Each scenario has an English skeleton and a Hebrew one, written separately; the Hebrew is not a translation.
 
 - The fence names the platform and language, as in ```` ```text linkedin he ````. `bun Tools/LintPost.ts --check-templates` lints every block with those settings, so a template can't carry the tells the skill bans. Run it after editing any template.
-- Hebrew skeletons use first-person forms that carry no gender and address readers in the plural; technical terms stay in English; no parentheses.
+- Hebrew skeletons use first-person forms that carry no gender and address readers in the plural; technical terms stay in English; no parentheses. A prefix takes a hyphen only before a Latin name: ב-Wix, but בפייבוקס.
 - The example lines inside brackets show the kind of detail wanted. They are not facts to reuse.
 
 | Scenario | Platforms | File |

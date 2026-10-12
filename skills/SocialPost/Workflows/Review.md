@@ -25,6 +25,7 @@ EOF
 | `--sponsored` | The post promotes something with a material connection; the first line must carry a label. |
 | `--type hiring` | Allows Hebrew slash forms, standard in job posts. |
 | `--allow em-dash,emoji-count` | The user's deliberate style, from the profile. Ban-level rules can't be allowed. |
+| `--keep "phrase1,phrase2"` | Warn-level phrases the user really uses, from `openers_to_keep` and `closers_to_keep`; they no longer count toward density. Ban-level phrases can't be kept. |
 | `--max N` | Another limit: a Mastodon server's own, or X Premium's. |
 | `--fold` | Print the text visible before "see more". |
 | `--json` | Machine-readable output. |
@@ -38,12 +39,12 @@ EOF
 | # | Check |
 |---|---|
 | S1 | The first line works alone and fits before "see more". |
-| S2 | At least one concrete detail, from the user. |
-| S3 | Nothing invented: every story, number, quote, name, and result traces to the user or the source. |
+| S2 | At least one concrete detail from the user or the source; for a reply, a specific reference to the post counts. |
+| S3 | Nothing invented: every story, number, quote, name, and result traces to the user or the source, and a third party's results are attributed to them, not claimed as the user's. |
 | S4 | No bait; the close is the strongest line or a narrow, real question. |
-| S5 | A material connection is disclosed on the first line, and the user knows to set the platform toggle (`Disclosure.md`). |
+| S5 | A third-party material connection is disclosed on the first line and the user knows to set the platform toggle; the user's own business or employer is named plainly where it appears (`Disclosure.md`). |
 | S6 | Reads like this person on this platform: register, length, emoji, and tags match the profile. |
-| S7 | Hebrew: one gender for the author throughout, from a valid source; readers in the plural; technical terms in English; no parentheses; every line starts with a Hebrew letter. |
+| S7 | Hebrew: one gender for the author throughout, from a valid source; readers in the plural; technical terms in English; no parentheses; every Hebrew line starts with a Hebrew letter; English-only lines, such as a quote, a URL, or the English tags, stand on their own. |
 | S8 | Links and tags follow the platform guide; no link in an Instagram or TikTok caption. |
 | S9 | Timing: if the post is scheduled or time-sensitive, the date was checked against `Hebrew.md` and the user was asked about current events. |
 | S10 | Platform numbers came from `Platforms.md`, and `LintPost.ts --check-facts` is clean or the stale rows were named. |
@@ -66,7 +67,7 @@ On FIX, apply the fixes and run Steps 1 to 3 once more. A second FIX goes to the
 Review: linkedin · he · 1,412/3000 · fold ok
 Lint: 0 errors · 1 warning (placeholder: [שם])
 Checklist: S1 ✓ S2 ✓ S3 ✓ S4 ✓ S5 n/a S6 ✓ S7 ✓ S8 ✓ S9 n/a S10 ✓ S11 ✓ S12 n/a S13 ✓
-Verdict: READY. Fill [שם] before posting.
+Verdict: FIX: fill [שם] before posting.
 ```
 
 Inside another workflow, report only the verdict line and open items.

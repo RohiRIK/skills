@@ -21,6 +21,7 @@ Load the voice profile if it exists (`VoiceProfile.md` says where): name, Hebrew
 | Language | owner language policy → explicit owner request → the owner's approved per-platform default → English; never inferred from the request's language or a source post |
 | The concrete detail | the request; if there is none, ask for one: what happened, a number, a name (`Craft.md` table) |
 | Disclosure | ask once if the post promotes anything: paid, gifted, affiliate, employer (`Disclosure.md`) |
+| Group rules | when the platform is a Facebook Group: the pinned rules, or at least whether self-promotion and links are allowed (`Meta.md`) |
 | Timing | only if the user is scheduling: run the pause check in `Hebrew.md` and ask about current events |
 
 Apply `../Clarification.md`: check known context first, then ask one batch of up to four genuinely needed questions: platform and goal, the concrete detail, disclosure, or a genuinely ambiguous language. Don't re-ask settled preferences. Draft as soon as the essentials are known; placeholders are for an explicitly requested rough draft or unanswered questions.
@@ -55,7 +56,7 @@ Under the fence, only the lines that apply:
 - `Fill before posting:` every placeholder.
 - `Add:` alt text for images, the link location, the paid-partnership toggle.
 - `Assumptions:` one line in English, if any were made.
-- First run with no profile: one line offering the Profile workflow.
+- No profile yet: at most one line offering the Profile workflow, and never block the draft on it.
 
 Never publish, schedule, or call a posting tool.
 

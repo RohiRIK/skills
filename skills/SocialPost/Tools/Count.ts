@@ -9,7 +9,7 @@
  *              everything else 2; each emoji grapheme 2; each URL 23, bare domains with a known TLD included.
  *              Reimplemented from twitter-text (Apache-2.0, github.com/twitter/twitter-text). Change: an RGI emoji
  *              grapheme always costs 2, fixing twitter-text 3.1.0's per-code-point count of post-2019 ZWJ emoji.
- *              The gTLD list is a common subset of twitter-text's 1,164; every ccTLD is included.
+ *              TLD lists live in Tlds.ts, copied from twitter-text.
  *   threads    characters, with each emoji counted as its UTF-8 bytes (Threads API docs).
  *   graphemes  user-perceived characters (Bluesky).
  *   mastodon   graphemes; each http(s) URL 23; @user@domain counted as @user.
@@ -19,6 +19,7 @@
 import { readFileSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
+import { CCTLDS, GTLDS } from "./Tlds.ts"
 
 export type Unit = "x" | "threads" | "graphemes" | "mastodon" | "utf16"
 export type Status = "documented" | "observed" | "reported" | "folklore"
@@ -58,31 +59,32 @@ export function isEmoji(g: string): boolean {
   return /\p{Extended_Pictographic}/u.test(g) && /[️‍\u{1F000}-\u{1FAFF}]/u.test(g)
 }
 
-// Every two-letter ccTLD in twitter-text, and the common gTLDs.
-const CCTLD =
-  "ac ad ae af ag ai al am an ao aq ar as at au aw ax az ba bb bd be bf bg bh bi bj bl bm bn bo bq br bs bt bv bw by bz " +
-  "ca cc cd cf cg ch ci ck cl cm cn co cr cu cv cw cx cy cz de dj dk dm do dz ec ee eg eh er es et eu fi fj fk fm fo fr " +
-  "ga gb gd ge gf gg gh gi gl gm gn gp gq gr gs gt gu gw gy hk hm hn hr ht hu id ie il im in io iq ir is it je jm jo jp " +
-  "ke kg kh ki km kn kp kr kw ky kz la lb lc li lk lr ls lt lu lv ly ma mc md me mf mg mh mk ml mm mn mo mp mq mr ms mt " +
-  "mu mv mw mx my mz na nc ne nf ng ni nl no np nr nu nz om pa pe pf pg ph pk pl pm pn pr ps pt pw py qa re ro rs ru rw " +
-  "sa sb sc sd se sg sh si sj sk sl sm sn so sr ss st su sv sx sy sz tc td tf tg th tj tk tl tm tn to tp tr tt tv tw tz " +
-  "ua ug uk um us uy uz va vc ve vg vi vn vu wf ws ye yt za zm zw"
-const GTLD =
-  "com net org info biz edu gov mil int app dev xyz online site tech store shop blog cloud page news live art design " +
-  "email solutions agency digital media studio network systems software services company global world today life " +
-  "space website club academy center group team tools works zone codes games guru ninja rocks social photography " +
-  "travel events marketing consulting finance capital ventures health care fund money pro mobi name jobs aero coop " +
-  "museum asia cat tel travel google amazon microsoft apple"
-const TLDS = `${GTLD} ${CCTLD}`.split(/\s+/).sort((a, b) => b.length - a.length).join("|")
+const TLDS = `${GTLDS} ${CCTLDS}`.split(/\s+/).sort((a, b) => b.length - a.length).join("|")
 
-const PROTOCOL_URL = /https?:\/\/[^\s<>"]+/gi
-const WWW_URL = /(?<![A-Za-z0-9_@.$#/])www\.[^\s<>"]+/gi
+// URL character classes follow twitter-text: path characters are ASCII, Latin accents, Cyrillic, and a fixed
+// punctuation set, so a URL ends at an em dash, emoji, ellipsis, curly quote, Hebrew letter, or bidi mark.
+const PATH_CHARS = "a-z0-9\\u00C0-\\u024F\\u0400-\\u04FF!*';:=+,.$/%#\\[\\]\\-\\u2013_~&|@()"
+const QUERY_CHARS = "a-z0-9!?*'@();:&=+$/%#\\[\\]\\-_.,~|"
+const TAIL = `(?::\\d{1,5})?(?:/[${PATH_CHARS}]*)?(?:\\?[${QUERY_CHARS}]*)?`
+const PROTOCOL_URL = new RegExp(`https?://(?:[a-z0-9-]+\\.)*[a-z0-9-]+${TAIL}`, "gi")
+const WWW_URL = new RegExp(`(?<![A-Za-z0-9_@.$#/])www\\.(?:[a-z0-9-]+\\.)*[a-z0-9-]+${TAIL}`, "gi")
 // A Hebrew letter or "-" may precede a bare domain, as in twitter-text: "ב-example.com" links "-example.com".
-const BARE_URL = new RegExp(
-  `(?<![A-Za-z0-9_@.$#/])(?:[a-z0-9-][a-z0-9-]*\\.)+(?:${TLDS})(?![A-Za-z0-9_-])(?:/[^\\s<>"]*)?`,
-  "gi",
-)
-const TRAILING_PUNCT = /[.,;:!?'")\]]+$/
+const BARE_URL = new RegExp(`(?<![A-Za-z0-9_@.$#/])(?:[a-z0-9-][a-z0-9-]*\\.)+(?:${TLDS})(?![A-Za-z0-9_-])${TAIL}`, "gi")
+const URL_END = /[a-z0-9\u00C0-\u024F\u0400-\u04FF=_#/+&\-)]/i
+const MAX_URL = 4096
+
+/** Drops trailing characters a URL can't end with, and a closing parenthesis with no opening partner. */
+function trimUrl(raw: string): string {
+  let u = raw
+  for (;;) {
+    const last = u[u.length - 1]
+    if (!last) return u
+    if (last === ")" && count(u, "(") >= count(u, ")")) return u
+    if (last !== ")" && URL_END.test(last)) return u
+    u = u.slice(0, -1)
+  }
+}
+const count = (s: string, ch: string) => s.split(ch).length - 1
 
 export type Span = { start: number; end: number; text: string }
 
@@ -91,10 +93,11 @@ export function findUrls(text: string): Span[] {
   const spans: Span[] = []
   for (const re of [PROTOCOL_URL, WWW_URL, BARE_URL]) {
     for (const m of text.matchAll(re)) {
-      const raw = m[0].replace(TRAILING_PUNCT, "")
+      const raw = trimUrl(m[0])
       const start = m.index ?? 0
       const end = start + raw.length
-      if (raw && !spans.some((s) => start < s.end && end > s.start)) spans.push({ start, end, text: raw })
+      if (!raw.includes(".") || raw.length > MAX_URL) continue
+      if (!spans.some((s) => start < s.end && end > s.start)) spans.push({ start, end, text: raw })
     }
   }
   return spans.sort((a, b) => a.start - b.start)
@@ -134,10 +137,16 @@ export function threadsLength(text: string): number {
 }
 
 export function mastodonLength(text: string): number {
-  const rewritten = text
-    .replace(PROTOCOL_URL, (u) => "x".repeat(23) + u.slice(u.replace(TRAILING_PUNCT, "").length))
-    .replace(/(@[A-Za-z0-9_]+)@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, "$1")
-  return graphemes(rewritten)
+  // Only URLs with a protocol get Mastodon's 23-character concession; bare domains count in full.
+  const urls = findUrls(text).filter((u) => /^https?:\/\//i.test(u.text))
+  let rewritten = ""
+  let at = 0
+  for (const u of urls) {
+    rewritten += text.slice(at, u.start) + "x".repeat(23)
+    at = u.end
+  }
+  rewritten += text.slice(at)
+  return graphemes(rewritten.replace(/(@[A-Za-z0-9_]+)@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, "$1"))
 }
 
 export function countUnit(unit: Unit, text: string): number {
@@ -193,6 +202,18 @@ export function parsePlatforms(md: string): Platform[] {
   return rows
 }
 
+/** Reads a post from a file or stdin ("-") as strict UTF-8 with LF line endings. Throws on bytes that aren't UTF-8. */
+export function readPost(file: string): string {
+  const bytes = readFileSync(file === "-" ? 0 : file)
+  let text: string
+  try {
+    text = new TextDecoder("utf-8", { fatal: true }).decode(bytes)
+  } catch {
+    throw new Error(`${file} is not UTF-8 (Windows-1255 Hebrew?). Re-save it as UTF-8.`)
+  }
+  return text.replace(/\r\n?/g, "\n")
+}
+
 let cached: Platform[] | null = null
 export function loadPlatforms(): Platform[] {
   cached ??= parsePlatforms(readFileSync(join(SKILL_DIR, "Platforms.md"), "utf8"))
@@ -211,7 +232,7 @@ export function main(argv: string[]): number {
   }
   let text: string
   try {
-    text = readFileSync(file === "-" ? 0 : file, "utf8").replace(/\s+$/, "")
+    text = readPost(file).replace(/\s+$/, "")
   } catch (e) {
     console.error(`Cannot read ${file}: ${(e as Error).message}`)
     return 2

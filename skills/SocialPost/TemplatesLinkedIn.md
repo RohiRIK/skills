@@ -9,11 +9,11 @@ Craft and limits: `LinkedIn.md`, `Craft.md`. Every first line must work alone be
 ```text linkedin en
 We launched [feature] today: [what users can now do, in one line].
 
-[The problem it solves, from a real user or a number, such as "field teams lost an hour a day re-entering data whenever the signal dropped."]
+[The problem it solves, from a real user or a number, such as "finance teams spent two days a month exporting invoices by hand."]
 
 [How it works or what changed, in two or three sentences, with one number if you have it.]
 
-[Who built it, thanked for something specific, such as "Dana and Yossi rebuilt the sync engine to make this possible."]
+[Who built it, thanked for something specific, such as "Dana and Yossi rebuilt the export pipeline to make this possible."]
 
 [What's next, or where to try it: a link, or "rolling out to all accounts this week".]
 ```
@@ -21,11 +21,11 @@ We launched [feature] today: [what users can now do, in one line].
 ```text linkedin he
 השקנו היום את [הפיצ'ר]: [מה המשתמשים יכולים לעשות עכשיו, בשורה אחת].
 
-[הבעיה שזה פותר, מלקוח אמיתי או ממספר, למשל: "צוותי השטח איבדו שעה ביום על הקלדה חוזרת בכל פעם שהקליטה נפלה."]
+[הבעיה שזה פותר, מלקוח אמיתי או ממספר, למשל: "צוותי הכספים הקדישו יומיים בחודש לייצוא ידני של חשבוניות."]
 
 [איך זה עובד או מה השתנה, בשניים-שלושה משפטים, עם מספר אחד אם יש.]
 
-[מי בנה, עם תודה על משהו ספציפי, למשל: "דנה ויוסי בנו מחדש את מנגנון הסנכרון כדי שזה יעבוד."]
+[מי בנה, עם תודה על משהו ספציפי, למשל: "דנה ויוסי בנו מחדש את תהליך הייצוא כדי שזה יעבוד."]
 
 [מה הלאה, או איפה לנסות: קישור, או "נפתח לכל החשבונות השבוע".]
 ```
@@ -47,7 +47,7 @@ We launched [feature] today: [what users can now do, in one line].
 ```
 
 ```text linkedin he
-[הרגע, בשורה אחת, למשל: "במרץ שעבר אישרתי migration שהפיל את production ל-40 דקות."]
+[הרגע, בשורה אחת, למשל: "במרץ שעבר אישרתי migration שהפילה את ה-production ל-40 דקות."]
 
 [מה קרה, בשניים-שלושה משפטים, עם הפרט הספציפי שבגללו זה השתבש.]
 
@@ -75,7 +75,7 @@ We launched [feature] today: [what users can now do, in one line].
 ```
 
 ```text linkedin he
-[הטענה, ספציפית מספיק כדי לבדוק אותה, למשל: "רוב העיכובים ב-code review אצלנו לא היו בגלל המבקרים."]
+[הטענה, ספציפית מספיק כדי לבדוק אותה, למשל: "רוב העיכובים ב-code review אצלנו לא נבעו מה-reviewers."]
 
 [הראיות מהעבודה שלך, למשל: "עברנו על 300 PRs במשך רבעון, ו-70% מהאיטיים היו מעל 400 שורות."]
 
@@ -106,7 +106,7 @@ Apply or message me: [link]
 ```
 
 ```text linkedin he hiring
-אנחנו מגייסים [תפקיד] כדי [העבודה בפועל, בשורה אחת, למשל: "להוביל את אינטגרציות התשלומים מקצה לקצה"].
+אנחנו מחפשים [תפקיד] להובלת [העבודה בפועל, בשורה אחת, למשל: "אינטגרציות התשלומים מקצה לקצה"].
 
 על מה עובדים:
 - [פרויקט קונקרטי בשלושת החודשים הראשונים]
@@ -137,7 +137,7 @@ Thank you to [name] for [something specific] and to [name] for [something specif
 ```
 
 ```text linkedin he
-התחלתי היום תפקיד חדש: [תפקיד] ב-[חברה].
+התחלתי היום תפקיד חדש: [תפקיד] ב[חברה].
 
 [על מה אעבוד בפועל, בשורה או שתיים: הפרויקט או הבעיה הראשונה.]
 
@@ -238,7 +238,7 @@ Thank you to [name] and [name] for covering [the specific work] while I was away
 ```
 
 ```text linkedin he
-חזרתי השבוע ל-[חברה] אחרי [משך הזמן] של [מילואים / חופשה].
+חזרתי השבוע ל[חברה] אחרי [משך הזמן] של [מילואים / חופשה].
 
 [שורה כנה אחת על התקופה, רק מה שבא לשתף.]
 

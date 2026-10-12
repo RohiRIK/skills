@@ -1,6 +1,6 @@
 ---
 name: Email
-description: "Use when drafting, replying to, reviewing, or localizing email. Apply owner language policy, native templates, tone rules, and lint. Drafts only; never sends."
+description: "Use when drafting, replying to, reviewing, or localizing email. Apply owner language policy, native templates, tone rules, and lint. Drafts only; never sends. NOT FOR social posts (use SocialPost)."
 category: workflow
 effort: medium
 domain: docs

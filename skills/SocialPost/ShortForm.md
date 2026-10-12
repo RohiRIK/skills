@@ -6,9 +6,9 @@ Limits and counting units: `Platforms.md`. Checked 2026-10-12.
 
 `Tools/LintPost.ts --platform <name>` counts with the platform's own unit. The differences that bite:
 - **X**: Hebrew, Latin, and Arabic letters cost 1, but emoji, CJK, and many symbols cost 2: `…` `•` `→` `✅` `₪` and the invisible RLM and LRM marks. Every URL costs 23, including bare domains and file names like `README.md`. Niqqud marks cost 1 each, so a voweled `שָׁלוֹם` costs 7 where `שלום` costs 4.
-- **Threads**: 500 characters, but each emoji counts as its UTF-8 bytes, 4 or more.
+- **Threads**: 500 characters, but each emoji counts as its UTF-8 bytes: 3 or 4 for a single emoji, more for flags and combined emoji.
 - **Bluesky**: 300 graphemes. Through the API a URL counts in full.
-- **Mastodon**: 500 graphemes on most servers; URLs cost 23, and `@user@domain` counts as `@user`.
+- **Mastodon**: 500 graphemes on most servers; each http(s) URL costs 23 while a bare domain counts in full, and `@user@domain` counts as `@user`.
 
 ## Tone per platform
 
@@ -32,7 +32,7 @@ Limits and counting units: `Platforms.md`. Checked 2026-10-12.
 
 - Post 1 is a complete post: the hook and the payoff in brief. Many readers see only post 1.
 - One idea per post; each post makes sense alone.
-- Numbering `1/7` at the end of each post is optional. In Hebrew, no parentheses: `1/7`, never `(1/7)`. Don't open with "Thread:" or "🧵👇".
+- Numbering is optional; when used, `n/N` goes at the end of each post. In Hebrew, no parentheses: `1/7`, never `(1/7)`. Don't open with "Thread:" or "🧵👇".
 - The last post: a recap, the link if any, and a specific close.
 - Long Hebrew and English versions: post the primary language as the thread, not one language per post alternating.
 - `Workflows/Thread.md` splits with each platform's own counter.

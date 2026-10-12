@@ -19,7 +19,7 @@ Input: an idea with several points, or a draft too long for one post. Output: a 
 - **Post 1 stands alone**: the result and the promise, as in the `How-to thread` template (`TemplatesShort.md`). Many readers see only post 1.
 - One idea per post; each post makes sense on its own.
 - The last post: the recap or the first step to take, the link if any, and a specific close.
-- Numbering `n/N` at the end of each post, never in parentheses. No "Thread:" or "🧵👇" opener.
+- Numbering is optional; when used, `n/N` at the end of each post, never in parentheses. `--split` numbers by default; `--no-number` turns it off. No "Thread:" or "🧵👇" opener.
 - Both languages: the thread is in one language. The other language gets its own thread or a single post, not alternating posts.
 
 ## Step 3: Draft or split

@@ -26,7 +26,7 @@ The draft is the user's voice. Proofreading is the default; change more only whe
 
 - Keep every fact, name, number, and claim. If something looks wrong, such as a date that doesn't match its weekday, flag it; don't change it silently.
 - **Ban-level items are always fixed**: bait, chatbot leaks, markdown, fake bold, Hebrew parentheses, a missing ad label.
-- **Warn-level habits the user clearly chose** stay, and get reported in one line: "Kept your em dashes; the lint warns on them." Pass them to Review with `--allow` (`VoiceProfile.md`).
+- **Warn-level habits the user clearly chose** stay, and get reported in one line: "Kept your em dashes; the lint warns on them." Pass style rules to Review with `--allow` and kept phrases with `--keep` (`VoiceProfile.md`).
 - Keep the language. Changing it is `Workflows/Localize.md`.
 
 ## Step 3: Review

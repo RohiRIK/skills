@@ -24,7 +24,7 @@ The point, the concrete detail, every fact, the platform, the register, and the 
 - From the extracted content, never sentence by sentence.
 - Technical terms, product names, UI labels, and code stay in English letters in both directions, with a hyphen after a Hebrew prefix. Never gloss in parentheses.
 - Names: as the person writes them. Handles stay as they are.
-- Hebrew: gender from the profile, every line starting with a Hebrew letter, 👈 rather than 👉, no parentheses.
+- Hebrew: gender from the profile, every Hebrew line starts with a Hebrew letter; English-only lines, such as a quote, a URL, or the English tags, stand on their own, 👈 rather than 👉, no parentheses.
 - **Hashtags are localized, not translated word for word**: Hebrew tags joined with `_`, English tags in CamelCase, each language's tags on their own line. Drop a tag nobody searches in that language.
 - Re-count: Hebrew is shorter on most platforms, and the fold moves.
 

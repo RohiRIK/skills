@@ -8,12 +8,13 @@ Read the owner's approved voice profile, the current request, the relevant conte
 
 ## One focused batch
 
-When an unknown materially changes the post, ask up to four questions in one batch before drafting. Ask only the unresolved items, never a fixed questionnaire:
+When an unknown materially changes the post, ask up to four questions in one batch before drafting. Ask only the unresolved items, never a fixed questionnaire; these are the candidates:
 
 1. **Platform and goal**: where it goes, and what readers should do or remember, if the request doesn't say.
 2. **The concrete detail**: what happened, a number, a name, a before and after. Posts without one read as generated, and the skill never invents one (`Craft.md`).
 3. **Disclosure**: if the post promotes anything, is there a material connection: paid, gifted, affiliate, employer (`Disclosure.md`)?
-4. **Language**: only if the target is genuinely ambiguous or conflicts with the established policy. English is already the default; don't ask "English or Hebrew?" on every request. Hebrew user messages and Hebrew source posts never select the language.
+4. **Group rules**: for a Facebook Group post, the pinned rules or at least whether self-promotion and links are allowed (`Meta.md`).
+5. **Language**: only if the target is genuinely ambiguous or conflicts with the established policy. English is already the default; don't ask "English or Hebrew?" on every request. Hebrew user messages and Hebrew source posts never select the language.
 
 Audience and register count as a question only when neither the platform, the context, nor the profile settles them. Use the host's structured clarification tool when available, otherwise ask in ordinary prose. One missing detail, one question.
 

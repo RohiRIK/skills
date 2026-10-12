@@ -1,6 +1,6 @@
 # Craft: what makes a post worth reading
 
-Feeds are full of generic, machine-smooth posts, and readers now skip that voice on sight. LinkedIn started cutting the reach of "AI slop" in May 2026 and named the "it's not X, it's Y" formula as an example. Specific beats polished: a name, a number, a date, a thing that happened. Every rule here serves that.
+Feeds are full of generic, machine-smooth posts, and readers now skip that voice on sight. LinkedIn started cutting the reach of generic "AI slop" in May 2026. Specific beats polished: a name, a number, a date, a thing that happened. Every rule here serves that.
 
 ## The shape
 
@@ -31,9 +31,9 @@ Pick the goal first; it decides the hook. Each pattern names the user fact it ne
 | Goal | Pattern | English | Hebrew |
 |---|---|---|---|
 | Comments | A specific claim others can test against their own experience | "We cut our standup from 15 minutes to 5 by dropping status updates. Here's what replaced them." | "קיצרנו את ה-standup מ-15 דקות ל-5, כשהפסקנו לעדכן סטטוס. זה מה שבא במקומו." |
-| Saves | A useful, specific how-to with a real count | "The 4 checks I run before every database migration, after one took production down." | "4 בדיקות שאני עושה לפני כל migration, מאז שאחת הפילה לנו את production." |
-| Shares | A number or result worth forwarding | "Our onboarding emails went from 3 to 1. Activation went up 22%." | "צמצמנו את מיילי ה-onboarding משלושה לאחד, וה-activation עלה ב-22%." |
-| Follows | A point of view with evidence, from the user's own work | "Most code review delays aren't about reviewers. In our team, 70% were PRs over 400 lines." | "רוב העיכובים ב-code review הם לא בגלל המבקרים. אצלנו, 70% מהם היו PRs של יותר מ-400 שורות." |
+| Saves | A useful, specific how-to with a real count | "The 4 checks I run before every database migration, after one took production down." | "4 בדיקות שאני עושה לפני כל migration, מאז שמיגרציה אחת הפילה לנו את ה-production." |
+| Shares | A number or result worth forwarding | "Our onboarding emails went from 3 to 1. Activation went up 22%." | "צמצמנו את מיילי ה-onboarding משלושה לאחד, וה-activation עלתה ב-22%." |
+| Follows | A point of view with evidence, from the user's own work | "Most code review delays aren't about reviewers. In our team, 70% were PRs over 400 lines." | "רוב העיכובים ב-code review לא נובעים מה-reviewers. אצלנו, 70% מהם היו PRs של יותר מ-400 שורות." |
 | Story | The moment, then the stakes | "At 2 a.m. on launch night, the payment provider went down." | "בשתיים בלילה, בליל ההשקה, ספק התשלומים נפל." |
 
 A question as the first line measures worst on LinkedIn in creator-tool data (AuthoredUp, 2025 to 2026, vendor data). Use one only when the question itself is the content.
@@ -55,7 +55,7 @@ Length follows the content. Ranges come from creator-tool data and are direction
 - LinkedIn insight, lesson, or opinion posts: about 1,300 to 2,500 characters perform well. Announcements and job changes: 300 to 800.
 - X: one idea in 280. More than one idea: a thread (`Workflows/Thread.md`).
 - Facebook and Instagram: the hook inside the fold, then as long as the story needs.
-- Hebrew uses about 20 to 30 percent fewer characters than English for the same content.
+- Hebrew often runs shorter than English; in one measured sample a sentence was about 30% shorter. Count the actual draft with `Tools/LintPost.ts`.
 
 Never pad to reach a length. Never cut the concrete detail to fit.
 
@@ -64,5 +64,5 @@ Never pad to reach a length. Never cut the concrete detail to fit.
 - Plain text and line breaks. Markdown shows up as raw asterisks and hashes.
 - No Unicode "bold" letters such as 𝗯𝗼𝗹𝗱: screen readers skip or spell them, search can't find them, and Hebrew has no such letters anyway.
 - Lists with `-` or `1.`, never emoji bullets. At most two or three emoji in a post, each carrying meaning, unless the profile says otherwise.
-- One blank line between paragraphs. On Instagram, a space before a line break deletes the break.
+- One blank line between paragraphs. On Instagram, a space before a line break reportedly deletes the break; check the preview.
 - Deliver the draft in a `text` fence so line breaks survive copy and paste.

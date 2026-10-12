@@ -21,7 +21,7 @@ That lists rows older than 180 days. Also consider every row whose status is `re
 - Use the `Research` skill at quick depth when it's available; otherwise search and fetch directly. Prefer the platform's own help center, developer docs, or open-source code; a third-party tool is `reported` at best.
 - No research tools on this host: list the rows for the user with what to check and where, and stop.
 - For each row record: the limit, fold, tag cap, and link rule as found, the new status, today's date in `As of`, and the source. Never upgrade a status without a primary source.
-- Facts that changed also change their prose: the platform guide (`LinkedIn.md`, `ShortForm.md`, `Meta.md`, `Channels.md`) and `Folklore.md` if a claim moved in or out of folklore.
+- Facts that changed also change everywhere they are quoted: grep the old value across `*.md` and `Workflows/*.md`, including `Prompts.md`. Prose changes too: the platform guide (`LinkedIn.md`, `ShortForm.md`, `Meta.md`, `Channels.md`) and `Folklore.md` if a claim moved in or out of folklore.
 
 ## Step 3: Refresh the calendar yearly
 

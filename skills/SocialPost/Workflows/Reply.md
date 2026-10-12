@@ -16,7 +16,7 @@ What it claims, what's specific in it, and its tone. Who is the author to the us
 
 ## Step 2: Find the one thing to add
 
-One of: a number or result from the user's own experience, a counterexample, a specific question about the post's detail, a resource the user actually knows, or plain thanks for something specific. If the user has nothing to add, say so; no comment beats "Great post!".
+One of: a number or result from the user's own experience, a counterexample, a specific question about the post's detail, a resource the user actually knows, or plain thanks for something specific. If the owner gave nothing to add, ask them first, per `../Clarification.md`; with no answer, a specific question about the post's detail is the fallback, and no comment beats "Great post!".
 
 ## Step 3: Pick the form
 

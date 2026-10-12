@@ -11,8 +11,8 @@ Write Hebrew posts in Hebrew from the start. A translated English post carries c
 
 ## Gender
 
-Posts are full of first-person present tense, and Hebrew marks it for gender: "אני שמח" or "אני שמחה", "גאה", "נרגש" or "נרגשת".
-- **The author**: `he_gender` from the profile, or the user's own Hebrew in the request. Never from a name. Unknown: use past tense ("התחלתי היום תפקיד חדש"), future ("אשמח לשמוע"), or forms spelled the same for both ("אני עושה", "אני רואה"). Slash forms in the author's own voice ("שמח/ה") look like a template; the lint flags them.
+Posts are full of first-person present tense, and Hebrew marks it for gender: "אני שמח" or "אני שמחה", "זמין" or "זמינה", "נרגש" or "נרגשת".
+- **The author**: `he_gender` from the profile, or the user's own Hebrew in the request. Never from a name. Unknown: use past tense ("התחלתי היום תפקיד חדש"), future ("אשמח לשמוע"), or forms spelled the same for both ("אני עושה", "אני רואה", "אני גאה"). Slash forms in the author's own voice ("שמח/ה") look like a template; the lint flags them.
 - **The readers**: a feed audience is addressed in the plural: "תגיבו", "מוזמנים", "אתם". Or impersonally: "מי שרוצה…", "אפשר להירשם כאן", "שווה לקרוא". Doubling ("חברים וחברות", "כולם וכולן") suits an opening or a call to action. Never the masculine singular "אתה" for a whole audience.
 - **Company pages**: first-person plural "אנחנו", which carries no gender.
 - **Hiring posts**: job ads are written for all genders because Israeli equal-opportunity law bars discriminatory ads. Slash forms such as "מפתח/ת" are standard there, and the lint allows them with `--type hiring`.
@@ -23,7 +23,7 @@ Posts are full of first-person present tense, and Hebrew marks it for gender: "�
 - **English quotes go on their own line.** "כמו שאמר Steve Jobs: Stay hungry. וזה נכון." moves the period to the wrong side. Put the English sentence on its own line and continue in Hebrew on the next.
 - **Pointers point the other way.** Emoji and arrows don't mirror, so "👉" in a Hebrew line points back to the start. Use "👈" or "←" to point forward to a link or the next line, or "👇" before a link on its own line.
 - **Numbers**: hyphenated and dotted numbers stay intact: 054-1234567, 12.10.2026, 10-20. Spaced digit groups ("054 123 4567"), a leading plus ("+972…"), and a leading minus ("-5%") get reordered. Write mobile numbers with hyphens, international numbers and URLs on their own line, and decreases in words: "ירידה של 5%".
-- **Invisible marks are a last resort.** An RLM (U+200F) at the start of a line can force right-to-left, but it costs 2 characters on X, stops a following hashtag or mention from working on Bluesky and Mastodon, and travels invisibly in copy and paste. Reword so a Hebrew word comes first instead.
+- **Invisible marks are a last resort.** An RLM (U+200F) at the start of a line can force right-to-left, but it costs 2 characters on X, stops a following hashtag from working on Bluesky and Mastodon and a following mention on Bluesky, and travels invisibly in copy and paste. Reword so a Hebrew word comes first instead.
 - **Terminals lie.** Hebrew that looks reversed in a terminal is a display problem; never reverse characters to fix it. Check in the app or a browser.
 
 ## Hashtags and mentions
@@ -44,7 +44,7 @@ Posts are full of first-person present tense, and Hebrew marks it for gender: "�
 - **Work week**: Sunday to Thursday. Friday is a half day, Shabbat runs from Friday sundown to Saturday night. B2B and LinkedIn posts land best Sunday to Thursday; consumer audiences scroll on Saturday. Some brands and public bodies never post on Shabbat or holidays.
 - **Holidays start at sundown the evening before.**
 - **Pause check**: on national memorial days, on Yom Kippur, and on days of attacks, rocket fire, or announcements of fallen soldiers or hostages, the norm is to pause scheduled promotional or upbeat posts and post nothing, or a short sober message. Yom HaZikaron turns into Yom HaAtzmaut at the evening ceremony; celebration only after that. Before scheduling, ask the user about current events; never assume a quiet week.
-- **Israel and the US**: 7 hours behind New York most of the year, 6 hours in the gaps between the two countries' clock changes. A slot of 16:00 to 18:00 Israel time is 9:00 to 11:00 in New York. Israeli Friday is not a workday; US Friday is.
+- **Israel and the US**: Israel is 7 hours ahead of New York most of the year, 6 hours in the gaps between the two countries' clock changes. A slot of 16:00 to 18:00 Israel time is 9:00 to 11:00 in New York. Israeli Friday is not a workday; US Friday is.
 
 Dates computed with `@hebcal/core` (Israel schedule) and Python `zoneinfo` on 2026-10-12. Refresh this table every year (`Workflows/Refresh.md`):
 
@@ -52,7 +52,7 @@ Dates computed with `@hebcal/core` (Israel schedule) and Python `zoneinfo` on 20
 |---|---|---|---|
 | 22.10.2026 | Thu | Rabin Memorial Day | Sober tone |
 | 25.10 to 31.10.2026 | | Israel is 6 hours ahead of New York | Shift bilingual slots |
-| 4.12 to 12.12.2026 | Fri to Sat | Hanukkah | Festive posts fine |
+| 5.12 to 12.12.2026 | Sat to Sat | Hanukkah, first candle the evening of 4.12 | Festive posts fine |
 | 14.3 to 25.3.2027 | | Israel is 6 hours ahead of New York | Shift bilingual slots |
 | 23.3.2027 | Tue | Purim | Festive posts fine |
 | 22.4 to 28.4.2027 | Thu to Wed | Pesach, first and last days are holidays | Many people off all week |
