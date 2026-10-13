@@ -20,7 +20,7 @@ Israeli professionals write technical terms in English inside Hebrew sentences. 
 
 ## No parentheses
 
-House rule: Hebrew emails use no parentheses. In mixed Hebrew and English lines, parentheses mirror and drift to the wrong side, and a parenthetical aside is usually a sentence that wants to stand alone. The lint rejects any parenthesis in a Hebrew line.
+House rule: Hebrew emails use no parentheses. A parenthetical aside is usually a sentence that wants to stand alone, and it reads translated in Hebrew. Modern renderers draw parentheses correctly in a right-to-left line, but they land on the wrong side when a line flips to left-to-right, for example in a left-to-right compose window or a line that opens with an English word. The lint rejects any parenthesis in a Hebrew line.
 
 | Instead of | Write |
 |---|---|

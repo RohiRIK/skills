@@ -2,7 +2,7 @@
 
 A visual index of the library. Each skill gets a hero image in a shared house style: a **retro-futuristic 1960s mission-control room** — banks of vintage CRT monitors, brass-and-wood consoles with operators, and a glowing holographic emblem unique to that skill. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 16 / 39 heroes generated. The remaining 23 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 16 / 40 heroes generated. The remaining 24 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
 
@@ -140,6 +140,9 @@ _hero pending_ — Post-implementation dead-code cleanup (`/simplify`).
 
 ### [SkillForge](skills/SkillForge) 🎨
 _hero pending_ — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk.
+
+### [SocialPost](skills/SocialPost) 🎨
+_hero pending_ — Write, rewrite, repurpose, and localize social posts in English and Hebrew (exact counters, bidi-aware lint).
 
 ### [Spec](skills/Spec) 🎨
 _hero pending_ — Explore code + memory, then write acceptance criteria before planning.
