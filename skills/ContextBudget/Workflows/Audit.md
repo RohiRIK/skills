@@ -7,7 +7,7 @@ Token estimation: `words × 1.3` for prose, `chars / 4` for code-heavy files.
 - **Agents** (`agents/*.md`) — tokens per file; flag >200 lines (heavy) and description >30 words (frontmatter loads into every Task invocation).
 - **Skills** (`skills/*/SKILL.md`) — tokens per SKILL.md; flag >400 lines; skip identical copies in `.agents/skills/` to avoid double-counting.
 - **Rules** (`rules/**/*.md`) — tokens per file; flag >100 lines; detect overlap between rule files in the same module.
-- **MCP servers** (`.mcp.json` / active config) — server + tool counts; ~500 tokens per tool schema; flag servers >20 tools and servers wrapping free CLI commands (`gh`, `git`, `npm`, `supabase`, `vercel`).
+- **MCP servers** (`.mcp.json` / active config) — server + tool counts; ~500 tokens per tool schema when schemas load eagerly, only the tool name when the host defers them behind tool search; flag servers >20 tools and servers wrapping free CLI commands (`gh`, `git`, `npm`, `supabase`, `vercel`).
 - **CLAUDE.md chain** (project + user) — tokens per file; flag combined >300 lines.
 
 ## Phase 2: Classify

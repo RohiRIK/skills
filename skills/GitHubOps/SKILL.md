@@ -4,6 +4,8 @@ description: "Manage a GitHub repo via the gh CLI — hygiene, changelog, commit
 category: workflow
 effort: medium
 domain: ops
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # GitHubOps

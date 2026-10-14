@@ -4,6 +4,8 @@ description: "Create, validate, and improve individual skills. USE WHEN create/v
 category: meta
 effort: medium
 domain: meta
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # CreateSkill

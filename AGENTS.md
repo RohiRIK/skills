@@ -27,7 +27,7 @@ Drivers:     Iterate → Verify + Reflect each pass (wake primitive if the host 
              Orchestrate → Decompose→RunLayer→MergeQueue; delegates to Agy/OpenCode/Pi; gates with Verify
              Iterate:RunLenses → feeds Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi
-Meta:        SkillForge (audit + instrument the fleet) · CreateSkill (build one skill)
+Meta:        SkillForge (audit + instrument the fleet) · CreateSkill (build one skill) · ModelUpgrade (re-tune per model generation)
 State:       .agent-state.md  ·  Telemetry: ~/.claude/state/execution.jsonl
 ```
 

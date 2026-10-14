@@ -39,6 +39,7 @@ Two families (carried in each concept's `tags`):
 | Fix a skill's trigger | `CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush` | [fix-trigger.md](fix-trigger.md) |
 | Iterate a skill (hands-off) | `Iterate(target, goal, max) → [Verify + Reflect each pass] → GitHubOps:CommitPush` | [autonomous-loop.md](autonomous-loop.md) |
 | Library-wide audit | `SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush` | [library-audit.md](library-audit.md) |
+| Model upgrade (new model generation) | `ModelUpgrade:Watch → ModelUpgrade:Assess → ModelUpgrade:Apply → CreateSkill:ValidateSkill → GitHubOps:PullRequest` | [model-upgrade.md](model-upgrade.md) |
 | Multi-skill batch build | `Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify [final integration gate — Orchestrate already verifies each unit] → GitHubOps:PullRequest` | [batch-build.md](batch-build.md) |
 | Release | `GitHubOps:RepoHygiene → GitHubOps:Changelog → GitHubOps:Release` | [release.md](release.md) |
 

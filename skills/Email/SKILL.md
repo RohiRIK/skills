@@ -4,6 +4,8 @@ description: "Use when drafting, replying to, reviewing, or localizing email. Ap
 category: workflow
 effort: medium
 domain: docs
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # Email

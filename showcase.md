@@ -2,7 +2,7 @@
 
 A visual index of the library. Each skill gets a hero image in a shared house style: a **retro-futuristic 1960s mission-control room** — banks of vintage CRT monitors, brass-and-wood consoles with operators, and a glowing holographic emblem unique to that skill. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 16 / 40 heroes generated. The remaining 24 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 16 / 41 heroes generated. The remaining 25 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
 
@@ -113,6 +113,9 @@ _hero pending_ — Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal
 
 ### [MacPluginPlaybook](skills/MacPluginPlaybook) 🎨
 _hero pending_ — Phased playbook to build or port a native SwiftUI macOS menu bar app, with lessons from a real build.
+
+### [ModelUpgrade](skills/ModelUpgrade) 🎨
+_hero pending_ — Re-tune the library when a new model generation ships: relevance and fit per skill, then reprompt, replan, or retire.
 
 ### [OpenCode](skills/OpenCode) 🎨
 _hero pending_ — Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker.

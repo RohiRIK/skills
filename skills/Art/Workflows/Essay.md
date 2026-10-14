@@ -23,7 +23,7 @@ INPUT CONTENT
      ↓
 [1] UNDERSTAND: Deeply read and comprehend the request ← MANDATORY
      ↓
-[2] CSE-24: Run Create Story Explanation Level 24 on content ← MANDATORY
+[2] Outline: write a 24-item story outline of the content
      ↓
 [3] EMOTION: Identify emotional register ← MANDATORY
      ↓
@@ -88,7 +88,7 @@ If the user provides specific direction like:
 - "Emphasize the human impact"
 - Any other compositional or thematic guidance
 
-**USE THAT GUIDANCE** as the primary input for composition design. The CSE-24 supports the user's direction — it doesn't override it.
+**USE THAT GUIDANCE** as the primary input for composition design. The outline supports the user's direction — it doesn't override it.
 
 **Output:** Clear understanding of the content's core subject matter + any user-provided guidance.
 
@@ -98,18 +98,9 @@ If the user provides specific direction like:
 
 **Extract the FULL narrative arc to understand the emotional core.**
 
-**🚨 ACTUALLY EXECUTE THIS COMMAND — DO NOT SKIP:**
+Write a 24-item story outline of the content (read it in full, or fetch the URL). The illustration is designed from this outline, so don't skip it.
 
-```
-Invoke the StoryExplanation Skill with: "Create a 24-item story explanation for this content"
-```
-
-Or use the slash command:
-```
-/cse [paste the content or URL]
-```
-
-**What CSE-24 gives you:**
+**What the outline gives you:**
 - The complete narrative arc: setup, tension, transformation, resolution
 - Key metaphors and imagery from the piece
 - The emotional journey
@@ -117,7 +108,7 @@ Or use the slash command:
 - The "wow" factor and significance
 
 **DO NOT PROCEED TO STEP 3 UNTIL YOU HAVE:**
-1. Actually run the CSE command
+1. Actually write the outline
 2. Read and understood the 24-item output
 3. Identified the key metaphors and emotional beats
 
@@ -161,20 +152,20 @@ These are just examples. It can be really anything which you will get from the C
 **What is this content ABOUT, and what visual would represent THAT?**
 
 **🚨 IF USER PROVIDED GUIDANCE — START THERE:**
-If the user gave direction in Step 1 (e.g., "focus on the tension between labor and capital", "show labor losing"), use that as your PRIMARY composition direction. The CSE-24 output SUPPORTS this direction — it doesn't replace it.
+If the user gave direction in Step 1 (e.g., "focus on the tension between labor and capital", "show labor losing"), use that as your PRIMARY composition direction. The story outline SUPPORTS this direction — it doesn't replace it.
 
 Use the content from the create-story-explanation run to compose this.
 
 - Architecture is the TECHNIQUE (how to draw), NOT the required subject
 - Only draw buildings/spaces if the content is about those things
 - Draw what the content is actually about using architectural sketch style
-- **User guidance shapes WHAT to draw; CSE-24 helps you understand the emotional core**
+- **User guidance shapes WHAT to draw; the outline helps you understand the emotional core**
 
 ### Composition Design Questions
 
 **🚨 STEP 4A: IDENTIFY THE PROBLEM (MOST CRITICAL)**
 
-Before designing anything, extract from the CSE-24 output:
+Before designing anything, extract from the story outline:
 
 1. **What is the PROBLEM the essay addresses?**
    - What's WRONG with the current state?
@@ -184,7 +175,7 @@ Before designing anything, extract from the CSE-24 output:
 
 2. **What TYPE of problem is it?**
 
-   Identify the problem archetype from the CSE output:
+   Identify the problem archetype from the story outline:
 
    | Problem Type | Description | Visual Metaphor |
    |--------------|-------------|-----------------|
@@ -246,7 +237,7 @@ Before designing anything, extract from the CSE-24 output:
 ### Composition Design Template
 
 ```
-THE PROBLEM (from CSE-24 — MOST CRITICAL):
+THE PROBLEM (from the story outline — the core of the image):
 [What's WRONG with the current state that this essay addresses?]
 [The unfairness, mistake, or confusion the essay critiques]
 [This is what the art should SHOW]
@@ -724,7 +715,7 @@ open /path/to/generated-image.png
 - [ ] **Title test passes** — someone could guess the topic from the image alone
 - [ ] **Labels readable** — if there are labels (like A, T, H, I), they are clearly visible and correct
 - [ ] **NOT defaulting to buildings/spaces** — unless content is actually about architecture
-- [ ] **CSE-24 insights captured** — the visual represents the narrative arc discovered in Step 2
+- [ ] **Outline insights captured** — the visual represents the narrative arc discovered in Step 2
 - [ ] **User guidance incorporated** — if the user gave direction, it's reflected in the image
 - [ ] **Background removed** — transparent background, or re-run background removal if it failed
 
@@ -808,7 +799,7 @@ open /path/to/generated-image.png
 
 ```
 1. UNDERSTAND → Deeply read and comprehend the content
-2. CSE-24 → Run Create Story Explanation (24 items) to extract narrative arc
+2. Outline → write a 24-item story outline to extract the narrative arc
 3. EMOTION → Match to register in ~/.claude/skills/CORE/aesthetic.md
 4. COMPOSITION → Design what to DRAW (content-relevant, NOT defaulting to architecture)
 5. PROMPT → Build using charcoal sketch TECHNIQUE template
@@ -834,7 +825,7 @@ open /path/to/generated-image.png
 
 Before submitting any image:
 - ✅ **Subject matches CONTENT** — drew what the piece is ABOUT (not defaulting to architecture)
-- ✅ **CSE-24 was run** — actually executed the story explanation command
+- ✅ **The outline was written** before composing
 - ✅ **Concrete subjects visible** — key nouns/metaphors from content appear
 - ✅ Charcoal sketch TECHNIQUE — gestural, atmospheric, hatching
 - ✅ Emotional register — clear and intentional
@@ -846,7 +837,7 @@ Before submitting any image:
 
 ---
 
-**The workflow: UNDERSTAND → CSE-24 → EMOTION → COMPOSITION → PROMPT → GENERATE (--thumbnail) → OPTIMIZE → VALIDATE → Complete**
+**The workflow: UNDERSTAND → OUTLINE → EMOTION → COMPOSITION → PROMPT → GENERATE (--thumbnail) → OPTIMIZE → VALIDATE → Complete**
 
 ## Execution Log
 

@@ -4,6 +4,8 @@ description: "Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenC
 category: meta
 effort: medium
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # CreateHook

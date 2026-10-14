@@ -4,6 +4,8 @@ description: "Language coding standards (TS, Python, Bash, PowerShell, Swift, Ru
 category: reference
 effort: low
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 user-invocable: false
 ---
 

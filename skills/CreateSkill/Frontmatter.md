@@ -45,6 +45,13 @@ All frontmatter fields and the tier system for classifying skills.
 
 > `category`, `effort`, and `domain` are tooling annotations — the Claude Code loader ignores unknown keys, so they are safe to add. All three are required on every skill.
 
+### `tuned-for` / `tuned-on` (set by ModelUpgrade)
+- The model generation the skill was last judged and tuned against (an id from `ModelUpgrade/Generations.md`, e.g. `claude-5.5`) and the date (`YYYY-MM-DD`)
+- Written by `bun skills/ModelUpgrade/Tools/ModelUpgrade.ts stamp <Skill>` after the skill passes an assessment, never by hand-guessing; placed directly under `domain`
+- A new skill authored against the current ledger head may be stamped at creation
+- Missing or older than the ledger head means "not yet re-tuned": `ModelUpgrade.ts baseline` lists these
+- The two stamp lines don't count toward the SKILL.md 50-line budget
+
 ### `disable-model-invocation`
 - `true` for Tier B — skill only fires when user types `/skill-name`
 - Claude will never auto-invoke it

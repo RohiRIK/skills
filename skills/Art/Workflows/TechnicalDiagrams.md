@@ -146,8 +146,8 @@ All the art components, labels, and such should mostly look hand-drawn, similar 
 
 # Execution
 
-1. Run /cse 24 on the input content
-2. Think deeply about how to construct that into a technical diagram
+1. Write a ~24-item outline of the input content's structure
+2. Work out how to construct that into a technical diagram
 3. Create the composition in your mind that will perfectly render that
 4. Create a PROMPT that will render that composition perfectly
 5. Before creating the image, make absolutely certain that the PROMPT you've created mind takes into account everything in these instructions. No exceptions. Then proceed to #6.

@@ -4,6 +4,8 @@ description: "Turn a raw Excel/CSV dataset into a two-layer report — plain-lan
 category: workflow
 effort: medium
 domain: data
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # Data Report Builder

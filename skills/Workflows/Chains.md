@@ -31,6 +31,7 @@ Every composed chain in the library, named by **skill**, never by host slash com
 | **fix-trigger** | `CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush` | Skill won't activate or mis-fires. |
 | **autonomous-loop** | `Iterate(target, goal, max) → [Verify + Reflect each pass] → GitHubOps:CommitPush` | Improve a target hands-off. `Iterate` picks its pass driver from the host: a wake primitive (`ScheduleWakeup`, `/loop` on Claude Code) means one pass per turn, no primitive means passes run inline in one turn. Unset args default. |
 | **library-audit** | `SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush` | Whole-library health sweep. |
+| **model-upgrade** | `ModelUpgrade:Watch → ModelUpgrade:Assess → ModelUpgrade:Apply → CreateSkill:ValidateSkill → GitHubOps:PullRequest` | A new model generation shipped, or skills feel dated: relevance + fit per skill, then reprompt / replan / retire. |
 | **batch-build** | `Spec → Orchestrate(Decompose → RunLayer → MergeQueue) → Verify [final integration gate — Orchestrate already verifies each unit] → GitHubOps:PullRequest` | Build/refactor many skills at once. |
 | **release** | `GitHubOps:RepoHygiene → GitHubOps:Changelog → GitHubOps:Release` | Cut a tagged version. |
 

@@ -21,7 +21,7 @@ SkillName/
 Rules (full detail in `CreateSkill/Conventions.md`):
 - **TitleCase** for the directory and every file; the `name:` field drives activation.
 - **Flat, 2 levels max.** Only `Workflows/` and `Tools/` subdirectories. Context files live in the skill root.
-- **SKILL.md ≤ 50 lines** — frontmatter, a `## Workflow Routing` table, and a `## Examples` section. Move detail to context files loaded on demand.
+- **SKILL.md ≤ 50 lines** — frontmatter, a `## Workflow Routing` table, and a `## Examples` section. Move detail to context files loaded on demand. The two `tuned-for` / `tuned-on` stamp lines (§2) are tooling metadata and don't count toward the 50.
 
 ## 2. Frontmatter contract
 
@@ -34,6 +34,7 @@ Every skill's frontmatter carries:
 | `category` | yes | Purpose class: `workflow · reference · delegation · meta · visual · prompting · quality` |
 | `effort` | yes | `low · medium · high` — cost/latency hint, pairs with tier for model routing |
 | `domain` | yes | Subject-matter tag, orthogonal to `category`: `dev · security · design · data · ops · agents · testing · prompting · meta · docs` |
+| `tuned-for` / `tuned-on` | set by ModelUpgrade | Model generation (a `ModelUpgrade/Generations.md` id) and date the skill was last judged against; missing or older = not yet re-tuned |
 | tier flags | as needed | `disable-model-invocation` (B), `user-invocable: false` (A), `context: fork` + `agent` (D) |
 
 `category`, `effort`, and `domain` are tooling annotations (the loader ignores unknown keys). They make the library groupable by purpose, sortable by cost, and filterable by topic, and they feed `SkillForge/AuditAgentic`.
@@ -65,6 +66,8 @@ Drivers (call the primitives):
 Meta:
   SkillForge   — audits + instruments the whole library (CreateSkill builds individual skills)
   CreateSkill  — creates / validates / tests / improves skills (the skill factory)
+  ModelUpgrade — re-tunes the library per model generation; Watch → Assess → Apply, using
+                 Research (release notes) and CreateSkill:ImproveSkill / TestSkill (A/B old vs new)
 
 Existing skills wired in:
   Build  → calls Verify at each commit gate; idempotent so Iterate can drive it
@@ -85,6 +88,7 @@ Frontend:  code / logic / hooks / performance      → FrontendDesign
            both ("polished hero component")         → FrontendAesthetics first (direction), then FrontendDesign (build)
 Meta:      build/scaffold ONE skill                 → CreateSkill
            audit/instrument the WHOLE library       → SkillForge
+           re-tune for a new model / is it still relevant → ModelUpgrade
 CLI:       generate a standalone TypeScript CLI     → CreateCLI
            author a Claude Code agent skill         → CreateSkill
 Writing:   email (compose / reply / localize)       → Email
@@ -112,6 +116,7 @@ Fixed schema (`ts, skill, workflow, status, duration_s`, optional `input`). Tier
 - **Create / change a skill** → use the `CreateSkill` skill (structure track: Create/Validate/Update/Canonicalize; effectiveness track: TestSkill/ImproveSkill/OptimizeDescription). Every skill must have a `## Gotchas` section and pass the BPE check ("would a smarter model make this unnecessary?").
 - **Make a skill loop-ready** → `CreateSkill` already does this for new skills (it wires Verify/Reflect + telemetry). For an existing skill, add the wiring per its workflow and re-validate.
 - **Audit the library** → `SkillForge/AuditAgentic`.
+- **A new model generation ships, or skills feel dated** → `ModelUpgrade` (Watch → Assess → Apply). Skills are per-model artifacts; the ledger in `ModelUpgrade/Generations.md` records which instructions were workarounds for which generation.
 - **Word any prompt/skill/workflow** → the `Prompting` skill. Reserve `CRITICAL`/`MUST`/`NEVER` for genuine safety/irreversibility gates; plain declarative everywhere else.
 
 ### Host portability (binding)

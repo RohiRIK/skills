@@ -4,6 +4,8 @@ description: "Generate a production-ready TypeScript CLI for autonomous agents (
 category: reference
 effort: medium
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # CreateCLI-Agent

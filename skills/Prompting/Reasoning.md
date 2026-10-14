@@ -27,7 +27,7 @@ Input: "It was fine."       → Sentiment:
 
 ## Chain-of-Thought
 
-Prompt the model to reason before answering. On models with native extended/thinking modes, prefer the provider's thinking feature over manual CoT (see vendor addenda). When thinking is off, manual CoT still helps.
+Prompt the model to reason before answering. On models with native thinking, prefer the provider's thinking feature over manual CoT and control depth with its effort setting (see vendor addenda); on current Claude models thinking is on by default, so this section applies only to models or routes where it is off. There, manual CoT still helps.
 
 ```
 Work through this step by step, then give the final answer.

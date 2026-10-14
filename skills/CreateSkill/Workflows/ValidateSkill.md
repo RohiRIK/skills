@@ -101,7 +101,7 @@ ls -la ~/.claude/skills/[SkillName]/
 ```
 - ✓ Context files (.md) at skill root, not in subdirectories
 - ✓ No `Context/`, `Docs/`, `Resources/` subdirectory
-- ✓ SKILL.md ≤ 50 lines (if longer, dynamic loading should be used)
+- ✓ SKILL.md ≤ 50 lines, not counting the `tuned-for` / `tuned-on` stamp lines (if longer, dynamic loading should be used)
 - ✗ `backups/` inside skill — wrong
 
 ---
