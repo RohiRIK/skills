@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-10-12T18:54:57Z",
+  "generated": "2026-10-14T14:05:09Z",
   "skills": [
     {
       "name": "AdaptiveExplainers",
@@ -315,6 +315,16 @@
       "description": "Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion."
     },
     {
+      "name": "Robinhood",
+      "path": "skills/Robinhood/",
+      "category": "workflow",
+      "effort": "high",
+      "domain": "dev",
+      "tier": "C-auto",
+      "workflows": "BuildTestCopy,Inspect,TraceGate,VerifyCopy",
+      "description": "Reverse-engineer local app feature gates and build scoped test copies. USE WHEN investigating Pro locks or local-model restrictions. NOT FOR cloud authorization or supported Superwhisper rebuilds (use SuperwhisperLocalModels)."
+    },
+    {
       "name": "SecurityReview",
       "path": "skills/SecurityReview/",
       "category": "quality",
@@ -373,6 +383,16 @@
       "tier": "A-reference",
       "workflows": "RunCompact",
       "description": "Reference for context compaction strategy and timing guidance. USE WHEN deciding when or how to compact a long session, or planning context strategy."
+    },
+    {
+      "name": "SuperwhisperLocalModels",
+      "path": "skills/SuperwhisperLocalModels/",
+      "category": "workflow",
+      "effort": "high",
+      "domain": "ops",
+      "tier": "C-auto",
+      "workflows": "Inspect,Rebuild,Verify",
+      "description": "Inspect and rebuild Superwhisper local-model test copies. USE WHEN restoring Cohere, Parakeet, or S1-mini after updates. NOT FOR general reverse engineering (use Robinhood), cloud access, or license activation."
     },
     {
       "name": "Test",

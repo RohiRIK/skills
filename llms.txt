@@ -22,8 +22,10 @@
 - [MacPluginPlaybook](skills/MacPluginPlaybook/SKILL.md) — Phased playbook to build or port a native SwiftUI macOS menu bar app. USE WHEN starting or porting a macOS menu bar plugin. NOT FOR one view's styling (use MacUX).
 - [Orchestrate](skills/Orchestrate/SKILL.md) — Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a spec.
 - [Research](skills/Research/SKILL.md) — Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion.
+- [Robinhood](skills/Robinhood/SKILL.md) — Reverse-engineer local app feature gates and build scoped test copies. USE WHEN investigating Pro locks or local-model restrictions. NOT FOR cloud authorization or supported Superwhisper rebuilds (use SuperwhisperLocalModels).
 - [SocialPost](skills/SocialPost/SKILL.md) — Write, rewrite, repurpose, localize, and review social posts in English and Hebrew. USE WHEN drafting or checking a post, tweet, thread, caption, or comment (פוסט). NOT FOR email (use Email).
 - [Spec](skills/Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
+- [SuperwhisperLocalModels](skills/SuperwhisperLocalModels/SKILL.md) — Inspect and rebuild Superwhisper local-model test copies. USE WHEN restoring Cohere, Parakeet, or S1-mini after updates. NOT FOR general reverse engineering (use Robinhood), cloud access, or license activation.
 - [Test](skills/Test/SKILL.md) — Runs test-first development for features and bug fixes. USE WHEN writing tests first, testing a new feature, or fixing a bug with a failing test.
 - [Workflows](skills/Workflows/SKILL.md) — Index of composed skill chains: which skills to run in what order for a full job. USE WHEN combining skills or asked 'what's the workflow for X'.
 
