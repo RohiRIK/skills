@@ -4,6 +4,8 @@ description: "Choose and verify text, diagrams, interactive HTML, or video when 
 category: workflow
 effort: medium
 domain: docs
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 version: 1.0.0
 author: Rohi Rikman and Bob
 license: MIT

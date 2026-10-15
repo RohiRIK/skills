@@ -4,7 +4,7 @@
 
 ## How to consume this repo (for AI agents)
 
-- **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, domain, tier, workflows, and description as JSON. Parse this instead of opening every file.
+- **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, domain, tier, tuned_for (model generation it was last tuned against), workflows, and description as JSON. Parse this instead of opening every file.
 - **Per skill:** read `<SkillName>/SKILL.md` — the `description` field states WHAT it does + WHEN to use it; the `## Workflow Routing` table maps intents to `Workflows/*.md`; `## Gotchas` holds the highest-density failure knowledge; `## Examples` shows trigger->action.
 - **System model:** [rules/system.md](rules/system.md) — tier model (A/B/C/D), frontmatter contract, composition graph, state + telemetry conventions.
 - **Composed workflows:** [workflows/index.md](workflows/index.md) — an OKF bundle of multi-skill chains for full jobs (build & ship, maintain the library); each chain is one markdown concept with YAML frontmatter (`type: Workflow`, `chain`, `tags`). `skills.json` also carries a `workflows` array with each chain's `title`, `chain`, `tags`, and `summary`.
@@ -23,7 +23,7 @@
 - [Orchestrate](skills/Orchestrate/SKILL.md) — Decompose a spec into a dependency DAG, build units in parallel via delegation, review each in a separate context. USE WHEN orchestrating multi-unit or parallel work, or landing a spec.
 - [Research](skills/Research/SKILL.md) — Research a question at three depths (quick / standard / deep multi-agent fan-out), then synthesize cited findings. USE WHEN researching a topic, gathering sources, comparing options, or getting a cross-provider second opinion.
 - [SocialPost](skills/SocialPost/SKILL.md) — Write, rewrite, repurpose, localize, and review social posts in English and Hebrew. USE WHEN drafting or checking a post, tweet, thread, caption, or comment (פוסט). NOT FOR email (use Email).
-- [Spec](skills/Spec/SKILL.md) — Explores code + LTM, then writes acceptance criteria. USE WHEN defining what to build before planning.
+- [Spec](skills/Spec/SKILL.md) — Explores code and project memory, then writes acceptance criteria. USE WHEN defining what to build before planning.
 - [Test](skills/Test/SKILL.md) — Runs test-first development for features and bug fixes. USE WHEN writing tests first, testing a new feature, or fixing a bug with a failing test.
 - [Workflows](skills/Workflows/SKILL.md) — Index of composed skill chains: which skills to run in what order for a full job. USE WHEN combining skills or asked 'what's the workflow for X'.
 
@@ -57,7 +57,8 @@
 - [CreateHook](skills/CreateHook/SKILL.md) — Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenCode, OpenClaw, Hermes Agent). USE WHEN writing, wiring, or debugging an event hook, plugin hook, or agent automation trigger.
 - [CreatePlugin](skills/CreatePlugin/SKILL.md) — Package a project as an AI-agent plugin with Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters. USE WHEN porting workflows across agent hosts. NOT FOR standalone CLIs (use CreateCLI).
 - [CreateSkill](skills/CreateSkill/SKILL.md) — Create, validate, and improve individual skills. USE WHEN create/validate/improve a skill or a skill isn't triggering. NOT FOR TypeScript CLI generation (use CreateCLI) or whole-library audits (use SkillForge).
-- [SkillForge](skills/SkillForge/SKILL.md) — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill).
+- [ModelUpgrade](skills/ModelUpgrade/SKILL.md) — Re-tune skills for a new model generation: judge relevance and fit, then reprompt, replan, or retire. USE WHEN a new model ships or skills feel dated. NOT FOR agentic-readiness audits (use SkillForge).
+- [SkillForge](skills/SkillForge/SKILL.md) — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill) or re-tuning for a new model (use ModelUpgrade).
 
 ### visual
 - [Art](skills/Art/SKILL.md) — Generates images, diagrams, and visual output. USE WHEN producing any visual artifact — illustration, diagram, chart, thumbnail, card. NOT FOR in-app chart components (use the dataviz skill).
@@ -79,6 +80,7 @@
 - [Fix a skill's trigger](workflows/fix-trigger.md) — A skill won't activate or mis-fires — repair its description and routing. · chain: CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush
 - [Frontend build](workflows/frontend-build.md) — Full frontend feature from spec through visual direction, components, assets, tests, to ship. · chain: Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
 - [Library-wide audit](workflows/library-audit.md) — Whole-library health sweep — agentic readiness, telemetry, canon, repo hygiene. · chain: SkillForge → CreateSkill:CanonicalizeSkill ×offenders → GitHubOps:RepoHygiene → GitHubOps:CommitPush
+- [Model upgrade](workflows/model-upgrade.md) — Re-tune the library when a new model generation ships — relevance and fit per skill, then reprompt, replan, or retire. · chain: ModelUpgrade:Watch → ModelUpgrade:Assess → ModelUpgrade:Apply → CreateSkill:ValidateSkill → GitHubOps:PullRequest
 - [New skill — heavy](workflows/new-skill-heavy.md) — Author a complex, multi-workflow skill whose shape isn't obvious yet. · chain: Iterate:RunLenses → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest
 - [New skill — quick](workflows/new-skill-quick.md) — Author a new skill with clear scope and a single capability. Daily path. · chain: Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → Simplify → GitHubOps:CommitPush
 - [Onboard a codebase](workflows/onboard.md) — Get productive in an unfamiliar repo fast, then make the first change. · chain: CodebaseOnboarding → Research(fill gaps) → Spec (first change) → spec-to-ship

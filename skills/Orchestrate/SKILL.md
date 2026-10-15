@@ -4,6 +4,8 @@ description: "Decompose a spec into a dependency DAG, build units in parallel vi
 category: workflow
 effort: high
 domain: agents
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 context: fork
 agent: general-purpose
 ---
@@ -26,7 +28,7 @@ Runs forked (Tier D) so the heavy multi-unit coordination doesn't consume the pa
 
 - Decompose → `WorkUnit`s (id, deps, acceptance, tier); layers run in dependency order, units within a layer in parallel
 - Reviewer never wrote the code it reviews (author-bias elimination); each unit gated by `Verify` before landing
-- Tier drives pipeline depth + model (trivial→Haiku, large→Opus); acceptance reuses `Spec` output
+- Tier drives pipeline depth + model and effort (trivial → small model or low effort, large → frontier model at high effort; on current models, the frontier model at lower effort often beats a smaller one); acceptance reuses `Spec` output
 
 ## Gotchas
 

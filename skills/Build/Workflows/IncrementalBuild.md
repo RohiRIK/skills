@@ -29,7 +29,7 @@ Run `Test:FeatureTdd` scoped to this task's acceptance criteria:
 
 Run `bunx tsc --noEmit` (or `bun run build` if the project has a build script).
 
-This catches type errors before they land in a commit. If compile fails, invoke `/build-fix` then retry this step.
+This catches type errors before they land in a commit. If compile fails, fix the reported errors in the task's files, then retry this step.
 
 ### Step 5: Regression sweep
 

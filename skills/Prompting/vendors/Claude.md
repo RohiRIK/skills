@@ -1,12 +1,12 @@
 ---
 type: documentation
 category: methodology
-description: Claude-specific prompting addendum. Layer on top of Core.md when the target model is Claude. Covers XML steering, imperative calibration, extended thinking, multi-context, vision.
+description: Claude-specific prompting addendum. Layer on top of Core.md when the target model is Claude. Covers XML steering, imperative calibration, thinking and effort, de-prescription, multi-context, vision.
 ---
 
 # Vendor Addendum — Claude
 
-Opt-in. Apply on top of `Core.md` when the target model is Claude. Stated as Claude-4.x-family principles, not pinned to one model — where behaviour differs by model eagerness, it is written as a conditional.
+Opt-in. Apply on top of `Core.md` when the target model is Claude. Written for the current generation (the head of `ModelUpgrade/Generations.md`, Claude 5.5 family as of 2026-10). Where behaviour differs by model, it is written as a conditional; the per-generation history of what changed lives in that ledger, not here.
 
 ## XML Steering (Claude parses XML tags well)
 
@@ -34,7 +34,7 @@ Guidance:
 
 ## Imperative Calibration (avoid overtriggering)
 
-More eager Claude models (Opus 4.5+) overtrigger on forceful language — they over-call tools and over-apply rules when prompts shout. Calibrate force to genuine stakes.
+Claude models since the 4.5 generation follow the prompt closely and overtrigger on forceful language — they over-call tools and over-apply rules when prompts shout. Calibrate force to genuine stakes.
 
 | Instead of | Use |
 |------------|-----|
@@ -44,15 +44,21 @@ More eager Claude models (Opus 4.5+) overtrigger on forceful language — they o
 
 Reserve `CRITICAL` / `MUST` / `NEVER` for genuine safety or irreversibility gates (secrets handling, destructive operations, data loss). Everywhere else, normal declarative phrasing steers better and avoids over-eager behaviour.
 
-## Extended Thinking
+## Thinking and Effort
 
-When Claude's extended thinking is **enabled**, prefer it over manual chain-of-thought — ask for the answer and let thinking handle the reasoning.
+Current Claude models think natively; on Opus 5.5 and Fable 5.1 thinking is always on. **Effort** (`low` → `max`) sets how deeply they think, so depth is a configuration choice (a skill's `effort` field, the host's settings), not prose.
 
-When extended thinking is **disabled**, the literal words "think / think about / think through" can still nudge behaviour. Prefer "consider", "evaluate", "reflect", "assess". Guide reflection explicitly: "After receiving tool results, reflect on their quality and determine the best next step before proceeding."
+- Ask for the answer and let thinking handle the reasoning. Delete "think step by step", "think harder", "don't overthink": redundant at best, and a "don't think" rule can't be followed where thinking is always on.
+- Don't ask the model to write out its reasoning in the output or in a `reasoning` field; on Claude 5-family models that can be declined as reasoning extraction. Ask for a short explanation of the answer instead.
+- Only where thinking is genuinely off (a Sonnet 5.5 route on `between_tools`), the word "think" still nudges extra reasoning; "consider" and "evaluate" are neutral there.
+
+## Goals Over Choreography
+
+Skills and prompts written for older models are often too prescriptive for current ones and lower output quality. State the goal, the constraints, and how success is checked; let the model plan. Keep exact, ordered steps where only one sequence is safe (destructive commands, auth, releases, file formats). Give the reason behind a constraint, and the larger purpose of the task: current models use intent to fill gaps well.
 
 ## Multi-Context / Long-Horizon Work
 
-- Claude tracks remaining context and auto-compacts near the limit — design long tasks to resume from filesystem state rather than relying on a single unbroken context.
+- Current models have a 1M-token context window; Claude tracks remaining context and the host compacts near the limit — design long tasks to resume from filesystem state rather than relying on a single unbroken context.
 - Persist state externally: JSON for structured data (tests, schemas), text for notes, git for checkpoints across sessions.
 - A fresh context that rediscovers state from disk often beats a degraded, over-compacted one.
 - For complex tasks: "Spend your entire output context working on the task."
@@ -60,8 +66,9 @@ When extended thinking is **disabled**, the literal words "think / think about /
 ## Tool & Agent Design
 
 - Give each tool a single clear purpose and a description that says *when* to use it — not a forceful command to always use it.
-- Claude delegates to subagents naturally when tool descriptions are clear; to restrict, say "Only delegate when the task clearly benefits from a separate context window."
+- Delegation appetite changes between generations (Opus 4.8 under-delegated, Opus 5 over-delegated, Fable 5.1 delegates well and benefits from asynchronous sub-agents). Say *when* delegation helps ("independent, sizeable tracks; not a few reads or edits") rather than pushing or forbidding it, and keep a hard cap on parallel spawns.
 - Each subagent gets minimal, task-specific context and an explicit success criterion.
+- Don't discourage tool use in general ("only use tools when strictly necessary"): it is followed literally and the model answers from stale knowledge. Say when a live source must be checked, especially for fast-moving names (models, tools, versions).
 
 ## Parallel Execution
 
@@ -69,7 +76,7 @@ When extended thinking is **disabled**, the literal words "think / think about /
 
 ## Vision
 
-Claude handles images and multi-image context well. For dense images, provide a crop/zoom step to focus on the relevant region. Break video into frames for analysis.
+Claude reads charts, diagrams, and screenshots precisely without pre-passes (Opus 5.5 especially); drop step-by-step chart-reading or OCR scaffolding. For the densest material (technical drawings, tiny chart labels), a crop/zoom tool and higher-resolution input still add accuracy. Break video into frames for analysis.
 
 ## Quick Transformations
 
@@ -78,18 +85,24 @@ Claude handles images and multi-image context well. For dense images, provide a 
 | "CRITICAL: You MUST use this tool" | "Use this tool when…" |
 | "Don't use markdown" | "Write in flowing prose paragraphs" |
 | "NEVER do X" | "Do Y instead" |
-| "Think about this carefully" (thinking off) | "Consider this carefully" |
+| "Think step by step" / "think harder" | *(delete; set effort instead)* |
+| "Show your reasoning" in the output | "Briefly explain the answer" |
+| "Never use bullets" | Say when lists help, e.g. "Use a list for 3+ parallel items" |
 | Forceful rule on a non-safety instruction | Plain declarative phrasing |
 
-## Claude 4.x Behavioral Notes
+## Current-Generation Behavioural Notes
 
-Two behaviours beyond the calibration above (folded from LifeOS `Standards.md`):
-
-- **More direct reporting.** Claude 4.x gives fact-based progress updates and may skip detailed summaries. If you want a wrap-up, ask for it explicitly: "After completing a task that involves tool use, give a quick summary of the work you've done."
-- **Example sensitivity.** Claude 4.x pays close attention to details in examples — a misaligned example silently encourages the wrong behaviour. Make every example match the desired output exactly; an example is a behaviour spec, not decoration.
+- **Quieter during long tool chains.** Current models write fewer user-facing updates mid-task. Remove "don't narrate" / "hold all findings" lines first; if you want updates, say when ("before you start, say in a line what you'll do; close with a recap that stands on its own").
+- **Less formatting by default.** Anti-formatting rules written for older, bullet-heavy models now strip structure readers want. Replace them with a rule for when formatting helps.
+- **Literal hedges.** "Try to" and "if possible" are read as permission to skip. If it is required, say so plainly.
+- **Verification is generation-dependent.** Opus 5 over-verified when told to double-check; Fable 5.1 benefits from "test before reporting". Keep real gates (a `Verify` step, a test run), drop per-prompt "re-check your answer" lines unless an A/B shows they help.
+- **Scope.** Current models can widen a task; "deliver what was asked, at the scope intended; suggest extras at the end" holds them to it.
+- **Frontend direction.** Name the specific defaults to avoid (cream backgrounds, italic accent words, "01/02/03" labels, monospace labels, pill buttons); "avoid a generic AI look" just swaps one default for another.
+- **Example sensitivity.** Claude matches the length, tone, and structure of examples closely. Make every example match the desired output; vary them when you want range.
 
 ## References
 
 - Anthropic: "Claude 4 Best Practices" — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices
+- Anthropic: model-migration and prompt-audit guides (bundled with the `claude-api` skill; per-model behavioural shifts for the 4.6 → 5.5 generations)
 - Anthropic: "Use XML tags to structure your prompts" — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/use-xml-tags
 - Anthropic: "Extended thinking tips" — https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/extended-thinking-tips

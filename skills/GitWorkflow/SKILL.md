@@ -4,6 +4,8 @@ description: "Reference for git branching strategies, commit conventions, merge 
 category: reference
 effort: low
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # Git Workflow Patterns

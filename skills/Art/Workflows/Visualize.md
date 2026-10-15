@@ -195,9 +195,9 @@ CRITICAL:
 
 ## 🚨 MANDATORY WORKFLOW STEPS
 
-### Step 1: Deep Content Analysis (MANDATORY - Use deep thinking)
+### Step 1: Content analysis
 
-**🎯 CRITICAL: Use extended thinking to analyze content thoroughly before proceeding.**
+Analyze the content before choosing a format; the format follows from what the content is.
 
 Analyze the content across these dimensions:
 

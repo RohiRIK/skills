@@ -4,6 +4,8 @@ description: "Research a question at three depths (quick / standard / deep multi
 category: workflow
 effort: medium
 domain: docs
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 disable-model-invocation: false
 argument-hint: [query]
 ---
@@ -24,7 +26,8 @@ Three depth modes — pick the cheapest that fits. Synthesis is authored via the
 
 - **Quick** — one web search + synthesis. **Standard** — web search + one delegated worker, cross-checked. **Deep** — fan out across `Agy` + `OpenCode` + `Pi` in parallel plus web search, then synthesize.
 - Always cite sources; flag disagreement between providers rather than silently picking one.
-- Default Tier B (`/research`); promote to auto only if undertriggering shows up.
+- Auto-triggers (Tier C) on the description; set `disable-model-invocation: true` to make it `/research`-only if it overtriggers.
+- Models, tools, and versions change within months: for those, search the name as written even when it looks familiar.
 
 ## Gotchas
 

@@ -4,6 +4,8 @@ description: "Package a project as an AI-agent plugin with Hermes, Claude, OpenC
 category: meta
 effort: high
 domain: agents
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # CreatePlugin

@@ -4,6 +4,8 @@ description: "Analyze an unfamiliar codebase and produce an onboarding guide —
 category: workflow
 effort: medium
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # CodebaseOnboarding

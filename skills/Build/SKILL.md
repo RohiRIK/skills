@@ -4,6 +4,8 @@ description: "Implements plan tasks one at a time with compile and commit gates.
 category: workflow
 effort: medium
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # Build

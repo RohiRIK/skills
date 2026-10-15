@@ -4,6 +4,8 @@ description: "Index of composed skill chains: which skills to run in what order 
 category: workflow
 effort: low
 domain: meta
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # Workflows
@@ -11,7 +13,6 @@ domain: meta
 Skills compose into repeatable **chains** — one skill does one thing; a workflow runs several in order. The router for any developer or researcher: match the job to a chain, state it, run it. `Chains.md` carries every exact skill sequence; in this repo the chains are also an **OKF bundle** (`workflows/index.md`). **Invoked without a named workflow** → present both tables below and ask which to run; **with one named** → state its chain and run it.
 
 ## All workflows
-
 | Family | Job | Workflow |
 |--------|-----|----------|
 | ship | Ship fast, scope clear enough, explore mid-flight | ship-fast |
@@ -34,6 +35,7 @@ Skills compose into repeatable **chains** — one skill does one thing; a workfl
 | library | Skill won't trigger or mis-fires | fix-trigger |
 | library | Improve a target hands-off (loop) | autonomous-loop |
 | library | Whole-library health audit | library-audit |
+| library | Re-tune skills for a new model | model-upgrade |
 | library | Build / refactor many skills at once | batch-build |
 | library | Cut a tagged release | release |
 

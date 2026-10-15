@@ -15,7 +15,7 @@ Install the engine's dependencies once (bun + ExcelJS):
 cd Tools && bun install
 ```
 
-## Step 1 — ALWAYS ask scoping questions first
+## Step 1 — Ask scoping questions first
 
 A dataset can be reported a dozen ways; a few questions separate a useful report
 from a generic one. Ask via the interactive question tool (tappable options) so
@@ -119,7 +119,7 @@ for any method beyond this example.
 
 ## Step 4 — Validate
 
-After saving, ALWAYS recalculate to confirm zero formula errors:
+After saving, recalculate to confirm zero formula errors (a saved file can still hold broken formulas):
 
 ```bash
 bun Tools/Recalc.ts ./Report.xlsx

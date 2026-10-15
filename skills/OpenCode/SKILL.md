@@ -4,6 +4,8 @@ description: "Delegate a coding, refactor, or PR-review task to the OpenCode CLI
 category: delegation
 effort: medium
 domain: agents
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 argument-hint: [task description]
 ---
 

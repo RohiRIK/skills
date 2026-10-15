@@ -166,26 +166,18 @@ White #FFFFFF — Clean background
 
 ## 🚨 MANDATORY WORKFLOW STEPS
 
-### Step 1: Run Story Explanation on Content (MANDATORY)
+### Step 1: Extract the structure
 
-**🎯 CRITICAL: You MUST use /cse (Create Story Explanation) with 24-item length.**
-
-This extracts the full narrative arc and identifies the STRUCTURE that needs to be diagrammed.
-
-```bash
-/cse [content or URL]
-```
-
-The 24-item output reveals:
+Read the content (or fetch the URL) and write a numbered outline of its narrative arc, about 24 items. The outline is what you diagram, so it should reveal:
 - Process flows and sequences
 - Decision points and conditions
 - State transitions and triggers
 - Entity relationships and interactions
 - Temporal ordering and dependencies
 
-**Do NOT skip this step. Do NOT manually derive diagram structure without running /cse first.**
+Derive the diagram from this outline, not from a first impression of the content.
 
-**Output from CSE Analysis:**
+**Outline output:**
 ```
 24-ITEM STORY EXPLANATION:
 1. [Item 1]
@@ -206,7 +198,7 @@ STRUCTURAL ELEMENTS IDENTIFIED:
 
 ### Step 2: Determine Optimal Mermaid Diagram Type
 
-**Based on CSE analysis, identify the best diagram type:**
+**Based on the outline, identify the best diagram type:**
 
 #### Decision Framework
 
@@ -266,7 +258,7 @@ ALTERNATIVE TYPES CONSIDERED: [If any, and why not chosen]
 
 ---
 
-### Step 3: Extract Diagram Structure from CSE
+### Step 3: Extract Diagram Structure from the outline
 
 **Map the 24-item story explanation to diagram components:**
 
@@ -675,7 +667,7 @@ open /path/to/mermaid-diagram.png
 #### Diagram Correctness
 - [ ] **Structure accurate:** Diagram follows [type] conventions
 - [ ] **Logic clear:** Flow/sequence/states make sense
-- [ ] **Complete:** All elements from CSE represented
+- [ ] **Complete:** All elements from the outline represented
 - [ ] **Connections correct:** Arrows point to right places
 - [ ] **Labels accurate:** Node and edge labels match content
 
@@ -711,7 +703,7 @@ open /path/to/mermaid-diagram.png
 | **Perfect geometry** | Shapes too clean | "All rectangles with rough edges, circles slightly oval, organic imperfection throughout" |
 | **Can't follow flow** | Unclear structure | Strengthen arrow directions, add labels, clarify critical path with purple |
 | **Labels unreadable** | Text too sketchy or small | Increase label size, simplify hand-lettering: "Readable hand-lettered style" |
-| **Wrong diagram type** | Doesn't match content | Return to Step 2, reconsider diagram type based on CSE |
+| **Wrong diagram type** | Doesn't match content | Return to Step 2, reconsider diagram type based on the outline |
 | **Missing Mermaid structure** | Doesn't follow conventions | Add proper diagram grammar: decision diamonds for flowcharts, lifelines for sequence, etc. |
 | **Color overload** | Too much purple/teal | Limit: "Purple on 2-3 critical nodes only, teal on 1-2 secondary, rest black" |
 | **Looks generic** | Missing UL or Excalidraw style | Combine both: "Excalidraw wobbly whiteboard sketch + UL purple/teal strategic accents" |
@@ -825,7 +817,7 @@ open /path/to/mermaid-diagram.png
 
 ### Example 1: Flowchart for Authentication Flow
 **Content:** Blog post about user authentication process
-**CSE Result:** 24-item story showing login attempt → credential check → success/failure paths
+**Outline:** 24-item story showing login attempt → credential check → success/failure paths
 **Diagram Type:** Flowchart
 **Structure:** Start → Enter Credentials → Valid? → [Yes] → Generate Token → Success
                                                    → [No] → Retry Limit? → [Yes] → Lock Account
@@ -835,7 +827,7 @@ open /path/to/mermaid-diagram.png
 
 ### Example 2: Sequence Diagram for API Call
 **Content:** Technical article about microservices communication
-**CSE Result:** 24-item story showing User → API Gateway → Auth Service → Database → Response chain
+**Outline:** 24-item story showing User → API Gateway → Auth Service → Database → Response chain
 **Diagram Type:** Sequence Diagram
 **Structure:** 4 actors (User, Gateway, Auth, DB) with message arrows showing request/response flow
 **Color:** Purple on Gateway (critical), Teal on Auth (secondary)
@@ -843,7 +835,7 @@ open /path/to/mermaid-diagram.png
 
 ### Example 3: State Diagram for Order Lifecycle
 **Content:** E-commerce order processing explanation
-**CSE Result:** 24-item story showing order states: Pending → Processing → Shipped → Delivered (with error states)
+**Outline:** 24-item story showing order states: Pending → Processing → Shipped → Delivered (with error states)
 **Diagram Type:** State Diagram
 **Structure:** Initial → Pending → Processing → Shipped → Delivered → Final
                                → (error) → Cancelled
@@ -852,7 +844,7 @@ open /path/to/mermaid-diagram.png
 
 ### Example 4: ER Diagram for Database Schema
 **Content:** Data modeling article about blog platform
-**CSE Result:** 24-item story revealing entities: Users, Posts, Comments, Categories with relationships
+**Outline:** 24-item story revealing entities: Users, Posts, Comments, Categories with relationships
 **Diagram Type:** Entity Relationship Diagram
 **Structure:** User 1──* Post, Post 1──* Comment, Post *──* Category (many-to-many)
 **Color:** Purple on User and Post (core), Teal on Comment and Category
@@ -874,9 +866,9 @@ open /path/to/mermaid-diagram.png
 
 ### Process Summary
 ```
-1. Run /cse (24-item story explanation) ← MANDATORY
+1. Write the ~24-item structure outline
 2. Determine diagram type (flowchart, sequence, state, etc.)
-3. Extract structure from CSE (nodes, edges, flows)
+3. Extract structure from the outline (nodes, edges, flows)
 4. Design Excalidraw layout (wobbly, sketchy, whiteboard)
 5. Construct comprehensive prompt
 6. Choose aspect ratio (based on diagram type)
@@ -885,7 +877,7 @@ open /path/to/mermaid-diagram.png
 ```
 
 ### Core Principles
-1. **CSE-driven:** Always derive from content analysis, never manually specify
+1. **Outline-driven:** derive the diagram from the content outline
 2. **Mermaid grammar:** Follow proper diagram type conventions
 3. **Excalidraw aesthetic:** Hand-drawn whiteboard sketch feel
 4. **UL color scheme:** Strategic purple/teal, black structure
@@ -893,7 +885,7 @@ open /path/to/mermaid-diagram.png
 
 ---
 
-**The workflow: /cse → Diagram Type → Structure → Excalidraw Design → Prompt → Generate → Validate → Complete**
+**The workflow: Outline → Diagram Type → Structure → Excalidraw Design → Prompt → Generate → Validate → Complete**
 
 **The synthesis: Mermaid structure + Excalidraw aesthetic + UL editorial style = Technical diagrams that feel like smart sketches on a whiteboard.**
 

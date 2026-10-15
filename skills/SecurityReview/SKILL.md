@@ -35,7 +35,7 @@ Full checklist: `Overview.md` (12KB — loaded on demand by AuditCode workflow)
 ## Integration
 
 - After writing auth/API/input-handling code → auto-trigger
-- Before `/commit-push-pr` on security-sensitive changes → manual trigger
+- Before `GitHubOps:CommitPush` on security-sensitive changes → manual trigger
 - Pairs with `code-reviewer` for complete post-implementation review
 
 ## Gotchas

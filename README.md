@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-40-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-41-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -38,6 +38,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Hygiene/`](skills/Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
 | [`Iterate/`](skills/Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
 | [`MacPluginPlaybook/`](skills/MacPluginPlaybook) | Phased playbook to build or port a native SwiftUI macOS menu bar app: research, scaffold, test-first logic, screenshot-driven UI, settings + onboarding, audit, PR. Includes lessons from a real build. |
+| [`ModelUpgrade/`](skills/ModelUpgrade) | Re-tune the library when a new model ships: a dated generations ledger, `tuned-for` stamps, a dated-prompt scanner, and keep / reprompt / replan / retire verdicts per skill. |
 | [`OpenCode/`](skills/OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
 | [`Orchestrate/`](skills/Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
 | [`Pi/`](skills/Pi) | Delegate a coding/refactor/PR-review task to the Pi (pi.dev) CLI as an autonomous worker. |
@@ -86,7 +87,7 @@ See [INSTALL-AI.md](INSTALL-AI.md) — covers Claude Code, opencode, Cursor, VS 
 
 - **[showcase.md](showcase.md)** — visual gallery: a hero image per skill.
 - **[CLAUDE.md](CLAUDE.md)** — auto-loaded by Claude Code; repo layout + conventions.
-- **[workflows/](workflows)** — composed skill chains, one document per workflow, two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, release).
+- **[workflows/](workflows)** — composed skill chains, one document per workflow, two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, model-upgrade, release).
 - **[AGENTS.md](AGENTS.md)** — brief for non-Claude-Code AI tools.
 - **[INSTALL-AI.md](INSTALL-AI.md)** — full install guide for all supported tools.
 - **[CHANGELOG.md](CHANGELOG.md)** — notable changes to the library.
@@ -94,7 +95,7 @@ See [INSTALL-AI.md](INSTALL-AI.md) — covers Claude Code, opencode, Cursor, VS 
 ## For AI agents fetching this repo
 
 - **[llms.txt](llms.txt)** — AI-discovery index: project summary, how to consume the repo, every skill grouped by category with one-line descriptions.
-- **[skills.json](skills.json)** — machine-readable manifest (name, path, category, effort, tier, workflows, description) — parse this instead of opening every `SKILL.md`.
+- **[skills.json](skills.json)** — machine-readable manifest (name, path, category, effort, tier, tuned_for, workflows, description) — parse this instead of opening every `SKILL.md`.
 
 Both are generated from each skill's frontmatter — regenerate after adding or editing a skill.
 

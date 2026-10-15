@@ -37,7 +37,7 @@ Invoke the `code-simplifier` agent on files changed in this session.
 ## Workflow Position
 
 ```
-/plan → implement → /capture → /simplify → /verify → /commit-push-pr
+Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush
 ```
 
 ## Gotchas

@@ -4,6 +4,8 @@ description: "Audit ~/.claude for git, skill, code, and rules hygiene issues. US
 category: quality
 effort: medium
 domain: ops
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 disable-model-invocation: true
 argument-hint: [--fix]
 allowed-tools: Bash(bun:*), Bash(git:*), Read, Edit

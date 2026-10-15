@@ -32,6 +32,8 @@ Before finalizing, ask: **"Would a smarter model make this skill unnecessary?"**
 
 Focus skills on knowledge the model can't derive (failure modes, API quirks), tools it can't replicate (API calls, automation), and workflows that benefit from consistency.
 
+The answer changes with each model generation: a scaffold that helped one model is dead weight on the next. `ModelUpgrade` re-runs this check across the library when a new generation ships, using `ModelUpgrade/Generations.md` as the record of what each generation no longer needs.
+
 ## Progressive Disclosure
 
 Three loading levels: (1) YAML frontmatter — always in the system prompt, triggering info only; (2) SKILL.md body — loaded on invocation, routing + key guidance; (3) context files (skill-root `.md`) — loaded on demand. Tell the model what files exist; it reads them when appropriate.

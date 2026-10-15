@@ -4,6 +4,8 @@ description: "Runs test-first development for features and bug fixes. USE WHEN w
 category: workflow
 effort: medium
 domain: testing
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # Test

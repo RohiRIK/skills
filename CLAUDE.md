@@ -12,6 +12,7 @@ skills/<SkillName>/   ← one folder per skill (TitleCase, matches ~/.claude/ski
   *.md               ← optional: context files (in skill root)
 workflows/           ← composed skill chains, OKF bundle (one concept per workflow) — see workflows/index.md
 rules/system.md      ← canonical spec for how the skill system works (READ THIS)
+reports/             ← dated audit reports (reports/ModelUpgrade/<date>-<generation>.md)
 _state/              ← execution-log conventions (state-file schema: skills/Iterate/StateFileSchema.md)
 README.md            ← skill index
 CLAUDE.md            ← this file — auto-loaded by Claude Code
@@ -42,12 +43,13 @@ Drivers:     Iterate → calls Verify + Reflect each pass; wake primitive if the
              Iterate:RunLenses → feeds criteria to Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi
 Meta:        SkillForge → audits + instruments the whole library;  CreateSkill → builds one skill
+             ModelUpgrade → re-tunes skills per model generation (Watch → Assess → Apply; stamps tuned-for)
 Wired in:    Build→Verify · Test→Reflect · Spec --deep→Iterate:RunLenses · Agy/OpenCode/Pi→.agent-state.md on failure
 State:       loop/multi-pass skills share .agent-state.md
 Telemetry:   action workflows append to ~/.claude/state/execution.jsonl
 ```
 
-Composed chains live in **[workflows/](workflows)** — an **OKF bundle**, one markdown concept per workflow (YAML frontmatter: `type: Workflow`, `chain`, `tags`), two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, release). See `workflows/index.md` for the index.
+Composed chains live in **[workflows/](workflows)** — an **OKF bundle**, one markdown concept per workflow (YAML frontmatter: `type: Workflow`, `chain`, `tags`), two families: **build & ship** (ship-fast, spec-to-ship, research to build/report/buy, onboard, build-cli/mcp, ui/api-feature, security/context/hygiene passes) and **maintain the library** (new-skill, canonicalize, fix-trigger, autonomous-loop, batch-build, library-audit, model-upgrade, release). See `workflows/index.md` for the index.
 
 ## Source of truth
 

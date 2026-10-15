@@ -4,6 +4,8 @@ description: "Visual direction and anti-slop gate — typography, color, motion.
 category: reference
 effort: medium
 domain: design
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 user-invocable: true
 ---
 
