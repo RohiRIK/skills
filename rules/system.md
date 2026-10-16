@@ -88,8 +88,10 @@ Frontend:  code / logic / hooks / performance      → FrontendDesign
            both ("polished hero component")         → FrontendAesthetics first (direction), then FrontendDesign (build)
 Meta:      build/scaffold ONE skill                 → CreateSkill
            audit/instrument the WHOLE library       → SkillForge
-           re-tune for a new model / is it still relevant → ModelUpgrade
-CLI:       generate a standalone TypeScript CLI     → CreateCLI
+           re-tune for any model / is it still relevant → ModelUpgrade
+CLI:       TypeScript CLI an agent/script calls  → CreateCLI-Agent
+           TypeScript CLI a person runs          → CreateCLI-Human
+           caller unclear (shared base, asks)    → CreateCLI
            author a Claude Code agent skill         → CreateSkill
 Writing:   email (compose / reply / localize)       → Email
            social post / thread / caption / comment → SocialPost

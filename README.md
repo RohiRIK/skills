@@ -23,7 +23,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`ContextBudget/`](skills/ContextBudget) | Audit Claude Code context-window consumption and produce prioritized token-savings recommendations. |
 | [`CreateMcp/`](skills/CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
 | [`CreatePlugin/`](skills/CreatePlugin) | Package a project as one shared AI-agent plugin with thin Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters. |
-| [`CreateCLI/`](skills/CreateCLI) | Generate a production-ready TypeScript CLI (3 tiers: parseArgs / Commander / oclif), Bun-only, gated by Verify. |
+| [`CreateCLI/`](skills/CreateCLI) | Shared base for TypeScript CLI generation (3 tiers: parseArgs / Commander / oclif, Bun-only, gated by Verify); routes to the Agent or Human contract. |
 | [`CreateCLI-Agent/`](skills/CreateCLI-Agent) | Generate a production-ready TypeScript CLI for autonomous agents: JSON contract, non-interactive, semantic exits. |
 | [`CreateCLI-Human/`](skills/CreateCLI-Human) | Generate a production-ready TypeScript CLI for human operators: TTY UX, prose help, optional JSON. |
 | [`CreateHook/`](skills/CreateHook) | Generate lifecycle hooks for AI agent runtimes — Claude Code, OpenCode, OpenClaw, Hermes Agent. |

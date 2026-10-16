@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-10-16T13:03:54Z",
+  "generated": "2026-10-16T13:05:33Z",
   "skills": [
     {
       "name": "AdaptiveExplainers",
@@ -99,9 +99,9 @@
       "effort": "medium",
       "domain": "dev",
       "tier": "C-auto",
-      "tuned_for": "",
+      "tuned_for": "claude-5.5",
       "workflows": "AddCommand,CreateCli,UpgradeTier",
-      "description": "Generate a production-ready TypeScript CLI (3 tiers: parseArgs/Commander/oclif). USE WHEN create a CLI, command-line tool, or wrap an API. NOT FOR agent skills (use CreateSkill) or Python."
+      "description": "Generate a production-ready TypeScript CLI; shared base that routes to CreateCLI-Agent or CreateCLI-Human. USE WHEN create a CLI, command-line tool, or wrap an API. NOT FOR agent skills (use CreateSkill) or Python."
     },
     {
       "name": "CreateCLI-Agent",
