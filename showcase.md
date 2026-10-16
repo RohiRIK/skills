@@ -1,13 +1,15 @@
 # Skills — Showcase
 
-A visual index of the library. Each skill gets a hero image in a shared house style: a **retro-futuristic 1960s mission-control room** — banks of vintage CRT monitors, brass-and-wood consoles with operators, and a glowing holographic emblem unique to that skill. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
+A visual index of the library. Each illustrated skill has its own hero: the original 16 use **retro-futuristic 1960s mission-control rooms**, and 10 newer illustrations use **architectural charcoal sketches with sienna and teal accents**, each depicting a skill-specific metaphor. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 16 / 41 heroes generated. The remaining 25 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 26 / 41 heroes generated. The remaining 15 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
 
-### [AdaptiveExplainers](skills/AdaptiveExplainers) 🎨
-_hero pending_ — Choose and verify text, diagrams, interactive HTML, or video when explaining a topic, system, investigation, or decision.
+### [AdaptiveExplainers](skills/AdaptiveExplainers)
+<img src="skills/AdaptiveExplainers/hero.webp" alt="AdaptiveExplainers" width="640">
+
+Choose and verify text, diagrams, interactive HTML, or video when explaining a topic, system, investigation, or decision.
 
 ### [Agy](skills/Agy)
 <img src="assets/agy-hero.jpg" alt="Agy" width="640">
@@ -49,23 +51,31 @@ Audit Claude Code context-window consumption and produce prioritized token-savin
 
 Generate a production-ready TypeScript CLI (manual argv / Commander / oclif), Bun-only, gated by Verify.
 
-### [CreateCLI-Agent](skills/CreateCLI-Agent) 🎨
-_hero pending_ — Generate a production-ready TypeScript CLI for autonomous agents (JSON contract, non-interactive, semantic exits).
+### [CreateCLI-Agent](skills/CreateCLI-Agent)
+<img src="skills/CreateCLI-Agent/hero.webp" alt="CreateCLI-Agent" width="640">
 
-### [CreateCLI-Human](skills/CreateCLI-Human) 🎨
-_hero pending_ — Generate a production-ready TypeScript CLI for human operators (TTY UX, prose help, optional JSON).
+Generate a production-ready TypeScript CLI for autonomous agents (JSON contract, non-interactive, semantic exits).
+
+### [CreateCLI-Human](skills/CreateCLI-Human)
+<img src="skills/CreateCLI-Human/hero.webp" alt="CreateCLI-Human" width="640">
+
+Generate a production-ready TypeScript CLI for human operators (TTY UX, prose help, optional JSON).
 
 
-### [CreateHook](skills/CreateHook) 🎨
-_hero pending_ — Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenCode, OpenClaw, Hermes Agent).
+### [CreateHook](skills/CreateHook)
+<img src="skills/CreateHook/hero.webp" alt="CreateHook" width="640">
+
+Generate lifecycle hooks for AI agent runtimes (Claude Code, OpenCode, OpenClaw, Hermes Agent).
 
 ### [CreateMcp](skills/CreateMcp)
 <img src="assets/create-mcp-hero.jpg" alt="CreateMcp" width="640">
 
 Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security.
 
-### [CreatePlugin](skills/CreatePlugin) 🎨
-_hero pending_ — Package a project as one shared AI-agent plugin with thin Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters.
+### [CreatePlugin](skills/CreatePlugin)
+<img src="skills/CreatePlugin/hero.webp" alt="CreatePlugin" width="640">
+
+Package a project as one shared AI-agent plugin with thin Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters.
 
 ### [CreateSkill](skills/CreateSkill)
 <img src="assets/create-skill-hero.jpg" alt="CreateSkill" width="640">
@@ -82,8 +92,10 @@ Turn a raw Excel/CSV dataset into a two-layer stakeholder report — plain-langu
 
 Reference for Docker and Docker Compose local-dev patterns.
 
-### [Email](skills/Email) 🎨
-_hero pending_ — Write, reply to, rewrite, and localize emails in English and Hebrew (native templates, tone rules, AI-tell lint).
+### [Email](skills/Email)
+<img src="skills/Email/hero.webp" alt="Email" width="640">
+
+Write, reply to, rewrite, and localize emails in English and Hebrew (native templates, tone rules, AI-tell lint).
 
 ### [FrontendAesthetics](skills/FrontendAesthetics)
 <img src="assets/frontend-aesthetics-hero.jpg" alt="FrontendAesthetics" width="640">
@@ -105,17 +117,25 @@ Manage a GitHub repo via the `gh` CLI — hygiene, changelog, commit/push, PRs, 
 
 Reference for git branching, commit conventions, merge vs rebase, and conflict resolution.
 
-### [Hygiene](skills/Hygiene) 🎨
-_hero pending_ — Audit `~/.claude` for git, skill, code, and rules hygiene issues.
+### [Hygiene](skills/Hygiene)
+<img src="skills/Hygiene/hero.webp" alt="Hygiene" width="640">
 
-### [Iterate](skills/Iterate) 🎨
-_hero pending_ — Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions.
+Audit `~/.claude` for git, skill, code, and rules hygiene issues.
 
-### [MacPluginPlaybook](skills/MacPluginPlaybook) 🎨
-_hero pending_ — Phased playbook to build or port a native SwiftUI macOS menu bar app, with lessons from a real build.
+### [Iterate](skills/Iterate)
+<img src="skills/Iterate/hero.webp" alt="Iterate" width="640">
 
-### [ModelUpgrade](skills/ModelUpgrade) 🎨
-_hero pending_ — Re-tune the library when a new model generation ships: relevance and fit per skill, then reprompt, replan, or retire.
+Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions.
+
+### [MacPluginPlaybook](skills/MacPluginPlaybook)
+<img src="skills/MacPluginPlaybook/hero.webp" alt="MacPluginPlaybook" width="640">
+
+Phased playbook to build or port a native SwiftUI macOS menu bar app, with lessons from a real build.
+
+### [ModelUpgrade](skills/ModelUpgrade)
+<img src="skills/ModelUpgrade/hero.webp" alt="ModelUpgrade" width="640">
+
+Re-tune the library when a new model generation ships: relevance and fit per skill, then reprompt, replan, or retire.
 
 ### [OpenCode](skills/OpenCode) 🎨
 _hero pending_ — Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker.
