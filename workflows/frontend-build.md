@@ -3,7 +3,7 @@ type: Workflow
 title: Frontend build
 description: Full frontend feature from spec through visual direction, components, assets, tests, to ship.
 tags: [build-ship, heavy]
-chain: "Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest"
+chain: "Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest"
 ---
 
 # Workflow: frontend-build
@@ -13,7 +13,7 @@ Full frontend feature — from spec through visual direction, component architec
 > **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill to invoke** (load it with the Skill tool), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
-Spec → FrontendAesthetics:DesignBrief → FrontendDesign(architecture) → Art(assets) → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
+Spec → FrontendAesthetics:DesignBrief → FrontendDesign(architecture) → Art(assets) → Spec → Build → Test → FrontendAesthetics:SlopAudit → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
 ```
 
 ## Steps
@@ -23,12 +23,11 @@ Spec → FrontendAesthetics:DesignBrief → FrontendDesign(architecture) → Art
 3. **FrontendDesign** — component architecture: composition tree, props contracts, state placement, data-flow, hook inventory. Outputs a component plan that satisfies the spec *and* derives all visual values from the brief's tokens.
 4. **Art** *(if the feature needs generated visuals)* — hero images, illustrations, icons. Generate to `~/Downloads/` → user previews → copy to project on approval.
 5. **Build** — implement task-by-task, in the order DesignBrief → design tokens / CSS → layout components → interactive components → integration. Each task maps to one acceptance criterion from step 1. Gate each task: `bun test` + `bun lint`.
-7. **Test** — component tests (render + interaction) + visual regression if available. Gate: suite green.
-8. **FrontendAesthetics:SlopAudit** — the anti-slop gate: 11 mechanical checks (em-dash, eyebrow ratio, hero stack, contrast, token fidelity, tells sweep) + 7-axis rubric scored against the brief; one revision loop on fail.
-9. **Simplify** — flatten nesting, remove dead abstraction, trim unused CSS.
-10. **Reflect** — self-rate ≥ 4 on all axes; pay extra attention to *accessibility* and *visual intentionality*. Fix any ≤ 3.
-11. **Verify** — full gate (tsc → lint → tests → build → security → diff).
-12. **GitHubOps:CommitPush** then **GitHubOps:PullRequest** — ship.
+6. **Test** — component tests (render + interaction) + visual regression if available. Gate: suite green.
+7. **FrontendAesthetics:SlopAudit** — the anti-slop gate: 11 mechanical checks (em-dash, eyebrow ratio, hero stack, contrast, token fidelity, tells sweep) + 7-axis rubric scored against the brief; one revision loop on fail.
+8. **Reflect** — self-rate ≥ 4 on all axes; pay extra attention to *accessibility* and *visual intentionality*. Fix any ≤ 3.
+9. **Verify** — full gate (tsc → lint → tests → build → security → diff).
+10. **GitHubOps:CommitPush** then **GitHubOps:PullRequest** — ship.
 
 ## Order matters
 
@@ -45,7 +44,7 @@ The brief sets the visual contract. Design engineers to it. Build implements fro
 | `/spec`, `/plan` | `Spec` |
 | `/build` | `Build` |
 | `/test` | `Test` |
-| `/simplify` | `Simplify` |
+| `/simplify` | retired; `Verify`'s diff review covers it (Claude Code users can still run the built-in `simplify` first) |
 | `/verify` | `Verify` |
 | `/commit-push-pr` | `GitHubOps:CommitPush` + `GitHubOps:PullRequest` |
 
@@ -53,7 +52,7 @@ The brief sets the visual contract. Design engineers to it. Build implements fro
 
 | Scope | Path |
 |-------|------|
-| Small visual tweak | `FrontendAesthetics:DesignBrief → Build → Simplify → Verify → GitHubOps:CommitPush` (use **ui-feature** instead) |
+| Small visual tweak | `FrontendAesthetics:DesignBrief → Build → Verify → GitHubOps:CommitPush` (use **ui-feature** instead) |
 | Component with no new visuals | skip step 4 (Art) |
 | Greenfield app (new project) | full chain; add `CodebaseOnboarding` at step 0 if joining an existing repo |
 

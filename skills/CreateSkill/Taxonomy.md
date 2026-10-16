@@ -9,7 +9,7 @@ Before creating any skill, identify which of the 9 types it is (from Anthropic's
 | 3 | Data Fetching | Connect to data systems | Credential refs, query patterns, dashboard pointers | a metrics skill |
 | 4 | Business Process | Automate repetitive workflows | Execution logs, consistency tracking | DataReportBuilder |
 | 5 | Code Scaffolding | Generate framework boilerplate | Template files, project-aware scripts | CreateSkill, CreateCLI |
-| 6 | Code Quality | Enforce standards, review | Deterministic scripts, hook integration | Simplify, code-review |
+| 6 | Code Quality | Enforce standards, review | Deterministic scripts, hook integration | Verify, SecurityReview |
 | 7 | CI/CD & Deployment | Deploy with safety patterns | Pre-deploy checks, smoke tests, rollback | a deploy skill |
 | 8 | Operations Runbook | Map phenomena to diagnostics | Phenomenon → tool → query → report | a healthcheck skill |
 | 9 | Infrastructure Ops | Maintenance with safety guardrails | Safety gates, audit logging, orphan detection | an infra-maintenance skill |

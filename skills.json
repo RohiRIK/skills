@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-10-14T14:35:57Z",
+  "generated": "2026-10-16T13:03:54Z",
   "skills": [
     {
       "name": "AdaptiveExplainers",
@@ -287,8 +287,8 @@
       "domain": "meta",
       "tier": "C-auto",
       "tuned_for": "claude-5.5",
-      "workflows": "Apply,Assess,Watch",
-      "description": "Re-tune skills for a new model generation: judge relevance and fit, then reprompt, replan, or retire. USE WHEN a new model ships or skills feel dated. NOT FOR agentic-readiness audits (use SkillForge)."
+      "workflows": "Adapt,Apply,Assess,Watch",
+      "description": "Re-tune skills for any model, current or named: judge relevance and fit, then reprompt, replan, or retire. USE WHEN switching models, a model ships, or skills feel dated."
     },
     {
       "name": "OpenCode",
@@ -368,17 +368,6 @@
       "description": "Audits code for vulnerabilities and secrets. USE WHEN reviewing code for security issues."
     },
     {
-      "name": "Simplify",
-      "path": "skills/Simplify/",
-      "category": "quality",
-      "effort": "low",
-      "domain": "dev",
-      "tier": "C-auto",
-      "tuned_for": "",
-      "workflows": "",
-      "description": "Post-implementation dead-code cleanup. USE WHEN running /simplify after finishing a feature or fix."
-    },
-    {
       "name": "SkillForge",
       "path": "skills/SkillForge/",
       "category": "meta",
@@ -410,17 +399,6 @@
       "tuned_for": "claude-5.5",
       "workflows": "ExploreAndSpec",
       "description": "Explores code and project memory, then writes acceptance criteria. USE WHEN defining what to build before planning."
-    },
-    {
-      "name": "StrategicCompact",
-      "path": "skills/StrategicCompact/",
-      "category": "reference",
-      "effort": "low",
-      "domain": "meta",
-      "tier": "A-reference",
-      "tuned_for": "",
-      "workflows": "RunCompact",
-      "description": "Reference for context compaction strategy and timing guidance. USE WHEN deciding when or how to compact a long session, or planning context strategy."
     },
     {
       "name": "Test",
@@ -527,7 +505,7 @@
       "title": "Frontend build",
       "path": "workflows/frontend-build.md",
       "tags": "[build-ship, heavy]",
-      "chain": "Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
+      "chain": "Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
       "summary": "Full frontend feature from spec through visual direction, components, assets, tests, to ship."
     },
     {
@@ -559,7 +537,7 @@
       "title": "New skill — quick",
       "path": "workflows/new-skill-quick.md",
       "tags": "[maintain-library, quick]",
-      "chain": "Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → Simplify → GitHubOps:CommitPush",
+      "chain": "Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → CreateSkill:ValidateSkill → GitHubOps:CommitPush",
       "summary": "Author a new skill with clear scope and a single capability. Daily path."
     },
     {
@@ -623,7 +601,7 @@
       "title": "Ship fast",
       "path": "workflows/ship-fast.md",
       "tags": "[build-ship, quick]",
-      "chain": "Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
+      "chain": "Spec → Build → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
       "summary": "Clear-enough scope; move fast and discover the details mid-flight."
     },
     {
@@ -631,7 +609,7 @@
       "title": "Spec to ship",
       "path": "workflows/spec-to-ship.md",
       "tags": "[build-ship, heavy]",
-      "chain": "Spec → Build → Test → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
+      "chain": "Spec → Build → Test → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest",
       "summary": "Know exactly what to build; spec-driven build from criteria to PR."
     },
     {
@@ -639,7 +617,7 @@
       "title": "UI feature",
       "path": "workflows/ui-feature.md",
       "tags": "[build-ship, quick]",
-      "chain": "FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Simplify → Verify → GitHubOps:CommitPush",
+      "chain": "FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Verify → GitHubOps:CommitPush",
       "summary": "A frontend change that looks intentional, not AI-slop — direction before components."
     }
   ]

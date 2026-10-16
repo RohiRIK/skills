@@ -14,16 +14,16 @@ Two families (carried in each concept's `tags`):
 
 | Workflow | Chain | Doc |
 |----------|-------|-----|
-| **Ship fast** (explore while building) | ` → Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | [ship-fast.md](ship-fast.md) |
-| **Spec to ship** (spec-driven) | `Spec → Build → Test → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | [spec-to-ship.md](spec-to-ship.md) |
+| **Ship fast** (explore while building) | ` → Spec → Build → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | [ship-fast.md](ship-fast.md) |
+| **Spec to ship** (spec-driven) | `Spec → Build → Test → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | [spec-to-ship.md](spec-to-ship.md) |
 | Research → build | `Research(standard\|deep) → Spec → Build → Verify → GitHubOps:PullRequest` | [research-to-build.md](research-to-build.md) |
 | Research → report | `Research(deep) → DataReportBuilder → Art(diagrams)` | [research-to-report.md](research-to-report.md) |
 | Research → buy (compare options) | `Research(deep) → comparison matrix → scored recommendation` | [research-to-buy.md](research-to-buy.md) |
 | Onboard a codebase | `CodebaseOnboarding → Research(fill gaps) → Spec (first change) → spec-to-ship` | [onboard.md](onboard.md) |
 | Build a CLI | `[Research(API, if wrapping)] → CreateCLI → Test → Verify → GitHubOps:PullRequest` | [build-cli.md](build-cli.md) |
 | Build an MCP server | `CreateMcp:BuildServer → SecurityReview → CreateMcp:TestServer → CreateMcp:ConnectServer → Verify → GitHubOps:PullRequest` | [build-mcp.md](build-mcp.md) |
-| UI feature (anti-slop) | `FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Simplify → Verify → GitHubOps:CommitPush` | [ui-feature.md](ui-feature.md) |
-| Frontend build (full) | `Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | [frontend-build.md](frontend-build.md) |
+| UI feature (anti-slop) | `FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Verify → GitHubOps:CommitPush` | [ui-feature.md](ui-feature.md) |
+| Frontend build (full) | `Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | [frontend-build.md](frontend-build.md) |
 | Backend / API feature | `BackendDesign(ref) → Spec → Build → Test → SecurityReview → GitHubOps:PullRequest` | [api-feature.md](api-feature.md) |
 | Security pass | `SecurityReview → fix CRITICAL/HIGH → Verify → GitHubOps:CommitPush` | [security-pass.md](security-pass.md) |
 | Context diet | `ContextBudget → trim agents / skills / MCP / rules → Verify` | [context-diet.md](context-diet.md) |
@@ -33,7 +33,7 @@ Two families (carried in each concept's `tags`):
 
 | Workflow | Chain | Doc |
 |----------|-------|-----|
-| New skill — quick | `Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → Simplify → GitHubOps:CommitPush` | [new-skill-quick.md](new-skill-quick.md) |
+| New skill — quick | `Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → CreateSkill:ValidateSkill → GitHubOps:CommitPush` | [new-skill-quick.md](new-skill-quick.md) |
 | New skill — heavy | `Iterate:RunLenses → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest` | [new-skill-heavy.md](new-skill-heavy.md) |
 | Canonicalize a skill | `CreateSkill:ValidateSkill → CreateSkill:CanonicalizeSkill → GitHubOps:CommitPush` | [canonicalize-skill.md](canonicalize-skill.md) |
 | Fix a skill's trigger | `CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush` | [fix-trigger.md](fix-trigger.md) |

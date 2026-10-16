@@ -3,7 +3,7 @@ type: Workflow
 title: Ship fast
 description: Clear-enough scope; move fast and discover the details mid-flight.
 tags: [build-ship, quick]
-chain: "Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest"
+chain: "Spec → Build → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest"
 ---
 
 # Workflow: ship-fast
@@ -13,7 +13,7 @@ Move fast — explore while you build. Scope is clear enough to start; you'll di
 > **Run it, don't just read it.** State the chain above to the user, then work left-to-right — **each step is a skill to invoke** (load it with the Skill tool), not prose to summarize. Resolve each name to its skill and let it do the work.
 
 ```
-Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
+Spec → Build → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest
 ```
 
 ## Steps
@@ -21,9 +21,8 @@ Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → 
 1. **Spec** — quick pass before any non-trivial change; keep it light, this is the fast lane.
 2. **Build** — write the change.
 3. **Reflect** — self-eval the result, record the score in `.agent-state.md`.
-4. **Simplify** — flatten nesting, drop dead abstraction in the diff.
-5. **Verify** — gate (optional on small changes).
-6. **GitHubOps:CommitPush** then **GitHubOps:PullRequest** — ship.
+4. **Verify** — gate (optional on small changes).
+5. **GitHubOps:CommitPush** then **GitHubOps:PullRequest** — ship.
 
 ## If you came from the command version
 
@@ -32,7 +31,7 @@ Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → 
 | `/plan` | `Spec` |
 | `IMPLEMENT`, `/build` | `Build` |
 | `/capture` | `Reflect` |
-| `/simplify` | `Simplify` |
+| `/simplify` | retired; `Verify`'s diff review covers it (Claude Code users can still run the built-in `simplify` first) |
 | `/verify` | `Verify` |
 | `/commit-push-pr` | `GitHubOps:CommitPush` + `GitHubOps:PullRequest` |
 

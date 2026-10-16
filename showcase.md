@@ -2,7 +2,7 @@
 
 A visual index of the library. Each illustrated skill has its own hero: the original 16 use **retro-futuristic 1960s mission-control rooms**, and 10 newer illustrations use **architectural charcoal sketches with sienna and teal accents**, each depicting a skill-specific metaphor. Decorative only — the functional index is [README.md](README.md) and the machine-readable one is [skills.json](skills.json).
 
-> **Status:** 26 / 41 heroes generated. The remaining 15 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
+> **Status:** 26 / 39 heroes generated. The remaining 13 are pending (agy image-quota); generation recipe in [assets/hero-prompts.md](assets/hero-prompts.md). Pending entries are marked 🎨.
 
 ---
 
@@ -158,9 +158,6 @@ _hero pending_ — Research a question at three depths by delegating to Agy/Open
 ### [SecurityReview](skills/SecurityReview) 🎨
 _hero pending_ — Audit code for vulnerabilities and secrets.
 
-### [Simplify](skills/Simplify) 🎨
-_hero pending_ — Post-implementation dead-code cleanup (`/simplify`).
-
 ### [SkillForge](skills/SkillForge) 🎨
 _hero pending_ — Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk.
 
@@ -169,9 +166,6 @@ _hero pending_ — Write, rewrite, repurpose, and localize social posts in Engli
 
 ### [Spec](skills/Spec) 🎨
 _hero pending_ — Explore code + memory, then write acceptance criteria before planning.
-
-### [StrategicCompact](skills/StrategicCompact) 🎨
-_hero pending_ — Reference for context-compaction strategy and timing.
 
 ### [Test](skills/Test) 🎨
 _hero pending_ — Run TDD for features and bug fixes.
