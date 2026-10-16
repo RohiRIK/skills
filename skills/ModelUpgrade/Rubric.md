@@ -1,6 +1,6 @@
 # ModelUpgrade — Rubric
 
-How to judge one skill against a target generation. Two questions, then one verdict. Adapted from Anthropic's prompt-audit guidance (bundled with the `claude-api` skill), narrowed to a skill library.
+How to judge one skill against a target generation, of any vendor. Three questions, then one verdict. Adapted from Anthropic's prompt-audit guidance (bundled with the `claude-api` skill), narrowed to a skill library.
 
 ## 1. Relevance: is the job still worth a skill?
 
@@ -35,11 +35,23 @@ Run `Tools/ModelUpgrade.ts scan` for leads (`Signals.md`), then read each hit in
 - **Quotes stay.** A "before → after" teaching table quotes the bad pattern on purpose.
 - **Cruft is not length.** Never justify a cut by size alone; a clean skill is a valid result and gets no edits.
 
-## 3. Verdict
+## 3. Multi-model: does the fix keep the other targets?
+
+A skill can be stamped for several families (`tuned-for: claude-5.5, gpt-5.5`). Before an edit for the target, read the other families' ledger heads and ask whether the edit would regress any of them.
+
+| The edit is | Do |
+|-------------|----|
+| Model-neutral (stale fact, plain wording, goal over choreography) | Apply it in the skill |
+| Good for the target, harmful for another stamped family | Keep the skill neutral; put the target-specific advice in `Prompting/vendors/<Vendor>.md`, and the skill keeps working on both |
+| Needed by the target only, harmless elsewhere | Apply it, with the reason in the line ("weaker models skip this step without it") |
+
+A skill whose job only makes sense for one vendor (a Claude Code hook, a host command) is judged for that vendor and never stamped for others.
+
+## 4. Verdict
 
 | Verdict | Meaning | Next step |
 |---------|---------|-----------|
-| `keep` | Relevant and fits the target; at most cosmetic findings | Stamp `tuned-for` |
+| `keep` | Relevant and fits the target; at most cosmetic findings | Stamp the target into `tuned-for` |
 | `reprompt` | Relevant; specific lines need rewording or a stale fact fixed | `Apply` → one finding per edit → stamp |
 | `replan` | Relevant job, wrong shape: workflows built for an older model's limits, or overlapping a sibling or host built-in | `Apply` with a short plan; A/B before and after |
 | `retire` | The job is gone, superseded, or host-native | Propose only. Deleting a skill is the owner's call |

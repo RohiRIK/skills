@@ -8,7 +8,7 @@ Read the newest `reports/ModelUpgrade/*.md` (or the one named). Work only on row
 
 ## Step 2: Reprompt
 
-For each finding, one edit, using the target's entry in `Generations.md` and `Prompting/vendors/<vendor>.md`:
+For each finding, one edit, using the target's entry in `Generations.md` and `Prompting/vendors/<vendor>.md`, and checked against `Rubric.md` §3 so it does not regress another family the skill is stamped for:
 
 - Pressure language → the plain instruction with its reason.
 - Replaced scaffold → delete it, or move depth to the `effort` field.
@@ -23,7 +23,7 @@ Write a short plan per skill: what the job is now, what to cut, what the target 
 ## Step 4: Validate and stamp
 
 ```bash
-bun Tools/ModelUpgrade.ts stamp <Skill>...   # each skill that passed
+bun Tools/ModelUpgrade.ts stamp <Skill>... --target <id>   # each skill that passed
 ./gen-manifest.sh                            # skills.json + llms.txt + chain check
 ```
 

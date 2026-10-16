@@ -1,29 +1,29 @@
 # Assess Workflow
 
-Judge every skill against a target model generation and write the upgrade report. Read-only on skills; it writes only the ledger entry and the report.
+Judge every skill against a target model generation, of any vendor, and write the upgrade report. Read-only on skills; it writes only the ledger entry and the report.
 
 ## Step 1: Set the target
 
-The target is the generation the user names; else the one `Watch` found; else the ledger head. State it at the top of the report.
+The target is the model `Adapt` identified or the user names (resolve a model name with `bun Tools/ModelUpgrade.ts resolve <model>`); else the one `Watch` found; else the ledger's default head. State it at the top of the report, with the other families the library is stamped for.
 
-## Step 2: Update the ledger (new generation only)
+## Step 2: Update the ledger (target not in it yet)
 
-Add a `## <id> — <YYYY-MM> · <models>` entry **at the top** of `Generations.md`: what changed for skill text, each point tied to the vendor's release notes or migration guide (cite them in a `Sources:` line). Record behaviour shifts that make existing instructions dead weight *and* ones that call for new guidance. `Research` can gather the sources; the vendor's own pages win over secondary write-ups.
+Add a `## <id> — <YYYY-MM> · <models>` entry to `Generations.md`, above that family's older entries (at the very top only for a new default target): what changed for skill text, each point tied to the vendor's release notes or migration guide (cite them in a `Sources:` line). Record behaviour shifts that make existing instructions dead weight *and* ones that call for new guidance. For a model from another vendor, record how it differs from the default target: what the library's current wording over- or under-does on it. `Research` can gather the sources; the vendor's own pages win over secondary write-ups.
 
 If the shifts introduce a new greppable pattern, add a row to `Signals.md`.
 
 ## Step 3: Collect the evidence
 
 ```bash
-bun Tools/ModelUpgrade.ts baseline        # who is behind the target
-bun Tools/ModelUpgrade.ts scan --json     # dated-prompt leads per skill
+bun Tools/ModelUpgrade.ts baseline --target <id>   # who is behind the target
+bun Tools/ModelUpgrade.ts scan --json               # dated-prompt leads per skill
 ```
 
 Also read, per skill: `SKILL.md`, its workflows, and git history for when it last changed. Check the host's built-in skills and commands for overlaps (the session's skill list is the evidence).
 
 ## Step 4: Judge each skill
 
-Apply `Rubric.md`: relevance first, then fit, then one verdict with confidence. Read every scan hit in context and drop the ones the keep list protects. For a large library, judge independent skills in parallel workers, each given `Rubric.md`, the target's ledger entry, and its skills' scan output; merge their verdicts yourself.
+Apply `Rubric.md`: relevance first, then fit, then the multi-model check (§3), then one verdict with confidence. Read every scan hit in context and drop the ones the keep list protects. For a large library, judge independent skills in parallel workers, each given `Rubric.md`, the target's ledger entry, and its skills' scan output; merge their verdicts yourself.
 
 ## Step 5: Write the report
 

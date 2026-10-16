@@ -38,7 +38,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Hygiene/`](skills/Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
 | [`Iterate/`](skills/Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
 | [`MacPluginPlaybook/`](skills/MacPluginPlaybook) | Phased playbook to build or port a native SwiftUI macOS menu bar app: research, scaffold, test-first logic, screenshot-driven UI, settings + onboarding, audit, PR. Includes lessons from a real build. |
-| [`ModelUpgrade/`](skills/ModelUpgrade) | Re-tune the library when a new model ships: a dated generations ledger, `tuned-for` stamps, a dated-prompt scanner, and keep / reprompt / replan / retire verdicts per skill. |
+| [`ModelUpgrade/`](skills/ModelUpgrade) | Re-tune the library for any model, the one you use or a new release: a dated generations ledger, `tuned-for` stamps, a dated-prompt scanner, and keep / reprompt / replan / retire verdicts per skill. |
 | [`OpenCode/`](skills/OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
 | [`Orchestrate/`](skills/Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
 | [`Pi/`](skills/Pi) | Delegate a coding/refactor/PR-review task to the Pi (pi.dev) CLI as an autonomous worker. |

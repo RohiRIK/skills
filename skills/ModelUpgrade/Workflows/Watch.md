@@ -1,16 +1,16 @@
 # Watch Workflow
 
-Find out whether a model generation newer than the ledger head has shipped, and start `Assess` if one has. Cheap by design: most runs end with "nothing new".
+Find out whether a generation newer than a family's ledger head has shipped, for each family the library is stamped for, and start `Assess` if one has. Cheap by design: most runs end with "nothing new".
 
-## Step 1: Read the ledger head
+## Step 1: Read the ledger heads
 
-`bun Tools/ModelUpgrade.ts baseline` prints the current generation (the first `## <id>` heading in `Generations.md`) and how many skills are behind it. Note the head's id and date.
+List the families in `Generations.md` that some skill's `tuned-for` names. For each, `bun Tools/ModelUpgrade.ts baseline --target <family head>` prints the head and how many skills are behind it. Note each head's id and date.
 
 ## Step 2: Check the vendor's current lineup
 
-Use the most authoritative source the host offers, in this order:
+For each family, use the most authoritative source the host offers, in this order:
 
-1. The vendor's models listing: for Claude, the Models API (`GET /v1/models`) or the `claude-api` skill's models table, which states its cache date.
+1. The vendor's models listing: for Claude, the Models API (`GET /v1/models`) or the `claude-api` skill's models table, which states its cache date; for others, the vendor's models API or docs page.
 2. The vendor's release notes or model overview page, fetched live.
 3. `Research` at quick depth, restricted to the vendor's own domain.
 
