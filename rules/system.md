@@ -34,7 +34,7 @@ Every skill's frontmatter carries:
 | `category` | yes | Purpose class: `workflow · reference · delegation · meta · visual · prompting · quality` |
 | `effort` | yes | `low · medium · high` — cost/latency hint, pairs with tier for model routing |
 | `domain` | yes | Subject-matter tag, orthogonal to `category`: `dev · security · design · data · ops · agents · testing · prompting · meta · docs` |
-| `tuned-for` / `tuned-on` | set by ModelUpgrade | Model generation (a `ModelUpgrade/Generations.md` id) and date the skill was last judged against; missing or older = not yet re-tuned |
+| `tuned-for` / `tuned-on` | set by ModelUpgrade | Model generations the skill was judged against, one `ModelUpgrade/Generations.md` id per family (`claude-5.5, gpt-5.5`), and the date of the last stamp; missing or older for a target = not yet tuned for it |
 | tier flags | as needed | `disable-model-invocation` (B), `user-invocable: false` (A), `context: fork` + `agent` (D) |
 
 `category`, `effort`, and `domain` are tooling annotations (the loader ignores unknown keys). They make the library groupable by purpose, sortable by cost, and filterable by topic, and they feed `SkillForge/AuditAgentic`.
@@ -88,8 +88,10 @@ Frontend:  code / logic / hooks / performance      → FrontendDesign
            both ("polished hero component")         → FrontendAesthetics first (direction), then FrontendDesign (build)
 Meta:      build/scaffold ONE skill                 → CreateSkill
            audit/instrument the WHOLE library       → SkillForge
-           re-tune for a new model / is it still relevant → ModelUpgrade
-CLI:       generate a standalone TypeScript CLI     → CreateCLI
+           re-tune for any model / is it still relevant → ModelUpgrade
+CLI:       TypeScript CLI an agent/script calls  → CreateCLI-Agent
+           TypeScript CLI a person runs          → CreateCLI-Human
+           caller unclear (shared base, asks)    → CreateCLI
            author a Claude Code agent skill         → CreateSkill
 Writing:   email (compose / reply / localize)       → Email
            social post / thread / caption / comment → SocialPost

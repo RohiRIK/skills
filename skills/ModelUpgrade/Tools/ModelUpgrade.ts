@@ -1,24 +1,29 @@
 #!/usr/bin/env bun
 /**
- * ModelUpgrade: mechanical helpers for re-tuning the skill library to a new model generation.
+ * ModelUpgrade: mechanical helpers for re-tuning the skill library to a model generation, of any vendor.
  *
  *   bun Tools/ModelUpgrade.ts scan [--skill <Name>]... [--json]
- *   bun Tools/ModelUpgrade.ts baseline [--check] [--json]
- *   bun Tools/ModelUpgrade.ts stamp (--all | <Name>...) [--gen <id>] [--date YYYY-MM-DD]
+ *   bun Tools/ModelUpgrade.ts resolve [<model>]
+ *   bun Tools/ModelUpgrade.ts baseline [--target <id|model>] [--check] [--json]
+ *   bun Tools/ModelUpgrade.ts stamp (--all | <Name>...) [--target <id|model>] [--date YYYY-MM-DD]
  *
  * scan      Greps every skill's markdown (except this one, unless named with --skill) for the dated-prompt signals in ../Signals.md and prints
  *           counts and file:line hits. Fenced code blocks and inline `code` spans are skipped, since
  *           they usually quote a pattern rather than use it. A hit is a lead for the judge, not a verdict.
- * baseline  Lists each skill's `tuned-for` / `tuned-on` frontmatter against the newest generation in
- *           ../Generations.md. --check exits 1 when any skill is missing or behind.
- * stamp     Writes `tuned-for` (default: newest generation) and `tuned-on` (default: today, UTC)
- *           into the named skills' SKILL.md frontmatter, directly after `domain:`.
+ * resolve   Maps a model name as the host reports it ("claude-opus-5-5[1m]", "GPT-5.5") to a generation id
+ *           in ../Generations.md. With no argument it reads MODEL_UPGRADE_TARGET, then ANTHROPIC_MODEL.
+ *           Exits 1 when the model has no ledger entry yet.
+ * baseline  Lists each skill's `tuned-for` entry for the target's family against the target (default: the
+ *           ledger's first heading). --check exits 1 when any skill is missing or behind.
+ * stamp     Records the target in `tuned-for` (one id per family, e.g. "claude-5.5, gpt-5.5"; an older id of
+ *           the same family is replaced) and sets `tuned-on` (default: today, UTC), directly after `domain:`.
  *
+ * --target accepts a generation id or a model name; --gen is an older spelling of it.
  * The library root is found by walking up from this file to the directory holding `skills/`;
- * set MODEL_UPGRADE_ROOT to point it elsewhere (tests do). Runs on bun, or on node >= 22.6 with
- * --experimental-strip-types. No dependencies.
+ * set MODEL_UPGRADE_ROOT (and MODEL_UPGRADE_LEDGER) to point elsewhere (tests do). Runs on bun, or on
+ * node >= 22.6 with --experimental-strip-types. No dependencies.
  *
- * Exit codes: 0 ok · 1 --check found missing or stale skills · 2 usage error.
+ * Exit codes: 0 ok · 1 --check found missing or stale skills, or resolve found no entry · 2 usage error.
  */
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs"
 import { dirname, join, relative, resolve } from "node:path"
@@ -131,37 +136,82 @@ export function frontmatterField(skillMd: string, key: string): string | null {
   return null
 }
 
-// Newest generation = first "## <id> ..." heading in Generations.md, where id looks like claude-5.5.
-export function currentGeneration(path = join(SKILL_DIR, "Generations.md")): string {
-  const m = readFileSync(path, "utf8").match(/^## ([a-z]+-[0-9][0-9.]*)\b/m)
-  if (!m) throw new Error("ModelUpgrade: no '## <generation-id>' heading in " + path)
-  return m[1]
+// A generation id is "<family>-<version>", e.g. claude-5.5, gpt-5.5, gemini-3. The ledger
+// (Generations.md) lists them newest first per family; the first heading of a family is its head.
+export type Generation = { id: string; family: string; models: string[] }
+
+export const familyOf = (id: string) => id.replace(/-[0-9][0-9.]*$/, "")
+
+export function ledgerPath(): string {
+  return process.env.MODEL_UPGRADE_LEDGER ? resolve(process.env.MODEL_UPGRADE_LEDGER) : join(SKILL_DIR, "Generations.md")
+}
+
+// "## claude-5.5 — 2026-10 · Opus 5.5, Sonnet 5.5" → id claude-5.5, models [Opus 5.5, Sonnet 5.5].
+export function generations(path = ledgerPath()): Generation[] {
+  const out: Generation[] = []
+  for (const m of readFileSync(path, "utf8").matchAll(/^## ([a-z]+-[0-9][0-9.]*)\b(.*)$/gm)) {
+    const models = m[2].includes("·") ? m[2].split("·").pop()!.split(",").map((x) => x.trim()).filter(Boolean) : []
+    out.push({ id: m[1], family: familyOf(m[1]), models })
+  }
+  if (!out.length) throw new Error("ModelUpgrade: no '## <generation-id>' heading in " + path)
+  return out
+}
+
+// Head of one family, or of the ledger's first family (the library's primary target) when none is given.
+export function currentGeneration(family?: string, path = ledgerPath()): string {
+  const gens = generations(path)
+  const hit = family ? gens.find((g) => g.family === family) : gens[0]
+  if (!hit) throw new Error(`ModelUpgrade: no '${family}' generation in ${path}`)
+  return hit.id
+}
+
+const squash = (s: string) => s.toLowerCase().replace(/\[[^\]]*\]/g, "").replace(/[^a-z0-9]/g, "")
+
+// Map whatever the host calls the model ("claude-opus-5-5[1m]", "Opus 5.5", "gpt-5.5") to a
+// ledger generation id. Longest match wins, so "opus55" beats "opus5". Null = not in the ledger yet.
+export function resolveModel(model: string, path = ledgerPath()): string | null {
+  const want = squash(model)
+  if (!want) return null
+  let best: { id: string; len: number } | null = null
+  for (const g of generations(path))
+    for (const name of [g.id, ...g.models]) {
+      const n = squash(name)
+      if (n && (want === n || want.includes(n)) && (!best || n.length > best.len)) best = { id: g.id, len: n.length }
+    }
+  return best?.id ?? null
+}
+
+// tuned-for holds one id per family: "claude-5.5, gpt-5.5".
+export function tunedList(skillMd: string): string[] {
+  return (frontmatterField(skillMd, "tuned-for") ?? "").split(",").map((x) => x.trim()).filter(Boolean)
 }
 
 export function baseline(root = libraryRoot(), gen = currentGeneration()): BaselineRow[] {
   return listSkills(root).map((skill) => {
     const md = readFileSync(join(root, "skills", skill, "SKILL.md"), "utf8")
-    const tunedFor = frontmatterField(md, "tuned-for")
-    const tunedOn = frontmatterField(md, "tuned-on")
-    const status = !tunedFor ? "missing" : tunedFor === gen ? "current" : "stale"
-    return { skill, tunedFor, tunedOn, status }
+    const list = tunedList(md)
+    const same = list.find((t) => familyOf(t) === familyOf(gen)) ?? null
+    const status = same === gen ? "current" : same ? "stale" : "missing"
+    return { skill, tunedFor: same, tunedOn: frontmatterField(md, "tuned-on"), status }
   })
 }
 
+// Record gen in tuned-for, replacing an older id of the same family and keeping other families.
 export function stampText(skillMd: string, gen: string, date: string): string {
   const lines = skillMd.split("\n")
   const end = frontmatterEnd(lines)
   if (!end) throw new Error("SKILL.md has no frontmatter")
+  const kept = tunedList(skillMd).filter((t) => familyOf(t) !== familyOf(gen))
   const body = lines.slice(1, end - 1).filter((l) => !/^tuned-(for|on):/.test(l))
   const at = body.findIndex((l) => /^domain:/.test(l))
-  const insert = [`tuned-for: ${gen}`, `tuned-on: ${date}`]
+  const insert = [`tuned-for: ${[gen, ...kept].join(", ")}`, `tuned-on: ${date}`]
   if (at === -1) body.push(...insert)
   else body.splice(at + 1, 0, ...insert)
   return ["---", ...body, "---", ...lines.slice(end)].join("\n")
 }
 
 function usage(msg: string): number {
-  console.error(`ModelUpgrade: ${msg}\nusage: ModelUpgrade.ts scan [--skill N]... [--json] | baseline [--check] [--json] | stamp (--all | N...) [--gen id] [--date YYYY-MM-DD]`)
+  console.error(`ModelUpgrade: ${msg}\nusage: ModelUpgrade.ts scan [--skill N]... [--json] | resolve [model] | baseline [--target id|model] [--check] [--json] | stamp (--all | N...) [--target id|model] [--date YYYY-MM-DD]`)
   return 2
 }
 
@@ -193,23 +243,45 @@ export function main(argv: string[]): number {
     return 0
   }
 
+  // --target takes a generation id or a model name; --gen is the older spelling.
+  const targetArg = value("--target") ?? value("--gen")
+  const target = (): string | null => {
+    if (!targetArg) return currentGeneration()
+    const gens = generations()
+    return gens.some((g) => g.id === targetArg) ? targetArg : resolveModel(targetArg)
+  }
+
+  if (cmd === "resolve") {
+    const model = rest.find((a) => !a.startsWith("--")) ?? process.env.MODEL_UPGRADE_TARGET ?? process.env.ANTHROPIC_MODEL
+    if (!model) return usage("resolve needs a model name (or MODEL_UPGRADE_TARGET / ANTHROPIC_MODEL)")
+    const id = resolveModel(model)
+    if (!id) {
+      console.log(`${model}: not in the ledger, add a generation entry for it first`)
+      return 1
+    }
+    console.log(id)
+    return 0
+  }
+
   if (cmd === "baseline") {
-    const gen = currentGeneration()
+    const gen = target()
+    if (!gen) return usage(`unknown target ${targetArg}: add it to Generations.md first`)
     const rows = baseline(root, gen)
-    if (flag("--json")) console.log(JSON.stringify({ current: gen, skills: rows }, null, 2))
+    if (flag("--json")) console.log(JSON.stringify({ target: gen, skills: rows }, null, 2))
     else {
       const behind = rows.filter((r) => r.status !== "current").length
-      console.log(`current generation: ${gen} · ${rows.length - behind} current, ${behind} behind or missing`)
+      console.log(`target: ${gen} · ${rows.length - behind} current, ${behind} behind or missing`)
       for (const r of rows) console.log(`${r.status.padEnd(8)} ${r.skill.padEnd(22)} ${r.tunedFor ?? "-"} ${r.tunedOn ?? ""}`.trimEnd())
     }
     return flag("--check") && rows.some((r) => r.status !== "current") ? 1 : 0
   }
 
   if (cmd === "stamp") {
-    const gen = value("--gen") ?? currentGeneration()
+    const gen = target()
+    if (!gen) return usage(`unknown target ${targetArg}: add it to Generations.md first`)
     const date = value("--date") ?? new Date().toISOString().slice(0, 10)
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return usage(`--date must be YYYY-MM-DD, got ${date}`)
-    const skip = new Set([value("--gen"), value("--date")].filter(Boolean))
+    const skip = new Set([targetArg, value("--date")].filter(Boolean))
     const all = listSkills(root)
     const names = flag("--all") ? all : rest.filter((a) => !a.startsWith("--") && !skip.has(a))
     if (!names.length) return usage("stamp needs --all or at least one skill name")
@@ -217,8 +289,9 @@ export function main(argv: string[]): number {
     if (unknown.length) return usage(`unknown skill(s): ${unknown.join(", ")}`)
     for (const n of names) {
       const p = join(root, "skills", n, "SKILL.md")
-      writeFileSync(p, stampText(readFileSync(p, "utf8"), gen, date))
-      console.log(`stamped ${n}: tuned-for ${gen}, tuned-on ${date}`)
+      const out = stampText(readFileSync(p, "utf8"), gen, date)
+      writeFileSync(p, out)
+      console.log(`stamped ${n}: tuned-for ${tunedList(out).join(", ")}, tuned-on ${date}`)
     }
     return 0
   }

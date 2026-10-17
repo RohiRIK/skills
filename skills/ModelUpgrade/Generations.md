@@ -1,10 +1,10 @@
 # ModelUpgrade — Generations ledger
 
-One entry per model generation the library has been tuned against, **newest first**. The first `## <id>` heading is the current generation: `Tools/ModelUpgrade.ts` reads it, `stamp` writes it into `tuned-for:`, and `baseline` flags every skill tuned for anything older.
+One entry per model generation the library has been tuned against, of any vendor, **newest first within each family**. An id is `<family>-<version>` (`claude-5.5`, `gpt-5.5`, `gemini-3`), and the heading lists the vendor's model names after a `·` so `Tools/ModelUpgrade.ts resolve` can map what the host reports (`claude-opus-5-5`, `GPT-5.5 mini`) to an id. The first heading of a family is that family's head; the first heading in the file is the library's default target.
 
-Each entry records what changed for **skill text** (not API code) and what to do about it. The `Assess` workflow adds a new entry at the top when a new generation ships, from the vendor's own release notes and migration guides; cite them and date the entry. Older entries stay as history: they say which instructions were workarounds for which model, so a later audit knows what is safe to remove.
+Each entry records what changed for **skill text** (not API code) and what to do about it. `Assess` adds an entry when a target has none, from the vendor's own prompting guide, release notes, or migration guide; cite them in a `Sources:` line and date the entry. Older entries stay as history: they say which instructions were workarounds for which model, so a later audit knows what is safe to remove.
 
-The ledger is Claude-first because the library's skills are authored for Claude (`Prompting/vendors/Claude.md`). When a skill targets another vendor, add a `## <vendor>-<version>` entry for it the same way.
+To add another vendor, put its newest generation above that vendor's older ones (anywhere below the default target's head is fine) and keep `Prompting/vendors/<Vendor>.md` in step with it.
 
 ---
 

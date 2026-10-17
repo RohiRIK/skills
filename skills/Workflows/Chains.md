@@ -6,16 +6,16 @@ Every composed chain in the library, named by **skill**, never by host slash com
 
 | Workflow | Chain | When |
 |----------|-------|------|
-| **ship-fast** | ` → Spec → Build → Reflect → Simplify → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | Clear-enough scope, move fast, discover details mid-flight. |
-| **spec-to-ship** | `Spec → Build → Test → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | Know exactly what to build; spec-driven. Bug fix = `Test → Simplify → Verify → ship`. |
+| **ship-fast** | ` → Spec → Build → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | Clear-enough scope, move fast, discover details mid-flight. |
+| **spec-to-ship** | `Spec → Build → Test → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | Know exactly what to build; spec-driven. Bug fix = `Test → Verify → ship`. |
 | **research-to-build** | `Research(standard\|deep) → Spec → Build → Verify → GitHubOps:PullRequest` | Unknown domain/library/API — ground the spec first. |
 | **research-to-report** | `Research(deep) → DataReportBuilder → Art(diagrams)` | Deliverable is cited findings + visuals, not code. |
 | **research-to-buy** | `Research(deep) → comparison matrix → scored recommendation` | Compare products/tools/vendors before buying or adopting. |
 | **onboard** | `CodebaseOnboarding → Research(fill gaps) → Spec (first change) → spec-to-ship` | Join an unfamiliar repo, then make the first change. |
 | **build-cli** | `[Research(API, if wrapping)] → CreateCLI → Test → Verify → GitHubOps:PullRequest` | Ship a TypeScript command-line tool. |
 | **build-mcp** | `CreateMcp:BuildServer → SecurityReview → CreateMcp:TestServer → CreateMcp:ConnectServer → Verify → GitHubOps:PullRequest` | Scaffold, secure, test, connect an MCP server. |
-| **ui-feature** | `FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Simplify → Verify → GitHubOps:CommitPush` | Frontend change that isn't AI-slop — brief before build, audit after. |
-| **frontend-build** | `Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Simplify → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | Full frontend build with assets. |
+| **ui-feature** | `FrontendAesthetics:DesignBrief → FrontendDesign(build) → FrontendAesthetics:SlopAudit → Verify → GitHubOps:CommitPush` | Frontend change that isn't AI-slop — brief before build, audit after. |
+| **frontend-build** | `Spec → FrontendAesthetics:DesignBrief → FrontendDesign → Art → Spec → Build → Test → FrontendAesthetics:SlopAudit → Reflect → Verify → GitHubOps:CommitPush → GitHubOps:PullRequest` | Full frontend build with assets. |
 | **api-feature** | `BackendDesign(ref) → Spec → Build → Test → SecurityReview → GitHubOps:PullRequest` | Backend/API change, security-gated. |
 | **security-pass** | `SecurityReview → fix CRITICAL/HIGH → Verify → GitHubOps:CommitPush` | Harden existing code before release. |
 | **context-diet** | `ContextBudget → trim agents / skills / MCP / rules → Verify` | Cut context-window bloat. |
@@ -25,7 +25,7 @@ Every composed chain in the library, named by **skill**, never by host slash com
 
 | Workflow | Chain | When |
 |----------|-------|------|
-| **new-skill-quick** | `Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → Simplify → GitHubOps:CommitPush` | New skill, clear scope, single capability. |
+| **new-skill-quick** | `Prompting → CreateSkill(scaffold) → CreateSkill:TestSkill → CreateSkill:ValidateSkill → GitHubOps:CommitPush` | New skill, clear scope, single capability. |
 | **new-skill-heavy** | `Iterate:RunLenses → Spec → CreateSkill → CreateSkill:TestSkill → Verify → GitHubOps:PullRequest` | Complex, multi-workflow skill; shape unclear. |
 | **canonicalize-skill** | `CreateSkill:ValidateSkill → CreateSkill:CanonicalizeSkill → GitHubOps:CommitPush` | Skill structure broken / drifted from canon. |
 | **fix-trigger** | `CreateSkill:OptimizeDescription → CreateSkill:TestSkill → GitHubOps:CommitPush` | Skill won't activate or mis-fires. |

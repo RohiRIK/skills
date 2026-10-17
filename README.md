@@ -2,7 +2,7 @@
 
 # Skills
 
-[![Skills](https://img.shields.io/badge/skills-41-blue?style=flat-square)](https://github.com/RohiRIK/skills)
+[![Skills](https://img.shields.io/badge/skills-39-blue?style=flat-square)](https://github.com/RohiRIK/skills)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 > _Powered by caffeine and life's questionable coffee-cup choices._ ☕️
@@ -23,7 +23,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`ContextBudget/`](skills/ContextBudget) | Audit Claude Code context-window consumption and produce prioritized token-savings recommendations. |
 | [`CreateMcp/`](skills/CreateMcp) | Build a Model Context Protocol (MCP) server with the official SDK — tools, resources, prompts, transport, security. Scaffold, connect, debug. |
 | [`CreatePlugin/`](skills/CreatePlugin) | Package a project as one shared AI-agent plugin with thin Hermes, Claude, OpenClaw, Pi, OpenCode, and MCP adapters. |
-| [`CreateCLI/`](skills/CreateCLI) | Generate a production-ready TypeScript CLI (3 tiers: parseArgs / Commander / oclif), Bun-only, gated by Verify. |
+| [`CreateCLI/`](skills/CreateCLI) | Shared base for TypeScript CLI generation (3 tiers: parseArgs / Commander / oclif, Bun-only, gated by Verify); routes to the Agent or Human contract. |
 | [`CreateCLI-Agent/`](skills/CreateCLI-Agent) | Generate a production-ready TypeScript CLI for autonomous agents: JSON contract, non-interactive, semantic exits. |
 | [`CreateCLI-Human/`](skills/CreateCLI-Human) | Generate a production-ready TypeScript CLI for human operators: TTY UX, prose help, optional JSON. |
 | [`CreateHook/`](skills/CreateHook) | Generate lifecycle hooks for AI agent runtimes — Claude Code, OpenCode, OpenClaw, Hermes Agent. |
@@ -38,7 +38,7 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Hygiene/`](skills/Hygiene) | Audit `~/.claude` for git, skill, code, and rules hygiene issues. |
 | [`Iterate/`](skills/Iterate) | Bounded PLAN→ACT→VERIFY→REFLECT iteration toward a goal, with a state file and hard exit conditions (`/iterate`). |
 | [`MacPluginPlaybook/`](skills/MacPluginPlaybook) | Phased playbook to build or port a native SwiftUI macOS menu bar app: research, scaffold, test-first logic, screenshot-driven UI, settings + onboarding, audit, PR. Includes lessons from a real build. |
-| [`ModelUpgrade/`](skills/ModelUpgrade) | Re-tune the library when a new model ships: a dated generations ledger, `tuned-for` stamps, a dated-prompt scanner, and keep / reprompt / replan / retire verdicts per skill. |
+| [`ModelUpgrade/`](skills/ModelUpgrade) | Re-tune the library for any model, the one you use or a new release: a dated generations ledger, `tuned-for` stamps, a dated-prompt scanner, and keep / reprompt / replan / retire verdicts per skill. |
 | [`OpenCode/`](skills/OpenCode) | Delegate a coding/refactor/PR-review task to the OpenCode CLI as an autonomous worker. |
 | [`Orchestrate/`](skills/Orchestrate) | Decompose a spec into a dependency DAG, run units in parallel via delegation, review each in a separate context. |
 | [`Pi/`](skills/Pi) | Delegate a coding/refactor/PR-review task to the Pi (pi.dev) CLI as an autonomous worker. |
@@ -47,10 +47,8 @@ My everyday [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agen
 | [`Research/`](skills/Research) | Research a question at three depths (quick / standard / deep) by delegating to Agy/OpenCode/Pi + web search, then synthesize cited findings. |
 | [`SecurityReview/`](skills/SecurityReview) | Audit code for vulnerabilities and secrets. |
 | [`SkillForge/`](skills/SkillForge) | Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. |
-| [`Simplify/`](skills/Simplify) | Post-implementation dead-code cleanup (`/simplify`). |
 | [`SocialPost/`](skills/SocialPost) | Write, rewrite, repurpose, and localize posts for LinkedIn, X, Facebook, Instagram, Threads, Bluesky, Mastodon, WhatsApp, Telegram, TikTok, and YouTube in English and Hebrew: native bilingual templates, a dated platform facts table, exact per-platform counters, and a lint for AI tells, bait, fake formatting, and RTL layout. Drafts only, never posts. |
 | [`Spec/`](skills/Spec) | Explore code + memory, then write acceptance criteria before planning. |
-| [`StrategicCompact/`](skills/StrategicCompact) | Reference for context-compaction strategy and timing. |
 | [`Test/`](skills/Test) | Single TDD entry point for test-first features and bug fixes; runs `FeatureTdd` or `ProveIt`. |
 | [`Verify/`](skills/Verify) | Six-phase quality gate (build→type→lint→test→secret→diff) ending in a READY / NOT READY verdict (`/verify`). |
 | [`Workflows/`](skills/Workflows) | Index of composed skill chains — which skills to run, in what order, for a full job. Routes a task to the right chain; full steps in [`workflows/`](workflows). |

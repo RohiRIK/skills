@@ -5,7 +5,7 @@ category: meta
 effort: medium
 domain: ops
 tuned-for: claude-5.5
-tuned-on: 2026-10-14
+tuned-on: 2026-10-16
 ---
 
 # ContextBudget
@@ -32,6 +32,7 @@ Modes: default report · `--verbose` (per-file breakdown, per-tool MCP sizes) ·
 - Measure before cutting — a skill's frontmatter cost (always loaded) differs from its body cost (loaded on invocation); target always-on consumers first.
 - Disabling a skill that another skill composes with breaks the dependent — check the composition map (CLAUDE.md) before recommending removal.
 - Verbose mode is for pinpointing offenders, not regular audits.
+- Compaction is the host's job on current hosts. If a session must be trimmed by hand, do it at a natural boundary (after a task lands), never mid-edit; a fresh context that rediscovers state from the filesystem often beats a heavily compacted one.
 
 ## Examples
 

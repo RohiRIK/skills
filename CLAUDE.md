@@ -43,7 +43,7 @@ Drivers:     Iterate → calls Verify + Reflect each pass; wake primitive if the
              Iterate:RunLenses → feeds criteria to Spec / Orchestrate
              Research → fans out to Agy/OpenCode/Pi
 Meta:        SkillForge → audits + instruments the whole library;  CreateSkill → builds one skill
-             ModelUpgrade → re-tunes skills per model generation (Watch → Assess → Apply; stamps tuned-for)
+             ModelUpgrade → re-tunes skills for any model, current or new (Adapt | Watch → Assess → Apply; stamps tuned-for per family)
 Wired in:    Build→Verify · Test→Reflect · Spec --deep→Iterate:RunLenses · Agy/OpenCode/Pi→.agent-state.md on failure
 State:       loop/multi-pass skills share .agent-state.md
 Telemetry:   action workflows append to ~/.claude/state/execution.jsonl
