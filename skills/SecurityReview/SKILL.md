@@ -11,7 +11,7 @@ allowed-tools: Read, Grep, Glob, Bash
 
 # SecurityReview
 
-Full security audit skill. Forks a `security-reviewer` subagent — does not run inline.
+Full security audit skill. Runs in a forked `security-reviewer` subagent where the host defines one; otherwise run AuditCode inline in the current context (`rules/system.md` §7).
 
 ## Workflow Routing
 

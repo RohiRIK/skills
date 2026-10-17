@@ -94,7 +94,7 @@ If the user provides specific direction like:
 
 ---
 
-## Step 2: Run Create Story Explanation Level 24 — MANDATORY
+## Step 2: Write a 24-item story outline — MANDATORY
 
 **Extract the FULL narrative arc to understand the emotional core.**
 
@@ -118,13 +118,9 @@ Write a 24-item story outline of the content (read it in full, or fetch the URL)
 
 ## Step 3: Identify Emotional Register — MANDATORY
 
-**Read the aesthetic file and select the appropriate emotional vocabulary.**
+**Select the emotional vocabulary from the registers below.**
 
-```bash
-Read ~/.claude/skills/Art/SKILL.md
-```
-
-**Match the contVent to one of these emotional registers:**
+**Match the content to one of these emotional registers:**
 
 | Register | When to Use |
 |----------|-------------|
@@ -139,7 +135,7 @@ Read ~/.claude/skills/Art/SKILL.md
 
 **Output:** Selected emotional register with specific vocabulary from the aesthetic file.
 
-These are just examples. It can be really anything which you will get from the Create Story Explanation Run. 
+These are just examples. It can be anything the Step 2 outline surfaces.
 
 ---
 
@@ -154,7 +150,7 @@ These are just examples. It can be really anything which you will get from the C
 **🚨 IF USER PROVIDED GUIDANCE — START THERE:**
 If the user gave direction in Step 1 (e.g., "focus on the tension between labor and capital", "show labor losing"), use that as your PRIMARY composition direction. The story outline SUPPORTS this direction — it doesn't replace it.
 
-Use the content from the create-story-explanation run to compose this.
+Use the Step 2 outline to compose this.
 
 - Architecture is the TECHNIQUE (how to draw), NOT the required subject
 - Only draw buildings/spaces if the content is about those things
@@ -402,7 +398,9 @@ Before generating, verify:
 | "with reference", "style like" | `--reference-image <path>` | Uses reference for style guidance |
 | "variations", "options" | `--creative-variations 3` | Generates multiple versions |
 
-### Default Model: nano-banana-pro
+### Model
+
+The examples below use `nano-banana-pro`, an API fallback. The library default is `agy`; `Generation.md` says when a fallback wins (transparency, reference images).
 
 ### 🚨 CRITICAL: Always Output to Downloads First
 
@@ -410,7 +408,7 @@ Before generating, verify:
 
 ```bash
 # ALWAYS output to Downloads first for user to review in Preview
-bun run ~/.claude/skills/art/Tools/Generate.ts \
+bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model nano-banana-pro \
   --prompt "[YOUR PROMPT]" \
   --size 2K \
@@ -419,8 +417,8 @@ bun run ~/.claude/skills/art/Tools/Generate.ts \
   --output ~/Downloads/[descriptive-name].png
 
 # After user approves, THEN copy to final destination:
-cp ~/Downloads/[name].png ~/Projects/Website/cms/public/images/
-cp ~/Downloads/[name]-thumb.png ~/Projects/Website/cms/public/images/
+cp ~/Downloads/[name].png <project>/public/images/
+cp ~/Downloads/[name]-thumb.png <project>/public/images/
 ```
 
 ### Construct Command Based on Intent
@@ -428,7 +426,7 @@ cp ~/Downloads/[name]-thumb.png ~/Projects/Website/cms/public/images/
 Based on user's request and the mapping tables above, construct the CLI command:
 
 ```bash
-bun run ~/.claude/skills/art/Tools/Generate.ts \
+bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model [SELECTED_MODEL from table] \
   --prompt "[PROMPT from Step 5]" \
   --size [SELECTED_SIZE] \
@@ -449,13 +447,13 @@ The `--thumbnail` flag generates TWO versions:
 
 ```bash
 # Example: Generates both header.png AND header-thumb.png
-bun run ~/.claude/skills/art/Tools/Generate.ts \
+bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model nano-banana-pro \
   --prompt "[YOUR PROMPT]" \
   --size 2K \
   --aspect-ratio 1:1 \
   --thumbnail \
-  --output ~/Website/cms/public/images/my-header.png
+  --output ~/Downloads/my-header.png
 ```
 
 **Why two versions?**
@@ -490,14 +488,14 @@ thumbnail: https://example.com/images/my-header.png
 For non-blog images that only need transparency, or to remove backgrounds after generation:
 
 ```bash
-# Use the Images Skill for background removal
-bun ~/.claude/skills/CORE/Tools/RemoveBg.ts /path/to/output.png
+# Local rembg (RemoveBackground workflow)
+~/.local/bin/rembg i /path/to/output.png /path/to/output-transparent.png
 
-# Or batch process multiple images
-bun ~/.claude/skills/CORE/Tools/RemoveBg.ts image1.png image2.png image3.png
+# Or batch process a folder
+~/.local/bin/rembg p input-dir/ output-dir/
 ```
 
-**See:** `~/.claude/skills/Images/Workflows/BackgroundRemoval.md` for full documentation.
+**See:** `Workflows/RemoveBackground.md` (local `rembg`, verify alpha before shipping).
 
 ### 🚨 COMPOSITION: USE FULL FRAME, MINIMALIST, NO BACKGROUNDS
 
@@ -800,7 +798,7 @@ open /path/to/generated-image.png
 ```
 1. UNDERSTAND → Deeply read and comprehend the content
 2. Outline → write a 24-item story outline to extract the narrative arc
-3. EMOTION → Match to register in ~/.claude/skills/CORE/aesthetic.md
+3. EMOTION → Match to a register in Step 3
 4. COMPOSITION → Design what to DRAW (content-relevant, NOT defaulting to architecture)
 5. PROMPT → Build using charcoal sketch TECHNIQUE template
 6. GENERATE → Execute with nano-banana-pro + --thumbnail flag
