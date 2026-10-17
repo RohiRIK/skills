@@ -9,7 +9,7 @@
  * Usage:
  *   generate --model nano-banana-pro --prompt "..." --size 16:9 --output /tmp/image.png
  *
- * @see ~/.claude/skills/art/README.md
+ * @see ~/.claude/skills/Art/README.md
  */
 
 // Paid-SDK packages (replicate / openai / @google/genai) are imported lazily
