@@ -212,7 +212,7 @@ bun ~/.claude/skills/Headshot/Tools/Headshot.ts \
 ### Remove Background
 
 ```bash
-bun ~/.claude/skills/CORE/Tools/RemoveBg.ts ~/Downloads/yt-headshot-${TIMESTAMP}.png
+~/.local/bin/rembg i ~/Downloads/yt-headshot-${TIMESTAMP}.png ~/Downloads/yt-headshot-${TIMESTAMP}-cutout.png
 ```
 
 ---
@@ -226,7 +226,7 @@ bun ~/.claude/skills/CORE/Tools/RemoveBg.ts ~/Downloads/yt-headshot-${TIMESTAMP}
 ```bash
 bun ~/.claude/skills/Art/Tools/ComposeThumbnail.ts \
   --background ~/Downloads/yt-bg-${TIMESTAMP}.png \
-  --headshot ~/Downloads/yt-headshot-${TIMESTAMP}.png \
+  --headshot ~/Downloads/yt-headshot-${TIMESTAMP}-cutout.png \
   --title "[TITLE]" \
   --subtitle "[SUBTITLE]" \
   --title-color [cyan|purple|magenta|white|etc] \

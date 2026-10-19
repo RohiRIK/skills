@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "repo": "RohiRIK/skills",
   "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",
-  "generated": "2026-10-16T13:05:33Z",
+  "generated": "2026-10-17T19:23:54Z",
   "skills": [
     {
       "name": "AdaptiveExplainers",
@@ -341,7 +341,7 @@
       "effort": "low",
       "domain": "meta",
       "tier": "C-auto",
-      "tuned_for": "",
+      "tuned_for": "claude-5.5",
       "workflows": "RunReflect",
       "description": "Self-rate the just-finished output on five axes with evidence, then fix any gap scored ≤3. USE WHEN a non-trivial task finishes — 3+ files, a multi-step workflow, or 3+ debug attempts."
     },

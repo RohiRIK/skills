@@ -4,7 +4,7 @@ Perform a security review of the specified code.
 
 ## Step 1: Analyze
 
-Scan the code for common vulnerabilities (OWASP Top 10, etc.).
+Read `Overview.md` (the full checklist), then scan the code for common vulnerabilities (OWASP Top 10, etc.).
 
 ## Step 2: Report
 
