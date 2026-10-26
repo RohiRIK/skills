@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "builds": [
+    {
+      "version": "2.19.2",
+      "bundle_identifier": "com.superduper.superwhisper",
+      "executable_sha256": "0e70c211e0c7a65e09af5d3565e6d5827b62a5247721fa61f8ec981c9e94fd5a",
+      "architecture": "arm64",
+      "models": [
+        {"key": "cohere", "label": "Cohere Transcribe", "address": "0x100199abc", "before": "0b210639", "after": "1f210639"},
+        {"key": "parakeet", "label": "Parakeet", "address": "0x100199868", "before": "0b210639", "after": "1f210639"},
+        {"key": "parakeet-multilanguage", "label": "Parakeet Multilanguage", "address": "0x100199d08", "before": "0b210639", "after": "1f210639"},
+        {"key": "s1-mini", "label": "S1-mini", "address": "0x10019bfb4", "before": "0b210639", "after": "1f210639"}
+      ]
+    }
+  ]
+}
