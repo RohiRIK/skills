@@ -4,6 +4,8 @@ description: "Write, rewrite, repurpose, localize, and review social posts in En
 category: workflow
 effort: medium
 domain: docs
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # SocialPost

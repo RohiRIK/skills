@@ -4,6 +4,8 @@ description: "Self-rate the just-finished output on five axes with evidence, the
 category: quality
 effort: low
 domain: meta
+tuned-for: claude-5.5
+tuned-on: 2026-10-17
 ---
 
 # Reflect

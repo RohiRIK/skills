@@ -4,6 +4,8 @@ description: "Phased playbook to build or port a native SwiftUI macOS menu bar a
 category: workflow
 effort: high
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # MacPluginPlaybook

@@ -11,7 +11,7 @@ allowed-tools: Read, Grep, Glob, Bash
 
 # SecurityReview
 
-Full security audit skill. Forks a `security-reviewer` subagent — does not run inline.
+Full security audit skill. Runs in a forked `security-reviewer` subagent where the host defines one; otherwise run AuditCode inline in the current context (`rules/system.md` §7).
 
 ## Workflow Routing
 
@@ -35,7 +35,7 @@ Full checklist: `Overview.md` (12KB — loaded on demand by AuditCode workflow)
 ## Integration
 
 - After writing auth/API/input-handling code → auto-trigger
-- Before `/commit-push-pr` on security-sensitive changes → manual trigger
+- Before `GitHubOps:CommitPush` on security-sensitive changes → manual trigger
 - Pairs with `code-reviewer` for complete post-implementation review
 
 ## Gotchas

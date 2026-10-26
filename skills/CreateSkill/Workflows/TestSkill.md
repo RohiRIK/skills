@@ -40,6 +40,8 @@ Save a brief transcript to: <workspace>/test-<N>/baseline/transcript.md
 
 Use `run_in_background: true`; launch all with-skill + baseline pairs at once.
 
+**Comparison mode** (two versions of one skill, e.g. from `ModelUpgrade:Apply`): the baseline agent reads the previous version instead of no skill (save `git show HEAD:<path>` to the workspace first). Label the folders `new/` and `old/`; the verdict question becomes "did the new version help, tie, or regress?".
+
 ## Step 4: Compare Results
 
 For each prompt, read both outputs + both transcripts and assess the delta:

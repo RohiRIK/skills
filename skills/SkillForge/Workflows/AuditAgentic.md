@@ -16,7 +16,7 @@ List every skill directory at the repo root (each with a `SKILL.md`). Read each 
 | **State** | none | mentions state | reads/writes `.agent-state.md` |
 | **Telemetry** | none | partial | every action workflow emits the `execution.jsonl` line |
 
-Max 10. **Tier-A reference skills** (passive knowledge — `CodingStandards`, `DockerPatterns`, `BackendDesign`, `FrontendDesign`, `StrategicCompact`, etc.) are **"reference, exempt"** — they are not supposed to loop or verify, so don't score them as failures.
+Max 10. **Tier-A reference skills** (passive knowledge — `CodingStandards`, `DockerPatterns`, `BackendDesign`, `FrontendDesign`, etc.) are **"reference, exempt"** — they are not supposed to loop or verify, so don't score them as failures.
 
 ## Step 3: Classify
 

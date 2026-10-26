@@ -4,6 +4,8 @@ description: "Audit Claude Code context-window consumption across agents, skills
 category: meta
 effort: medium
 domain: ops
+tuned-for: claude-5.5
+tuned-on: 2026-10-16
 ---
 
 # ContextBudget
@@ -20,7 +22,8 @@ Modes: default report · `--verbose` (per-file breakdown, per-tool MCP sizes) ·
 
 ## Quick Reference
 
-- MCP is the biggest lever: each tool schema ≈500 tokens — a 30-tool server outweighs all skills combined.
+- MCP is the biggest lever when schemas load eagerly: each tool schema ≈500 tokens, so a 30-tool server outweighs all skills combined. Hosts with deferred tool loading (tool search) keep only tool names always-on; check which mode the host uses before counting.
+- Start from the host's own context breakdown when it has one (Claude Code `/context`), then explain and rank it.
 - Agent `description` fields are always-on — present in every Task context even if never invoked.
 - Estimation: `words × 1.3` prose, `chars / 4` code.
 
@@ -29,6 +32,7 @@ Modes: default report · `--verbose` (per-file breakdown, per-tool MCP sizes) ·
 - Measure before cutting — a skill's frontmatter cost (always loaded) differs from its body cost (loaded on invocation); target always-on consumers first.
 - Disabling a skill that another skill composes with breaks the dependent — check the composition map (CLAUDE.md) before recommending removal.
 - Verbose mode is for pinpointing offenders, not regular audits.
+- Compaction is the host's job on current hosts. If a session must be trimmed by hand, do it at a natural boundary (after a task lands), never mid-edit; a fresh context that rediscovers state from the filesystem often beats a heavily compacted one.
 
 ## Examples
 

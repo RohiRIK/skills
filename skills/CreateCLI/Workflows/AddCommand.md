@@ -24,6 +24,10 @@ Add one or more commands to an existing CLI without breaking existing functional
 
 ## 📋 STEPS
 
+### 0. Keep the Caller Contract
+
+Find which contract the CLI follows (its README, or the output shape: a JSON envelope and `--help-json` mean `../CreateCLI-Agent/Contract.md`; tables and prompts mean `../CreateCLI-Human/UX.md`). The new command follows the same one.
+
 ### 1. Locate Existing CLI
 
 ```bash

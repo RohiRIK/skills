@@ -162,7 +162,7 @@ program.parse();
 
 ---
 
-**Note:** Most CLIs NEVER need this upgrade. Tier 1 is production-ready indefinitely.
+**Note:** Most CLIs never need this upgrade. Tier 1 is production-ready indefinitely.
 
 ## Execution Log
 

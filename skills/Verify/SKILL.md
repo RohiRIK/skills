@@ -4,6 +4,8 @@ description: "Run a build/type/lint/test/secret/diff gate ending in a READY / NO
 category: quality
 effort: medium
 domain: testing
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 disable-model-invocation: true
 ---
 

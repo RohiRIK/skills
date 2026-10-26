@@ -45,11 +45,12 @@ gen_json() {
   echo '  "description": "Personal library of reusable Agent Skills for Claude Code, opencode, and other AI coding tools. Each entry is a self-contained skill folder with a SKILL.md.",'
   echo "  \"generated\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\","
   echo '  "skills": ['
-  local first=1 d fm name desc catg eff dom tier wf
+  local first=1 d fm name desc catg eff dom tier wf tuned
   for d in $(skill_dirs); do
     fm="$(frontmatter "$d/SKILL.md")"
     name="$(field "$fm" name)"; desc="$(field "$fm" description)"
     catg="$(field "$fm" category)"; eff="$(field "$fm" effort)"; dom="$(field "$fm" domain)"; tier="$(tier_of "$fm")"
+    tuned="$(field "$fm" tuned-for || true)"
     wf="$(ls "$d/Workflows" 2>/dev/null | sed 's/\.md$//' | paste -sd, - 2>/dev/null || true)"
     [ $first -eq 0 ] && echo '    },'; first=0
     echo '    {'
@@ -59,6 +60,7 @@ gen_json() {
     echo "      \"effort\": \"$(esc "$eff")\","
     echo "      \"domain\": \"$(esc "$dom")\","
     echo "      \"tier\": \"$tier\","
+    echo "      \"tuned_for\": \"$(esc "$tuned")\","
     echo "      \"workflows\": \"$(esc "$wf")\","
     echo "      \"description\": \"$(esc "$desc")\""
   done
@@ -95,7 +97,7 @@ gen_llms() {
 
 ## How to consume this repo (for AI agents)
 
-- **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, domain, tier, workflows, and description as JSON. Parse this instead of opening every file.
+- **One-shot machine-readable index:** [skills.json](skills.json) — every skill's name, path, category, effort, domain, tier, tuned_for (model generation it was last tuned against), workflows, and description as JSON. Parse this instead of opening every file.
 - **Per skill:** read `<SkillName>/SKILL.md` — the `description` field states WHAT it does + WHEN to use it; the `## Workflow Routing` table maps intents to `Workflows/*.md`; `## Gotchas` holds the highest-density failure knowledge; `## Examples` shows trigger->action.
 - **System model:** [rules/system.md](rules/system.md) — tier model (A/B/C/D), frontmatter contract, composition graph, state + telemetry conventions.
 - **Composed workflows:** [workflows/index.md](workflows/index.md) — an OKF bundle of multi-skill chains for full jobs (build & ship, maintain the library); each chain is one markdown concept with YAML frontmatter (`type: Workflow`, `chain`, `tags`). `skills.json` also carries a `workflows` array with each chain's `title`, `chain`, `tags`, and `summary`.

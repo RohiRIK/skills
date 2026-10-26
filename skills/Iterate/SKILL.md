@@ -4,6 +4,8 @@ description: "Bounded multi-pass loop: improve mode (one change per pass, Verify
 category: workflow
 effort: medium
 domain: meta
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 argument-hint: "[--target PATH --goal TEXT --max N] | [--lenses N]"
 ---
 

@@ -77,18 +77,18 @@ STYLE: Excalidraw whiteboard sketch with rich graphics
 ```
 DEFAULT: Light Cream/Sepia #F5E6D3 (matches blog aesthetic)
 WHITE ONLY IF: User explicitly requests "white background" in prompt
-TRANSPARENT: Use Images skill to remove background for overlay use
+TRANSPARENT: Remove the background for overlay use (RemoveBackground workflow)
 ```
 
 **Light Cream (#F5E6D3) is the DEFAULT background.** Only use white (#FFFFFF) if the user explicitly requests it.
 
-**For transparent background** — use the **Images skill** for background removal:
+**For transparent background** — remove it with the RemoveBackground workflow:
 
 ```bash
-bun ~/.claude/skills/CORE/Tools/RemoveBg.ts /path/to/visualization.png
+~/.local/bin/rembg i /path/to/visualization.png /path/to/visualization-transparent.png
 ```
 
-**See:** `~/.claude/skills/Images/Workflows/BackgroundRemoval.md` for full documentation.
+**See:** `Workflows/RemoveBackground.md` (local `rembg`, verify alpha before shipping).
 
 ### Title/Subtitle Alignment
 
@@ -195,9 +195,9 @@ CRITICAL:
 
 ## 🚨 MANDATORY WORKFLOW STEPS
 
-### Step 1: Deep Content Analysis (MANDATORY - Use deep thinking)
+### Step 1: Content analysis
 
-**🎯 CRITICAL: Use extended thinking to analyze content thoroughly before proceeding.**
+Analyze the content before choosing a format; the format follows from what the content is.
 
 Analyze the content across these dimensions:
 
@@ -583,7 +583,7 @@ Optional: Sign small in bottom right corner in charcoal (#2D2D2D).
 **Construct command based on intent:**
 
 ```bash
-bun run ~/.claude/skills/art/Tools/Generate.ts \
+bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model [SELECTED_MODEL] \
   --prompt "[YOUR COMPREHENSIVE PROMPT]" \
   --size [SELECTED_SIZE] \

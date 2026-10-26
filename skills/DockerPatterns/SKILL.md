@@ -4,6 +4,8 @@ description: "Reference for Docker and Docker Compose local dev patterns. USE WH
 category: reference
 effort: low
 domain: ops
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 user-invocable: false
 ---
 

@@ -2,6 +2,10 @@
 
 Chronological history of this OKF bundle (OKF reserved file). Newest first.
 
+## 2026-10-14
+
+- Added the `model-upgrade` chain (maintain the library): `ModelUpgrade` Watch → Assess → Apply, then ValidateSkill and a PR.
+
 ## 2026-06-30
 
 - Converted the bundle to **OKF** (Open Knowledge Format): added YAML frontmatter

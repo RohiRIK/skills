@@ -76,6 +76,10 @@ START: User describes CLI requirements
 
 ## 📋 WORKFLOW STEPS
 
+### Step 0: Pick the Caller Contract
+
+Decide who runs the CLI and load that contract before anything else (see the base `SKILL.md`): an agent, CI job, or script → `../CreateCLI-Agent/Contract.md`; a person at a terminal → `../CreateCLI-Human/UX.md`. The contract overrides any default below that it contradicts (output shape, prompts, exit codes, help format).
+
 ### Step 1: Gather Requirements
 
 **Extract from user request:**

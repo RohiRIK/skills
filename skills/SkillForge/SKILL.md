@@ -1,9 +1,11 @@
 ---
 name: SkillForge
-description: "Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill)."
+description: "Audit the whole skill library for agentic readiness and instrument it with telemetry in bulk. USE WHEN auditing skills for autonomy, finding agentic gaps, or adding execution logging across skills. NOT FOR creating a single skill (use CreateSkill) or re-tuning for a new model (use ModelUpgrade)."
 category: meta
 effort: medium
 domain: meta
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 ---
 
 # SkillForge

@@ -4,6 +4,8 @@ description: "Vendor-agnostic prompt-engineering standard library. USE WHEN auth
 category: prompting
 effort: low
 domain: prompting
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 user-invocable: false
 ---
 

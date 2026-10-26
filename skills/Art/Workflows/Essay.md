@@ -23,7 +23,7 @@ INPUT CONTENT
      ↓
 [1] UNDERSTAND: Deeply read and comprehend the request ← MANDATORY
      ↓
-[2] CSE-24: Run Create Story Explanation Level 24 on content ← MANDATORY
+[2] Outline: write a 24-item story outline of the content
      ↓
 [3] EMOTION: Identify emotional register ← MANDATORY
      ↓
@@ -88,28 +88,19 @@ If the user provides specific direction like:
 - "Emphasize the human impact"
 - Any other compositional or thematic guidance
 
-**USE THAT GUIDANCE** as the primary input for composition design. The CSE-24 supports the user's direction — it doesn't override it.
+**USE THAT GUIDANCE** as the primary input for composition design. The outline supports the user's direction — it doesn't override it.
 
 **Output:** Clear understanding of the content's core subject matter + any user-provided guidance.
 
 ---
 
-## Step 2: Run Create Story Explanation Level 24 — MANDATORY
+## Step 2: Write a 24-item story outline — MANDATORY
 
 **Extract the FULL narrative arc to understand the emotional core.**
 
-**🚨 ACTUALLY EXECUTE THIS COMMAND — DO NOT SKIP:**
+Write a 24-item story outline of the content (read it in full, or fetch the URL). The illustration is designed from this outline, so don't skip it.
 
-```
-Invoke the StoryExplanation Skill with: "Create a 24-item story explanation for this content"
-```
-
-Or use the slash command:
-```
-/cse [paste the content or URL]
-```
-
-**What CSE-24 gives you:**
+**What the outline gives you:**
 - The complete narrative arc: setup, tension, transformation, resolution
 - Key metaphors and imagery from the piece
 - The emotional journey
@@ -117,7 +108,7 @@ Or use the slash command:
 - The "wow" factor and significance
 
 **DO NOT PROCEED TO STEP 3 UNTIL YOU HAVE:**
-1. Actually run the CSE command
+1. Actually write the outline
 2. Read and understood the 24-item output
 3. Identified the key metaphors and emotional beats
 
@@ -127,13 +118,9 @@ Or use the slash command:
 
 ## Step 3: Identify Emotional Register — MANDATORY
 
-**Read the aesthetic file and select the appropriate emotional vocabulary.**
+**Select the emotional vocabulary from the registers below.**
 
-```bash
-Read ~/.claude/skills/Art/SKILL.md
-```
-
-**Match the contVent to one of these emotional registers:**
+**Match the content to one of these emotional registers:**
 
 | Register | When to Use |
 |----------|-------------|
@@ -148,7 +135,7 @@ Read ~/.claude/skills/Art/SKILL.md
 
 **Output:** Selected emotional register with specific vocabulary from the aesthetic file.
 
-These are just examples. It can be really anything which you will get from the Create Story Explanation Run. 
+These are just examples. It can be anything the Step 2 outline surfaces.
 
 ---
 
@@ -161,20 +148,20 @@ These are just examples. It can be really anything which you will get from the C
 **What is this content ABOUT, and what visual would represent THAT?**
 
 **🚨 IF USER PROVIDED GUIDANCE — START THERE:**
-If the user gave direction in Step 1 (e.g., "focus on the tension between labor and capital", "show labor losing"), use that as your PRIMARY composition direction. The CSE-24 output SUPPORTS this direction — it doesn't replace it.
+If the user gave direction in Step 1 (e.g., "focus on the tension between labor and capital", "show labor losing"), use that as your PRIMARY composition direction. The story outline SUPPORTS this direction — it doesn't replace it.
 
-Use the content from the create-story-explanation run to compose this.
+Use the Step 2 outline to compose this.
 
 - Architecture is the TECHNIQUE (how to draw), NOT the required subject
 - Only draw buildings/spaces if the content is about those things
 - Draw what the content is actually about using architectural sketch style
-- **User guidance shapes WHAT to draw; CSE-24 helps you understand the emotional core**
+- **User guidance shapes WHAT to draw; the outline helps you understand the emotional core**
 
 ### Composition Design Questions
 
 **🚨 STEP 4A: IDENTIFY THE PROBLEM (MOST CRITICAL)**
 
-Before designing anything, extract from the CSE-24 output:
+Before designing anything, extract from the story outline:
 
 1. **What is the PROBLEM the essay addresses?**
    - What's WRONG with the current state?
@@ -184,7 +171,7 @@ Before designing anything, extract from the CSE-24 output:
 
 2. **What TYPE of problem is it?**
 
-   Identify the problem archetype from the CSE output:
+   Identify the problem archetype from the story outline:
 
    | Problem Type | Description | Visual Metaphor |
    |--------------|-------------|-----------------|
@@ -246,7 +233,7 @@ Before designing anything, extract from the CSE-24 output:
 ### Composition Design Template
 
 ```
-THE PROBLEM (from CSE-24 — MOST CRITICAL):
+THE PROBLEM (from the story outline — the core of the image):
 [What's WRONG with the current state that this essay addresses?]
 [The unfairness, mistake, or confusion the essay critiques]
 [This is what the art should SHOW]
@@ -411,7 +398,9 @@ Before generating, verify:
 | "with reference", "style like" | `--reference-image <path>` | Uses reference for style guidance |
 | "variations", "options" | `--creative-variations 3` | Generates multiple versions |
 
-### Default Model: nano-banana-pro
+### Model
+
+The examples below use `nano-banana-pro`, an API fallback. The library default is `agy`; `Generation.md` says when a fallback wins (transparency, reference images).
 
 ### 🚨 CRITICAL: Always Output to Downloads First
 
@@ -419,7 +408,7 @@ Before generating, verify:
 
 ```bash
 # ALWAYS output to Downloads first for user to review in Preview
-bun run ~/.claude/skills/art/Tools/Generate.ts \
+bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model nano-banana-pro \
   --prompt "[YOUR PROMPT]" \
   --size 2K \
@@ -428,8 +417,8 @@ bun run ~/.claude/skills/art/Tools/Generate.ts \
   --output ~/Downloads/[descriptive-name].png
 
 # After user approves, THEN copy to final destination:
-cp ~/Downloads/[name].png ~/Projects/Website/cms/public/images/
-cp ~/Downloads/[name]-thumb.png ~/Projects/Website/cms/public/images/
+cp ~/Downloads/[name].png <project>/public/images/
+cp ~/Downloads/[name]-thumb.png <project>/public/images/
 ```
 
 ### Construct Command Based on Intent
@@ -437,7 +426,7 @@ cp ~/Downloads/[name]-thumb.png ~/Projects/Website/cms/public/images/
 Based on user's request and the mapping tables above, construct the CLI command:
 
 ```bash
-bun run ~/.claude/skills/art/Tools/Generate.ts \
+bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model [SELECTED_MODEL from table] \
   --prompt "[PROMPT from Step 5]" \
   --size [SELECTED_SIZE] \
@@ -458,13 +447,13 @@ The `--thumbnail` flag generates TWO versions:
 
 ```bash
 # Example: Generates both header.png AND header-thumb.png
-bun run ~/.claude/skills/art/Tools/Generate.ts \
+bun run ~/.claude/skills/Art/Tools/Generate.ts \
   --model nano-banana-pro \
   --prompt "[YOUR PROMPT]" \
   --size 2K \
   --aspect-ratio 1:1 \
   --thumbnail \
-  --output ~/Website/cms/public/images/my-header.png
+  --output ~/Downloads/my-header.png
 ```
 
 **Why two versions?**
@@ -499,14 +488,14 @@ thumbnail: https://example.com/images/my-header.png
 For non-blog images that only need transparency, or to remove backgrounds after generation:
 
 ```bash
-# Use the Images Skill for background removal
-bun ~/.claude/skills/CORE/Tools/RemoveBg.ts /path/to/output.png
+# Local rembg (RemoveBackground workflow)
+~/.local/bin/rembg i /path/to/output.png /path/to/output-transparent.png
 
-# Or batch process multiple images
-bun ~/.claude/skills/CORE/Tools/RemoveBg.ts image1.png image2.png image3.png
+# Or batch process a folder
+~/.local/bin/rembg p input-dir/ output-dir/
 ```
 
-**See:** `~/.claude/skills/Images/Workflows/BackgroundRemoval.md` for full documentation.
+**See:** `Workflows/RemoveBackground.md` (local `rembg`, verify alpha before shipping).
 
 ### 🚨 COMPOSITION: USE FULL FRAME, MINIMALIST, NO BACKGROUNDS
 
@@ -724,7 +713,7 @@ open /path/to/generated-image.png
 - [ ] **Title test passes** — someone could guess the topic from the image alone
 - [ ] **Labels readable** — if there are labels (like A, T, H, I), they are clearly visible and correct
 - [ ] **NOT defaulting to buildings/spaces** — unless content is actually about architecture
-- [ ] **CSE-24 insights captured** — the visual represents the narrative arc discovered in Step 2
+- [ ] **Outline insights captured** — the visual represents the narrative arc discovered in Step 2
 - [ ] **User guidance incorporated** — if the user gave direction, it's reflected in the image
 - [ ] **Background removed** — transparent background, or re-run background removal if it failed
 
@@ -808,8 +797,8 @@ open /path/to/generated-image.png
 
 ```
 1. UNDERSTAND → Deeply read and comprehend the content
-2. CSE-24 → Run Create Story Explanation (24 items) to extract narrative arc
-3. EMOTION → Match to register in ~/.claude/skills/CORE/aesthetic.md
+2. Outline → write a 24-item story outline to extract the narrative arc
+3. EMOTION → Match to a register in Step 3
 4. COMPOSITION → Design what to DRAW (content-relevant, NOT defaulting to architecture)
 5. PROMPT → Build using charcoal sketch TECHNIQUE template
 6. GENERATE → Execute with nano-banana-pro + --thumbnail flag
@@ -834,7 +823,7 @@ open /path/to/generated-image.png
 
 Before submitting any image:
 - ✅ **Subject matches CONTENT** — drew what the piece is ABOUT (not defaulting to architecture)
-- ✅ **CSE-24 was run** — actually executed the story explanation command
+- ✅ **The outline was written** before composing
 - ✅ **Concrete subjects visible** — key nouns/metaphors from content appear
 - ✅ Charcoal sketch TECHNIQUE — gestural, atmospheric, hatching
 - ✅ Emotional register — clear and intentional
@@ -846,7 +835,7 @@ Before submitting any image:
 
 ---
 
-**The workflow: UNDERSTAND → CSE-24 → EMOTION → COMPOSITION → PROMPT → GENERATE (--thumbnail) → OPTIMIZE → VALIDATE → Complete**
+**The workflow: UNDERSTAND → OUTLINE → EMOTION → COMPOSITION → PROMPT → GENERATE (--thumbnail) → OPTIMIZE → VALIDATE → Complete**
 
 ## Execution Log
 

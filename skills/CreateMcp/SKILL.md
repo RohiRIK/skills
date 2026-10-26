@@ -4,6 +4,8 @@ description: "Build a Model Context Protocol (MCP) server with the official SDK 
 category: reference
 effort: medium
 domain: dev
+tuned-for: claude-5.5
+tuned-on: 2026-10-14
 argument-hint: [what the server should do]
 ---
 

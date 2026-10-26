@@ -27,10 +27,8 @@ Append a per-skill centerpiece clause (below) to that prefix.
 | Reflect | `reflect-hero.jpg` | a mirror reflecting a five-axis radar scorecard, symbolizing self-evaluation. |
 | Research | `research-hero.jpg` | a magnifying glass over a branching web of inquiry threads with citation markers, symbolizing multi-depth research. |
 | SecurityReview | `security-review-hero.jpg` | a shield-and-lock emblem with a red scanning beam over code, symbolizing a security audit. |
-| Simplify | `simplify-hero.jpg` | a tangled knot unraveling into a clean straight line, symbolizing post-implementation simplification. |
 | SkillForge | `skill-forge-hero.jpg` | an anvil and forge with glowing tools being hammered into shape, symbolizing building and instrumenting skills. |
 | Spec | `spec-hero.jpg` | a glowing blueprint with a checklist of acceptance criteria, symbolizing spec-writing. |
-| StrategicCompact | `strategic-compact-hero.jpg` | folding/compressing panels of text into a dense glowing core, symbolizing context compaction. |
 | Test | `test-hero.jpg` | a row of pass/fail gauges with green checkmarks, symbolizing automated test runs. |
 | Verify | `verify-hero.jpg` | a six-segment shield with a checkmark and a glowing READY stamp, symbolizing an automated verification gate. |
 | Workflows | `workflows-hero.jpg` | a glowing flowchart of connected nodes lighting up in sequence along a chosen path, symbolizing composed skill chains. |
